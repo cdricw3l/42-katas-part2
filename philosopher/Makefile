@@ -6,7 +6,7 @@
 #    By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 22:40:28 by cw3l              #+#    #+#              #
-#    Updated: 2025/03/14 23:25:47 by cw3l             ###   ########.fr        #
+#    Updated: 2025/03/14 23:54:59 by cw3l             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ dev=2
 gitcom=
 
 SRCS_DIR= srcs/petri_network srcs/utils/ srcs/main
-SRCS= $($(wildcard $(addsuffix /*.c , $(SRCS_DIR))))
+
+SRCS= $(wildcard srcs/**/*.c)
 
 OBJS= $(SRCS:%.c=%.o)
+
 DATE=$(shell date -Isecond)
 BRANCH=$(shell git branch --show-current)
-
+#srcs/utils/%.c=%.o srcs/main/%.c=%.o
 NOP= 5 		#number_of_philosophers
 TTD= 4000 	#time_to_die
 TTE= 4000 	#time_to_eat
@@ -38,8 +40,7 @@ EMPTY=
 
 $(NAME): $(OBJS)
 ifeq ($(mode), 0)
-	@echo $(dir $(SRCS_DIR))
-	$(CC) -Werror -Wextra -Wall  -I. $(OBJS) -o $(NAME)
+	$(CC)   -I. $(OBJS) -o $(NAME)
 else ifeq ($(mode), 1)
 	@echo hello
 endif

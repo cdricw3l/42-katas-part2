@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/14 09:08:32 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/14 19:58:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include <unistd.h>
 
 int	ft_isdigit(char c)
 {
@@ -58,30 +58,7 @@ void	ft_print_arr_str(char **arr, int len)
 		printf("%s\n", arr[i++]);
 	
 }
-int	*ft_init_arr_arg(char **argv, int len)
-{
-	int *arr;
-	int i;
 
-	if(!argv)
-		return(NULL);
-	arr = malloc(sizeof(int) * 6);
-	if(!arr)
-		return(NULL);
-	i = 0;
-	while (i < len)
-	{
-		arr[i] = ft_atoi_long(argv[i]);
-		if(arr[i] == -1)
-		{
-			printf("Programme argument error\n");
-			free(arr);
-			return (NULL);
-		}
-		i++;
-	}
-	return (arr);
-}
 int	ft_strlcpy(char *dst, char *src, int dstsize)
 {
 	int	i;

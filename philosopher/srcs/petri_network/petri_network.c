@@ -6,11 +6,11 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/14 09:00:53 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/14 21:45:40 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/petri_network/petri_network.h"
+#include "petri_network.h"
 
 void *ft_clean_petri_network_mem(t_petri_network *network)
 {
@@ -42,22 +42,7 @@ void *ft_clean_petri_network_mem(t_petri_network *network)
     return(NULL);
 }
 
-static int *ft_create_place(int P, int *M_0)
-{
-    int *places;
-    int i;
 
-    places = malloc(sizeof(int) * (P + 1));
-    if(!places)
-        return(NULL);
-    i = 0;
-    while (i < P)
-    {
-        places[i] = M_0[i];
-        i++;
-    }
-    return(places);
-}
 
 static int  *ft_create_transitions(int T)
 {

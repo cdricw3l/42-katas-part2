@@ -6,11 +6,11 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:34:00 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/14 08:58:56 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/14 20:11:20 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/utils/str_to_matrice.h"
+#include "str_to_matrice.h"
 
 void    *ft_clean_matrice_mem(int **M, int idx)
 {
@@ -46,18 +46,6 @@ static int	ft_is_valide_split(char **split)
 	return (1);
 }
 
-static int	ft_get_split_len(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (!split)
-		return (0);
-	while (split[i])
-		i++;
-	return (i);
-}
-
 static void	*ft_process_matrice(int **M, char **split, int x, int y)
 {
 	int	i;
@@ -91,7 +79,7 @@ int	**ft_str_to_matrice(char *str, int x, int y)
 {
 	char	**split;
 	int		**m;
-
+	
 	if (!str || x <= 0 || y <= 0)
 		return (NULL);
 	split = ft_split(str, 32);

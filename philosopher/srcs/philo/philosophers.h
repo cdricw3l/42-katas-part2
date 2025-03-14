@@ -6,22 +6,20 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/14 01:26:07 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/14 21:51:59 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 #define PHILOSOPHERS_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <assert.h>
+
 #include <sys/time.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "petri_network.h"
-#include "str_to_matrice.h"
+#include <assert.h>
+#include "../petri_network/petri_network.h"
 
 #define DEBUGG printf("DEBUGG\n");
 #define PRINT_INT(msg) printf("\x1b[31m" "DEBBUG  INT " "%d\n", msg);

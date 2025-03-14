@@ -1,6 +1,9 @@
 {
     "files.associations": {
+        "*.py": "python",
         "philosophers.h": "c",
-        "petri_utils.h": "c"
+        "petri_utils.h": "c",
+        "petri_network.h": "c",
+        "str_to_matrice.h": "c"
     }
 }

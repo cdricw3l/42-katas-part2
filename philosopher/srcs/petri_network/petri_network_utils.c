@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   petri_utils.c                                      :+:      :+:    :+:   */
+/*   petri_network_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:50:09 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/14 09:52:47 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/14 21:49:19 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/petri_network/petri_network.h"
+#include "petri_network.h"
 
 int **ft_create_matrice(int p, int t, int n)
 {
@@ -177,4 +177,21 @@ void	ft_print_arr_int(int *arr, int len)
 	}
 	printf("\n");
 	
+}
+
+int *ft_create_state(int P, int *M_0)
+{
+    int *places;
+    int i;
+
+    places = malloc(sizeof(int) * (P + 1));
+    if(!places)
+        return(NULL);
+    i = 0;
+    while (i < P)
+    {
+        places[i] = M_0[i];
+        i++;
+    }
+    return(places);
 }

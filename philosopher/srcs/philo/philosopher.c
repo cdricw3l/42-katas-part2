@@ -6,11 +6,11 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/14 01:42:38 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/14 21:49:56 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "philosophers.h"
 
 #define TT_DIE 1
 #define TT_EAT 2

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 16:41:43 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 18:45:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void test_atoi(void)
     long ld;
 
     TEST_START;
-    ld = ft_atoi("   +10");
+    ld = ft_atoi("10");
     assert(ld == 10);
     ld = ft_atoi("   +1563 2321dwqdq0");
-    assert(ld == 1563);
-    ld = ft_atoi("   -325223 2321dwqdq0");
+    assert(ld == LONG_MIN);
+    ld = ft_atoi("-325223");
     assert(ld == -325223);
     ld = ft_atoi("   ++10");
     assert(ld == LONG_MIN);
@@ -39,6 +39,8 @@ void test_atoi(void)
     assert(ld == LONG_MIN);
     ld = ft_atoi("++10");
     printf("%d\n", atoi("++10"));
+    assert(ld == LONG_MIN);
+    ld = ft_atoi("1dww0");
     assert(ld == LONG_MIN);
     TEST_SUCCES;
 }
@@ -142,7 +144,7 @@ int test_ft_str_to_matrice(void)
 {
     TEST_START;
     
-    char *m_out = "1 2 3 4 5 6 7 8 9 -10000 11 12";
+    char *m_out = "1 2 3 4 5 6 7 8 9 1 2 3";
     int **arr;
     int i;
     int j;

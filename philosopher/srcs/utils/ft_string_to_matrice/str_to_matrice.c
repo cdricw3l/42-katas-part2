@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:34:00 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 16:12:32 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:21:01 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int    ft_clean_matrice_memory(int ***memory, int idx)
 		}
         i++;
     }
-	
+
     free(*memory);
 	*memory=NULL;
 	count++;

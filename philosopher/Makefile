@@ -54,7 +54,7 @@ OBJS_TEST=$(SRCS_TEST:%.c=%.o)
 
 # utils.
 
-DATE=$(shell date -Isecond)
+DATE=$(shell date -Iseconds)
 BRANCH=$(shell git branch --show-current)
 gcom=
 EMPTY=

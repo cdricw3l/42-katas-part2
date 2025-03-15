@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "unistd.h": "c",
+        "str_to_matrice.h": "c",
+        "petri_network.h": "c"
+    }
+}

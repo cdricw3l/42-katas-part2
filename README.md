@@ -13,6 +13,12 @@ D'après la fiche Wikipédia, le concept derrière l'exercice des philosophes et
 
 Appris à gpt : On y met le doigt, et on ne sait pas quand on en ressort pétri.
 
+Pour ce project j'ai decider de mettre l'accent sur trois points:
+    
+    * L'aspect mathématique du sujet.
+    * La modularité du programme et des environement de developpement. Makefile
+    * La fluiditer du workflow github.
+
 ## katas 2 : un codeur sachant sans son chien est un bon codeur
 
 ## katas 3 : Ton partenaire pour minshell tu choisira bien.

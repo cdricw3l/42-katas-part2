@@ -114,7 +114,7 @@ else
 	git add .
 	git commit -m $(NAME)/$(gcom)/$(DATE)
 endif
-#git push origin $(BRANCH)
+	git push origin $(BRANCH)
 
 
 # dev environnement

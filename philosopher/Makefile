@@ -5,7 +5,7 @@ NAME= philo
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=cc
-GFLAGS= -Werror -Wall -Wextra -fsanitize=address
+GFLAGS= -Werror -Wall -Wextra -fsanitize=address -I.
 else ifeq ($(OS), Linux)
 CC=gcc
 GFLAGS= -Werror -Wall -Wextra
@@ -20,7 +20,7 @@ TEST=1
 NOFLAGS=2
 
 # production path.
-SRCS_PETRI= $(wildcard srcs/petri_network/*.c)
+SRCS_PETRI= $(wildcard srcs/petri_network/**/*.c) $(wildcard srcs/petri_network/*.c)
 SRCS_PHILO= $(wildcard srcs/philosopher/*.c)
 SRCS_UTILS= $(wildcard srcs/utils/**/*.c)
 SRCS_MAIN= srcs/main.c
@@ -119,7 +119,7 @@ endif
 
 # dev environnement
 
-t: $(OBJS_TEST) $(OBJS)
+t: $(OBJS) $(OBJS_TEST)
 ifeq ($(OS), Darwin)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) $(OBJS) -o test_unit 
 	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)

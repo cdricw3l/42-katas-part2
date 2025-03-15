@@ -6,13 +6,12 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 19:57:39 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 20:20:34 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "petri_network/petri_network.h"
 #include "utils/ft_split/ft_split.h"
-#include "utils/ft_string_to_matrice/str_to_matrice.h"
 #include "../include/global.h"
 
 static int	ft_check_argument(long value, int i)

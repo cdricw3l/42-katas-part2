@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/14 21:51:38 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 11:36:11 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #define GLOBAL_H
 
 
-#include "srcs/philo/philosophers.h"
+
+#define PLACE 4
+#define TRANSITION 3
+
+int	*ft_init_arr_arg(char **argv, int len);
 
 #endif

@@ -6,83 +6,59 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 08:54:49 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 12:32:32 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "test_unit.h"
 
-void	ft_print_arr_int(int *arr, int len)
+void test_atoi_long(void)
 {
-	int i;
+    int ld;
 
-	i = 0;
-	while(i < len)
-		printf("%d ", arr[i++]);
-	printf("\n");
-	
-}
-void	ft_print_arr_str(char **arr, int len)
-{
-	int i;
-
-	i = 0;
-	while(i < len)
-		printf("%s ", arr[i++]);
-	printf("\n");
-	
-}
-
-void	ft_printm(int **arr, int row, int col)
-{
-	int i;
-	int j;
-
-	i = 0;
-	if(!arr)
-	{
-		perror("Arg NULL");
-		return ;
-	}
-	while(i < row)
-	{
-		j = 0;
-		while (j < col)
-		{
-			printf("%d ", arr[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
-int ft_memcpy(void *src, void *dst, int size)
-{
-	int i;
-	unsigned char *s;
-	unsigned char *d;
-
-	if(!src || !dst)
-		return(0);
-	i = 0;
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
-	while (i  < size)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return(i);
-	
+    TEST_START;
+    ld = ft_atoi_long("10");
+    assert(ld == 10);
+    ld = ft_atoi_long("2147483647");
+    assert(ld == INT_MAX);
+    ld = ft_atoi_long("9223372036854775807");
+    assert(ld == -1);
+    ld = ft_atoi_long(NULL);
+    assert(ld == -1);
+    ld = ft_atoi_long("-10");
+    assert(ld == -10);
+    ld = ft_atoi_long("-2147483648");
+    printf("%d\n", ld);
+    assert(ld == INT_MIN);
+    TEST_SUCCES;
 }
 
-int ft_strlen(char *str)
+void test_isdigit(void)
 {
-    int i;
+    char c;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return(i);
+    TEST_START;
+    c = '0';
+    assert(ft_isdigit(c) == 1);
+    c = '5';
+    assert(ft_isdigit(c) == 1);
+    c = '9';
+    assert(ft_isdigit(c) == 1);
+    c = 'a';
+    assert(ft_isdigit(c) == 0);
+    c = 'w';
+    assert(ft_isdigit(c) == 0);
+    c = '-';
+    assert(ft_isdigit(c) == 0);
+    TEST_SUCCES;
+}
+
+
+
+int tst_utils(void)
+{
+    test_atoi_long();
+    test_isdigit();
+    return(1);
 }
 

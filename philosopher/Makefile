@@ -97,7 +97,7 @@ endif
 # cleaning rules
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_TEST)
 
 fclean: clean
 	rm -f $(NAME)
@@ -119,12 +119,12 @@ endif
 
 # dev environnement
 
-testenv: $(OBJS_TEST)
+t: $(OBJS_TEST) $(OBJS)
 ifeq ($(OS), Darwin)
-	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) -o test_unit 
+	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) $(OBJS) -o test_unit 
 	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
-	$(CC)  $(OBJS_TEST) -o $(NAME)
+	$(CC)  $(OBJS_TEST) $(OBJS) -o $(NAME)
 	valgrind --leak-check=full --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 endif
 

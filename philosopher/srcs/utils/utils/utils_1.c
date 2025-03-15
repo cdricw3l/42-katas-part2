@@ -6,11 +6,12 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 08:11:07 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 12:37:51 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
+#include <limits.h>
 
 int	ft_isdigit(char c)
 {
@@ -19,7 +20,7 @@ int	ft_isdigit(char c)
 	return(1);
 }
 
-long	ft_atoi_long(char *argv)
+int	ft_atoi_long(char *argv)
 {
 	long result;
 	int i;
@@ -37,17 +38,17 @@ long	ft_atoi_long(char *argv)
 	}
 	while (argv[i])
 	{
-
 		if(!ft_isdigit(argv[i]))
 			return (-1);
 		result = ((result * 10) + (argv[i] - '0'));
+		if((result > INT_MAX && !is_neg) || (is_neg && result * -1 < INT_MIN))
+			return(-1);
 		i++;
 	}
 	if(is_neg)
 		return(result * -1);
 	return(result);
 }
-
 
 void	ft_print_arr_str(char **arr, int len)
 {

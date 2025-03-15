@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/14 21:51:59 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 11:20:04 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@
 #include <limits.h>
 #include <assert.h>
 #include "../petri_network/petri_network.h"
-
-#define DEBUGG printf("DEBUGG\n");
-#define PRINT_INT(msg) printf("\x1b[31m" "DEBBUG  INT " "%d\n", msg);
-
-#define TEST_START printf("Initiating function test: %s\n", __func__);
-#define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
-
-#define PETRI_P 4
-#define PETRI_T (PETRI_P - 1)
 
 typedef struct s_thread_data
 {

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/14 21:48:47 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 11:19:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 #include <stdlib.h>
  #include <stdio.h>
 #include "../utils/ft_string_to_matrice/str_to_matrice.h"
-
-#define DEBUGG printf("DEBUGG\n");
-#define PRINT_INT(msg) printf("\x1b[31m" "DEBBUG  INT " "%d\n", msg);
-
-#define TEST_START printf("Initiating function test: %s\n", __func__);
-#define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
-
 
 typedef struct s_petri_network
 {

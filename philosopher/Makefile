@@ -107,7 +107,6 @@ fclean: clean
 
 git: fclean
 ifeq ($(gcom), $(EMPTY))
-	echo dw  $(DATE)
 	git add .
 	git commit -m $(NAME)/$(DATE)
 else

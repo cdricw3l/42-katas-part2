@@ -1,0 +1,1213 @@
+==2229450== Memcheck, a memory error detector
+==2229450== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2229450== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==2229450== Command: ./filter test
+==2229450== Parent PID: 2229449
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e044 is 0 bytes after a block of size 4 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e4dc is 0 bytes after a block of size 12 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48E8AD6: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Use of uninitialised value of size 8
+==2229450==    at 0x48CC2EB: _itoa_word (_itoa.c:177)
+==2229450==    by 0x48E7ABD: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48CC2FC: _itoa_word (_itoa.c:177)
+==2229450==    by 0x48E7ABD: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48E85C3: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48E7C05: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e604 is 0 bytes after a block of size 36 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e5e0 is 0 bytes inside a block of size 36 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e5e0 is 0 bytes inside a block of size 36 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e6ec is 0 bytes after a block of size 44 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e6c0 is 0 bytes inside a block of size 44 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e7d4 is 0 bytes after a block of size 52 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e580 is 0 bytes inside a block of size 28 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9ed3c is 0 bytes after a block of size 28 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9eda4 is 0 bytes after a block of size 36 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9ed20 is 0 bytes inside a block of size 28 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e4d4 is 4 bytes inside a block of size 12 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e044 is 0 bytes after a block of size 4 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e040 is 0 bytes inside a block of size 4 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e040 is 0 bytes inside a block of size 4 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9f9a4 is 4 bytes inside a block of size 12 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== HEAP SUMMARY:
+==2229450==     in use at exit: 1,252 bytes in 37 blocks
+==2229450==   total heap usage: 75 allocs, 74 frees, 3,528 bytes allocated
+==2229450== 
+==2229450== 4 bytes in 1 blocks are definitely lost in loss record 1 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 12 bytes in 1 blocks are definitely lost in loss record 2 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 12 bytes in 1 blocks are definitely lost in loss record 3 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 20 bytes in 1 blocks are definitely lost in loss record 4 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 20 bytes in 1 blocks are definitely lost in loss record 5 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 20 bytes in 1 blocks are definitely lost in loss record 6 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 20 bytes in 1 blocks are definitely lost in loss record 7 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 8 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 9 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 10 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 11 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 12 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 13 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 14 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 28 bytes in 1 blocks are definitely lost in loss record 15 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 16 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 17 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 18 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 19 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 20 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 21 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 22 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 23 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 24 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 25 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 36 bytes in 1 blocks are definitely lost in loss record 26 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 44 bytes in 1 blocks are definitely lost in loss record 27 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 44 bytes in 1 blocks are definitely lost in loss record 28 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 44 bytes in 1 blocks are definitely lost in loss record 29 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 44 bytes in 1 blocks are definitely lost in loss record 30 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 44 bytes in 1 blocks are definitely lost in loss record 31 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 44 bytes in 1 blocks are definitely lost in loss record 32 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 44 bytes in 1 blocks are definitely lost in loss record 33 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 52 bytes in 1 blocks are definitely lost in loss record 34 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 52 bytes in 1 blocks are definitely lost in loss record 35 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 52 bytes in 1 blocks are definitely lost in loss record 36 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 60 bytes in 1 blocks are definitely lost in loss record 37 of 37
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109341: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== LEAK SUMMARY:
+==2229450==    definitely lost: 1,252 bytes in 37 blocks
+==2229450==    indirectly lost: 0 bytes in 0 blocks
+==2229450==      possibly lost: 0 bytes in 0 blocks
+==2229450==    still reachable: 0 bytes in 0 blocks
+==2229450==         suppressed: 0 bytes in 0 blocks
+==2229450== 
+==2229450== Use --track-origins=yes to see where uninitialised values come from
+==2229450== ERROR SUMMARY: 720 errors from 59 contexts (suppressed: 0 from 0)
+==2229450== 
+==2229450== 1 errors in context 1 of 59:
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e040 is 0 bytes inside a block of size 4 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 1 errors in context 2 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e044 is 0 bytes after a block of size 4 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 1 errors in context 3 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e044 is 0 bytes after a block of size 4 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 2 errors in context 4 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e040 is 0 bytes inside a block of size 4 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 3 errors in context 5 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9f9a4 is 4 bytes inside a block of size 12 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 3 errors in context 6 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e4d4 is 4 bytes inside a block of size 12 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 4 errors in context 7 of 59:
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e580 is 0 bytes inside a block of size 28 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 4 errors in context 8 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e4dc is 0 bytes after a block of size 12 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 6 errors in context 9 of 59:
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9ed20 is 0 bytes inside a block of size 28 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 6 errors in context 10 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9ed3c is 0 bytes after a block of size 28 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 10 errors in context 11 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9eda4 is 0 bytes after a block of size 36 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 14 errors in context 12 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e604 is 0 bytes after a block of size 36 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 20 errors in context 13 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e6ec is 0 bytes after a block of size 44 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 25 errors in context 14 of 59:
+==2229450== Invalid free() / delete / delete[] / realloc()
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109317: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e5e0 is 0 bytes inside a block of size 36 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 30 errors in context 15 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1093AA: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e7d4 is 0 bytes after a block of size 52 alloc'd
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 69 errors in context 16 of 59:
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48E7C05: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 69 errors in context 17 of 59:
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48E85C3: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 69 errors in context 18 of 59:
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48CC2FC: _itoa_word (_itoa.c:177)
+==2229450==    by 0x48E7ABD: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 69 errors in context 19 of 59:
+==2229450== Use of uninitialised value of size 8
+==2229450==    at 0x48CC2EB: _itoa_word (_itoa.c:177)
+==2229450==    by 0x48E7ABD: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 69 errors in context 20 of 59:
+==2229450== Conditional jump or move depends on uninitialised value(s)
+==2229450==    at 0x48E8AD6: __vfprintf_internal (vfprintf-internal.c:1516)
+==2229450==    by 0x48D279E: printf (printf.c:33)
+==2229450==    by 0x109230: ft_print_arr (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109457: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 78 errors in context 21 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e5e0 is 0 bytes inside a block of size 36 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== 
+==2229450== 130 errors in context 22 of 59:
+==2229450== Invalid read of size 4
+==2229450==    at 0x1092FD: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Address 0x4a9e6c0 is 0 bytes inside a block of size 44 free'd
+==2229450==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x1093C4: ft_pop (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094A9: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==  Block was alloc'd at
+==2229450==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2229450==    by 0x109273: ft_push (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x10943E: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x1094D6: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109498: conbine (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450==    by 0x109547: main (in /home/cbouhadr/Documents/42-katas/training_test/filter)
+==2229450== 
+==2229450== ERROR SUMMARY: 720 errors from 59 contexts (suppressed: 0 from 0)

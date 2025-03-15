@@ -6,11 +6,11 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/14 19:58:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 08:11:07 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "util.h"
 
 int	ft_isdigit(char c)
 {
@@ -59,23 +59,7 @@ void	ft_print_arr_str(char **arr, int len)
 	
 }
 
-int	ft_strlcpy(char *dst, char *src, int dstsize)
-{
-	int	i;
 
-	i = 0;
-	if (!dstsize && src)
-		return (ft_strlen(src));
-	while (src[i] && i < dstsize - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
-}
 
 int ft_strlen(char *str)
 {

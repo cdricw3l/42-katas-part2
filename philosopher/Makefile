@@ -6,7 +6,7 @@
 #    By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 22:40:28 by cw3l              #+#    #+#              #
-#    Updated: 2025/03/14 23:54:59 by cw3l             ###   ########.fr        #
+#    Updated: 2025/03/15 08:36:25 by cw3l             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,27 @@
 
 NAME= philo
 CC=cc
-GCC= gcc
+GCC=gcc
 
 mode=0
-test=1
-dev=2
+prod=1
+test=2
+noflag=3
 gitcom=
 
-SRCS_DIR= srcs/petri_network srcs/utils/ srcs/main
+SRCS_PETRI= $(wildcard srcs/petri_network/*.c)
+SRCS_PHILO= $(wildcard srcs/philosopher/*.c)
+SRCS_UTILS= $(wildcard srcs/utils/**/*.c)
+SRCS_MAIN= srcs/main.c
 
-SRCS= $(wildcard srcs/**/*.c)
-
-OBJS= $(SRCS:%.c=%.o)
+OBJS_PETRI=$(SRCS_PETRI:%.c=%.o)
+OBJS_PHILO=$(SRCS_PHILO:%.c=%.o)
+OBJS_UTILS=$(SRCS_UTILS:%.c=%.o)
+OBJS_MAIN=$(SRCS_MAIN:%.c=%.o)
 
 DATE=$(shell date -Isecond)
 BRANCH=$(shell git branch --show-current)
-#srcs/utils/%.c=%.o srcs/main/%.c=%.o
+
 NOP= 5 		#number_of_philosophers
 TTD= 4000 	#time_to_die
 TTE= 4000 	#time_to_eat
@@ -38,12 +43,20 @@ TTS= 4000 	#time_to_sleep
 OS = $(shell uname)
 EMPTY=
 
+OBJS= $(OBJS_MAIN) $(OBJS_PETRI) $(OBJS_PHILO) $(OBJS_TEST) $(OBJS_UTILS) 
+	
 $(NAME): $(OBJS)
-ifeq ($(mode), 0)
-	$(CC)   -I. $(OBJS) -o $(NAME)
+ifeq ($(mode), $())
+	$(CC) $(OBJS) -o $(NAME)
 else ifeq ($(mode), 1)
 	@echo hello
 endif
+
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
 
 git:
 ifeq ($(GITCOM), $(EMPTY))
@@ -73,12 +86,9 @@ endif
 # 	valgrind --leak-check=full --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 # endif
 
-# clean:
-# 	rm -f test_unit
-# 	cd srcs && rm -f *.o 
 
-# fclean: clean
-# 	rm -f $(NAME)
+
+
 
 # all: fclean $(NAME)
 

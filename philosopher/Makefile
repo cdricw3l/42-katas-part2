@@ -107,13 +107,14 @@ fclean: clean
 
 git: fclean
 ifeq ($(gcom), $(EMPTY))
+	echo dw  $(EMPTY)
 	git add .
 	git commit -m $(NAME)/$(DATE)
 else
 	git add .
-	git commit -m $(NAME)/$(GITCOM)/$(DATE)
+	git commit -m $(NAME)/$(gcom)/$(DATE)
 endif
-	git push origin $(BRANCH)
+#git push origin $(BRANCH)
 
 
 # dev environnement

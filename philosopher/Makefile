@@ -6,7 +6,7 @@
 #    By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 22:40:28 by cw3l              #+#    #+#              #
-#    Updated: 2025/03/15 08:47:26 by cw3l             ###   ########.fr        #
+#    Updated: 2025/03/15 08:48:12 by cw3l             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-git: $(fclean)
+git: fclean
 ifeq ($(GITCOM), $(EMPTY))
 	git add .
 	git commit -m $(NAME)/$(DATE)

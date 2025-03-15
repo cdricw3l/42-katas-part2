@@ -6,13 +6,13 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 15:28:15 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 15:34:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 21:44:06 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "petri_network.h"
 
-void	ft_print_petri_arr(int *arr, int len)
+void	ft_print_petri_arr(int *arr, int len, int mode)
 {
 	int i;
 	int mod;
@@ -25,7 +25,7 @@ void	ft_print_petri_arr(int *arr, int len)
 			printf("%d ", arr[i]);
 		else
 			printf("\x1B[32m" "%d " "\x1B[0m", arr[i]);
-		if(mod == 2 && len > 2 && i > 0)
+		if(mod == 2 && len > 2 && i > 0 && mode == 1)
 		{
 			printf(" ");
 			mod = -1;
@@ -37,7 +37,7 @@ void	ft_print_petri_arr(int *arr, int len)
 	
 }
 
-void ft_print_petri_matrice(int **m, int p, int t)
+void ft_print_petri_matrice(int **m, int p, int t, int mode)
 {
 	int i;
 	int mod;
@@ -46,8 +46,8 @@ void ft_print_petri_matrice(int **m, int p, int t)
 	mod = 0;
 	while (i < p)
 	{
-		ft_print_petri_arr(m[i], t);
-		if(mod == 3 && p > 3)
+		ft_print_petri_arr(m[i], t, mode);
+		if(mod == 3 && p > 3 && mode == 1)
 		{
 			printf("\n");
 			mod = -1;
@@ -55,4 +55,19 @@ void ft_print_petri_matrice(int **m, int p, int t)
 		mod++;
 		i++;
 	}	
+}
+void ft_print_network(t_petri_network *network)
+{
+
+    printf("\n[ P: %d ]\n\n", network->p);
+    ft_print_petri_arr(network->M0, network->p,0);
+    printf("\n[ T: %d ]\n\n", network->t);
+    ft_print_petri_arr(network->Mt, network->t,0);
+    printf("\n[ matrice M 0 ]\n\n");
+    ft_print_petri_arr(network->M0, network->p,0);
+    printf("\n[ matrice M_out ]\n\n");
+    ft_print_petri_matrice(network->M_out, 4, 3,0);
+    printf("\n[ matrice M_in ]\n\n");
+    ft_print_petri_matrice(network->M_in, network->p, network->t,0);
+    printf("\n");
 }

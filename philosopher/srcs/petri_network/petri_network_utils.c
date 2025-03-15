@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:50:09 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 16:04:21 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 21:45:22 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int **matrice_fusion(int **m, int p, int t, int n)
         return(NULL);
     ft_join_matrice(m,new_matrice, p, t, n);
     free(m);
-    ft_print_petri_matrice(new_matrice,p * n, t * n);
+    ft_print_petri_matrice(new_matrice,p * n, t * n, 1);
     return(new_matrice);
 }
 
@@ -121,25 +121,6 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
-void ft_print_matrice_network(t_petri_network *network)
-{
-
-    printf("\n[ P: %d ]\n\n", network->p);
-    // ft_print_arr_int(network->M0, network->p);
-    printf("\n[ T: %d ]\n\n", network->t);
-    //ft_print_arr_int(network->T, network->t);
-    printf("\n[ matrice M 0 ]\n\n");
-    //ft_print_arr_int(network->M0, network->p);
-    printf("\n[ matrice M_out ]\n\n");
-    ft_print_petri_matrice(network->M_out, network->p, network->t);
-    printf("\n[ matrice M_in ]\n\n");
-    ft_print_petri_matrice(network->M_in, network->p, network->t);
-    printf("\n");
-}
-
-
-
-
 
 int *ft_create_state(int P, int *M_0)
 {

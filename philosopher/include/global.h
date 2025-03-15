@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 19:56:27 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 21:02:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #define MIN_TTS  1000   /*minimum time to spleep*/
 #define CYCLE    100    /* number of cycle */
 
+#define P   4
+#define T   3
 
 int	*ft_init_and_check_argument(char **argv, int len);
 

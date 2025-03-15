@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 20:31:26 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 21:25:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@
 int test_unit_ft_create_petri_net(void);
 int tst_ft_init_arr_arg(void);
 int tst_utils(void);
+int tst_ft_create_petri_net(void);
 
 #endif

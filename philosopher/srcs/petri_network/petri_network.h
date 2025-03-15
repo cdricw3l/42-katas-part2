@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 11:19:55 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 14:06:14 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 
 typedef struct s_petri_network
 {
-    int     p;  //n place
-    int     t;  //n transition
-    int     *T; //arr t
-    //int     *P; arr p a implementer;
-    int     *M0;
-    int     **M_in;        
-    int     **M_out;
+    int     p;              //n place
+    int     t;              //n transition
+    int     *Mp;            //arr p
+    int     *Mt;            //arr t
+    int     *M0;            //initial state
+    int     **M_in;         // output tocken
+    int     **M_out;        // intput tocken
 
 } t_petri_network;
 

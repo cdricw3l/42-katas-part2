@@ -6,27 +6,37 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:51:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 11:13:09 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 15:06:22 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_split.h"
 
-void	*ft_clean_split(char **str, int idx)
+int	ft_clean_split(char ***split, int idx)
 {
 	int	i;
+	int count;
+	char **str;
 
 	i = 0;
+	count = 0;
+	str = *split;
 	if (!str)
-		return (NULL);
+		return (count);
 	while (i < idx)
 	{
-		if (str[i])
+		if (str && str[i])
+		{
 			free(str[i]);
+			str[i] = NULL;
+			count++;
+		}
 		i++;
 	}
-	free(str);
-	return (NULL);
+	if(str)
+		free(str);
+	*split = NULL;
+	return (count);
 }
 
 static int	count_word(char *str, char c)
@@ -91,7 +101,10 @@ static void	*ft_process_split(char **split, char *str, char c)
 				split[j] = NULL;
 			} */
 			if (!split[j] || word_size == -1)
-				return (ft_clean_split(split, j));
+			{
+				ft_clean_split(&split, j);
+				return (NULL);
+			}
 			ft_strlcpy(split[j], &str[i], word_size + 1);
 			i += word_size;
 			j++;

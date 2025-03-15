@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_test.c                                       :+:      :+:    :+:   */
+/*   tst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 13:49:40 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 15:07:14 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_unit.h"
+#include "tst_unit.h"
 
 void test_atoi(void)
 {
@@ -97,6 +97,44 @@ void test_memcpy(void)
     TEST_SUCCES;
 }
 
+void test_ft_split(void)
+{
+    TEST_START;
+    
+    char *str = strdup("   *******voici*un*test*de*split    1************");
+    char *str2 = strdup("hello*world");
+    int split_len;
+    int i = 0;
+    
+    char **split = ft_split(str,'*');
+    assert(split);
+    
+    split_len = ft_get_split_len(NULL);
+    assert(split_len == -1);
+    split_len = ft_get_split_len(split);
+    assert(split_len == 6);
+    //test clean memory fonction free the first 3 element, send the split to the memoy cleaning fonction and check that return n ;
+    int n = 3;
+    
+    while (i < split_len - n)
+    {
+        free(split[i]);
+        split[i] = NULL;
+        i++;
+    }
+    
+    assert(ft_get_split_len(split) == 0);
+    assert(ft_clean_split(&split,6) == 3);
+    split = ft_split(str2, 32);
+    split_len = ft_get_split_len(split);
+    assert(split_len == 1);
+    assert(ft_clean_split(&split,split_len) == split_len);
+
+    // try to send still free split arr;
+    assert(ft_clean_split(&split, 6) == 0);
+    
+    TEST_SUCCES;
+}
 
 
 int tst_utils(void)
@@ -104,6 +142,7 @@ int tst_utils(void)
     test_atoi();
     test_isdigit();
     test_memcpy();
+    test_ft_split();
     return(1);
 }
 

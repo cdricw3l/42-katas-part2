@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 18:28:59 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 19:49:23 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 #include "utils/ft_split/ft_split.h"
 #include "utils/ft_string_to_matrice/str_to_matrice.h"
 
-// static int	ft_check_argument(int **args, int len)
-// {
-	
-// }
-
 int	*ft_init_and_check_argument(char **argv, int len)
 {
+	long value;
 	int *arr;
 	int i;
 
@@ -32,7 +28,13 @@ int	*ft_init_and_check_argument(char **argv, int len)
 	i = 0;
 	while (i < len)
 	{
-		arr[i] = (int)ft_atoi(argv[i]);
+		value = ft_atoi(argv[i]);
+		if(value == LONG_MIN)
+		{
+			free(arr);
+			return(NULL);
+		}
+		arr[i] = (int)value;
 		i++;
 	}
 	return (arr);

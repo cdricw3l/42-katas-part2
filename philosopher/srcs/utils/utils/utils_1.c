@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 18:44:34 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 19:40:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ long ft_atoi(char *argv)
 				return (LONG_MIN);
 			i++;
 		}
-		if(!ft_isdigit(argv[i]) && argv[i] != '\0')
-			return(LONG_MIN);
+		while (argv[i])
+		{
+			if(!ft_isdigit(argv[i]) && argv[i] != '\0' && argv[i] != 32)
+				return(LONG_MIN);
+			i++;
+		}
 	}
 	if(is_neg)
 		return (result * -1);

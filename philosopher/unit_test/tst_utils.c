@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 18:45:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 19:26:54 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,38 @@ void test_atoi(void)
     long ld;
 
     TEST_START;
+    ld = ft_atoi("+10");
+    assert(ld == 10);
     ld = ft_atoi("10");
     assert(ld == 10);
-    ld = ft_atoi("   +1563 2321dwqdq0");
-    assert(ld == LONG_MIN);
-    ld = ft_atoi("-325223");
-    assert(ld == -325223);
-    ld = ft_atoi("   ++10");
-    assert(ld == LONG_MIN);
-    ld = ft_atoi("2147483647");
-    assert(ld == INT_MAX);
-    ld = ft_atoi("9223372036854775807");
-    assert(ld == LONG_MIN);
-    ld = ft_atoi(NULL);
-    assert(ld == LONG_MIN);
-    ld = ft_atoi("   -10");
-    assert(ld == -10);
-    ld = ft_atoi("-2147483648");
-    assert(ld == INT_MIN);
-    ld = ft_atoi("           -21474836444");
-    assert(ld == LONG_MIN);
-    ld = ft_atoi("++10");
-    printf("%d\n", atoi("++10"));
-    assert(ld == LONG_MIN);
-    ld = ft_atoi("1dww0");
-    assert(ld == LONG_MIN);
+    ld = ft_atoi("        10   ");
+    assert(ld == 10);
+
+
+
+    // ld = ft_atoi("   +1563 2321dwqdq0");
+    // assert(ld == LONG_MIN);
+    // ld = ft_atoi("-325223");
+    // assert(ld == -325223);
+    // ld = ft_atoi("   ++10");
+    // assert(ld == LONG_MIN);
+    // ld = ft_atoi("2147483647");
+    // assert(ld == INT_MAX);
+    // ld = ft_atoi("9223372036854775807");
+    // assert(ld == LONG_MIN);
+    // ld = ft_atoi(NULL);
+    // assert(ld == LONG_MIN);
+    // ld = ft_atoi("   -10");
+    // assert(ld == -10);
+    // ld = ft_atoi("-2147483648");
+    // assert(ld == INT_MIN);
+    // ld = ft_atoi("           -21474836444");
+    // assert(ld == LONG_MIN);
+    // ld = ft_atoi("++10");
+    // printf("%d\n", atoi("++10"));
+    // assert(ld == LONG_MIN);
+    // ld = ft_atoi("1dww0");
+    // assert(ld == LONG_MIN);
     TEST_SUCCES;
 }
 

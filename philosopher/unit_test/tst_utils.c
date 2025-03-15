@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 15:20:04 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:20:16 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,16 +139,38 @@ int test_ft_str_to_matrice(void)
 {
     TEST_START;
     
-    char *m_out = "1 0 0 0 1 0 0 0 3 0 1 0";
-    int *arr;
-
-
-    arr = ft_str_to_matrice(NULL, 3,4);
-    assert(arr == NULL);
-    arr = ft_str_to_matrice(m_out,4,3);
-    ft_print_matrice(arr,4,3);
+    char *m_out = "1 2 3 4 5 6 7 8 9 10 11 12";
+    int **arr;
+    int i;
+    int j;
+    int check;
     
+    arr = ft_str_to_matrice(NULL, 4,3);
+    assert(arr == NULL);
+    
+    arr = ft_str_to_matrice(m_out,4,3);
+    assert(arr);
+    ft_print_petri_matrice(arr,4,3);
+    assert(ft_clean_matrice_memory(&arr,4) == 5);
+    assert(ft_clean_split(NULL,4) == 0);
+    assert(ft_clean_matrice_memory(NULL,4) == 0);
+    i = 0;
+    j = 0;
+    check = 1;
+    arr = ft_str_to_matrice(m_out,3,4);
+    while (i < 3)
+    {
+        while (j < 4)
+        {
+            assert(arr[i][j] == check);
+            j++;
+            check++;
+        }
+        i++;
+    }
+    ft_clean_matrice_memory(&arr,3);
     TEST_SUCCES;
+    return(1);
 }
 
 int tst_utils(void)

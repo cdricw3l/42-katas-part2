@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:51:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 15:06:22 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:13:28 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_clean_split(char ***split, int idx)
 
 	i = 0;
 	count = 0;
-	str = *split;
-	if (!str)
+	if (!split)
 		return (count);
+	str = *split;
 	while (i < idx)
 	{
 		if (str && str[i])
@@ -33,8 +33,7 @@ int	ft_clean_split(char ***split, int idx)
 		}
 		i++;
 	}
-	if(str)
-		free(str);
+	free(*split);
 	*split = NULL;
 	return (count);
 }

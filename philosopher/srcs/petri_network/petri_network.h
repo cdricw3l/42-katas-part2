@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 14:06:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 15:31:52 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ void	            *ft_memset(void *b, int c, size_t len);
 void                ft_print_matrice_network(t_petri_network *network);
 void	            ft_print_arr_int(int *arr, int len);
 int                 *ft_create_state(int P, int *M_0);
-void                ft_print_matrice(int **m, int p, int t);
+
+
+void                ft_print_petri_matrice(int **m, int p, int t);
+void                ft_print_petri_arr(int *arr, int len);
 
 #endif

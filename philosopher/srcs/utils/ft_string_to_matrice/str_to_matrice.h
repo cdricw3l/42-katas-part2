@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/14 21:43:22 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:02:11 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #include "../utils/utils.h"
 
 int     **ft_str_to_matrice(char *str, int x, int y);
-void    *ft_clean_matrice_mem(int **M, int idx);
+int    ft_clean_matrice_memory(int ***memory, int idx);
 
 #endif

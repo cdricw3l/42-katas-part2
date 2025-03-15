@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_to_matrice.c                                :+:      :+:    :+:   */
+/*   str_to_matrice.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:34:00 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 13:01:27 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:12:32 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str_to_matrice.h"
 
-void    *ft_clean_matrice_mem(int **M, int idx)
+int    ft_clean_matrice_memory(int ***memory, int idx)
 {
     int i;
-
+	int **M;
+	int count;
+	
+	if(memory == NULL)
+		return(0);
+	M = *memory;
     i = 0;
+	count = 0;
     while(i < idx)
     {
-        free(M[i]);
+		if(M && M[i])
+		{
+			free(M[i]);
+			M[i] = NULL;
+			count++;
+		}
         i++;
     }
-    free(M);
-    return(NULL);
+	
+    free(*memory);
+	*memory=NULL;
+	count++;
+    return(count);
 }
 
 static int	ft_is_valide_split(char **split)
@@ -46,7 +60,7 @@ static int	ft_is_valide_split(char **split)
 	return (1);
 }
 
-static void	*ft_process_matrice(int **M, char **split, int x, int y)
+static int	ft_process_matrice(int **M, char **split, int x, int y)
 {
 	int	i;
 	int	j;
@@ -58,13 +72,13 @@ static void	*ft_process_matrice(int **M, char **split, int x, int y)
 	{
 		M[i] = malloc(sizeof(int) * y);
 		if (!M[i])
-			return (ft_clean_matrice_mem(M, i));
+			return (ft_clean_matrice_memory(&M, i));
 		j = 0;
 		while (j < y)
 		{
 			if (ft_atoi(split[k]) < INT_MIN    //revoir cette partie
 				|| ft_atoi(split[k]) > INT_MAX)
-				return (ft_clean_matrice_mem(M, i));
+				return (ft_clean_matrice_memory(&M, i));
 			M[i][j] = ft_atoi(split[k]);
 			k++;
 			j++;
@@ -72,7 +86,7 @@ static void	*ft_process_matrice(int **M, char **split, int x, int y)
 		i++;
 	}
 	M[i] = NULL;
-	return (M);
+	return (0);
 }
 
 int	**ft_str_to_matrice(char *str, int x, int y)
@@ -86,11 +100,14 @@ int	**ft_str_to_matrice(char *str, int x, int y)
 	if (!split || !ft_is_valide_split(split))
 		return (NULL);
 	if (ft_get_split_len(split) != (x * y))  //error matrice arg
-		return (ft_clean_split(split, ft_get_split_len(split)));
+	{
+		ft_clean_split(&split, ft_get_split_len(split));
+		return (NULL);
+	}	
 	m = malloc(sizeof(int *) * (x + 1));
 	if (!m)
 		return (NULL);
-	if (!ft_process_matrice(m, split, x, y))
+	if (ft_process_matrice(m, split, x, y))
 		return (NULL);
 	return (m);
 }

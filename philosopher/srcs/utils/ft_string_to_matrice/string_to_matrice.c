@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:34:00 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/14 20:11:20 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 13:01:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static void	*ft_process_matrice(int **M, char **split, int x, int y)
 		j = 0;
 		while (j < y)
 		{
-			if (ft_atoi_long(split[k]) < INT_MIN
-				|| ft_atoi_long(split[k]) > INT_MAX)
+			if (ft_atoi(split[k]) < INT_MIN    //revoir cette partie
+				|| ft_atoi(split[k]) > INT_MAX)
 				return (ft_clean_matrice_mem(M, i));
-			M[i][j] = ft_atoi_long(split[k]);
+			M[i][j] = ft_atoi(split[k]);
 			k++;
 			j++;
 		}

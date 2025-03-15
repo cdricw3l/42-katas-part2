@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 11:20:04 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 13:00:46 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_thread_managment_data
 
 void	ft_print_arr_int(int *arr, int len);
 void	ft_print_arr_str(char **arr, int len);
-long     ft_atoi_long(char *argv);
+long     ft_atoi(char *argv);
 int     *ft_init_arr_arg(char **argv, int argc);
 int     ft_isdigit(char c);
 char    **ft_split(char *str, char c);

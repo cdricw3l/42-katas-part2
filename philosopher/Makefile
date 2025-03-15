@@ -6,7 +6,7 @@
 #    By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 22:40:28 by cw3l              #+#    #+#              #
-#    Updated: 2025/03/15 08:36:25 by cw3l             ###   ########.fr        #
+#    Updated: 2025/03/15 08:40:32 by cw3l             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@
 NAME= philo
 CC=cc
 GCC=gcc
-
+GFLAGS= -Werror -Wall -Wextra
 mode=0
-prod=1
-test=2
-noflag=3
+prod=0
+test=1
+noflag=2
 gitcom=
 
 SRCS_PETRI= $(wildcard srcs/petri_network/*.c)
@@ -46,9 +46,9 @@ EMPTY=
 OBJS= $(OBJS_MAIN) $(OBJS_PETRI) $(OBJS_PHILO) $(OBJS_TEST) $(OBJS_UTILS) 
 	
 $(NAME): $(OBJS)
-ifeq ($(mode), $())
-	$(CC) $(OBJS) -o $(NAME)
-else ifeq ($(mode), 1)
+ifeq ($(mode), $(prod))
+	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
+else ifeq ($(mode), )
 	@echo hello
 endif
 

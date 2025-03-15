@@ -6,13 +6,32 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 19:49:23 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 19:57:39 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "petri_network/petri_network.h"
 #include "utils/ft_split/ft_split.h"
 #include "utils/ft_string_to_matrice/str_to_matrice.h"
+#include "../include/global.h"
+
+static int	ft_check_argument(long value, int i)
+{
+	if(value == LONG_MIN)
+		return(0);
+	else if (i == 0 && value != MIN_P)
+		return(0);
+	else if (i == 1 && value != MIN_TTD)
+		return(0);
+	else if (i == 2 && value != MIN_TTE)
+		return(0);
+	else if (i == 3 && value != MIN_TTS)
+		return(0);
+	else if (i == 4 && value != CYCLE)
+		return(0);
+	else
+		return(1);
+}
 
 int	*ft_init_and_check_argument(char **argv, int len)
 {
@@ -29,7 +48,7 @@ int	*ft_init_and_check_argument(char **argv, int len)
 	while (i < len)
 	{
 		value = ft_atoi(argv[i]);
-		if(value == LONG_MIN)
+		if(!ft_check_argument(value, i))
 		{
 			free(arr);
 			return(NULL);

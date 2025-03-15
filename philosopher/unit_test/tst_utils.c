@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 15:07:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 15:20:04 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,14 +122,12 @@ void test_ft_split(void)
         split[i] = NULL;
         i++;
     }
-    
     assert(ft_get_split_len(split) == 0);
     assert(ft_clean_split(&split,6) == 3);
     split = ft_split(str2, 32);
     split_len = ft_get_split_len(split);
     assert(split_len == 1);
     assert(ft_clean_split(&split,split_len) == split_len);
-
     // try to send still free split arr;
     assert(ft_clean_split(&split, 6) == 0);
     
@@ -137,12 +135,29 @@ void test_ft_split(void)
 }
 
 
+int test_ft_str_to_matrice(void)
+{
+    TEST_START;
+    
+    char *m_out = "1 0 0 0 1 0 0 0 3 0 1 0";
+    int *arr;
+
+
+    arr = ft_str_to_matrice(NULL, 3,4);
+    assert(arr == NULL);
+    arr = ft_str_to_matrice(m_out,4,3);
+    ft_print_matrice(arr,4,3);
+    
+    TEST_SUCCES;
+}
+
 int tst_utils(void)
 {
     test_atoi();
     test_isdigit();
     test_memcpy();
     test_ft_split();
+    test_ft_str_to_matrice();
     return(1);
 }
 

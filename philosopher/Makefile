@@ -56,7 +56,7 @@ OBJS_TEST=$(SRCS_TEST:%.c=%.o)
 
 DATE=$(shell date -Isecond)
 BRANCH=$(shell git branch --show-current)
-gitcom=
+gcom=
 EMPTY=
 
 #Programme arguments
@@ -106,7 +106,7 @@ fclean: clean
 # Git hub rules. To be improuv. (remote ...)
 
 git: fclean
-ifeq ($(GITCOM), $(EMPTY))
+ifeq ($(gcom), $(EMPTY))
 	git add .
 	git commit -m $(NAME)/$(DATE)
 else

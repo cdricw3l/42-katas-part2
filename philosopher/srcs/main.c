@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 13:04:05 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:29:58 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int	*ft_init_arr_arg(char **argv, int len)
 	while (i < len)
 	{
 		arr[i] = ft_atoi(argv[i]);
-		if(arr[i] == -1)
-		{
-			printf("Programme argument error\n");
-			free(arr);
-			return (NULL);
-		}
 		i++;
 	}
 	return (arr);

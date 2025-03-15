@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 16:22:45 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:41:43 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void test_atoi(void)
 {
-    int ld;
+    long ld;
 
     TEST_START;
     ld = ft_atoi("   +10");
@@ -24,19 +24,22 @@ void test_atoi(void)
     ld = ft_atoi("   -325223 2321dwqdq0");
     assert(ld == -325223);
     ld = ft_atoi("   ++10");
-    assert(ld == -1);
+    assert(ld == LONG_MIN);
     ld = ft_atoi("2147483647");
     assert(ld == INT_MAX);
     ld = ft_atoi("9223372036854775807");
-    assert(ld == -1);
+    assert(ld == LONG_MIN);
     ld = ft_atoi(NULL);
-    assert(ld == -1);
+    assert(ld == LONG_MIN);
     ld = ft_atoi("   -10");
     assert(ld == -10);
     ld = ft_atoi("-2147483648");
     assert(ld == INT_MIN);
     ld = ft_atoi("           -21474836444");
-    assert(ld == -1);
+    assert(ld == LONG_MIN);
+    ld = ft_atoi("++10");
+    printf("%d\n", atoi("++10"));
+    assert(ld == LONG_MIN);
     TEST_SUCCES;
 }
 
@@ -139,7 +142,7 @@ int test_ft_str_to_matrice(void)
 {
     TEST_START;
     
-    char *m_out = "1 2 3 4 5 6 7 8 9 +10 11 12";
+    char *m_out = "1 2 3 4 5 6 7 8 9 -10000 11 12";
     int **arr;
     int i;
     int j;
@@ -166,9 +169,12 @@ int test_ft_str_to_matrice(void)
             j++;
             check++;
         }
+        free(arr[i]);
+        arr[i] = NULL;
         i++;
     }
-    ft_clean_matrice_memory(&arr,3);
+    assert(!arr[0]);
+    assert(ft_clean_matrice_memory(&arr,3) == 1);
     TEST_SUCCES;
     return(1);
 }

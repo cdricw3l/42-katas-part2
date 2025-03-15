@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:34:00 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 16:21:01 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:39:47 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int    ft_clean_matrice_memory(int ***memory, int idx)
 	count = 0;
     while(i < idx)
     {
-		if(M && M[i])
+		if(M[i])
 		{
 			free(M[i]);
 			M[i] = NULL;
@@ -51,7 +51,7 @@ static int	ft_is_valide_split(char **split)
 		j = 0;
 		while (split[i][j])
 		{
-			if (!ft_isdigit(split[i][j]) && split[i][j] != '-')
+			if (!ft_isdigit(split[i][j]) && split[i][j] != '-' && split[i][j] != '+')
 				return (0);
 			j++;
 		}
@@ -76,8 +76,7 @@ static int	ft_process_matrice(int **M, char **split, int x, int y)
 		j = 0;
 		while (j < y)
 		{
-			if (ft_atoi(split[k]) < INT_MIN    //revoir cette partie
-				|| ft_atoi(split[k]) > INT_MAX)
+			if (ft_atoi(split[k]) == LONG_MIN)
 				return (ft_clean_matrice_memory(&M, i));
 			M[i][j] = ft_atoi(split[k]);
 			k++;

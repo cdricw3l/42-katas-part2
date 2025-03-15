@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 14:19:33 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 16:34:42 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@ int ft_isdigit(char c)
 	return (1);
 }
 
-int ft_atoi(char *argv)
+long ft_atoi(char *argv)
 {
-	long result;
 	int i;
+	long result;
 	int is_neg;
 
 	result = LONG_MIN;
 	i = 0;
 	if (!argv)
-		return (-1);
+		return (LONG_MIN);
 	is_neg = 0;
-
 	while (argv[i])
 	{
 		while (argv[i] == 32)
@@ -46,13 +45,13 @@ int ft_atoi(char *argv)
 		{
 			result = ((result * 10) + (argv[i] - '0'));
 			if ((result > INT_MAX && !is_neg) || (is_neg && result * -1 < INT_MIN))
-				return (-1);
+				return (LONG_MIN);
 			i++;
 		}
 		if (!ft_isdigit(argv[i]))
 		{
 			if (result == LONG_MIN)
-				return (-1);
+				return (LONG_MIN);
 			if (is_neg)
 				return (result * -1);
 			else
@@ -60,7 +59,7 @@ int ft_atoi(char *argv)
 		}
 		i++;
 	}
-	return (-1);
+	return (LONG_MIN);
 }
 
 

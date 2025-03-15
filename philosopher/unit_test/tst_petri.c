@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 22:05:59 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 23:06:05 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int tst_ft_create_petri_net(void)
 	
 	ft_print_petri_matrice(network_1->M_in,4,3,1);
 	ft_print_petri_matrice(network_1->M_out,4,3,1);
-	
+	ft_print_network(network_1);
 	
 	TEST_SUCCES;
 	return(1);

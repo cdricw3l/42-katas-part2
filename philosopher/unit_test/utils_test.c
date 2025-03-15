@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 13:08:42 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 13:49:40 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,39 @@ void test_isdigit(void)
 
 void test_memcpy(void)
 {
-    int i = 0;
-    char txt[5] = "hello";
-    char *str;
-    char *str_test_mem;
+    TEST_START;
+    
+    char str[] = "hello";
+    char *cpy;
 
-    *str = txt;
+    assert(ft_strlen(str) == 5);
+    cpy= malloc(sizeof(char) * (ft_strlen(str) + 1));
+    if(!cpy)
+        return;
+    ft_memcpy(cpy, str, ft_strlen(str));
+    cpy[ft_strlen(str)] = '\0';
+    cpy = NULL;
+    assert( ft_memcpy(cpy, str, ft_strlen(str)) == 0);
+   
+    free(cpy);
 
-    str_test_mem = ft_memcpy(str,str_test_mem,sizeof(char *));
-    printf("%s\n",str_test_mem);
+    int arr_int[] = {1, 2, 3, 4, 5};
+    int *cpy_arr;
+    
+    cpy_arr= malloc(sizeof(int *) * 5);
+    if(!cpy_arr)
+        return;
+    ft_memcpy(cpy_arr, arr_int, sizeof(int) * 5);
+    int i;
+
+    i = 0;
+    while (i < 5)
+    {
+        assert(cpy_arr[i] == arr_int[i]);
+        i++;
+    }
+    free(cpy_arr);
+    TEST_SUCCES;
 }
 
 

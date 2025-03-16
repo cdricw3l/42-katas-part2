@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:52:22 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 23:01:57 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 23:29:52 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int **ft_get_reachability_matrix(t_petri_network *network)
     
     if(!ft_network_check(network, network->p))  
         return(NULL);
-    ft_print_petri_matrice(network->M_in,network->p, network->t,1);
-    ft_print_petri_matrice(network->M_out, network->p,network->t, 1);
     matrix = malloc(sizeof(int *) * network->p);
     if(!matrix)
         return(NULL);

@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_network.c                                  :+:      :+:    :+:   */
+/*   ptri_destroy_network.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 01:42:01 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 02:33:52 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 02:57:26 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ptri_network.h"
+#include <assert.h>
 
 static void *ft_destroy_M_in(int **M_in, int p)
 {
@@ -70,6 +71,7 @@ void *ft_destroy_network(t_petri_network **nets)
         free(network->Mp);
         free(network->Mt);
         free(network->M0);
+        assert(network->M_in[0] == NULL);
         network->Mp = NULL;
         network->Mt = NULL;
         network->M0 = NULL;

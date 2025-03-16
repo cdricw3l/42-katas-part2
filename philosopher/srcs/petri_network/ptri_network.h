@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 03:06:25 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 03:40:58 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ typedef struct s_petri_network
     int     **M_out;        // intput tocken
 
 } t_petri_network;
+
+typedef struct s_extend_data
+{
+    int Np;             // number of place extension;
+    int Nt;             // size of transition extension
+    int Pi;             // Place index in matrice
+    int Ti;             // Transition index in matrice
+    
+} t_extend_data;
 
 
 int                 **ft_create_matrice(int p, int t, int n);

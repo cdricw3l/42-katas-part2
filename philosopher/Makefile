@@ -65,7 +65,7 @@ NOP= 5 		#number_of_philosophers
 TTD= 4000 	#time_to_die
 TTE= 4000 	#time_to_eat
 TTS= 4000 	#time_to_sleep 
-CYCLE= 10 	#time_to_sleep 
+CYCLE= 10 	#time_to_sleep
 
 ifeq ($(mode), $(TEST))
 OBJS= $(OBJS_TEST)

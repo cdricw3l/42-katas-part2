@@ -6,20 +6,19 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 13:00:46 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 01:05:50 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 #define PHILOSOPHERS_H
 
-
 #include <sys/time.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <assert.h>
-#include "../petri_network/petri_network.h"
+#include "../petri_network/ptri_network.h"
 
 typedef struct s_thread_data
 {

@@ -10,36 +10,8 @@
 // /*                                                                            */
 // /* ************************************************************************** */
 
-#include "petri_network.h"
+#include "ptri_network.h"
 
-void *ft_clean_petri_network_mem(t_petri_network *network)
-{
-    int i;
-    
-    if(network->M_in)
-    {
-        i = 0;
-        while (i < network->p)
-        {
-            if(network->M_in[i])
-                free(network->M_in[i]);
-            i++;
-        }
-    }
-    if(network->M_out)
-    {
-        i = 0;
-        while (i < network->p)
-        {
-            if(network->M_out[i])
-                free(network->M_out[i]);
-            i++;
-        }
-    }
-    free(network->M0);
-    free(network);
-    return(NULL);
-}
 
 static int  *ft_create_transitions(int t)
 {
@@ -76,19 +48,16 @@ static int  *ft_create_place(int p)
 
 }
 
-void *ft_network_check(t_petri_network *network, int pt[2])
+int ft_network_check(t_petri_network *network, int p)
 {
-    int p;
-    int t;
     int i;
     int count_p;
 
     i = 0;
-    p = pt[0];
-    t = pt[1];
-    if(!network->M0 || !network->M_in || !network->M_out
+    count_p = 0;
+    if(network || !network->M0 || !network->M_in || !network->M_out
         || !network->Mp || !network->Mt)
-        return(NULL);
+        return(0);
     while(i < p)
     {
         if(network->M_in[i] && network->M_out[i])
@@ -96,7 +65,8 @@ void *ft_network_check(t_petri_network *network, int pt[2])
         i++;
     }
     if(count_p != network->p)
-        return(NULL);
+        return(0);
+    return(1);
 }
 
 t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_out)
@@ -117,8 +87,8 @@ t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_ou
     network->Mt =   ft_create_transitions(network->t);
     network->M_in = ft_str_to_matrice(m_in,network->p,network->t);
     network->M_out = ft_str_to_matrice(m_out, network->p, network->t);
-    if(!ft_network_check(network, pt))
-        return(ft_clean_petri_network_mem(network));
+    if(!ft_network_check(network, pt[0]))
+        return(ft_destroy_network(&network));
     return(network);
 }
 

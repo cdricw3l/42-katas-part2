@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/15 20:41:42 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/15 23:07:58 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ int test_ft_str_to_matrice(void)
     
     arr = ft_str_to_matrice(m_out,4,3);
     assert(arr);
-    ft_print_petri_matrice(arr,4,3);
+    ft_print_petri_matrice(arr,4,3, 1);
     assert(ft_clean_matrice_memory(&arr,4) == 5);
     assert(ft_clean_split(NULL,4) == 0);
     assert(ft_clean_matrice_memory(NULL,4) == 0);

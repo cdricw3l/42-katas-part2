@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   petri_network_utils.c                              :+:      :+:    :+:   */
+/*   ptri_network_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:50:09 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 21:45:22 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 01:25:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "petri_network.h"
+#include "ptri_network.h"
 
 int **ft_create_matrice(int p, int t, int n)
 {
@@ -38,7 +38,7 @@ int **ft_create_matrice(int p, int t, int n)
     return(new_matrice);
 }
 
-void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
+void ft_join_matrice(int **old_m,int **new_m, int x, int y , int n)
 {
     int i;
     int j;
@@ -51,10 +51,10 @@ void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
     off_set_row = 0;
     while (n > 0)
     {
-        while(i < p)
+        while(i < x)
         {
             j = 0;    
-            while (j < t)
+            while (j < y)
             {
                 new_m[i + off_set_row][j + off_set_col] =  old_m[i][j];   //a decommenter ;
                 j++;
@@ -68,18 +68,23 @@ void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
     }
 }
 
-int **matrice_fusion(int **m, int p, int t, int n)
+int *ft_create_arr_int(int n)
 {
-    int **new_matrice;
+    int *arr_int;
+    int i;
 
-    new_matrice = ft_create_matrice(p, t, n);
-    if(!new_matrice)
+    if(n < 1)
         return(NULL);
-    ft_join_matrice(m,new_matrice, p, t, n);
-    free(m);
-    ft_print_petri_matrice(new_matrice,p * n, t * n, 1);
-    return(new_matrice);
+    arr_int = malloc(sizeof(int) * n);
+    if(!arr_int)
+        return(0);
+    i = 0;
+    while (i < n)
+        arr_int[i++] = 0;
+    return(arr_int);
 }
+
+
 
 // int **ft_copy_matrice(int **M_in, int P, int T)
 // {

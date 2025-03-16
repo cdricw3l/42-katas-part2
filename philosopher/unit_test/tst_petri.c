@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 03:07:36 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 08:59:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int tst_ft_create_petri_net(void)
 	// check_network: check the  pointeurs of the petri structur. I also destroy manully somme array in the structur and destroy the network,
 	// for checking the potentially double free. After be freed, all the pointeur point on NULL;
 	assert(ft_network_check(network_1,pt[0]));
-	PPTR(network_1->M_in[3]);
 	free(network_1->M_in[3]);
 	network_1->M_in[3] = NULL;
 	assert(!ft_network_check(network_1,pt[0]));
@@ -55,6 +54,8 @@ int tst_ft_create_petri_net(void)
 	ft_destroy_network(&network_1);
 	assert(!ft_network_check(network_1, P));
 	ft_print_network(network_1);
+
+	
 	return(1);
 	
 }

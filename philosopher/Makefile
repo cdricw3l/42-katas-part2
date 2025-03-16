@@ -20,10 +20,11 @@ TEST=1
 NOFLAGS=2
 
 # production path.
-SRCS_PETRI= $(wildcard srcs/petri_network/**/*.c) $(wildcard srcs/petri_network/*.c)
-SRCS_PHILO= $(wildcard srcs/philosopher/*.c)
-SRCS_UTILS= $(wildcard srcs/utils/**/*.c)
 SRCS_MAIN= srcs/main.c
+SRCS_PETRI= $(wildcard srcs/petri_network/network/utils/**/*.c) $(wildcard srcs/petri_network/network/*.c)
+SRCS_UTILS= $(wildcard srcs/utils/**/*.c) $(wildcard srcs/utils/*.c)
+SRCS_THREAD= $(wildcard srcs/thread_manager/*.c)
+SRCS_PHILO= $(wildcard srcs/philosopher/*.c)
 
 # test path.
 
@@ -43,10 +44,11 @@ endif
 
 # Production env:
 
+OBJS_MAIN=$(SRCS_MAIN:%.c=%.o)
+OBJS_UTILS=$(SRCS_UTILS:%.c=%.o)
 OBJS_PETRI=$(SRCS_PETRI:%.c=%.o)
 OBJS_PHILO=$(SRCS_PHILO:%.c=%.o)
-OBJS_UTILS=$(SRCS_UTILS:%.c=%.o)
-OBJS_MAIN=$(SRCS_MAIN:%.c=%.o)
+OBJS_THREAD=$(SRCS_THREAD:%.c=%.o)
 
 # Test env:
 
@@ -70,7 +72,7 @@ CYCLE= 10 	#time_to_sleep
 ifeq ($(mode), $(TEST))
 OBJS= $(OBJS_TEST)
 else
-OBJS= $(OBJS_MAIN) $(OBJS_PETRI) $(OBJS_PHILO) $(OBJS_UTILS) 
+OBJS= $(OBJS_MAIN) $(OBJS_PETRI) $(OBJS_PHILO) $(OBJS_UTILS) $(OBJS_THREAD)
 endif
 
 

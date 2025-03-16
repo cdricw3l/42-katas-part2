@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/14 21:49:56 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 17:58:00 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 #define TT_EAT 2
 #define TT_SPLEEP 3
 
-void ft_create_philosophe_network(t_petri_network *network, int *args)
-{
-    TEST_START;
-    int n;
+// void ft_create_philosophe_network(t_petri_network *network, int *args)
+// {
+//     TEST_START;
+//     int n;
 
-    n = args[0];
-    ft_print_matrice_network(network);
-    assert(network->p == 4 && network->t == 3);
-    network->M_in = matrice_fusion(network->M_in,network->p,network->t, n);
-    network->M_out =matrice_fusion(network->M_out,network->p,network->t, n);
-    network->p *= n;
-    network->t *= n;
-    assert(network->p == 4 * n && network->t == 3 * n);
-    ft_print_matrice_network(network);
-    ft_print_arr_int(args, 4);
+//     n = args[0];
+//     ft_print_matrice_network(network);
+//     assert(network->p == 4 && network->t == 3);
+//     network->M_in = matrice_fusion(network->M_in,network->p,network->t, n);
+//     network->M_out =matrice_fusion(network->M_out,network->p,network->t, n);
+//     network->p *= n;
+//     network->t *= n;
+//     assert(network->p == 4 * n && network->t == 3 * n);
+//     ft_print_matrice_network(network);
+//     ft_print_arr_int(args, 4);
     
-    TEST_SUCCES;
-}
+//     TEST_SUCCES;
+// }

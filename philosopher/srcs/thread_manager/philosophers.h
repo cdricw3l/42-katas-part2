@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 01:05:50 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 17:48:47 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <assert.h>
-#include "../petri_network/ptri_network.h"
+#include "../petri_network/network/ptri_network.h"
 
 typedef struct s_thread_data
 {
@@ -38,28 +38,5 @@ typedef struct s_thread_managment_data
     s_thread_data data;
 
 }   s_thread_managment_data;
-
-
-
-
- 
-
-void	ft_print_arr_int(int *arr, int len);
-void	ft_print_arr_str(char **arr, int len);
-long     ft_atoi(char *argv);
-int     *ft_init_arr_arg(char **argv, int argc);
-int     ft_isdigit(char c);
-char    **ft_split(char *str, char c);
-int     ft_memcpy(void *src, void *dst, int size);
-int     ft_strlen(char *str);
-void	ft_printm(int **arr, int row, int col);
-int	    ft_strlcpy(char *dst, char *src, int dstsize);
-void	*ft_clean_split(char **str, int idx);
-int	    ft_get_split_len(char **split);
-
-// int     ft_split_len(char **split);
-// void    *ft_clean_split(char **str, int idx);
-
-void ft_print_matrice(int **m, int p, int t);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 01:42:01 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 02:20:11 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 02:25:12 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void *ft_destroy_network(t_petri_network **nets)
     network = *nets;
     if(network)
     {
-        
         p = network->p;
         ft_destroy_M_in(network->M_in, p);
         ft_destroy_M_out(network->M_out, p);

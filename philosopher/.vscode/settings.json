@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "tst_unit.h": "c",
-        "ft_split.h": "c"
+        "ft_split.h": "c",
+        "ptri_network.h": "c"
     }
 }

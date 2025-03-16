@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 17:49:00 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 22:10:50 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "utils/string_to_matrice/str_to_matrice.h"
+#include "../utils/string_to_matrice/str_to_matrice.h"
 
 #define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
 #define DEBUGG printf("DEBUGG\n");
+#define p_to_t 0
+#define t_to_p 1
 
 typedef struct s_petri_network
 {
@@ -29,8 +31,9 @@ typedef struct s_petri_network
     int     *Mp;            //arr p or actual state
     int     *Mt;            //arr t
     int     *M0;            //initial state
-    int     **M_in;         // output tocken
-    int     **M_out;        // intput tocken
+    int     **M_in;         // output tocken W+  post
+    int     **M_out;        // intput tocken W-     pre
+    //int     *MI           //matrice d'incidence
 
 } t_petri_network;
 
@@ -42,6 +45,22 @@ typedef struct s_extend_data
     int Ti;             // Transition index in matrice
     
 } t_extend_data;
+
+typedef struct s_points
+{
+    int x;
+    int y;
+    
+} t_points;
+
+typedef struct s_arc
+{
+    int p;
+    int t;
+    int weight;
+    int direction;
+    
+} t_arc;
 
 
 int                 **ft_create_matrice(int p, int t, int n);

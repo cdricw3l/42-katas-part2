@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 17:49:31 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 20:31:14 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "../srcs/petri_network/network/ptri_network.h"
 #include "../srcs/thread_manager/philosophers.h"
-#include "../srcs/utils/utils.h"
+#include "../srcs/petri_network/utils/utils/utils.h"
 #include "../include/global.h"
 
 #include <assert.h>
@@ -35,5 +35,6 @@ int tst_ft_init_arr_arg(void);
 int tst_utils(void);
 int tst_ft_create_petri_net(void);
 int tst_thread_managment(void);
+int tst_network_extend(void);
 
 #endif

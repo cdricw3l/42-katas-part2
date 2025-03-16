@@ -21,7 +21,7 @@ NOFLAGS=2
 
 # production path.
 SRCS_MAIN= srcs/main.c
-SRCS_PETRI= $(wildcard srcs/petri_network/network/utils/**/*.c) $(wildcard srcs/petri_network/network/*.c)
+SRCS_PETRI= $(wildcard srcs/petri_network/utils/**/*.c) $(wildcard srcs/petri_network/network/*.c)
 SRCS_UTILS= $(wildcard srcs/utils/**/*.c) $(wildcard srcs/utils/*.c)
 SRCS_THREAD= $(wildcard srcs/thread_manager/*.c)
 SRCS_PHILO= $(wildcard srcs/philosopher/*.c)

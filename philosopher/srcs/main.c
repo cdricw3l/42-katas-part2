@@ -6,12 +6,12 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 15:32:30 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 20:15:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "petri_network/network/ptri_network.h"
-#include "utils/ft_split/ft_split.h"
+#include "petri_network/utils/utils/utils.h"
 #include "../include/global.h"
 
 static int	ft_check_argument(long value, int i)

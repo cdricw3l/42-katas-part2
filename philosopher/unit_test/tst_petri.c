@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 02:50:02 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 03:07:36 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ int tst_ft_create_petri_net(void)
 	network_1->M_in[1] = NULL;
 	printf("\n\n");
 	ft_print_petri_matrice(network_1->M_in,4,3,1);
+	//destroye and check memory;
 	ft_destroy_network(&network_1);
 	assert(!ft_network_check(network_1, P));
+	ft_print_network(network_1);
 	return(1);
 	
 }

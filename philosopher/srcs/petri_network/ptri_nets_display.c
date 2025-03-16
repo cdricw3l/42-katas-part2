@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 15:28:15 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 02:39:33 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 03:09:40 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void ft_print_petri_matrice(int **m, int p, int t, int mode)
 }
 void ft_print_network(t_petri_network *network)
 {
-
+	if(!network || !ft_network_check(network, network->p))
+		return ;
     printf("\n[ P: %d ]\n\n", network->p);
     ft_print_petri_arr(network->M0, network->p,0);
     printf("\n[ T: %d ]\n\n", network->t);

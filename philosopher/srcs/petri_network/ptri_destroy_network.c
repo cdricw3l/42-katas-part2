@@ -6,77 +6,74 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 01:42:01 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 02:57:26 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 03:06:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ptri_network.h"
 #include <assert.h>
 
-static void *ft_destroy_M_in(int **M_in, int p)
+static void *ft_destroy_M_in(t_petri_network **nets)
 {
     int i;
 
-    if(M_in)
+    if((*nets)->M_in)
     {
         i = 0;
-        while (i < p)
+        while (i < (*nets)->p)
         {
-            if(M_in[i])
+            if((*nets)->M_in[i])
             {
-                free(M_in[i]);
-                M_in[i] = NULL;
+                free((*nets)->M_in[i]);
+                (*nets)->M_in[i] = NULL;
             }
             i++;
         }
-        free(M_in);
-        M_in = NULL;
+        free((*nets)->M_in);
+        (*nets)->M_in = NULL;
     }
     return(NULL);
 }
 
-static void *ft_destroy_M_out(int **M_out, int p)
+static void *ft_destroy_M_out(t_petri_network **nets)
 {
     int i;
 
-    if(M_out)
+    if((*nets)->M_out)
     {
         i = 0;
-        while (i < p)
+        while (i < (*nets)->p)
         {
-            if(M_out[i])
+            if((*nets)->M_out[i])
             {
-                free(M_out[i]);
-                M_out[i] = NULL;
+                free((*nets)->M_out[i]);
+                (*nets)->M_out[i] = NULL;
             }
             i++;
         }
-        free(M_out);
-        M_out = NULL;
+        free((*nets)->M_out);
+        (*nets)->M_out = NULL;
     }
     return (NULL);
 }
 
-void *ft_destroy_network(t_petri_network **nets)
+void *ft_destroy_network(t_petri_network **network)
 {
-    int p;
-    t_petri_network *network;
     
-    network = *nets;
-    if(network)
+    if(*network)
     {
-        p = network->p;
-        ft_destroy_M_in(network->M_in, p);
-        ft_destroy_M_out(network->M_out, p);
-        free(network->Mp);
-        free(network->Mt);
-        free(network->M0);
-        assert(network->M_in[0] == NULL);
-        network->Mp = NULL;
-        network->Mt = NULL;
-        network->M0 = NULL;
+        ft_destroy_M_in(network);
+        ft_destroy_M_out(network);
+        free((*network)->Mp);
+        free((*network)->Mt);
+        free((*network)->M0);
+        assert((*network)->M_in == NULL);
+        assert((*network)->M_out == NULL);
+        (*network)->Mp = NULL;
+        (*network)->Mt = NULL;
+        (*network)->M0 = NULL;
     }
-    free(*nets);
-    *nets = NULL;
+    free(*network);
+    *network = NULL;
     return(NULL);
 }

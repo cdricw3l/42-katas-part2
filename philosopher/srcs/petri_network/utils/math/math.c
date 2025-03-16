@@ -6,27 +6,64 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:52:22 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 22:14:37 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 23:01:57 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../network/ptri_network.h"
 
-int ft_is_enabled_transition(t_petri_network *network, int t)
+void    *ft_clean_reachability_matrix(int ***memory, int idx)
 {
+    int i;
+	int **M;
+	
+	if(memory == NULL)
+		return(NULL);
+	M = *memory;
+    i = 0;
+    while(i < idx)
+    {
+		if(M[i])
+		{
+			free(M[i]);
+			M[i] = NULL;
+		}
+        i++;
+    }
+    free(*memory);
+	*memory=NULL;
+    return(NULL);
+}
+
+// return arr W_in - W_out
+int **ft_get_reachability_matrix(t_petri_network *network)
+{
+    int **matrix;
     int i;
     int j;
     
     if(!ft_network_check(network, network->p))  
-        return(-1);
+        return(NULL);
+    ft_print_petri_matrice(network->M_in,network->p, network->t,1);
+    ft_print_petri_matrice(network->M_out, network->p,network->t, 1);
+    matrix = malloc(sizeof(int *) * network->p);
+    if(!matrix)
+        return(NULL);
     i = 0;
     while (i < network->p)
     {
-        //bien faire attantion a optimiser ce genre de besoin et ne faire faire inutilisement une doucle boucles.
-        if(network->M0[i] < network->M_out[i][t])
-            return(0);
+        j = 0;
+        matrix[i] = malloc(sizeof(int) * network->t);
+        if(!matrix)
+            return(ft_clean_reachability_matrix(&matrix,i));
+        while (j < network->t)
+        {
+            matrix[i][j] = network->M_in[i][j] - network->M_out[i][j];
+            j++;
+        }
         i++;
     }
-    return(1);
+    return(matrix);
 }
+
+

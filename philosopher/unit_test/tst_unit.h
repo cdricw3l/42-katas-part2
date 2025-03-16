@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 20:31:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 22:22:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int tst_utils(void);
 int tst_ft_create_petri_net(void);
 int tst_thread_managment(void);
 int tst_network_extend(void);
+int tst_petri_network(void);
 
 #endif

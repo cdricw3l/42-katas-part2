@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 22:17:27 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 23:10:19 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ int                 ft_network_check(t_petri_network *network, int p);
 void                ft_join_matrice(int **old_m,int **new_m, int p, int t , int n);
 int                 *ft_create_arr_int(int n);
 void                *ft_destroy_network(t_petri_network **network);
-int                 ft_is_enabled_transition(t_petri_network *network, int t);
+int                 **ft_get_reachability_matrix(t_petri_network *network);
+void                 *ft_clean_reachability_matrix(int ***memory, int idx);
+
+int                 ft_is_activable_transition(t_petri_network *network, int t);
+int                 ft_active_transition(t_petri_network *network, int t);
 
 #endif

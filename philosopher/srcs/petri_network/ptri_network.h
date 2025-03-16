@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 02:19:05 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 02:33:57 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #include <stdlib.h>
  #include <stdio.h>
 #include "ft_string_to_matrice/str_to_matrice.h"
+
+
+#define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
+#define DEBUGG printf("DEBUGG\n");
 
 typedef struct s_petri_network
 {

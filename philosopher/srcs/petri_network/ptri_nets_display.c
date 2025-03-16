@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 15:28:15 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 01:04:46 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 02:39:33 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,16 @@ void ft_print_petri_matrice(int **m, int p, int t, int mode)
 	mod = 0;
 	while (i < p)
 	{
-		ft_print_petri_arr(m[i], t, mode);
-		if(mod == 3 && p > 3 && mode == 1)
+		if(m[i])
 		{
-			printf("\n");
-			mod = -1;
+			ft_print_petri_arr(m[i], t, mode);
+			if(mod == 3 && p > 3 && mode == 1)
+			{
+				printf("\n");
+				mod = -1;
+			}
+			mod++;
 		}
-		mod++;
 		i++;
 	}	
 }

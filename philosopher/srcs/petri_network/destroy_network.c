@@ -6,14 +6,11 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 01:42:01 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 02:25:12 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/16 02:33:52 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ptri_network.h"
-
-#define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
-#define DEBUGG printf("DEBUGG\n");
 
 static void *ft_destroy_M_in(int **M_in, int p)
 {
@@ -26,7 +23,6 @@ static void *ft_destroy_M_in(int **M_in, int p)
         {
             if(M_in[i])
             {
-                PPTR(M_in[i]);
                 free(M_in[i]);
                 M_in[i] = NULL;
             }

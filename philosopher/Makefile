@@ -126,7 +126,7 @@ ifeq ($(OS), Darwin)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) $(OBJS) -o test_unit 
 	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
-	$(CC)  $(OBJS_TEST) $(OBJS) -o $(NAME)
+	$(CC)  $(OBJS_TEST) $(OBJS) -o test_unit 
 	valgrind --leak-check=full --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 endif
 

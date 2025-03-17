@@ -90,7 +90,9 @@ t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_ou
     network->M_out = ft_str_to_matrice(m_out, network->p, network->t);
     assert(ft_network_check(network, pt[0]));
     if(!ft_network_check(network, pt[0]))
+    {
         return(ft_destroy_network(&network));
+    }
 	DEBUGG;
     return(network);
 }

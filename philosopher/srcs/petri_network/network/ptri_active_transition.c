@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:51 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/20 18:04:00 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 18:04:42 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ int ft_active_transition(t_petri_network *network, int t)
             network->M0[i] = network->M0[i] + reachability[i][t];
             i++;
         }
-        printf("Transition: %d activé\n",t);
+        printf("Transitions: %d activé\n",t);
     }
     else
     {
-        printf("Transiont non activable\n");
+        printf("Transitions non activable\n");
     }
     ft_clean_reachability_matrix(&reachability,network->p);
     return(1);

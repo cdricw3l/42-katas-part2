@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 23:10:19 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 17:30:43 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 #define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
 #define DEBUGG printf("DEBUGG\n");
+#define TEST_START printf("Initiating function test: %s\n", __func__);
+#define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
 #define p_to_t 0
 #define t_to_p 1
 

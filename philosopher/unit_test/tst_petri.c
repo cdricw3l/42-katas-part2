@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tst_petri.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/17 14:44:13 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:41:37 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int tst_network_extend(void)
 		return(1);
 	assert(network_1->M0 && network_1->M_in && network_1->M_out && network_1->Mp && network_1->Mt && network_1->p && network_1->t);
 	assert(ft_network_check(network_1,pt[0]));
-
+	
 	ft_print_network(network_1);
 	ft_destroy_network(&network_1);
 	return(1);
@@ -136,7 +136,7 @@ int tst_petri_network(void)
 	//assert(tst_ft_create_petri_net() == 1);
 	//assert(tst_network_extend() == 1);
 	assert(tst_petri_math() == 1);
-
+	
 	return(1);
 	
 }

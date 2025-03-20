@@ -51,22 +51,30 @@ static int  *ft_create_place(int p)
 
 int ft_network_check(t_petri_network *network, int p)
 {
+    TEST_START;
     int i;
     int count_p;
 
     i = 0;
     count_p = 0;
+    
+    assert(network && network->M0 && network->M_in && network->M_out
+        && network->Mp && network->Mt);
     if(!network || !network->M0 || !network->M_in || !network->M_out
         || !network->Mp || !network->Mt)
+    {
+        printf("ERR\n");
         return(0);
+    }
     while(i < p)
     {
         if(network->M_in[i] && network->M_out[i])
-            count_p++;
+        count_p++;
         i++;
     }
     if(count_p != network->p)
         return(0);
+    TEST_SUCCES;
     return(1);
 }
 
@@ -93,7 +101,6 @@ t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_ou
     {
         return(ft_destroy_network(&network));
     }
-	DEBUGG;
     return(network);
 }
 

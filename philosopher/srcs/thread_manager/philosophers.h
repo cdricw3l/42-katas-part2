@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/16 17:48:47 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 17:08:48 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,9 @@ typedef struct s_thread_data
 
 typedef struct s_thread_managment_data
 {
-    int counter;
+    t_petri_network *network;
+    int (*active_transition)(t_petri_network *network, int t);
     
-    pthread_mutex_t **forks;
-    pthread_t **thread;
-    s_thread_data data;
-
 }   s_thread_managment_data;
 
 #endif

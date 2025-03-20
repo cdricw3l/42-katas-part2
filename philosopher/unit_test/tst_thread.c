@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/20 18:01:12 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 18:02:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void *ft_thread(void *p)
 
 t_petri_network *init_network(void)
 {
-    TEST_START;
     t_petri_network *network;
     int	pt[2];
 	char	*m0 = strdup("1 0 0 1");
@@ -45,7 +44,6 @@ t_petri_network *init_network(void)
 		return(NULL);
 	assert(network->M0 && network->M_in && network->M_out && network->Mp && network->Mt && network->p && network->t);
 	assert(ft_network_check(network,pt[0]));
-    TEST_SUCCES;
     return(network);
     
 }

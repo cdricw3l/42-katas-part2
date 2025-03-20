@@ -78,7 +78,7 @@ int ft_network_check(t_petri_network *network, int p)
     return(1);
 }
 
-t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_out)
+t_petri_network *ft_create_petri_net(int pt[3], char *m0, char *m_in, char *m_out)
 {
     t_petri_network *network;
 
@@ -91,6 +91,7 @@ t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_ou
         return(NULL);
     network->p = pt[0];
     network->t = pt[1];
+    network->n = pt[2];
     network->M0 =   *ft_str_to_matrice(m0, 1, network->p);
     network->Mp =   ft_create_place(network->p);
     network->Mt =   ft_create_transitions(network->t);

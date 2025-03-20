@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/20 17:30:43 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 22:56:38 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_petri_network
     int     *M0;            //initial state
     int     **M_in;         // output tocken W+  post
     int     **M_out;        // intput tocken W-     pre
-    //int     *MI           //matrice d'incidence
+    int     n;
 
 } t_petri_network;
 
@@ -64,23 +64,25 @@ typedef struct s_arc
     
 } t_arc;
 
+typedef int* M0;
+
 
 int                 **ft_create_matrice(int p, int t, int n);
 void	            *ft_memset(void *b, int c, size_t len);
 void	            ft_print_arr_int(int *arr, int len);
 int                 *ft_create_state(int P, int *M_0);
 
-t_petri_network     *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_out);
+t_petri_network     *ft_create_petri_net(int pt[3], char *m0, char *m_in, char *m_out);
 void                ft_print_petri_matrice(int **m, int p, int t, int mode);
 void                ft_print_petri_arr(int *arr, int len, int mode);
 void                ft_print_network(t_petri_network *network);
 int                 ft_network_check(t_petri_network *network, int p);
-void                ft_join_matrice(int **old_m,int **new_m, int p, int t , int n);
+int                 **ft_extend_matrice(int **old_matrice,int x, int y, int n);
 int                 *ft_create_arr_int(int n);
 void                *ft_destroy_network(t_petri_network **network);
 int                 **ft_get_reachability_matrix(t_petri_network *network);
 void                 *ft_clean_reachability_matrix(int ***memory, int idx);
-
+t_petri_network     *ft_extend_network(t_petri_network *network, int n);
 int                 ft_is_activable_transition(t_petri_network *network, int t);
 int                 ft_active_transition(t_petri_network *network, int t);
 

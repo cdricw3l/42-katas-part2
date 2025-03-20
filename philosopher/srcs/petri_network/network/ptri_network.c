@@ -51,7 +51,6 @@ static int  *ft_create_place(int p)
 
 int ft_network_check(t_petri_network *network, int p)
 {
-    TEST_START;
     int i;
     int count_p;
 
@@ -74,7 +73,6 @@ int ft_network_check(t_petri_network *network, int p)
     }
     if(count_p != network->p)
         return(0);
-    TEST_SUCCES;
     return(1);
 }
 

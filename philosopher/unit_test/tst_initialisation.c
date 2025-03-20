@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 20:04:00 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 23:40:32 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int tst_ft_init_arr_arg(void)
 {
-    TEST_START
     
     int  *arr_args;
     
@@ -60,6 +59,5 @@ int tst_ft_init_arr_arg(void)
     free(cycle);
     free(time_to_spleep);
 
-    TEST_SUCCES
     return(1);
 }

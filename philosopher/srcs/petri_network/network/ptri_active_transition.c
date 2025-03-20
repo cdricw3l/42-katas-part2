@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:51 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/20 18:02:33 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 23:40:12 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int ft_is_activable_transition(t_petri_network *network, int t)
 {
-    TEST_START;
     int i;
     
     if(!ft_network_check(network, network->p))  
@@ -28,7 +27,6 @@ int ft_is_activable_transition(t_petri_network *network, int t)
             return(0);
         i++;
     }
-    TEST_SUCCES;
     return(1);
 }
 

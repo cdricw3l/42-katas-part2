@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/20 22:31:21 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 23:40:48 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int tst_ft_create_petri_net(void)
 {
 	t_petri_network	*network_1;
-	TEST_START;
 	
 	int	pt[2];
 	char	*m0 = strdup("1 0 0 1");
@@ -65,8 +64,6 @@ int tst_network_extend(void)
 {
 	t_petri_network	*network_1;
 	
-	TEST_START;
-	
 	int	pt[3];
 	char	*m0 = strdup("1 0 0 1");
 
@@ -90,8 +87,6 @@ int tst_network_extend(void)
 int tst_petri_math(void)
 {
 	t_petri_network	*network_1;
-	
-	TEST_START;
 	
 	int	pt[3];
 	char	*m0 = strdup("1 0 0 1");
@@ -128,7 +123,6 @@ int tst_petri_math(void)
 	ft_print_network(network_1);
 	ft_clean_reachability_matrix(&matrix, network_1->p);
 	ft_destroy_network(&network_1);
-	TEST_SUCCES;
 	return(1);
 }
 

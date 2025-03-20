@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:56:42 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/20 23:17:11 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/20 23:55:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ t_petri_network *ft_extend_network(t_petri_network *network, int n)
     network->M_out = ft_extend_matrice(network->M_out, network->p,network->t, n);
     network->p = network->p * n;
     network->t = network->t * n;
-    ft_print_network(network);
     return(new_matrice);
 }
 

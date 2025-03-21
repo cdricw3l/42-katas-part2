@@ -6,15 +6,18 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 17:58:00 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 12:22:15 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "thrd_manager.h"
 
 #define TT_DIE 1
 #define TT_EAT 2
 #define TT_SPLEEP 3
+
+
+
 
 // void ft_create_philosophe_network(t_petri_network *network, int *args)
 // {

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/16 22:22:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 12:32:32 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define TST_UNIT_H
 
 #include "../srcs/petri_network/network/ptri_network.h"
-#include "../srcs/thread_manager/philosophers.h"
+#include "../srcs/thread_manager/thrd_manager.h"
 #include "../srcs/petri_network/utils/utils/utils.h"
 #include "../include/global.h"
 
@@ -28,6 +28,8 @@
 #define DEBUGG printf("DEBUGG\n");
 #define TEST_START printf("Initiating function test: %s\n", __func__);
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
+
+
 
 
 int test_unit_ft_create_petri_net(void);

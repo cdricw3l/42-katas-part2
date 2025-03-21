@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 13:21:05 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 13:25:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,16 @@ void *ft_thread(void *p)
 
     j = 0;
     id = (t_philosophe *)(p);
-    ft_print_petri_arr(id->network->M0,P,0);
-    while(1)
+    while(j < 10)
     {
         
-        printf("Ecriture dans l'etat par le thead id %d\n", id->id);
         assert(pthread_mutex_lock(&id->fork[id->id]) == 0);
         id->network->M0[id->id]++;
+        printf("Ecriture dans l'etat par le thead id %d value: %d \n", id->id, id->network->M0[id->id]);
         assert(pthread_mutex_unlock(&id->fork[id->id]) == 0);
         // usleep(100000);
         // usleep(100000);
-        ft_print_petri_arr(id->network->M0,P,0);
-        
+        j++;
     }
     
     pthread_exit(&j);
@@ -123,8 +121,12 @@ int tst_thread_managment(void)
     pthread_create(&thread_1, NULL, ft_thread, &philophe_1);
     pthread_create(&thread_2, NULL,ft_thread, &philophe_2);
     
+    
+    
     pthread_join(thread_1,NULL);
     pthread_join(thread_2,NULL);
+    
+    ft_print_petri_arr(network->M0,P,0);
     
     TEST_SUCCES;
     return(1);

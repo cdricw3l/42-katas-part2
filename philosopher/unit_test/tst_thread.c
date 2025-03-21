@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 00:01:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 08:18:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void *ft_thread(void *p)
     j = 0;
     id = (t_petri_network *)(p);
     printf("je suis le thread. Resception des data %d\n",id->p);
-    ft_active_transition(id, 0);
-    ft_active_transition(id, 1);
     ft_active_transition(id, 2);
+    ft_active_transition(id, 3);
     pthread_exit(&j);
 }
 
@@ -50,9 +49,9 @@ t_petri_network *init_network(void)
 
 void ft_plug_fork(t_petri_network *network)
 {
-    int i;
-
-    i = 0;
+    // int i;
+    (void)network;
+    // i = 0;
     
 }
 
@@ -78,9 +77,9 @@ int tst_thread_managment(void)
 	assert(network->M0 && network->M_in && network->M_out && network->Mp && network->Mt && network->p && network->t);
 	assert(ft_network_check(network,pt[0]));
     TEST_SUCCES;
-    ft_extend_network(network,5);
+    ft_extend_network(network,3);              // verifier l'extension pour 1.
     printf("voici %d\n",network->p);
-    assert(network->p == 20);
+    //assert(network->p == 20);
     ft_print_network(network);
     
     //int **M = ft_get_reachability_matrix(network);

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:51 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/20 23:40:12 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 10:17:35 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int ft_is_activable_transition(t_petri_network *network, int t)
             return(0);
         i++;
     }
+    printf( "\033[0;33m" "Transition: %d activable\n" "\x1b[0m",t);
     return(1);
 }
 
@@ -37,7 +38,7 @@ int ft_active_transition(t_petri_network *network, int t)
     
     if(!ft_network_check(network, network->p))
     {
-        printf("ERR: network\n");
+        printf("\x1b[31m" "ERR: network\n" "\x1b[0m");
         return(-1);
     }
     reachability = ft_get_reachability_matrix(network);
@@ -51,11 +52,11 @@ int ft_active_transition(t_petri_network *network, int t)
             network->M0[i] = network->M0[i] + reachability[i][t];
             i++;
         }
-        printf("Transition: %d activé\n",t);
+        printf( "\033[0;32m" "Transition: %d activé\n" "\x1b[0m",t);
     }
     else
     {
-        printf("Transiont non activable\n");
+        printf("\x1b[31m" "Transition %d non activable\n" "\x1b[0m", t);
     }
     ft_clean_reachability_matrix(&reachability,network->p);
     return(1);

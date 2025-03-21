@@ -5,7 +5,7 @@ NAME= philo
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=cc
-GFLAGS= -Werror -Wall -Wextra -fsanitize=address -I.
+GFLAGS= -Werror -Wall -Wextra -fsanitize=address -Iinclude
 else ifeq ($(OS), Linux)
 CC=gcc
 GFLAGS= -Werror -Wall -Wextra

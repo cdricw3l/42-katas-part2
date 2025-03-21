@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/20 22:56:38 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 22:32:17 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #define p_to_t 0
 #define t_to_p 1
 
+
 typedef struct s_petri_network
 {
     int     p;              //n place
@@ -34,21 +35,13 @@ typedef struct s_petri_network
     int     *Mt;            //arr t
     int     *M0;            //initial state
     int     **M_in;         // output tocken W+  post
-    int     **M_out;        // intput tocken W-     pre
+    int     **M_out;        // intput tocken W-  pre
     int     n;
 
 } t_petri_network;
 
-typedef struct s_extend_data
-{
-    int Np;             // number of place extension;
-    int Nt;             // size of transition extension
-    int Pi;             // Place index in matrice
-    int Ti;             // Transition index in matrice
-    
-} t_extend_data;
 
-typedef struct s_points
+/* typedef struct s_points
 {
     int x;
     int y;
@@ -62,7 +55,7 @@ typedef struct s_arc
     int weight;
     int direction;
     
-} t_arc;
+} t_arc; */
 
 typedef int* M0;
 

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/21 19:15:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 23:36:43 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int tst_ft_create_petri_net(void)
 		return(1);
 	assert(network_1->M0 && network_1->M_in && network_1->M_out && network_1->Mp && network_1->Mt && network_1->p && network_1->t);
 	
-	ft_print_petri_matrice(network_1->M_in,4,3,1);
-	ft_print_petri_matrice(network_1->M_out,4,3,1);
+	//ft_print_petri_matrice(network_1->M_in,4,3,1);
+	//ft_print_petri_matrice(network_1->M_out,4,3,1);
 	ft_print_network(network_1);
 	
 	
@@ -63,6 +63,7 @@ int tst_ft_create_petri_net(void)
 
 int tst_network_extend(void)
 {
+	TEST_START;
 	t_petri_network	*network_1;
 	
 	int	pt[3];
@@ -83,11 +84,14 @@ int tst_network_extend(void)
 	ft_extend_network(network_1, 3);
 	ft_print_network(network_1);
 	ft_destroy_network(&network_1);
+	
+	TEST_SUCCES;
 	return(1);
 }
 
 int tst_petri_math(void)
 {
+	TEST_START;
 	t_petri_network	*network_1;
 	
 	int	pt[3];
@@ -125,6 +129,7 @@ int tst_petri_math(void)
 	ft_print_network(network_1);
 	ft_clean_reachability_matrix(&matrix, network_1->p);
 	ft_destroy_network(&network_1);
+	TEST_SUCCES;
 	return(1);
 }
 
@@ -132,6 +137,7 @@ int tst_petri_network(void)
 {
 	//assert(tst_ft_create_petri_net() == 1);
 	assert(tst_network_extend() == 1);
+
 	//assert(tst_petri_math() == 1);
 	
 	return(1);

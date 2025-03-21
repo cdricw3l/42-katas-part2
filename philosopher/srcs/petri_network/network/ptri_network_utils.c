@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:50:09 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/20 22:29:26 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 22:42:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,31 @@ int *ft_create_arr_int(int n)
     return(arr_int);
 }
 
-int ft_add_add(t_petri_network *network, t_arc arc)
-{
+// int ft_add_add(t_petri_network *network, t_arc arc)
+// {
 
-    // est ce un ajout ou un retrai: est ce t ---> p or p ---> t.?
-    // Si t ---> p, action sur W+ arc.direction == 0
-    // Si p ---> t, action sur w-
+//     // est ce un ajout ou un retrai: est ce t ---> p or p ---> t.?
+//     // Si t ---> p, action sur W+ arc.direction == 0
+//     // Si p ---> t, action sur w-
 
-    if(!network && !ft_network_check(network, network->p))
-        return(0);
-    if(arc.direction == t_to_p)
-    {
-        //verification de la matrice.
-        if(!network->M_in || !network->M_in[arc.p])
-            return(0);
-        network->M_in[arc.p][arc.t] = arc.weight;
-    }
-    if(arc.direction == p_to_t)
-    {
-        //verification de la matrice.
-        if(!network->M_out || !network->M_in[arc.p])
-            return(0);
-        network->M_out[arc.p][arc.t] = arc.weight;
-    }
-    return(1);
-}
+//     if(!network && !ft_network_check(network, network->p))
+//         return(0);
+//     if(arc.direction == t_to_p)
+//     {
+//         //verification de la matrice.
+//         if(!network->M_in || !network->M_in[arc.p])
+//             return(0);
+//         network->M_in[arc.p][arc.t] = arc.weight;
+//     }
+//     if(arc.direction == p_to_t)
+//     {
+//         //verification de la matrice.
+//         if(!network->M_out || !network->M_in[arc.p])
+//             return(0);
+//         network->M_out[arc.p][arc.t] = arc.weight;
+//     }
+//     return(1);
+// }
 
 // int **ft_copy_matrice(int **M_in, int P, int T)
 // {

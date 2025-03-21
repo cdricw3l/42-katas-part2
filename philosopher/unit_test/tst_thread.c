@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 13:25:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 13:26:56 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void *ft_thread(void *p)
 
     j = 0;
     id = (t_philosophe *)(p);
-    while(j < 10)
+    while(j < 1000)
     {
         
         assert(pthread_mutex_lock(&id->fork[id->id]) == 0);

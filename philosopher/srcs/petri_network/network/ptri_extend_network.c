@@ -6,11 +6,19 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:56:42 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/20 23:55:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 19:15:32 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ptri_network.h"
+
+/* int ft_add_arc(t_petri_network network, int t, int p)
+{
+    // add arc between from p to t W- matrice
+    // add arc between from t to p W+ matrice
+
+    
+} */
 
 void ft_join_matrice(int **old_m,int **new_m, int x, int y , int n)
 {

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/20 23:40:48 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 19:15:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int tst_ft_create_petri_net(void)
 {
+	TEST_START;
 	t_petri_network	*network_1;
 	
 	int	pt[2];
@@ -54,7 +55,7 @@ int tst_ft_create_petri_net(void)
 	assert(!ft_network_check(network_1, P));
 	ft_print_network(network_1);
 
-	
+	TEST_START;
 	return(1);
 	
 }
@@ -79,7 +80,8 @@ int tst_network_extend(void)
 		return(1);
 	assert(network_1->M0 && network_1->M_in && network_1->M_out && network_1->Mp && network_1->Mt && network_1->p && network_1->t);
 	assert(ft_network_check(network_1,pt[0]));
-	ft_extend_network(network_1, 5);
+	ft_extend_network(network_1, 3);
+	ft_print_network(network_1);
 	ft_destroy_network(&network_1);
 	return(1);
 }

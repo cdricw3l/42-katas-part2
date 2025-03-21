@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/21 12:33:57 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 19:23:43 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_philosophe
     t_petri_network *network;
     
 }   t_philosophe;
+
+int                 ft_plug_philosophe_together(t_petri_network *network);
 
 int                 ft_destroy_mutext(mutex fork[N], int idx);
 pthread_mutex_t     *ft_create_arr_mutext(int n);

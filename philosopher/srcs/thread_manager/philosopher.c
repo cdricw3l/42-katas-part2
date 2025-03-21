@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 12:22:15 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 19:49:51 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,24 @@
 #define TT_EAT 2
 #define TT_SPLEEP 3
 
+
+int ft_plug_philosophe_together(t_petri_network *network)
+{
+    assert(network->p == 12);
+    assert(network->t == 9);
+
+    ft_print_petri_matrice(network->M_out,network->p,network->t,1);
+    ft_print_petri_matrice(network->M_in,network->p,network->t,1);
+    printf("voici le int %d\n", network->M_out[network->p - 1][0]);
+    //plug the first to th last on W-;
+    network->M_out[network->p - 1][0]= 1;
+    //plug the first to th last on W+;
+    network->M_in[network->p - 1][network->t / N - 1]= 1;
+    ft_print_petri_matrice(network->M_out,network->p,network->t,1);
+    ft_print_petri_matrice(network->M_in,network->p,network->t,1);
+    
+    return(1);
+}
 
 
 

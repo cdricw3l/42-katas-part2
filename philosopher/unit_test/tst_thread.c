@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 13:26:56 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/21 19:37:49 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void *ft_thread(void *p)
 
     j = 0;
     id = (t_philosophe *)(p);
-    while(j < 1000)
+    while(j < 200)
     {
-        
-        assert(pthread_mutex_lock(&id->fork[id->id]) == 0);
-        id->network->M0[id->id]++;
-        printf("Ecriture dans l'etat par le thead id %d value: %d \n", id->id, id->network->M0[id->id]);
-        assert(pthread_mutex_unlock(&id->fork[id->id]) == 0);
-        // usleep(100000);
+
+        assert(pthread_mutex_lock(&id->fork[0]) == 0);
+        id->network->M0[0]++;
+       // printf("Ecriture dans l'etat par le thead id %d value: %d \n", id->id, id->network->M0[0]);
+        assert(pthread_mutex_unlock(&id->fork[0]) == 0);
+        usleep(10000);
         // usleep(100000);
         j++;
     }
@@ -90,13 +90,14 @@ int tst_thread_managment(void)
 	assert(network->M0 && network->M_in && network->M_out && network->Mp && network->Mt && network->p && network->t);
 	assert(ft_network_check(network,pt[0]));
     
-    // ft_extend_network(network,3);              // verifier l'extension pour 1.
-    // ft_print_network(network);
+    ft_extend_network(network,N);              // verifier l'extension pour 1.
+    ft_print_network(network);
     
+    assert(ft_plug_philosophe_together(network)== 1);
 
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
-    fork = ft_create_arr_mutext(P);
-    while (i < P)
+    fork = ft_create_arr_mutext(N);
+    while (i < N)
     {
         printf(" voici i :%d\n", i);
         assert(fork);
@@ -113,8 +114,8 @@ int tst_thread_managment(void)
     t_philosophe philophe_1 = {0, fork, network};
     t_philosophe philophe_2 = {1, fork, network};
 
-    assert(philophe_1.id == 0 && philophe_1.network->p == P);
-    assert(philophe_2.id == 1 && philophe_2.network->p == P);
+    assert(philophe_1.id == 0 && philophe_1.network->p == P * N);
+    assert(philophe_2.id == 1 && philophe_2.network->p == P * N);
     
 
     //create thread

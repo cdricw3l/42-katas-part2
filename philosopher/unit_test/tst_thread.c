@@ -6,11 +6,12 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 23:54:51 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 01:10:34 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tst_unit.h"
+#include <sys/types.h>
 
 void *ft_thread(void *p)
 {
@@ -19,6 +20,9 @@ void *ft_thread(void *p)
 
     j = 0;
     id = (t_philosophe *)(p);
+    pthread_t tid = pthread_self();
+    
+    printf("In function \nthread id = %p\n", tid); 
     while(j < 1)
     {
         assert(pthread_mutex_lock(&id->fork[0]) == 0);
@@ -90,8 +94,7 @@ int tst_thread_managment(void)
 	assert(ft_network_check(network,pt[0]));
     
     ft_extend_network(network, N);              // verifier l'extension pour 1.
-    
-    //ft_print_network(network);
+    ft_print_network(network);
     
     assert(ft_plug_philosophe_together(network)== 1);
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
@@ -117,6 +120,15 @@ int tst_thread_managment(void)
     assert(philophe_2.id == 1 && philophe_2.network->p == P * N);
     
 
+
+    ft_print_petri_arr(network->M0,network->p,0);
+    ft_active_transition(network,5);
+    ft_print_petri_arr(network->M0,network->p,0);
+    ft_active_transition(network,1);
+    ft_print_petri_arr(network->M0,network->p,0);
+    ft_active_transition(network,2);
+    ft_print_petri_arr(network->M0,network->p,0);
+
     //create thread
     pthread_create(&thread_1, NULL, ft_thread, &philophe_1);
     pthread_create(&thread_2, NULL,ft_thread, &philophe_2);
@@ -126,7 +138,6 @@ int tst_thread_managment(void)
     pthread_join(thread_1,NULL);
     pthread_join(thread_2,NULL);
     
-    ft_print_petri_arr(network->M0,P,0);
     
     TEST_SUCCES;
     return(1);

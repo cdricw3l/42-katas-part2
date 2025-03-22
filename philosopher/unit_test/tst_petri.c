@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/21 23:36:43 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 09:54:54 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,18 @@ int tst_petri_math(void)
 
 	// test de franchisabilité
 	// t1, M0 = franchissable
-	assert(ft_is_activable_transition(network_1, 0) == 1);
+	assert(ft_is_activable_transition(network_1, 0,0) == 1);
 	//t2, M0 = non franchissable
-	assert(ft_is_activable_transition(network_1, 2) == 0);
+	assert(ft_is_activable_transition(network_1, 2,0) == 0);
 	
 
 	int **matrix = ft_get_reachability_matrix(network_1);
 	ft_print_petri_matrice(matrix,network_1->p,network_1->t, 1);
 	
 	//activation de t1
-	ft_active_transition(network_1, 0);
+	ft_active_transition(network_1, 0,0);
 	//verification : t1 doit tre inaccessible.
-	assert(!ft_is_activable_transition(network_1,0));
+	assert(!ft_is_activable_transition(network_1,0, 0));
 	
 	ft_print_network(network_1);
 	ft_clean_reachability_matrix(&matrix, network_1->p);

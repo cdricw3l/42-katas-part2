@@ -6,14 +6,14 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:51 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 10:17:35 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 09:54:16 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ptri_network.h"
 
-int ft_is_activable_transition(t_petri_network *network, int t)
+int ft_is_activable_transition(t_petri_network *network, int t, int id)
 {
     int i;
     
@@ -27,11 +27,11 @@ int ft_is_activable_transition(t_petri_network *network, int t)
             return(0);
         i++;
     }
-    printf( "\033[0;33m" "Transition: %d activable\n" "\x1b[0m",t);
+    printf( "\033[0;33m" "Transition: %d activable par le philosphe %d\n" "\x1b[0m",t, id);
     return(1);
 }
 
-int ft_active_transition(t_petri_network *network, int t)
+int ft_active_transition(t_petri_network *network, int t, int id)
 {
     int **reachability;
     int i;
@@ -44,19 +44,23 @@ int ft_active_transition(t_petri_network *network, int t)
     reachability = ft_get_reachability_matrix(network);
     if(!reachability)
         return(0);
-    if (ft_is_activable_transition(network, t))
+    if (ft_is_activable_transition(network, t, id))
     {
         i = 0;
+        printf( "\033[0;32m" "Transition: %d activé par le philosphe %d\n" "\x1b[0m",t, id);
         while (i < network->p)
         {
-            network->M0[i] = network->M0[i] + reachability[i][t];
+            if(network->M0[i] + reachability[i][t] != network->M0[i])
+            {
+                network->M0[i] = network->M0[i] + reachability[i][t];
+                printf("modification de l'etat M0 a l'index %d par le philosophe %d\n", i, id);
+            }
             i++;
         }
-        printf( "\033[0;32m" "Transition: %d activé\n" "\x1b[0m",t);
     }
     else
     {
-        printf("\x1b[31m" "Transition %d non activable\n" "\x1b[0m", t);
+        printf("\x1b[31m" "Transition %d non activable par le philosphe %d\n" "\x1b[0m", t, id);
     }
     ft_clean_reachability_matrix(&reachability,network->p);
     return(1);

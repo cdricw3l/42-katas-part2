@@ -6,12 +6,11 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:14:22 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 19:26:54 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 01:51:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thrd_manager.h"
-
 
 
 int ft_destroy_mutext(mutex fork[N], int idx)

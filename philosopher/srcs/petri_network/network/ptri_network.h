@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/21 22:32:17 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 09:53:04 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void                *ft_destroy_network(t_petri_network **network);
 int                 **ft_get_reachability_matrix(t_petri_network *network);
 void                 *ft_clean_reachability_matrix(int ***memory, int idx);
 t_petri_network     *ft_extend_network(t_petri_network *network, int n);
-int                 ft_is_activable_transition(t_petri_network *network, int t);
-int                 ft_active_transition(t_petri_network *network, int t);
+int                 ft_is_activable_transition(t_petri_network *network, int t, int id);
+int                 ft_active_transition(t_petri_network *network, int t, int id);
 
 #endif

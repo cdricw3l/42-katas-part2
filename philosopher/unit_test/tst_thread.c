@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/22 01:10:34 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 12:09:58 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,27 @@ void *ft_thread(void *p)
     j = 0;
     id = (t_philosophe *)(p);
     pthread_t tid = pthread_self();
-    
-    printf("In function \nthread id = %p\n", tid); 
-    while(j < 1)
-    {
-        assert(pthread_mutex_lock(&id->fork[0]) == 0);
-        id->network->M0[0]++;
-        //printf("Ecriture dans l'etat par le thead id %d value: %d \n", id->id, id->network->M0[0]);
-        assert(pthread_mutex_unlock(&id->fork[0]) == 0);
-        usleep(10000);
-        // usleep(100000);
-        j++;
-    }
-    
+    printf("Thread id %p\n", tid);
+   
+   // ft_print_petri_arr(id->network->M0, id->network->p, 0);
+    // if(id->id == 1)
+    // {
+        //     sleep(10);
+        //     ft_active_transition(id->network,0);
+        // }
+        // printf("philosophe dors ZzZZzZzZz\n");
+        // while (!ft_is_activable_transition(id->network, 1))
+        // {
+            // }
+            // if(id->id == 0)
+            // {
+    //     ft_active_transition(id->network,1);
+    //     printf("Philosophe %d Mange\n", id->id);
+    //     sleep(10);
+    // }
+    if(ft_active_transition(id->network,0, id->id) == 1)
+        printf("Philosophe %d Mange\n", id->id);
+    //ft_print_petri_arr(id->network->M0, id->network->p, 0);
     pthread_exit(&j);
 }
 
@@ -44,7 +52,6 @@ t_petri_network *init_network(void)
     t_petri_network *network;
     int	pt[2];
 	char	*m0 = strdup("1 0 0 1");
-
 	char	*m_out = strdup("1 0 0 0 3 0 0 0 3 1 0 0");
 	char	*m_int = strdup("0 0 1 3 0 0 0 3 0 0 0 1");
 	
@@ -78,8 +85,8 @@ int tst_thread_managment(void)
     pthread_mutex_t *fork;
     
 	char	*m0 = strdup("1 0 0 1"); 
-	char	*m_out = strdup("1 0 0 0 3 0 0 0 3 1 0 0");
-	char	*m_in = strdup("0 0 1 3 0 0 0 3 0 0 0 1");
+	char	*m_out = strdup("1 0 0 0 1 0 0 0 3 0 1 0");
+	char	*m_in = strdup("0 0 1 1 0 0 0 3 0 0 0 1");
 	
 	pt[0] = P;
 	pt[1] = T;
@@ -94,10 +101,10 @@ int tst_thread_managment(void)
 	assert(ft_network_check(network,pt[0]));
     
     ft_extend_network(network, N);              // verifier l'extension pour 1.
-    ft_print_network(network);
     
     assert(ft_plug_philosophe_together(network)== 1);
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
+    ft_print_network(network);
     fork = ft_create_arr_mutext(N);
     while (i < N)
     {
@@ -111,27 +118,31 @@ int tst_thread_managment(void)
         i++;
     }
     printf("\n");
-    
+
+    t_philosophe **philosophes;
+
+
     // create my first philosophe second philosophe
-    t_philosophe philophe_1 = {0, fork, network};
-    t_philosophe philophe_2 = {1, fork, network};
-
-    assert(philophe_1.id == 0 && philophe_1.network->p == P * N);
-    assert(philophe_2.id == 1 && philophe_2.network->p == P * N);
+    
     
 
+    philosophes = ft_create_philosophe(N,fork,network);
+    assert(philosophes);
+    assert(philosophes[1]->transitions_set[0] == 3 && philosophes[1]->transitions_set[1] == 4 && philosophes[1]->transitions_set[2] == 5);
+    printf("voici set %d and %d and %d\n", philosophes[1]->transitions_set[0], philosophes[1]->transitions_set[1], philosophes[1]->transitions_set[2]);
 
-    ft_print_petri_arr(network->M0,network->p,0);
-    ft_active_transition(network,5);
-    ft_print_petri_arr(network->M0,network->p,0);
-    ft_active_transition(network,1);
-    ft_print_petri_arr(network->M0,network->p,0);
-    ft_active_transition(network,2);
-    ft_print_petri_arr(network->M0,network->p,0);
+    // ft_print_petri_arr(network->M0,network->p,0);
+    // ft_active_transition(network,5);
+    // ft_print_petri_arr(network->M0,network->p,0);
+    // ft_active_transition(network,1);
+    // ft_print_petri_arr(network->M0,network->p,0);
+    // ft_active_transition(network,2);
+    // ft_print_petri_arr(network->M0,network->p,0);
 
     //create thread
-    pthread_create(&thread_1, NULL, ft_thread, &philophe_1);
-    pthread_create(&thread_2, NULL,ft_thread, &philophe_2);
+
+    pthread_create(&thread_1, NULL, ft_thread, &philosophes[0]);
+    pthread_create(&thread_2, NULL,ft_thread, &philosophes[1]);
     
     
     

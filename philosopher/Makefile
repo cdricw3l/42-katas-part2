@@ -69,9 +69,9 @@ EMPTY=
 #time_to_sleep 
 #time_to_sleep
 
-NOP= 1
-TTD= 800
-TTE= 200
+NOP= 2
+TTD= 150
+TTE= 2000
 TTS= 200
 CYCLE= 10
 

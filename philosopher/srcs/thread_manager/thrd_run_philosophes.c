@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 22:06:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 22:43:02 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void *ft_thread(void *p)
             if(get_current_time() - start > philo->tempo.ttd)
             {
                 philo->state = DEAD;
-                ft_temporisation(1000,1,1);
                 gettimeofday(&end, NULL);
                 printf("\x1b[31m" "Le philosophe est Mort au bout de %f \n" "\x1b[0m",time_diff(&s, &end) );
                 return(NULL);
@@ -44,11 +43,11 @@ void *ft_thread(void *p)
         
         printf("Philosophe %d eating\n", philo->id);
         ft_active_transition(philo->network,philo->transitions_set[1], philo->id);      
-        ft_temporisation(1000, philo->id,1);
+        ft_temporisation(philo->tempo.tte, philo->id,1);
         
         printf("Philosophe %d sleeping\n", philo->id);
         ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
-        ft_temporisation(1000, philo->id,0);
+        ft_temporisation(philo->tempo.tts, philo->id,0);
     }
     
     return(p);
@@ -58,8 +57,20 @@ int run_simulation(t_philosophe **philosophes, int n)
 {
     pthread_t threads[n];
 
-    pthread_create(&threads[0],NULL,ft_thread, philosophes[0]);
-    pthread_join(threads[0], NULL);
+    int i;
+
+    i = 0;
+    while (i < n)
+    {
+        pthread_create(&threads[i],NULL,ft_thread, philosophes[i]);
+        i++;
+    }
+    i = 0;
+    while (i < n)
+    {
+        pthread_join(threads[i], NULL);
+        i++;
+    }
     
     return(1);
 }

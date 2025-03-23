@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 02:52:59 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 02:58:51 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 void *ft_thread(void *p)
 {
     t_philosophe *philo;
-
+    int h = 0;
     philo = (t_philosophe *)(p);
     //pthread_t tid = pthread_self();
-    while (1)
+    while (h < 2)
     {
         ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
         while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id))
@@ -30,6 +30,7 @@ void *ft_thread(void *p)
         usleep(100000);
         ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
         usleep(100000);
+        h++;
     }
     
 
@@ -142,7 +143,6 @@ int tst_thread_managment(void)
     ft_display_philophes(philosophes);
     
 
-    ft_temporisation(45000);
     
     pthread_t thread[N];
     

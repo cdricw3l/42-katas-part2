@@ -4,8 +4,8 @@ NAME= philo
 
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
-CC=cc
-GFLAGS= -Werror -Wall -Wextra -fsanitize=address -Iinclude
+CC=clang
+GFLAGS= -Werror -Wall -Wextra -g -Iinclude
 else ifeq ($(OS), Linux)
 CC=gcc
 GFLAGS= -Werror -Wall -Wextra
@@ -63,11 +63,17 @@ EMPTY=
 
 #Programme arguments
 
-NOP= 5 		#number_of_philosophers
-TTD= 4000 	#time_to_die
-TTE= 4000 	#time_to_eat
-TTS= 4000 	#time_to_sleep 
-CYCLE= 10 	#time_to_sleep
+#number_of_philosophers
+#time_to_die ms
+#time_to_eat
+#time_to_sleep 
+#time_to_sleep
+
+NOP= 5
+TTD= 800
+TTE= 200
+TTS= 200
+CYCLE= 10
 
 ifeq ($(mode), $(TEST))
 OBJS= $(OBJS_TEST)

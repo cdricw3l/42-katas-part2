@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 00:25:57 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 19:46:31 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,40 @@
 #define TT_SPLEEP 3
 
 
-int ft_plug_philosophe_together(t_petri_network *network)
+void ft_plug_philosophe_together(t_petri_network *network)
 {
     int i;
     int j;
     
+    if(!network)
+        return ;
     //plug the first to th last on W-;
     network->M_out[network->p - 1][1] = 1;
     //plug the first to th last on W+;
     network->M_in[network->p - 1][network->t / N - 1] = 1;
     // --- > plug the other philosophe on W-
-    i = P - 1;
-    j = T + 1;
-    while (i < (N * P) - 1)            
+    i = network->p / network->n - 1;
+    j = network->t / network->n + 1;
+    while (i < (network->n * (network->p / network->n)) - 1)            
     {
         network->M_out[i][j] = 1;
-        i += P;
-        j += T;
+        i += network->p / network->n;
+        j += network->t / network->n;
     }
-    i = P - 1;
-    j = T + 2;
+    i = network->p / network->n - 1;
+    j = network->t / network->n + 2;
     // --- > plug the other philosophe on W+
     while (i < (N * P) - 1)            
     {
         network->M_in[i][j] = 1;
-        i += P;
-        j += T;
+        i += network->p / network->n;
+        j += network->t / network->n;
     }
    /*  printf("matrice pre: \n\n");
     ft_print_petri_matrice(network->M_out,network->p,network->t,1); 
     printf("matrice post: \n\n");
     ft_print_petri_matrice(network->M_in,network->p,network->t,1);
     ft_print_petri_arr(network->M0,network->p, 0); */
-    return(1);
 }
 
 void    ft_get_transition_set(int id, int trs[3])

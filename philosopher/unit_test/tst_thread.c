@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 03:36:35 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 18:27:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,32 @@
 
 void *ft_thread(void *p)
 {
+    int i;
     t_philosophe *philo;
     philo = (t_philosophe *)(p);
     //pthread_t tid = pthread_self();
+    i = 0;
     while (1)
     {
         ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
-        usleep(10000);
         while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id))
         {
-            printf("En attente de fork pour le philosophe %d\n", philo->id);
+            if(i == 0)
+            {
+                //printf("Philosophe %d thinking\n", philo->id);
+                i = 1;
+            }
             //ft_print_petri_arr(philo->network->M0, philo->network->p, 0);
         }
+        
+        printf("Philosophe %d eating\n", philo->id);
         ft_active_transition(philo->network,philo->transitions_set[1], philo->id);      
-        usleep(10000);
+        ft_temporisation(1000, philo->id,1);
+        
+        printf("Philosophe %d sleeping\n", philo->id);
         ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
-        usleep(10000);
+        ft_temporisation(1000, philo->id,0);
+        i = 0;
     }
     
 
@@ -90,10 +100,13 @@ int tst_thread_managment(void)
     
 	assert(network->M0 && network->M_in && network->M_out && network->Mp && network->Mt && network->p && network->t);
 	assert(ft_network_check(network,pt[0]));
+    
     network =  ft_extend_network(network, N);              // verifier l'extension pour 1.
     assert(ft_plug_philosophe_together(network)== 1);
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
     ft_print_network(network);
+    
+    
     fork = ft_create_arr_mutext(N);
     while (i < N)
     {
@@ -143,7 +156,6 @@ int tst_thread_managment(void)
     ft_display_philophes(philosophes);
     
 
-    
     pthread_t thread;
     pthread_t thread2;
     pthread_t thread3;
@@ -151,21 +163,21 @@ int tst_thread_managment(void)
     pthread_t thread5;
   
     
-    pthread_create(&thread, NULL, ft_thread, philosophes[5]);
+    pthread_create(&thread, NULL, ft_thread, philosophes[0]);
     sleep(1);
     pthread_create(&thread2, NULL, ft_thread, philosophes[1]);
     sleep(1);
-    pthread_create(&thread3, NULL, ft_thread, philosophes[0]);
+    pthread_create(&thread3, NULL, ft_thread, philosophes[2]);
     sleep(1);
-    pthread_create(&thread4, NULL, ft_thread, philosophes[4]);
+    pthread_create(&thread4, NULL, ft_thread, philosophes[3]);
     sleep(1);
-    pthread_create(&thread5, NULL, ft_thread, philosophes[3]);
+    pthread_create(&thread5, NULL, ft_thread, philosophes[4]);
     
-    pthread_join(thread5,NULL);
+    pthread_join(thread,NULL);
     pthread_join(thread4,NULL);
     pthread_join(thread3,NULL);
     pthread_join(thread2,NULL);
-    pthread_join(thread,NULL);
+    pthread_join(thread5,NULL);
     
     
     ft_kill_philosophes_and_network(&philosophes, &network,fork, network->n);

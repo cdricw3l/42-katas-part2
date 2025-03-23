@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/22 09:54:54 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 23:28:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ int tst_ft_create_petri_net(void)
 	TEST_START;
 	t_petri_network	*network_1;
 	
-	int	pt[2];
+	int	pt[3];
 	char	*m0 = strdup("1 0 0 1");
 	char	*m_out = strdup("1 0 0 0 1 0 0 0 3 0 1 0");
 	char	*m_int = strdup("1 0 0 0 1 0 0 0 3 0 1 0");
 	
 	pt[0] = P;
 	pt[1] = T;
+	pt[2] = N;
 	
 	network_1 = ft_create_petri_net(pt,m0,m_int,m_out);
 	if(!network_1)
@@ -52,9 +53,12 @@ int tst_ft_create_petri_net(void)
 	ft_print_petri_matrice(network_1->M_in,4,3,1);
 	//destroye and check memory;
 	ft_destroy_network(&network_1);
+	//assert( 1 == 2);
+	
 	assert(!ft_network_check(network_1, P));
+	
 	ft_print_network(network_1);
-
+	
 	TEST_START;
 	return(1);
 	
@@ -81,7 +85,7 @@ int tst_network_extend(void)
 		return(1);
 	assert(network_1->M0 && network_1->M_in && network_1->M_out && network_1->Mp && network_1->Mt && network_1->p && network_1->t);
 	assert(ft_network_check(network_1,pt[0]));
-	ft_extend_network(network_1, 3);
+	network_1 =  ft_extend_network(network_1, 3);
 	ft_print_network(network_1);
 	ft_destroy_network(&network_1);
 	
@@ -135,10 +139,10 @@ int tst_petri_math(void)
 
 int tst_petri_network(void)
 {
-	//assert(tst_ft_create_petri_net() == 1);
+	assert(tst_ft_create_petri_net() == 1);
 	assert(tst_network_extend() == 1);
 
-	//assert(tst_petri_math() == 1);
+	assert(tst_petri_math() == 1);
 	
 	return(1);
 	

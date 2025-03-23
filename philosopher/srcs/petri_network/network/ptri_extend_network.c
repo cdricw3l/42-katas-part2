@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:56:42 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 19:15:32 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 23:54:48 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void ft_join_matrice(int **old_m,int **new_m, int x, int y , int n)
     }
 }
 
-int **ft_extend_matrice(int **old_matrice,int x, int y, int n)
+int **ft_extend_matrice(int ***old_matrice,int x, int y, int n)
 {
     int **new_matrice;
     int i;
@@ -70,11 +70,13 @@ int **ft_extend_matrice(int **old_matrice,int x, int y, int n)
         ft_memset(new_matrice[i],0,y * n * 4);
         i++;
     }
-    ft_join_matrice(old_matrice,new_matrice,x,y,n);
+    ft_join_matrice(*old_matrice,new_matrice,x,y,n);
+    free(*old_matrice);
+    *old_matrice = NULL;
     return(new_matrice);
 }
 
-int *ft_extend_m0(int  *old, int y ,int n)
+int *ft_extend_m0(int  **old, int y ,int n)
 {
     int *new_arr;
     int i;
@@ -89,29 +91,35 @@ int *ft_extend_m0(int  *old, int y ,int n)
         j = 0;
         while (j < y)
         {
-            new_arr[j + (i * y)] = old[j];
+            new_arr[j + (i * y)] = (*old)[j];
             j++;
         }
         i++;
     }
+    free(*old);
+    *old = NULL;
     return(new_arr);
 }
 
 t_petri_network *ft_extend_network(t_petri_network *network, int n)
 {
-    t_petri_network *new_matrice;
+    t_petri_network *new_network;
 
-    new_matrice = NULL;
-    if(!network || !ft_network_check(network, network->p))
+    new_network = malloc(sizeof(t_petri_network));
+    if(!new_network || !ft_network_check(network, network->p))
 		  return (NULL);
-    network->M0 = ft_extend_m0(network->M0 , network->p,n);
-    network->Mt = ft_extend_m0(network->Mp,network->t ,n);
-    network->Mp = ft_extend_m0(network->Mt, network->p ,n);
-    network->M_in = ft_extend_matrice(network->M_in, network->p,network->t, n);
-    network->M_out = ft_extend_matrice(network->M_out, network->p,network->t, n);
-    network->p = network->p * n;
-    network->t = network->t * n;
-    return(new_matrice);
+    new_network->M0 = ft_extend_m0(&network->M0 , network->p, n);
+    assert(network->M0 == NULL);
+    new_network->Mt = ft_extend_m0(&network->Mt,network->t ,n);
+    new_network->Mp = ft_extend_m0(&network->Mp, network->p ,n);
+    new_network->M_in = ft_extend_matrice(&network->M_in, network->p,network->t, n);
+    new_network->M_out = ft_extend_matrice(&network->M_out, network->p,network->t, n);
+    assert(network->M_out == NULL && network->M_in == NULL);
+    new_network->p = network->p * n;
+    new_network->t = network->t * n;
+    new_network->n = n;
+    ft_destroy_network(&network);
+    return(new_network);
 }
 
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher.c                                      :+:      :+:    :+:   */
+/*   thrd_philosophe.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/22 12:10:28 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 00:25:57 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,45 @@ void    ft_get_transition_set(int id, int trs[3])
     trs[1] = i + 1;
     trs[2] = i + 2;
 }
+void    ft_get_place_set(int id, int place[4])
+{
+    int i;
+    /* 
+        p 0 = 0 1 2 3
+        p 1 = 4 5 6 7
+        p 2 = 8 9 10 11
+    */
+    i = id * P;
+    place[0] = i;
+    place[1] = i + 1;
+    place[2] = i + 2;
+    place[3] = i + 3;
+}
 
-void *ft_clean_philosophe(t_philosophe **philosophes, int idx)
+void *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_network **network, pthread_mutex_t **forks ,int idx)
 {
     int i;
 
-    i = 0;
-    while (i < idx)
+    ft_destroy_mutext(&forks, N);
+    assert(forks == NULL);
+    ft_destroy_network(network);
+    if(*philosophes)
     {
-        free(philosophes[i]);
-        philosophes[i] = NULL;
-        i++;
+        i = 0;
+        while (i < idx)
+        {
+            (*philosophes)[i]->network = NULL;
+            free((*philosophes)[i]);
+            (*philosophes)[i] = NULL;
+            i++;
+        }
+        free(*philosophes);
+        *philosophes = NULL;
     }
-    free(philosophes);
     return(NULL);
 }
 
-t_philosophe **ft_create_philosophe(int n, pthread_mutex_t *fork, t_petri_network *network)
+t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_network *network)
 {
     t_philosophe **philosophes;
     int i;
@@ -94,12 +116,12 @@ t_philosophe **ft_create_philosophe(int n, pthread_mutex_t *fork, t_petri_networ
     {
         philosophes[i] = malloc(sizeof(t_philosophe));
         if(!philosophes[i])
-            return(ft_clean_philosophe(philosophes, i));
+            return(ft_kill_philosophes_and_network(&philosophes, &network, fork,i));
         philosophes[i]->id = i;
         philosophes[i]->fork = fork;
         philosophes[i]->network = network;
-        philosophes[i]->transitions_set[0] = 1;
         ft_get_transition_set(i, philosophes[i]->transitions_set);
+        ft_get_place_set(i ,philosophes[i]->places_set);
         i++;
     }
     return(philosophes);

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/22 12:09:58 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 01:16:30 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,36 @@
 
 void *ft_thread(void *p)
 {
-    t_philosophe *id;
-    int j;
+//     t_philosophe *id;
+//     int j;
 
-    j = 0;
-    id = (t_philosophe *)(p);
-    pthread_t tid = pthread_self();
-    printf("Thread id %p\n", tid);
+//     j = 0;
+//     id = (t_philosophe *)(p);
+//     pthread_t tid = pthread_self();
+//     printf("Thread id %p\n", tid);
    
-   // ft_print_petri_arr(id->network->M0, id->network->p, 0);
-    // if(id->id == 1)
-    // {
-        //     sleep(10);
-        //     ft_active_transition(id->network,0);
-        // }
-        // printf("philosophe dors ZzZZzZzZz\n");
-        // while (!ft_is_activable_transition(id->network, 1))
-        // {
-            // }
-            // if(id->id == 0)
-            // {
-    //     ft_active_transition(id->network,1);
-    //     printf("Philosophe %d Mange\n", id->id);
-    //     sleep(10);
-    // }
-    if(ft_active_transition(id->network,0, id->id) == 1)
-        printf("Philosophe %d Mange\n", id->id);
-    //ft_print_petri_arr(id->network->M0, id->network->p, 0);
-    pthread_exit(&j);
+//    // ft_print_petri_arr(id->network->M0, id->network->p, 0);
+//     // if(id->id == 1)
+//     // {
+//         //     sleep(10);
+//         //     ft_active_transition(id->network,0);
+//         // }
+//         // printf("philosophe dors ZzZZzZzZz\n");
+//         // while (!ft_is_activable_transition(id->network, 1))
+//         // {
+//             // }
+//             // if(id->id == 0)
+//             // {
+//     //     ft_active_transition(id->network,1);
+//     //     printf("Philosophe %d Mange\n", id->id);
+//     //     sleep(10);
+//     // }
+//     if(ft_active_transition(id->network,0, id->id) == 1)
+//         printf("Philosophe %d Mange\n", id->id);
+//     //ft_print_petri_arr(id->network->M0, id->network->p, 0);
+//     pthread_exit(&j);
+
+    return(p);
 }
 
 
@@ -79,10 +81,11 @@ int tst_thread_managment(void)
 {
     int	pt[3];
     int i;
+    t_philosophe **philosophes;
     pthread_t thread_1;
     pthread_t thread_2;
     t_petri_network *network;
-    pthread_mutex_t *fork;
+    pthread_mutex_t **fork;
     
 	char	*m0 = strdup("1 0 0 1"); 
 	char	*m_out = strdup("1 0 0 0 1 0 0 0 3 0 1 0");
@@ -96,12 +99,9 @@ int tst_thread_managment(void)
 	if(!network)
 		return(0);
     
-    
 	assert(network->M0 && network->M_in && network->M_out && network->Mp && network->Mt && network->p && network->t);
 	assert(ft_network_check(network,pt[0]));
-    
-    ft_extend_network(network, N);              // verifier l'extension pour 1.
-    
+    network =  ft_extend_network(network, N);              // verifier l'extension pour 1.
     assert(ft_plug_philosophe_together(network)== 1);
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
     ft_print_network(network);
@@ -110,46 +110,58 @@ int tst_thread_managment(void)
     {
         //printf(" voici i :%d\n", i);
         assert(fork);
-        int m = pthread_mutex_lock(&fork[i]);
+        int m = pthread_mutex_lock(fork[i]);
         //printf("return lock %d\n" , m);
         assert(m == 0);
         usleep(100000);
-        assert(pthread_mutex_unlock(&fork[i]) == 0);
+        assert(pthread_mutex_unlock(fork[i]) == 0);
         i++;
     }
     printf("\n");
 
-    t_philosophe **philosophes;
-
-
-    // create my first philosophe second philosophe
-    
-    
-
     philosophes = ft_create_philosophe(N,fork,network);
-    assert(philosophes);
-    assert(philosophes[1]->transitions_set[0] == 3 && philosophes[1]->transitions_set[1] == 4 && philosophes[1]->transitions_set[2] == 5);
-    printf("voici set %d and %d and %d\n", philosophes[1]->transitions_set[0], philosophes[1]->transitions_set[1], philosophes[1]->transitions_set[2]);
+    assert(philosophes && (*philosophes)->fork && (*philosophes)->network);
 
-    // ft_print_petri_arr(network->M0,network->p,0);
-    // ft_active_transition(network,5);
-    // ft_print_petri_arr(network->M0,network->p,0);
-    // ft_active_transition(network,1);
-    // ft_print_petri_arr(network->M0,network->p,0);
-    // ft_active_transition(network,2);
-    // ft_print_petri_arr(network->M0,network->p,0);
 
-    //create thread
-
-    pthread_create(&thread_1, NULL, ft_thread, &philosophes[0]);
-    pthread_create(&thread_2, NULL,ft_thread, &philosophes[1]);
+    /* display philosophe data: M0 state , transition set, id */
+    ft_display_philophes(philosophes);
+    
+    //philospher 0 activation transition 1
+    ft_active_transition(philosophes[0]->network, philosophes[0]->transitions_set[0], philosophes[0]->id);
+    ft_display_philophes(philosophes);
+    
+    //philospher 0 activation transition 2, recuperation des fouchettes.
+    ft_active_transition(philosophes[0]->network, philosophes[0]->transitions_set[1], philosophes[0]->id);
+    ft_display_philophes(philosophes);
+    
+    //philospher 4 activation SA transition 1: Fonctionne. il sort de sont sommeil.
+    ft_active_transition(philosophes[4]->network, philosophes[4]->transitions_set[0], philosophes[4]->id);
+    ft_display_philophes(philosophes);
+    
+    //philospher 4 tente d'aceder a la fouchette : Ne Fonctionne pas tans que philosopher 1 ne rend pas les fouchette.
+    ft_active_transition(philosophes[4]->network, philosophes[4]->transitions_set[1], philosophes[4]->id);
+    ft_display_philophes(philosophes);
+    
+    //philospher 1 activation transition 3, rend les  fouchettes.
+    ft_active_transition(philosophes[0]->network, philosophes[0]->transitions_set[2], philosophes[0]->id);
+    ft_display_philophes(philosophes);
+    
+    //philospher 4 tente d'aceder a la fouchette : Fonctionne car philosopher 2 a rendu les fouchettes.
+    ft_active_transition(philosophes[4]->network, philosophes[4]->transitions_set[1], philosophes[4]->id);
+    //philospher 4 active Sa troisieme transition et l'etat de M0 revient a l'etat initial.
+    ft_display_philophes(philosophes);
+    ft_active_transition(philosophes[4]->network, philosophes[4]->transitions_set[2], philosophes[4]->id);
+    ft_display_philophes(philosophes);
     
     
+
+    pthread_create(&thread_1, NULL, ft_thread, NULL);
+    pthread_create(&thread_2, NULL,ft_thread, NULL);
     
     pthread_join(thread_1,NULL);
     pthread_join(thread_2,NULL);
     
-    
+    ft_destroy_network(&network);
     TEST_SUCCES;
     return(1);
 }

@@ -6,12 +6,15 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/21 12:32:32 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 23:34:41 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TST_UNIT_H
 #define TST_UNIT_H
+
+
+
 
 #include "../srcs/petri_network/network/ptri_network.h"
 #include "../srcs/thread_manager/thrd_manager.h"
@@ -39,5 +42,6 @@ int tst_ft_create_petri_net(void);
 int tst_thread_managment(void);
 int tst_network_extend(void);
 int tst_petri_network(void);
+int tst_philosophes(void);
 
 #endif

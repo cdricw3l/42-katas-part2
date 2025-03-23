@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/22 09:53:04 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/22 23:23:26 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 #include "../utils/string_to_matrice/str_to_matrice.h"
 
 #define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
@@ -70,12 +71,18 @@ void                ft_print_petri_matrice(int **m, int p, int t, int mode);
 void                ft_print_petri_arr(int *arr, int len, int mode);
 void                ft_print_network(t_petri_network *network);
 int                 ft_network_check(t_petri_network *network, int p);
-int                 **ft_extend_matrice(int **old_matrice,int x, int y, int n);
 int                 *ft_create_arr_int(int n);
+
+//memory
 void                *ft_destroy_network(t_petri_network **network);
+void                *ft_destroy_matrice(int ***matrice, int p);
+
 int                 **ft_get_reachability_matrix(t_petri_network *network);
 void                 *ft_clean_reachability_matrix(int ***memory, int idx);
 t_petri_network     *ft_extend_network(t_petri_network *network, int n);
+int                 **ft_extend_matrice(int ***old_matrice,int x, int y, int n);
+
+//tansition
 int                 ft_is_activable_transition(t_petri_network *network, int t, int id);
 int                 ft_active_transition(t_petri_network *network, int t, int id);
 

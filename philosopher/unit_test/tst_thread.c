@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 03:31:15 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 03:33:29 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,17 +151,16 @@ int tst_thread_managment(void)
     pthread_t thread5;
   
     
-    pthread_create(&thread, NULL, ft_thread, philosophes[0]);
+    pthread_create(&thread, NULL, ft_thread, philosophes[5]);
     sleep(1);
     pthread_create(&thread2, NULL, ft_thread, philosophes[1]);
     sleep(1);
-    pthread_create(&thread3, NULL, ft_thread, philosophes[2]);
+    pthread_create(&thread3, NULL, ft_thread, philosophes[0]);
     sleep(1);
-    pthread_create(&thread4, NULL, ft_thread, philosophes[3]);
+    pthread_create(&thread4, NULL, ft_thread, philosophes[4]);
     sleep(1);
-    pthread_create(&thread5, NULL, ft_thread, philosophes[4]);
+    pthread_create(&thread5, NULL, ft_thread, philosophes[3]);
     
-    pthread_join(thread,NULL);
     
     ft_kill_philosophes_and_network(&philosophes, &network,fork, network->n);
     TEST_SUCCES;

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 02:04:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 02:52:59 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,23 @@
 
 void *ft_thread(void *p)
 {
-//     t_philosophe *id;
-//     int j;
+    t_philosophe *philo;
 
-//     j = 0;
-//     id = (t_philosophe *)(p);
-//     pthread_t tid = pthread_self();
-//     printf("Thread id %p\n", tid);
-   
-//    // ft_print_petri_arr(id->network->M0, id->network->p, 0);
-//     // if(id->id == 1)
-//     // {
-//         //     sleep(10);
-//         //     ft_active_transition(id->network,0);
-//         // }
-//         // printf("philosophe dors ZzZZzZzZz\n");
-//         // while (!ft_is_activable_transition(id->network, 1))
-//         // {
-//             // }
-//             // if(id->id == 0)
-//             // {
-//     //     ft_active_transition(id->network,1);
-//     //     printf("Philosophe %d Mange\n", id->id);
-//     //     sleep(10);
-//     // }
-//     if(ft_active_transition(id->network,0, id->id) == 1)
-//         printf("Philosophe %d Mange\n", id->id);
-//     //ft_print_petri_arr(id->network->M0, id->network->p, 0);
-//     pthread_exit(&j);
+    philo = (t_philosophe *)(p);
+    //pthread_t tid = pthread_self();
+    while (1)
+    {
+        ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
+        while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id))
+        {
+            printf("En attente de fork pour le philosophe  %d\n", philo->id);
+        }
+        ft_active_transition(philo->network,philo->transitions_set[1], philo->id);      
+        usleep(100000);
+        ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
+        usleep(100000);
+    }
+    
 
     return(p);
 }
@@ -82,8 +71,7 @@ int tst_thread_managment(void)
     int	pt[3];
     int i;
     t_philosophe **philosophes;
-    pthread_t thread_1;
-    pthread_t thread_2;
+   
     t_petri_network *network;
     pthread_mutex_t **fork;
     
@@ -156,12 +144,31 @@ int tst_thread_managment(void)
 
     ft_temporisation(45000);
     
-
-    pthread_create(&thread_1, NULL, ft_thread, NULL);
-    pthread_create(&thread_2, NULL,ft_thread, NULL);
+    pthread_t thread[N];
     
-    pthread_join(thread_1,NULL);
-    pthread_join(thread_2,NULL);
+    pthread_create(&thread[0], NULL, ft_thread, philosophes[0]);
+    int j = 1;
+    while (j < N)
+    {
+        if (j %2 == 0)
+            pthread_create(&thread[i], NULL, ft_thread, philosophes[j]);
+        j++;
+    }
+    j = 1;
+    while (j < N)
+    {
+        if (j % 2 != 0)
+            pthread_create(&thread[i], NULL, ft_thread, philosophes[j]);
+        j++;
+    }
+    
+    j = 0;
+    while (j < N)
+    {
+        pthread_join(thread[i],NULL);
+        j++;
+    }
+    //pthread_join(thread_2,NULL);
     
     ft_kill_philosophes_and_network(&philosophes, &network,fork, network->n);
     TEST_SUCCES;

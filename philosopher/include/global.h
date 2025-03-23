@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/22 23:36:32 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 02:53:54 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 #define P   4
 #define T   3
-#define N   5
+#define N   3
 
 int	*ft_init_and_check_argument(char **argv, int len);
 

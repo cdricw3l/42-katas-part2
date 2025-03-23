@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:51 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 01:06:05 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 02:25:48 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int ft_active_transition(t_petri_network *network, int t, int id)
     else
     {
         printf("\x1b[31m" "Transition %d non activable par le philosphe %d\n" "\x1b[0m", t, id);
+        return(-1);
     }
     ft_clean_reachability_matrix(&reachability,network->p);
     return(1);

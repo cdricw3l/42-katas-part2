@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 02:58:51 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 03:31:15 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 void *ft_thread(void *p)
 {
     t_philosophe *philo;
-    int h = 0;
     philo = (t_philosophe *)(p);
     //pthread_t tid = pthread_self();
-    while (h < 2)
+    while (1)
     {
         ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
+        usleep(10000);
         while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id))
         {
-            printf("En attente de fork pour le philosophe  %d\n", philo->id);
+            printf("En attente de fork pour le philosophe %d\n", philo->id);
+            //ft_print_petri_arr(philo->network->M0, philo->network->p, 0);
         }
         ft_active_transition(philo->network,philo->transitions_set[1], philo->id);      
-        usleep(100000);
+        usleep(10000);
         ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
-        usleep(100000);
-        h++;
+        usleep(10000);
     }
     
 
@@ -144,31 +144,24 @@ int tst_thread_managment(void)
     
 
     
-    pthread_t thread[N];
+    pthread_t thread;
+    pthread_t thread2;
+    pthread_t thread3;
+    pthread_t thread4;
+    pthread_t thread5;
+  
     
-    pthread_create(&thread[0], NULL, ft_thread, philosophes[0]);
-    int j = 1;
-    while (j < N)
-    {
-        if (j %2 == 0)
-            pthread_create(&thread[i], NULL, ft_thread, philosophes[j]);
-        j++;
-    }
-    j = 1;
-    while (j < N)
-    {
-        if (j % 2 != 0)
-            pthread_create(&thread[i], NULL, ft_thread, philosophes[j]);
-        j++;
-    }
+    pthread_create(&thread, NULL, ft_thread, philosophes[0]);
+    sleep(1);
+    pthread_create(&thread2, NULL, ft_thread, philosophes[1]);
+    sleep(1);
+    pthread_create(&thread3, NULL, ft_thread, philosophes[2]);
+    sleep(1);
+    pthread_create(&thread4, NULL, ft_thread, philosophes[3]);
+    sleep(1);
+    pthread_create(&thread5, NULL, ft_thread, philosophes[4]);
     
-    j = 0;
-    while (j < N)
-    {
-        pthread_join(thread[i],NULL);
-        j++;
-    }
-    //pthread_join(thread_2,NULL);
+    pthread_join(thread,NULL);
     
     ft_kill_philosophes_and_network(&philosophes, &network,fork, network->n);
     TEST_SUCCES;

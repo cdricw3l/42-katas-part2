@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:51 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 02:25:48 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 03:24:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int ft_is_activable_transition(t_petri_network *network, int t, int id)
             return(0);
         i++;
     }
-    printf( "\033[0;33m" "Transition: %d activable par le philosphe %d\n" "\x1b[0m",t, id);
+    (void)id;
+    //printf( "\033[0;33m" "Transition: %d activable par le philosphe %d\n" "\x1b[0m",t, id);
     return(1);
 }
 
@@ -50,10 +51,10 @@ int ft_active_transition(t_petri_network *network, int t, int id)
         printf( "\033[0;32m" "Transition: %d activé par le philosphe %d\n" "\x1b[0m",t, id);
         while (i < network->p)
         {
-            if(network->M0[i] + reachability[i][t] != network->M0[i])
+            if(reachability[i][t] != 0)
             {
                 network->M0[i] = network->M0[i] + reachability[i][t];
-                printf("modification de l'etat M0 a l'index %d par le philosophe %d\n", i, id);
+                //printf("modification de l'etat M0 a l'index %d par le philosophe %d\n", i, id);
             }
             i++;
         }

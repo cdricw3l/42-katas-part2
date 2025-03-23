@@ -1,0 +1,452 @@
+Initiating function test: test_atoi
+Function: test_atoi executed successfully.
+Initiating function test: test_isdigit
+Function: test_isdigit executed successfully.
+Initiating function test: test_memcpy
+Function: test_memcpy executed successfully.
+Initiating function test: test_ft_split
+Function: test_ft_split executed successfully.
+Initiating function test: test_ft_str_to_matrice
+[32m1 [0m[32m2 [0m[32m3 [0m 
+[32m4 [0m[32m5 [0m[32m6 [0m 
+[32m7 [0m[32m8 [0m[32m9 [0m 
+[32m1 [0m[32m2 [0m[32m3 [0m 
+
+Function: test_ft_str_to_matrice executed successfully.
+Initiating function test: tst_ft_create_petri_net
+
+[ P: 4 ]
+
+[32m1 [0m0 0 [32m1 [0m
+
+[ T: 3 ]
+
+0 0 0 
+
+[ matrice M 0 ]
+
+[32m1 [0m0 0 [32m1 [0m
+
+[ matrice M_out ]
+
+[32m1 [0m0 0  
+0 [32m1 [0m0  
+0 0 [32m3 [0m 
+0 [32m1 [0m0  
+
+
+[ matrice M_in ]
+
+[32m1 [0m0 0  
+0 [32m1 [0m0  
+0 0 [32m3 [0m 
+0 [32m1 [0m0  
+
+
+[32m1 [0m0 0  
+0 [32m1 [0m0  
+0 0 [32m3 [0m 
+
+
+[32m1 [0m0 0  
+0 0 [32m3 [0m 
+ERR
+Initiating function test: tst_ft_create_petri_net
+Initiating function test: tst_ft_create_petri_net
+
+[ P: 4 ]
+
+[32m1 [0m0 0 [32m1 [0m
+
+[ T: 3 ]
+
+0 0 0 
+
+[ matrice M 0 ]
+
+[32m1 [0m0 0 [32m1 [0m
+
+[ matrice M_out ]
+
+[32m1 [0m0 0  
+0 [32m1 [0m0  
+0 0 [32m3 [0m 
+0 [32m1 [0m0  
+
+
+[ matrice M_in ]
+
+[32m1 [0m0 0  
+0 [32m1 [0m0  
+0 0 [32m3 [0m 
+0 [32m1 [0m0  
+
+
+[32m1 [0m0 0  
+0 [32m1 [0m0  
+0 0 [32m3 [0m 
+
+
+[32m1 [0m0 0  
+0 0 [32m3 [0m 
+ERR
+Initiating function test: tst_ft_create_petri_net
+Initiating function test: tst_network_extend
+
+[ P: 12 ]
+
+[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m
+
+[ T: 9 ]
+
+0 0 0 0 0 0 0 0 0 
+
+[ matrice M 0 ]
+
+[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m
+
+[ matrice M_out ]
+
+[32m1 [0m0 0  0 0 0  0 0 0  
+0 [32m3 [0m0  0 0 0  0 0 0  
+0 0 [32m3 [0m 0 0 0  0 0 0  
+[32m1 [0m0 0  0 0 0  0 0 0  
+
+0 0 0  [32m1 [0m0 0  0 0 0  
+0 0 0  0 [32m3 [0m0  0 0 0  
+0 0 0  0 0 [32m3 [0m 0 0 0  
+0 0 0  [32m1 [0m0 0  0 0 0  
+
+0 0 0  0 0 0  [32m1 [0m0 0  
+0 0 0  0 0 0  0 [32m3 [0m0  
+0 0 0  0 0 0  0 0 [32m3 [0m 
+0 0 0  0 0 0  [32m1 [0m0 0  
+
+
+[ matrice M_in ]
+
+0 0 [32m1 [0m 0 0 0  0 0 0  
+[32m3 [0m0 0  0 0 0  0 0 0  
+0 [32m3 [0m0  0 0 0  0 0 0  
+0 0 [32m1 [0m 0 0 0  0 0 0  
+
+0 0 0  0 0 [32m1 [0m 0 0 0  
+0 0 0  [32m3 [0m0 0  0 0 0  
+0 0 0  0 [32m3 [0m0  0 0 0  
+0 0 0  0 0 [32m1 [0m 0 0 0  
+
+0 0 0  0 0 0  0 0 [32m1 [0m 
+0 0 0  0 0 0  [32m3 [0m0 0  
+0 0 0  0 0 0  0 [32m3 [0m0  
+0 0 0  0 0 0  0 0 [32m1 [0m 
+
+
+Function: tst_network_extend executed successfully.
+Initiating function test: tst_petri_math
+[0;33mTransition: 0 activable par le philosphe 0
+[0m[32m-1 [0m0 [32m1 [0m 
+[32m3 [0m[32m-3 [0m0  
+0 [32m3 [0m[32m-3 [0m 
+[32m-1 [0m0 [32m1 [0m 
+
+[0;33mTransition: 0 activable par le philosphe 0
+[0m[0;32mTransition: 0 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 1 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+
+[ P: 4 ]
+
+0 [32m3 [0m0 0 
+
+[ T: 3 ]
+
+0 0 0 
+
+[ matrice M 0 ]
+
+0 [32m3 [0m0 0 
+
+[ matrice M_out ]
+
+[32m1 [0m0 0  
+0 [32m3 [0m0  
+0 0 [32m3 [0m 
+[32m1 [0m0 0  
+
+
+[ matrice M_in ]
+
+0 0 [32m1 [0m 
+[32m3 [0m0 0  
+0 [32m3 [0m0  
+0 0 [32m1 [0m 
+
+
+Function: tst_petri_math executed successfully.
+Return lock 0
+Return lock 0
+Return lock 0
+Return lock 0
+Return lock 0
+voici id philo :  0
+voici set 0 and 1 and 2
+voici id philo :  1
+voici set 3 and 4 and 5
+voici id philo :  2
+voici set 6 and 7 and 8
+voici id philo :  3
+voici set 9 and 10 and 11
+voici id philo :  4
+voici set 12 and 13 and 14
+voici l'adresse du reseau 0x604000000f90, 0x606000000740
+voici l'adresse du reseau 0x0, 0x0
+
+[ P: 20 ]
+
+[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m
+
+[ T: 15 ]
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+[ matrice M 0 ]
+
+[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m[32m1 [0m0 0 [32m1 [0m
+
+[ matrice M_out ]
+
+[32m1 [0m0 0  0 0 0  0 0 0  0 0 0  0 0 0  
+0 [32m1 [0m0  0 0 0  0 0 0  0 0 0  0 0 0  
+0 0 [32m3 [0m 0 0 0  0 0 0  0 0 0  0 0 0  
+0 [32m1 [0m0  0 [32m1 [0m0  0 0 0  0 0 0  0 0 0  
+
+0 0 0  [32m1 [0m0 0  0 0 0  0 0 0  0 0 0  
+0 0 0  0 [32m1 [0m0  0 0 0  0 0 0  0 0 0  
+0 0 0  0 0 [32m3 [0m 0 0 0  0 0 0  0 0 0  
+0 0 0  0 [32m1 [0m0  0 [32m1 [0m0  0 0 0  0 0 0  
+
+0 0 0  0 0 0  [32m1 [0m0 0  0 0 0  0 0 0  
+0 0 0  0 0 0  0 [32m1 [0m0  0 0 0  0 0 0  
+0 0 0  0 0 0  0 0 [32m3 [0m 0 0 0  0 0 0  
+0 0 0  0 0 0  0 [32m1 [0m0  0 [32m1 [0m0  0 0 0  
+
+0 0 0  0 0 0  0 0 0  [32m1 [0m0 0  0 0 0  
+0 0 0  0 0 0  0 0 0  0 [32m1 [0m0  0 0 0  
+0 0 0  0 0 0  0 0 0  0 0 [32m3 [0m 0 0 0  
+0 0 0  0 0 0  0 0 0  0 [32m1 [0m0  0 [32m1 [0m0  
+
+0 0 0  0 0 0  0 0 0  0 0 0  [32m1 [0m0 0  
+0 0 0  0 0 0  0 0 0  0 0 0  0 [32m1 [0m0  
+0 0 0  0 0 0  0 0 0  0 0 0  0 0 [32m3 [0m 
+0 [32m1 [0m0  0 0 0  0 0 0  0 0 0  0 [32m1 [0m0  
+
+
+[ matrice M_in ]
+
+0 0 [32m1 [0m 0 0 0  0 0 0  0 0 0  0 0 0  
+[32m1 [0m0 0  0 0 0  0 0 0  0 0 0  0 0 0  
+0 [32m3 [0m0  0 0 0  0 0 0  0 0 0  0 0 0  
+0 0 [32m1 [0m 0 0 [32m1 [0m 0 0 0  0 0 0  0 0 0  
+
+0 0 0  0 0 [32m1 [0m 0 0 0  0 0 0  0 0 0  
+0 0 0  [32m1 [0m0 0  0 0 0  0 0 0  0 0 0  
+0 0 0  0 [32m3 [0m0  0 0 0  0 0 0  0 0 0  
+0 0 0  0 0 [32m1 [0m 0 0 [32m1 [0m 0 0 0  0 0 0  
+
+0 0 0  0 0 0  0 0 [32m1 [0m 0 0 0  0 0 0  
+0 0 0  0 0 0  [32m1 [0m0 0  0 0 0  0 0 0  
+0 0 0  0 0 0  0 [32m3 [0m0  0 0 0  0 0 0  
+0 0 0  0 0 0  0 0 [32m1 [0m 0 0 [32m1 [0m 0 0 0  
+
+0 0 0  0 0 0  0 0 0  0 0 [32m1 [0m 0 0 0  
+0 0 0  0 0 0  0 0 0  [32m1 [0m0 0  0 0 0  
+0 0 0  0 0 0  0 0 0  0 [32m3 [0m0  0 0 0  
+0 0 0  0 0 0  0 0 0  0 0 [32m1 [0m 0 0 [32m1 [0m 
+
+0 0 0  0 0 0  0 0 0  0 0 0  0 0 [32m1 [0m 
+0 0 0  0 0 0  0 0 0  0 0 0  [32m1 [0m0 0  
+0 0 0  0 0 0  0 0 0  0 0 0  0 [32m3 [0m0  
+0 0 [32m1 [0m 0 0 0  0 0 0  0 0 0  0 0 [32m1 [0m 
+
+
+
+[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 1 0 0 1 
+
+[0;33mTransition: 0 activable par le philosphe 0
+[0m[0;32mTransition: 0 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 1 par le philosophe 0
+[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 0 1 0 1 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 1 0 0 1 
+
+[0;33mTransition: 1 activable par le philosphe 0
+[0m[0;32mTransition: 1 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 1 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 0 0 3 0 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 1 0 0 0 
+
+[0;33mTransition: 12 activable par le philosphe 4
+[0m[0;32mTransition: 12 activé par le philosphe 4
+[0mmodification de l'etat M0 a l'index 16 par le philosophe 4
+modification de l'etat M0 a l'index 17 par le philosophe 4
+[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 0 0 3 0 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 0 1 0 0 
+
+[31mTransition 13 non activable par le philosphe 4
+[0m[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 0 0 3 0 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 0 1 0 0 
+
+[0;33mTransition: 2 activable par le philosphe 0
+[0m[0;32mTransition: 2 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 0 1 0 1 
+
+[0;33mTransition: 13 activable par le philosphe 4
+[0m[0;32mTransition: 13 activé par le philosphe 4
+[0mmodification de l'etat M0 a l'index 15 par le philosophe 4
+modification de l'etat M0 a l'index 17 par le philosophe 4
+modification de l'etat M0 a l'index 18 par le philosophe 4
+modification de l'etat M0 a l'index 19 par le philosophe 4
+[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 0 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 0 0 3 0 
+
+[0;33mTransition: 14 activable par le philosphe 4
+[0m[0;32mTransition: 14 activé par le philosphe 4
+[0mmodification de l'etat M0 a l'index 15 par le philosophe 4
+modification de l'etat M0 a l'index 16 par le philosophe 4
+modification de l'etat M0 a l'index 18 par le philosophe 4
+modification de l'etat M0 a l'index 19 par le philosophe 4
+[ Philosophe id ]  0	[ Transitions set  ] : 0 1 2 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  1	[ Transitions set  ] : 3 4 5 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  2	[ Transitions set  ] : 6 7 8 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  3	[ Transitions set  ] : 9 10 11 		[ State ] : 1 0 0 1 
+[ Philosophe id ]  4	[ Transitions set  ] : 12 13 14 		[ State ] : 1 0 0 1 
+
+[0;33mTransition: 0 activable par le philosphe 0
+[0m[0;32mTransition: 0 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 1 par le philosophe 0
+[0;33mTransition: 1 activable par le philosphe 0
+[0m[0;33mTransition: 1 activable par le philosphe 0
+[0m[0;32mTransition: 1 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 1 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[0;33mTransition: 2 activable par le philosphe 0
+[0m[0;32mTransition: 2 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[0;33mTransition: 0 activable par le philosphe 0
+[0m[0;32mTransition: 0 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 1 par le philosophe 0
+[0;33mTransition: 1 activable par le philosphe 0
+[0m[0;33mTransition: 1 activable par le philosphe 0
+[0m[0;32mTransition: 1 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 1 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[0;33mTransition: 2 activable par le philosphe 0
+[0m[0;32mTransition: 2 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[0;33mTransition: 3 activable par le philosphe 1
+[0m[0;32mTransition: 3 activé par le philosphe 1
+[0mmodification de l'etat M0 a l'index 4 par le philosophe 1
+modification de l'etat M0 a l'index 5 par le philosophe 1
+[0;33mTransition: 4 activable par le philosphe 1
+[0m[0;33mTransition: 4 activable par le philosphe 1
+[0m[0;32mTransition: 4 activé par le philosphe 1
+[0mmodification de l'etat M0 a l'index 3 par le philosophe 1
+modification de l'etat M0 a l'index 5 par le philosophe 1
+modification de l'etat M0 a l'index 6 par le philosophe 1
+modification de l'etat M0 a l'index 7 par le philosophe 1
+[0;33mTransition: 5 activable par le philosphe 1
+[0m[0;32mTransition: 5 activé par le philosphe 1
+[0mmodification de l'etat M0 a l'index 3 par le philosophe 1
+modification de l'etat M0 a l'index 4 par le philosophe 1
+modification de l'etat M0 a l'index 6 par le philosophe 1
+modification de l'etat M0 a l'index 7 par le philosophe 1
+[0;33mTransition: 0 activable par le philosphe 0
+[0m[0;32mTransition: 0 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 1 par le philosophe 0
+[0;33mTransition: 1 activable par le philosphe 0
+[0m[0;33mTransition: 1 activable par le philosphe 0
+[0m[0;32mTransition: 1 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 1 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[0;33mTransition: 2 activable par le philosphe 0
+[0m[0;32mTransition: 2 activé par le philosphe 0
+[0mmodification de l'etat M0 a l'index 0 par le philosophe 0
+modification de l'etat M0 a l'index 2 par le philosophe 0
+modification de l'etat M0 a l'index 3 par le philosophe 0
+modification de l'etat M0 a l'index 19 par le philosophe 0
+[0;33mTransition: 3 activable par le philosphe 1
+[0m[0;32mTransition: 3 activé par le philosphe 1
+[0mmodification de l'etat M0 a l'index 4 par le philosophe 1
+modification de l'etat M0 a l'index 5 par le philosophe 1
+[0;33mTransition: 4 activable par le philosphe 1
+[0m[0;33mTransition: 4 activable par le philosphe 1
+[0m[0;32mTransition: 4 activé par le philosphe 1
+[0mmodification de l'etat M0 a l'index 3 par le philosophe 1
+modification de l'etat M0 a l'index 5 par le philosophe 1
+modification de l'etat M0 a l'index 6 par le philosophe 1
+modification de l'etat M0 a l'index 7 par le philosophe 1
+[0;33mTransition: 5 activable par le philosphe 1
+[0m[0;32mTransition: 5 activé par le philosphe 1
+[0mmodification de l'etat M0 a l'index 3 par le philosophe 1
+modification de l'etat M0 a l'index 4 par le philosophe 1
+modification de l'etat M0 a l'index 6 par le philosophe 1
+modification de l'etat M0 a l'index 7 par le philosophe 1
+[0;33mTransition: 6 activable par le philosphe 2
+[0m[0;32mTransition: 6 activé par le philosphe 2
+[0mmodification de l'etat M0 a l'index 8 par le philosophe 2
+modification de l'etat M0 a l'index 9 par le philosophe 2
+[0;33mTransition: 7 activable par le philosphe 2
+[0m[0;33mTransition: 7 activable par le philosphe 2
+[0m[0;32mTransition: 7 activé par le philosphe 2
+[0mmodification de l'etat M0 a l'index 7 par le philosophe 2
+modification de l'etat M0 a l'index 9 par le philosophe 2
+modification de l'etat M0 a l'index 10 par le philosophe 2
+modification de l'etat M0 a l'index 11 par le philosophe 2
+[0;33mTransition: 8 activable par le philosphe 2
+[0m[0;32mTransition: 8 activé 

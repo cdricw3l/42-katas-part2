@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/23 19:41:42 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 21:39:34 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,31 @@
 #include "../../include/global.h"
 
 
-#define alive 1
-#define dead 1
+#define ALIVE 1
+#define DEAD 0
+
+typedef struct s_tempo_data
+{
+    int tte;
+    int tts;
+    int ttd;
+    int cycle;
+    
+} t_tempo_data;
 
 typedef struct s_philosophe
 {
     int             id;
+    int             state;
     int             places_set[4];
     int             transitions_set[3];
+    t_tempo_data    tempo;
     pthread_mutex_t **fork;
     t_petri_network *network;
     
 }   t_philosophe;
 
-t_philosophe        **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_network *network);
+t_philosophe        **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_network *network, t_tempo_data tempo);
 void                *ft_clean_philosophe(t_philosophe **philosophes, int idx);
 void                ft_get_transition_set(int id, int trs[3]);
 void                ft_plug_philosophe_together(t_petri_network *network);
@@ -49,5 +60,7 @@ void                ft_display_philophes(t_philosophe **philosophes);
 void                ft_print_places_set(t_philosophe *philosophe);
 void                ft_print_philosophe_state(t_philosophe *philosophe);
 void                ft_print_transitions_set(t_philosophe *philosophe);
+
+int                 run_simulation(t_philosophe **philosophes, int n);
 
 #endif

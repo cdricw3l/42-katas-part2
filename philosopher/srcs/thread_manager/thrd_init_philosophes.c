@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thrd_philosophe.c                                  :+:      :+:    :+:   */
+/*   thrd_init_philosophes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 19:46:31 by cw3l             ###   ########.fr       */
+/*   Created: 2025/03/23 20:30:55 by cw3l              #+#    #+#             */
+/*   Updated: 2025/03/23 21:29:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thrd_manager.h"
-
-#define TT_DIE 1
-#define TT_EAT 2
-#define TT_SPLEEP 3
-
 
 void ft_plug_philosophe_together(t_petri_network *network)
 {
     int i;
     int j;
     
-    if(!network)
+    if(!network || network->n == 1)
+    {
+        printf("return\n");
         return ;
+    }
     //plug the first to th last on W-;
     network->M_out[network->p - 1][1] = 1;
     //plug the first to th last on W+;
-    network->M_in[network->p - 1][network->t / N - 1] = 1;
+    network->M_in[network->p - 1][network->t / network->n - 1] = 1;
     // --- > plug the other philosophe on W-
     i = network->p / network->n - 1;
     j = network->t / network->n + 1;
@@ -40,17 +38,19 @@ void ft_plug_philosophe_together(t_petri_network *network)
     i = network->p / network->n - 1;
     j = network->t / network->n + 2;
     // --- > plug the other philosophe on W+
-    while (i < (N * P) - 1)            
+    while (i < (network->n * (network->p / network->n)) - 1)            
     {
         network->M_in[i][j] = 1;
         i += network->p / network->n;
         j += network->t / network->n;
     }
-   /*  printf("matrice pre: \n\n");
+    DEBUGG;
+    printf("matrice pre: \n\n");
     ft_print_petri_matrice(network->M_out,network->p,network->t,1); 
     printf("matrice post: \n\n");
     ft_print_petri_matrice(network->M_in,network->p,network->t,1);
-    ft_print_petri_arr(network->M0,network->p, 0); */
+    ft_print_petri_arr(network->M0,network->p, 0);
+
 }
 
 void    ft_get_transition_set(int id, int trs[3])
@@ -81,30 +81,7 @@ void    ft_get_place_set(int id, int place[4])
     place[3] = i + 3;
 }
 
-void *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_network **network, pthread_mutex_t **forks ,int idx)
-{
-    int i;
-
-    ft_destroy_mutext(&forks, N);
-    assert(forks == NULL);
-    ft_destroy_network(network);
-    if(*philosophes)
-    {
-        i = 0;
-        while (i < idx)
-        {
-            (*philosophes)[i]->network = NULL;
-            free((*philosophes)[i]);
-            (*philosophes)[i] = NULL;
-            i++;
-        }
-        free(*philosophes);
-        *philosophes = NULL;
-    }
-    return(NULL);
-}
-
-t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_network *network)
+t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_network *network, t_tempo_data tempo)
 {
     t_philosophe **philosophes;
     int i;
@@ -113,7 +90,7 @@ t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_netwo
     if(!philosophes)
         return(NULL);
     i = 0;
-    while (i < N)
+    while (i < network->n)
     {
         philosophes[i] = malloc(sizeof(t_philosophe));
         if(!philosophes[i])
@@ -121,9 +98,12 @@ t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_netwo
         philosophes[i]->id = i;
         philosophes[i]->fork = fork;
         philosophes[i]->network = network;
+        philosophes[i]->state = DEAD;
+        philosophes[i]->tempo = tempo;
         ft_get_transition_set(i, philosophes[i]->transitions_set);
         ft_get_place_set(i ,philosophes[i]->places_set);
         i++;
     }
+
     return(philosophes);
 }

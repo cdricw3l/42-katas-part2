@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/23 18:21:33 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 21:55:59 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ int                 ft_active_transition(t_petri_network *network, int t, int id
 
 // tempo
 int ft_temporisation(int ms, int id, int mode);
+int get_current_time(void);
+float time_diff(struct timeval *start, struct timeval *end) ;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 18:27:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 20:56:01 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int tst_thread_managment(void)
 	assert(ft_network_check(network,pt[0]));
     
     network =  ft_extend_network(network, N);              // verifier l'extension pour 1.
-    assert(ft_plug_philosophe_together(network)== 1);
+    ft_plug_philosophe_together(network);
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
     ft_print_network(network);
     

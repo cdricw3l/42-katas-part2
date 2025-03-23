@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 01:16:30 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 02:04:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,8 @@ int tst_thread_managment(void)
     ft_active_transition(philosophes[4]->network, philosophes[4]->transitions_set[2], philosophes[4]->id);
     ft_display_philophes(philosophes);
     
+
+    ft_temporisation(45000);
     
 
     pthread_create(&thread_1, NULL, ft_thread, NULL);
@@ -161,7 +163,7 @@ int tst_thread_managment(void)
     pthread_join(thread_1,NULL);
     pthread_join(thread_2,NULL);
     
-    ft_destroy_network(&network);
+    ft_kill_philosophes_and_network(&philosophes, &network,fork, network->n);
     TEST_SUCCES;
     return(1);
 }

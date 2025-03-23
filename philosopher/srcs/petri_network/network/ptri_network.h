@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/22 23:23:26 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 01:29:02 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+#include <sys/time.h>
 #include "../utils/string_to_matrice/str_to_matrice.h"
 
 #define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
@@ -86,4 +87,6 @@ int                 **ft_extend_matrice(int ***old_matrice,int x, int y, int n);
 int                 ft_is_activable_transition(t_petri_network *network, int t, int id);
 int                 ft_active_transition(t_petri_network *network, int t, int id);
 
+// tempo
+int                 ft_temporisation(int ms);
 #endif

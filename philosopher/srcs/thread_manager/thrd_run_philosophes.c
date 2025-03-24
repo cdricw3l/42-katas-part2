@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_run_philosophes.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 23:36:20 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/24 10:08:01 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void *ft_thread(void *p)
     gettimeofday(&s, NULL);
     
     philo = (t_philosophe *)(p);
-    philo->state = ALIVE;
+    
     //pthread_t tid = pthread_self();
     start = get_current_time();
 
-    while (1 && philo->state != DEAD)
+    while (1 && philo->state[philo->id] != DEAD)
     {
         ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
         while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id) && philo->state != DEAD)
@@ -61,6 +61,7 @@ int run_simulation(t_philosophe **philosophes, int n)
     i = 0;
     while (i < n)
     {
+        philosophes[i]->state[i] = ALIVE;
         pthread_create(&threads[i],NULL,ft_thread, philosophes[i]);
         i++;
     }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_init_philosophes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 20:30:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/24 07:45:18 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/24 10:06:18 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,15 @@ void    ft_get_place_set(int id, int place[4])
 int *ft_get_state_arr(int n)
 {
     int i;
-    int arr[n];
+    int *arr;
+
+    arr = malloc(sizeof(int) * n);
+    if(!arr)
+        return(NULL);
     i = 0;
     while (i < n)
     {
-        arr[i] = 1;
+        arr[i] = 0;
         i++;
     }
     return(arr);
@@ -97,11 +101,13 @@ int *ft_get_state_arr(int n)
 t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_network *network, t_tempo_data tempo)
 {
     t_philosophe **philosophes;
+    int *state;
     int i;
 
     philosophes = malloc(sizeof(t_philosophe *) * n);
     if(!philosophes)
         return(NULL);
+    state =  ft_get_state_arr(n);
     i = 0;
     while (i < network->n)
     {
@@ -113,6 +119,7 @@ t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_netwo
         philosophes[i]->network = network;
         philosophes[i]->state = ft_get_state_arr(network->n);
         philosophes[i]->tempo = tempo;
+        philosophes[i]->state = state;
         ft_get_transition_set(i, philosophes[i]->transitions_set);
         ft_get_place_set(i ,philosophes[i]->places_set);
         i++;

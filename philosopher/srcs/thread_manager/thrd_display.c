@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 23:43:12 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 20:22:54 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/24 10:03:32 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void ft_display_philophes(t_philosophe **philosophes)
     while (i < philosophes[0]->network->n)
     {
         printf("\n[Philosophe id]: %d\n", philosophes[i]->id);
-        if(philosophes[i]->state == ALIVE)
+        if(philosophes[i]->state[philosophes[i]->id] == ALIVE)
             printf("[ State ]: Vivant\n");
-        else if(philosophes[i]->state == DEAD)
+        else if(philosophes[i]->state[philosophes[i]->id] == DEAD)
             printf("[ State ]: Mort\n");
         printf("[Transitions set] : ");
         ft_print_transitions_set(philosophes[i]);

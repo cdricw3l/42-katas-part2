@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ptri_tempo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 08:12:06 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/23 22:05:57 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/24 10:02:07 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,18 @@ int ft_temporisation(int ms, int id, int mode)
         usleep(500);
     
     gettimeofday(&end, NULL);
+    
     if(mode == 0)
+    {
         printf("elapsed time a dormir par le philosophe : %d :  %f\n", id,time_diff(&s, &end));
-    if(mode == 1)
+
+    } 
+    else if(mode == 1)
+    {
+
         printf("elapsed time a manger pour le philosophe : %d :  %f\n", id,time_diff(&s, &end));
+    }
+        
 	return (0);
 
 }

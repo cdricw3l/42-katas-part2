@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 22:43:02 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 23:36:20 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void *ft_thread(void *p)
 int run_simulation(t_philosophe **philosophes, int n)
 {
     pthread_t threads[n];
-
     int i;
 
     i = 0;

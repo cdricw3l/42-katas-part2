@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 20:30:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 21:29:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/24 07:45:18 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,19 @@ void    ft_get_place_set(int id, int place[4])
     place[3] = i + 3;
 }
 
+int *ft_get_state_arr(int n)
+{
+    int i;
+    int arr[n];
+    i = 0;
+    while (i < n)
+    {
+        arr[i] = 1;
+        i++;
+    }
+    return(arr);
+}
+
 t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_network *network, t_tempo_data tempo)
 {
     t_philosophe **philosophes;
@@ -98,12 +111,11 @@ t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_netwo
         philosophes[i]->id = i;
         philosophes[i]->fork = fork;
         philosophes[i]->network = network;
-        philosophes[i]->state = DEAD;
+        philosophes[i]->state = ft_get_state_arr(network->n);
         philosophes[i]->tempo = tempo;
         ft_get_transition_set(i, philosophes[i]->transitions_set);
         ft_get_place_set(i ,philosophes[i]->places_set);
         i++;
     }
-
     return(philosophes);
 }

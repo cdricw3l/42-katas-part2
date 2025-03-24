@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/23 21:39:34 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/23 23:37:37 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_tempo_data
 typedef struct s_philosophe
 {
     int             id;
-    int             state;
+    int             *state;
     int             places_set[4];
     int             transitions_set[3];
     t_tempo_data    tempo;

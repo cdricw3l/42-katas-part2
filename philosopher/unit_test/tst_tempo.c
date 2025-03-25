@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 07:55:14 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/25 21:47:31 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 21:58:09 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,15 @@ int get_fork_number(t_philosophe *philosophe, int num_fork)
     {
         printf("voici %d\n", philosophe->id);
         //+ (philosophe->network->p - 1 / philosophe->network->n
-        fork = id + (id  * ((philosophe->network->p  / philosophe->network->n) - 1)) + ((philosophe->network->p  / philosophe->network->n) - 1);
+        fork = philosophe->id;
         //fork = id + (id *  (philosophe->network->p - 1 / philosophe->network->n));
+    }
+    else if(fork == 2)
+    {
+        if(philosophe->id == 0)
+            fork = philosophe->network->n - 1;
+        else
+            fork = philosophe->id - 1;
     }
     (void)id;
     return(fork);

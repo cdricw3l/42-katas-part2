@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_init_philosophes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 20:30:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/24 10:06:18 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/25 07:58:11 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_netwo
         philosophes[i]->id = i;
         philosophes[i]->fork = fork;
         philosophes[i]->network = network;
-        philosophes[i]->state = ft_get_state_arr(network->n);
         philosophes[i]->tempo = tempo;
         philosophes[i]->state = state;
         ft_get_transition_set(i, philosophes[i]->transitions_set);

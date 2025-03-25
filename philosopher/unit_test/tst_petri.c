@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/22 23:28:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 07:37:39 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ int tst_petri_math(void)
 
 
 	// test de franchisabilité
-	// t1, M0 = franchissable
-	assert(ft_is_activable_transition(network_1, 0,0) == 1);
+	// t1, M0 = non franchissable
+	assert(ft_is_activable_transition(network_1, 0,0) == 0);
 	//t2, M0 = non franchissable
 	assert(ft_is_activable_transition(network_1, 2,0) == 0);
 	

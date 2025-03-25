@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/22 23:34:41 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 07:55:58 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int tst_thread_managment(void);
 int tst_network_extend(void);
 int tst_petri_network(void);
 int tst_philosophes(void);
+int tst_tempo(void);
 
 #endif

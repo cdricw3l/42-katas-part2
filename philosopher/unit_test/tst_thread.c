@@ -6,14 +6,14 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:44:36 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/23 20:56:01 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 07:55:59 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tst_unit.h"
 #include <sys/types.h>
 
-void *ft_thread(void *p)
+void *ft_thread_tst(void *p)
 {
     int i;
     t_philosophe *philo;
@@ -92,7 +92,7 @@ int tst_thread_managment(void)
 	
 	pt[0] = P;
 	pt[1] = T;
-	pt[2] = N;
+	pt[2] = 5;
     i = 0;
 	network = ft_create_petri_net(pt,m0,m_in,m_out);
 	if(!network)
@@ -101,14 +101,14 @@ int tst_thread_managment(void)
 	assert(network->M0 && network->M_in && network->M_out && network->Mp && network->Mt && network->p && network->t);
 	assert(ft_network_check(network,pt[0]));
     
-    network =  ft_extend_network(network, N);              // verifier l'extension pour 1.
+    network =  ft_extend_network(network, pt[2]);              // verifier l'extension pour 1.
     ft_plug_philosophe_together(network);
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
     ft_print_network(network);
     
     
-    fork = ft_create_arr_mutext(N);
-    while (i < N)
+    fork = ft_create_arr_mutext(pt[2]);
+    while (i < pt[2])
     {
         //printf(" voici i :%d\n", i);
         assert(fork);
@@ -121,10 +121,18 @@ int tst_thread_managment(void)
     }
     printf("\n");
 
-    philosophes = ft_create_philosophe(N,fork,network);
+    t_tempo_data tempo;
+
+    tempo.ttd = 800;
+    tempo.tte = 200;
+    tempo.tts = 200;
+
+    assert(pt[2] == 5);
+    philosophes = ft_create_philosophe(pt[2],fork,network, tempo);
     assert(philosophes && (*philosophes)->fork && (*philosophes)->network);
 
-
+    printf("voici network %d\n", network->n);
+    assert(philosophes[0]->network->n == 5);
     /* display philosophe data: M0 state , transition set, id */
     ft_display_philophes(philosophes);
     
@@ -163,15 +171,15 @@ int tst_thread_managment(void)
     pthread_t thread5;
   
     
-    pthread_create(&thread, NULL, ft_thread, philosophes[0]);
+    pthread_create(&thread, NULL, ft_thread_tst, philosophes[0]);
     sleep(1);
-    pthread_create(&thread2, NULL, ft_thread, philosophes[1]);
+    pthread_create(&thread2, NULL, ft_thread_tst, philosophes[1]);
     sleep(1);
-    pthread_create(&thread3, NULL, ft_thread, philosophes[2]);
+    pthread_create(&thread3, NULL, ft_thread_tst, philosophes[2]);
     sleep(1);
-    pthread_create(&thread4, NULL, ft_thread, philosophes[3]);
+    pthread_create(&thread4, NULL, ft_thread_tst, philosophes[3]);
     sleep(1);
-    pthread_create(&thread5, NULL, ft_thread, philosophes[4]);
+    pthread_create(&thread5, NULL, ft_thread_tst, philosophes[4]);
     
     pthread_join(thread,NULL);
     pthread_join(thread4,NULL);

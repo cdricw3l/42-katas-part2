@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 12:35:34 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/22 23:41:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 07:41:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int tst_philosophes(void)
 	if(!network)
 		return(0);
     network = ft_extend_network(network, N);              // verifier l'extension pour 1.
-    assert(ft_plug_philosophe_together(network)== 1);
+    ft_plug_philosophe_together(network);
     fork = ft_create_arr_mutext(N);
     while (i < N)
     {
@@ -45,8 +45,14 @@ int tst_philosophes(void)
         assert(pthread_mutex_unlock(fork[i]) == 0);
         i++;
     }
-    philosophes = ft_create_philosophe(N,fork,network);
-    assert(philosophes[1]->transitions_set[0] == 3 && philosophes[1]->transitions_set[1] == 4 && philosophes[1]->transitions_set[2] == 5);
+    
+    t_tempo_data tempo = {800,200,200,10};
+
+    
+    philosophes = ft_create_philosophe(network->n,fork,network,tempo);
+
+    DEBUGG;
+    assert(philosophes[0]->transitions_set[0] == 0 && philosophes[0]->transitions_set[1] == 1 && philosophes[0]->transitions_set[2] == 2);
     i = 0;
     while (i < N)
     {

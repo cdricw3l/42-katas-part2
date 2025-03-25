@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/23 23:33:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 07:25:26 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,23 +96,23 @@ t_philosophe **ft_create_network(int **args)
 	return(philosophes);
 }
 
-int	main(int argc, char **argv)
-{
+// int	main(int argc, char **argv)
+// {
 	
-	int				*arr_args;
-	t_philosophe	**philosophes;
+// 	int				*arr_args;
+// 	t_philosophe	**philosophes;
 	
-	if (argc < 5 || argc > 6)
-		return(1);
-	arr_args = ft_init_and_check_argument(&argv[1], argc - 1);
-	if (!arr_args)
-		return (1);
-	philosophes = ft_create_network(&arr_args);
-	if(!philosophes)
-		printf("Erreur creation des philosophes");
-	else
-		run_simulation(philosophes, philosophes[0]->network->n);
-	if(arr_args)
-		free(arr_args);
-	return(0);
-}
+// 	if (argc < 5 || argc > 6)
+// 		return(1);
+// 	arr_args = ft_init_and_check_argument(&argv[1], argc - 1);
+// 	if (!arr_args)
+// 		return (1);
+// 	philosophes = ft_create_network(&arr_args);
+// 	if(!philosophes)
+// 		printf("Erreur creation des philosophes");
+// 	else
+// 		run_simulation(philosophes, philosophes[0]->network->n);
+// 	if(arr_args)
+// 		free(arr_args);
+// 	return(0);
+// }

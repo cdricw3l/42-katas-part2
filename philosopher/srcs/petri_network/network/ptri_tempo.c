@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ptri_tempo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 08:12:06 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/24 10:02:07 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/25 09:46:38 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int ft_temporisation(int ms, int id, int mode)
 
     gettimeofday(&s, NULL);
 	start = get_current_time();
-    printf("start %d\n",start);
+    //printf("start %d\n",start);
     
 	while ((get_current_time() - start) < ms)
         usleep(500);
@@ -45,15 +45,15 @@ int ft_temporisation(int ms, int id, int mode)
     
     if(mode == 0)
     {
-        printf("elapsed time a dormir par le philosophe : %d :  %f\n", id,time_diff(&s, &end));
+       // printf("elapsed time a dormir par le philosophe : %d :  %f\n", id,time_diff(&s, &end));
 
     } 
     else if(mode == 1)
     {
 
-        printf("elapsed time a manger pour le philosophe : %d :  %f\n", id,time_diff(&s, &end));
+        //printf("elapsed time a manger pour le philosophe : %d :  %f\n", id,time_diff(&s, &end));
     }
-        
+     (void)id;   
 	return (0);
 
 }

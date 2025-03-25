@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_run_philosophes.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 00:23:43 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/24 10:08:01 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/25 22:05:59 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thrd_manager.h"
+
+int ft_are_all_alive(t_philosophe *philosophe)
+{
+    int i;
+
+    i = 0;
+    while (i < philosophe->network->n)
+    {
+        if(philosophe->state[i] == 1)
+            return(0);
+        i++;
+    }
+    return(i);
+}
+
+
 
 void *ft_thread(void *p)
 {

@@ -6,50 +6,12 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 07:55:14 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/25 21:58:09 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 22:06:15 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tst_unit.h"
 
-int ft_are_all_alive(t_philosophe *philosophe)
-{
-    int i;
-
-    i = 0;
-    while (i < philosophe->network->n)
-    {
-        if(philosophe->state[i] == 1)
-            return(0);
-        i++;
-    }
-    return(i);
-}
-
-int get_fork_number(t_philosophe *philosophe, int num_fork)
-{
-    int id;
-    int fork;
-    
-    id = philosophe->id;
-    fork = 0;
-    if(num_fork == 1)
-    {
-        printf("voici %d\n", philosophe->id);
-        //+ (philosophe->network->p - 1 / philosophe->network->n
-        fork = philosophe->id;
-        //fork = id + (id *  (philosophe->network->p - 1 / philosophe->network->n));
-    }
-    else if(fork == 2)
-    {
-        if(philosophe->id == 0)
-            fork = philosophe->network->n - 1;
-        else
-            fork = philosophe->id - 1;
-    }
-    (void)id;
-    return(fork);
-}
 
 void *ft_thread_tst_2(void *p)
 {
@@ -134,10 +96,15 @@ int tst_tempo(void)
     philosophes[0]->state[philosophes[0]->id] = 0;
 
     printf("%d\n", get_fork_number(philosophes[0], 1));
+    printf("%d\n", get_fork_number(philosophes[0], 2));
     printf("%d\n", get_fork_number(philosophes[1], 1));
+    printf("%d\n", get_fork_number(philosophes[1], 2));
     printf("%d\n", get_fork_number(philosophes[2], 1));
+    printf("%d\n", get_fork_number(philosophes[2], 2));
     printf("%d\n", get_fork_number(philosophes[3], 1));
+    printf("%d\n", get_fork_number(philosophes[3], 2));
     printf("%d\n", get_fork_number(philosophes[4], 1));
+    printf("%d\n", get_fork_number(philosophes[4], 2));
 
     // pthread_t thread1;
     // pthread_t thread2;

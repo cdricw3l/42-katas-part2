@@ -6,12 +6,30 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:14:22 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/22 22:24:01 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 22:06:02 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thrd_manager.h"
 
+int get_fork_number(t_philosophe *philosophe, int num_fork)
+{
+    int id;
+    int fork;
+    
+    id = philosophe->id;
+    fork = 0;
+    if(num_fork == 1)
+        fork = philosophe->id;
+    else if(num_fork == 2)
+    {
+        if(philosophe->id == 0)
+            fork = philosophe->network->n - 1;
+        else
+            fork = id - 1;
+    }
+    return (fork);
+}
 
 int ft_destroy_mutext(pthread_mutex_t ***fork, int idx)
 {

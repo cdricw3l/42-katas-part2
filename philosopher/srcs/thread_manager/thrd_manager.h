@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/23 23:37:37 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/25 22:06:35 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void                ft_display_philophes(t_philosophe **philosophes);
 void                ft_print_places_set(t_philosophe *philosophe);
 void                ft_print_philosophe_state(t_philosophe *philosophe);
 void                ft_print_transitions_set(t_philosophe *philosophe);
-
+int                 get_fork_number(t_philosophe *philosophe, int num_fork);
 int                 run_simulation(t_philosophe **philosophes, int n);
-
+int                 ft_are_all_alive(t_philosophe *philosophe);
 #endif

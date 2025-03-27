@@ -28,97 +28,49 @@
 #define TEST_START printf("Initiating function test: %s\n", __func__);
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
 
-void *ft_clean_memory(char **arr, int idx)
+int ft_clean_mat(int ***mat, int r)
 {
+    int **m;
     int i;
 
+    m = *mat;
     i = 0;
-    if(!arr)
-        return(NULL);
-    while (i < idx)
+    while (m[i])
     {
-        if(arr[i])
-            free(arr[i]);
+        free(m[i]);
+        m[i] = NULL;
         i++;
     }
-    free(arr);
-    return(NULL);
-    
+    free(*mat);
+    return(r);
 }
 
-char **ft_result_arr(int n)
+void ft_print_result(int **mat, int n)
 {
-    char **res;
-    int i;
-
-    TEST_START;
-    if(n <= 0)
-        return(NULL);
-    res =  malloc(sizeof(char *) * 500);
-    if(!res)
-        return(NULL);
-    i = 0;
-    while (i < 500)
-    {
-        res[i] = malloc(sizeof(char) * (n + 1));
-        if(!res[i])
-            return(ft_clean_memory(res, i));
-        i++;
-    }
-    TEST_SUCCES;
-    return(res);
-}
-
-
-
-// void ft_print_arr(int arr[N][N], int n)
-// {
-//     int i;
-//     int j;
-
-//     i = 0;
-//     while(i < n)
-//     {
-//         j = 0;
-//         while(j < n)
-//         {
-//             printf("%d ", arr[i][j]);
-//             j++;
-//         }
-//         printf("\n");
-//         i++;
-//     }
-//     printf("\n");
-// }
-
-int ft_is_diag_safe(int mat[N][N], int n ,int row, int col)
-{
-    int i;
+    int  i;
     int j;
 
-    i = row;
-    j = col;
-    while (i - 1 >= 0 && j - 1 >= 0)
+    j = 0;
+
+    while (j < n)
     {
-        if(mat[i - 1][j - 1] == 1)
-            return (0);
-        i--;
-        j--;
-    }
-    i = row;
-    j = col;
-    while (i - 1 >= 0 && j + 1 < n)
-    {
-        if(mat[i - 1][j + 1] == 1)
-            return (0);
-        i--;
+        i = 0;
+        while (i < n)
+        {
+            if(mat[i][j] == 1)
+            {
+                printf("%d ", j);
+            }
+            i++;
+        }
         j++;
     }
-    return(1);
+    printf("\n");
 }
-
-int issafe(int mat[N][N], int n ,int row, int col)
+void ft_print_mat(int **mat, int n)
 {
+    TEST_START;
+
     int i;
     int j;
 
@@ -126,105 +78,137 @@ int issafe(int mat[N][N], int n ,int row, int col)
     j = 0;
     while (i < n)
     {
-        if(mat[row][i] == 1)
-            return(0);
-        if(mat[j][col] == 1)
-            return(0);
-        i++;
-        j++;
-    }
-    if(!ft_is_diag_safe(mat,n, row, col))
-        return(0);
-    return(1);
-}
-
-void ft_print_result(int mat[N][N], char **result)
-{
-    int i;
-    int j;
-    int k;
-
-    i = 0;
-    while (i < N)
-    {
         j = 0;
-        while (j < N)
+        while(j < n)
         {
-            if(mat[j][i] == 1)
-                printf(" %d ", j + 1);
-            j++;            
+            printf("%d ", mat[i][j]);
+            j++;
         }
+        printf("\n");
         i++;
     }
     printf("\n");
+    TEST_SUCCES;
 }
 
-// void ft_nqueen(int row, int mat[N][N], int n, int *counter, char **result)
-// {
-//     int i;
-
-//     i = 0;
-//     if(row == n)
-//     {
-//         ft_print_result(mat, result, *counter);
-//         (*counter)++;
-//         return ;
-//     }
-//     while (i < n)
-//     {
-//         if(issafe(mat, n,row, i))
-//         {
-//             mat[row][i] = 1;
-//             ft_nqueen(row + 1, mat, n, counter, result);
-//             mat[row][i] = 0;
-//         }
-//         i++;
-//     }
-// }
-
-
-void ft_nqueen(int row, int mat[N][N], int n, int *counter, char **result)
+int ft_check_diag(int **mat, int row, int col, int end)
 {
+    int i;
+    int j;
+
+    i = row;
+    j = col;
+
+    while (i >=  0 && j - 1 >= 0)
+    {
+        if(mat[i - 1][j - 1] == 1)
+            return(0);
+        i--;
+        j--;
+    }
+    i = row;
+    i = col;
+    while (i >= 0 && j + 1 < end)
+    {
+        if(mat[i - 1][j + 1] == 1)
+            return(0);
+        i--;
+        j++;
+    }
+    return(1);
+}
+
+int ft_is_safe(int **mat, int row, int col, int end)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    assert(end ==4);
+    while (j < end)
+    {
+        if(mat[row][j] == 1)
+            return(0);
+        if(mat[i][col] == 1)
+            return(0);
+        j++;
+        i++;
+    }
+    if(!ft_check_diag( mat, row,  col,  end))
+        return(0);
+ 
+    return(1);
+}
+
+
+void ft_n_queen(int **mat ,int row, int  n)
+{
+
     int i;
 
     i = 0;
+    if(!mat || n < 2)
+        return;
     if(row == n)
     {
-        ft_print_result(mat,result);
+        ft_print_mat(mat,n);
+        return;
     }
-    else
+    while (i < n)
     {
-        while (i < n)
+        if(ft_is_safe(mat, row, i, n))
         {
-            if(issafe(mat,n,row, i))
-            {
-                mat[row][i] = 1;
-                ft_nqueen(row+1, mat, n, counter,result);
-                mat[row][i] = 0;
-            }
-            i++;
+            mat[row][i] = 1;
+            ft_n_queen(mat, row + 1,n);
+            mat[row][i] = 0;
         }
+        i++;
     }
+    
 }
 
-// int main() {
-    
-//     int n;
-//     int counter;
-//     int mat[N][N] ={0};
-//     char **result;
+
+// int main(int argc, char **argv)
+// {
+//     int **mat;
 //     int i;
+//     int j;
 
+//     if(argc != 2)
+//         return(1);
+//     mat = malloc(sizeof(int *) * atoi(argv[1]));
+//     if(!mat)
+//         return(0);
 //     i = 0;
-//     n = N;
-//     counter = 0;
-//     result = ft_result_arr(n);
-//     if(!result)
-//         return(-1);
-//     assert(mat[0][0] == 0);
-//     ft_nqueen(0, mat, N, &counter, result);
-//     printf("voici le nombre de solution %d\n", counter);
-//     ft_clean_memory(result, 500);
-//     return(0);
+//     while (i < atoi(argv[1]))
+//     {
+//         mat[i] = malloc(sizeof(int) * atoi(argv[1]));
+//         if(!mat)
+//             return(ft_clean_mat(&mat, 1));
+//         j = 0;
+//         while (j < atoi(argv[1]))
+//         {
+//             mat[i][j] = 0;
+//             j++;
+//         }
+//         i++;
+//     }
+    
+//     // mat[0][0] = 1;
+//     // mat[3][0] = 1;
+//     // ft_print_mat(mat, atoi(argv[1]));
+//     // // ft_print_mat(mat, atoi(argv[1]));
+//     // // assert(ft_is_safe(mat, 3,0, 4) == 0);
+//     // assert(ft_is_safe(mat, 3,3, 4) == 0);
+//     // mat[2][3] = 1;
+//     // ft_print_mat(mat, atoi(argv[1]));
+//     // assert(ft_check_diag(mat, 2,3, 4) == 1);
+//     // mat[1][2] = 1;
+//     ft_print_mat(mat, atoi(argv[1]));
+//     // assert(ft_check_diag(mat, 1,2, 4) == 1);
+//     // assert(ft_check_diag(mat, 2,3, 4) == 0);
 
+//     ft_n_queen(mat, 0, atoi(argv[1]));
+    
 // }

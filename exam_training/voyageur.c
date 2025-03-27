@@ -123,19 +123,19 @@ int main(void)
 
                                                                             
     int len;
-    
-    len = s - city[0];
-    char tmp[len];
-    
-    ft_strncpy(tmp, city[1], len);
     char *s = ft_strchr(city[0], ',');
 
+    len = s - city[0];
+    char tmp[len];
+
+    ft_strncpy(tmp, city[1], len);
+
     printf("voici le premier %f\n", ft_atof(tmp));
-    int c = 0;
-    while (c < 4)
-    {
+    // int c = 0;
+    // while (c < 4)
+    // {
         
-    }
+    // }
     
     return(0);
 }

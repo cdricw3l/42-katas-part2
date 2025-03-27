@@ -10,140 +10,132 @@
 // /*                                                                            */
 // /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <math.h>
-
-// #define N 4  // Nombre de villes (ajuste selon ton besoin)
-
-// // Structure pour stocker les coordonnées des villes
-// typedef struct {
-    
-//     double x;
-//     double y;
-    
-// } City;
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <limits.h>
+#include <assert.h>
+#include <string.h>
 
 
-// void print_matrix(double mat[N][N]) {
-//     printf("Matrice des distances :\n");
-//     for (int i = 0; i < N; i++) {
-//         for (int j = 0; j < N; j++) {
-//             printf("%.2f ", mat[i][j]);  // Affichage avec 2 décimales
-//         }
-//         printf("\n");  // Nouvelle ligne après chaque ligne de la matrice
-//     }
-//     printf("\n");
-// }
+// la meilleur solution pour parser les ville. ft_strchr + ft_strncpy
 
-// // Fonction pour calculer la distance euclidienne entre deux villes
-// double get_euclidean_d(City p1, City p2) {
-    
-//     double value;
-//     value = ((p2.x - p1.x) * (p2.x - p1.x)) + ((p2.y - p1.y) * (p2.y - p1.y));
-//     return (sqrt(value));
-// }
-
-// // Fonction pour remplir la matrice des distances
-// void get_matrice(City cities[], double mat[N][N]) {
-//     int i;
-//     int j;
-
-//     i = 0;
-//     while (i < N)
-//     {
-//         j = 0;
-//         while (j < N)
-//         {
-//             mat[i][j] =  get_euclidean_d(cities[i],cities[j]);
-//             j++;
-//         }
-//         i++;
-//     }
-// }
-
-// void ft_swap(int *p1, int *p2)
-// {
-//     int tmp;
-
-//     tmp = *p1;
-//     *p1 = *p2;
-//     *p2 = tmp;
-    
-// }
-
-// void ft_printf_arr(int *arr, int n)
-// {
-//     int i;
-
-//     i = 0;
-//     while (i < n)
-//     {
-//         printf("%d ", arr[i]);
-//         i++;
-//     }
-//     printf("\n");
-    
-// }
-
-// void permutation(int arr[], int start, int end) 
-// {
-//     int i;
-    
-//     if(start == end)
-//     {
-//         ft_printf_arr(arr,end);
-//     }
-//     else
-//     {
-//         i = start;
-//         while (i <= end)
-//         {
-//             ft_swap(&arr[start], &arr[i]);
-//             permutation(arr, start + 1, end);
-//             ft_swap(&arr[start], &arr[i]);
-//             i++;
-//         }
+char *ft_strchr(char *str, char c)
+{
+    while (*str)
+    {
+        if(*str == c)
+            return(str);
+        str++;
+    }
         
-//     }
-// }
+    return(str);
+}
 
-// // Fonction pour calculer la distance totale d'un chemin donné
-// double get_parcour_value(int arr[], int n, City cities[], double mat[N][N]) {
-//     // À implémenter
-//     return 0.0;
-// }
+int ft_strncpy(char *dest, char *src, int size)
+{
+    int i;
 
-// // Fonction pour trouver le chemin optimal en force brute
-// void tsp_brute_force(City cities[], double mat[N][N]) {
-//     int arr[N];
-//     int i;
+    i = 0;
+    if(!dest || !src)
+        return(-1);
+    while(src[i] && i < size)
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\n';
+    return(i);
+}
 
-//     i = 0;
-//     while (i < N)
-//     {
-//         arr[i] = i;
-//         i++;
-//     }
+
+
+
+void ft_print_matrice(char **arr, int n)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < n)
+    {
+        j = 0;
+        while (j < n)
+        {
+            printf("%d ", arr[i][j]);
+            j++;
+        }
+        
+        i++;
+    }
+    printf("\n");
+}
+int ft_isdigit(char c)
+{
+    if(c < 48 || c > 57)
+        return(0);
+    return(1);
+}
+
+
+double ft_atof(char *str)
+{
+    printf("voivi la str %s\n", str);
+    int i;
+    int dot;
+    int isneg;
+    double  res;
+    i = 0;
+    while (str[i] == 32)
+        i++;
+    if(str[i] == '-')
+    {
+        isneg = 1;
+        i++;
+    }
+    while (ft_isdigit(str[i]))
+    {
+        res = res * 10 + (str[i] - '0');
+        i++;
+    }
+    if(str[i] == '.')
+    {
+        dot = 10;
+        while (ft_isdigit(str[i]))
+        {
+            res = res + ((str[i] - '0') / dot);
+            dot *=10;
+            i++;
+        }
+        if(isneg)
+            return(res * -1);
+        return(res);
+        
+    }
+    return(-1);
     
-//     permutation(arr,0,N);
-// }
+}
 
-// // Fonction principale
-// // int main() {
+int main(void)
+{
+    char *city[] ={"0.00 , -10.50","-10.00 , -11.50", "2.00 , -13.50", "4.00 , -14.50"};
+    //double t = ft_atof(city[0]);
+
+                                                                            
+    int len;
+    char *s = ft_strchr(city[0], ',');
+
+    len = s - city[0];
+    char tmp[len];
+
+    ft_strncpy(tmp, city[1], len);
+
+    printf("voici le premier %f\n", ft_atof(tmp));
+    // int c = 0;
+    // while (c < 4)
+    // {
+        
+    // }
     
-// //     City cities[N] = {
-// //         {0.0, 0.0}, {1.0, 0.0}, {2.0, 0.0}, {0.0, 1.0},
-// //         //{1.0, 1.0}, {2.0, 1.0}, {1.0, 2.0}, {2.0, 2.0}
-// //     };
-
-// //     double mat[N][N];  // Matrice des distances
-
-// //     // Étape 1 : Construire la matrice des distances
-// //     get_matrice(cities, mat);
-    
-// //     // Étape 2 : Trouver le chemin optimal (force brute ou autre)
-// //     tsp_brute_force(cities, mat);
-
-// //     return 0;
-// // }
+    return(0);
+}

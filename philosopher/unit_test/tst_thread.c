@@ -26,19 +26,19 @@ void *ft_thread_tst(void *p)
             usleep(500);        
         //printf("Philosophe %d eating\n", philo->id);
         
-        // if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,1)]))
-        //     printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,1));
-        // if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,2)]))
-        //     printf("philosopher %d prend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
+        if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,1)]))
+            printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,1));
+        if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,2)]))
+            printf("philosopher %d prend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
         printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,1));
         printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,2));
         ft_active_transition(philo->network,philo->transitions_set[1], philo->id);      
         sleep(1);      
         //ft_temporisation(1000, philo->id,1);
-        // if(!pthread_mutex_unlock(philo->fork[get_fork_number(philo,1)]))
-        //     printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,1));
-        // if(!pthread_mutex_unlock(philo->fork[get_fork_number(philo,2)]))
-        //     printf("philosopher %d rend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
+        if(!pthread_mutex_unlock(philo->fork[get_fork_number(philo,1)]))
+            printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,1));
+        if(!pthread_mutex_unlock(philo->fork[get_fork_number(philo,2)]))
+            printf("philosopher %d rend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
         ft_active_transition(philo->network,philo->transitions_set[1], philo->id);
         printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,1));
         printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,2));

@@ -5,128 +5,112 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 08:51:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/15 16:13:28 by cw3l             ###   ########.fr       */
+/*   Created: 2024/10/02 14:53:35 by cbouhadr          #+#    #+#             */
+/*   Updated: 2025/03/28 23:55:34 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_split.h"
+#include <assert.h>
 
-int	ft_clean_split(char ***split, int idx)
+static int	ft_clean_memory_exit(char ***split, int idx)
 {
 	int	i;
-	int count;
-	char **str;
 
 	i = 0;
-	count = 0;
-	if (!split)
-		return (count);
-	str = *split;
 	while (i < idx)
 	{
-		if (str && str[i])
-		{
-			free(str[i]);
-			str[i] = NULL;
-			count++;
-		}
+		free((*split)[i]);
+		(*split)[i] = NULL;
 		i++;
 	}
 	free(*split);
 	*split = NULL;
+	return (0);
+}
+
+int	ft_count_word(char *str, char c)
+{
+	int	i;
+	int	on;
+	int	count;
+
+	i = 0;
+	on = 0;
+	count = 0;
+	if (!str[i])
+		return (-1);
+	while (str[i])
+	{
+		if (str[i] != c && on == 0)
+		{
+			count++;
+			on = 1;
+		}
+		else if (str[i] == c)
+			on = 0;
+		i++;
+	}
 	return (count);
 }
 
-static int	count_word(char *str, char c)
-{
-	int	i;
-	int	word_count;
-	int	is_word;
-
-	i = 0;
-	word_count = 0;
-	is_word = 0;
-	while (str[i] && i < ft_strlen(str) - 1)
-	{
-		if(str[i] == c)
-		{
-			is_word = 0;
-			i++;
-
-		}
-		if (str[i] != c)
-		{
-			if (is_word == 0)
-				word_count++;
-			is_word = 1;
-			i++;
-		}
-	}
-	return (word_count);
-}
-
-static int	ft_get_word_size(char *str, char c)
+int	ft_get_word_len(char *str, char c)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
-		return (-1);
+		return (0);
 	while (str[i] && str[i] != c)
 		i++;
 	return (i);
 }
 
-static void	*ft_process_split(char **split, char *str, char c)
+int	ft_process_data(char **split, char *str, char c)
 {
 	int	i;
 	int	j;
-	int	word_size;
+	int	word_len;
 
 	i = 0;
 	j = 0;
 	while (str[i])
 	{
-		if(str[i] == c)
-			i++;
-		else
+		if (str[i] != c)
 		{
-			word_size = ft_get_word_size(&str[i], c);
-			split[j] = malloc(sizeof(char) * (word_size + 1));
-			/* if(j == 3)
-			{
-				free(split[j]);			error simulation for memory check.
-				split[j] = NULL;
-			} */
-			if (!split[j] || word_size == -1)
-			{
-				ft_clean_split(&split, j);
-				return (NULL);
-			}
-			ft_strlcpy(split[j], &str[i], word_size + 1);
-			i += word_size;
+			word_len = ft_get_word_len(&str[i], c);
+			split[j] = malloc(sizeof(char) * (word_len + 1));
+			if (!split[j])
+				return (ft_clean_memory_exit(&split, j));
+			ft_strlcpy(split[j], &str[i], word_len + 1);
+			i += word_len;
 			j++;
 		}
+		else
+			i++;
 	}
 	split[j] = NULL;
-	return (split);
+	return (1);
 }
 
 char	**ft_split(char *str, char c)
 {
-	int		word_count;
-	char	**split;
+	size_t	size_arr_word;
+	char	**arr_str;
 
-	if(!str)
-		return(NULL);
-	word_count = count_word(str, c);
-	if (word_count == 0)
+	size_arr_word = 0;
+	if (!str)
 		return (NULL);
-	split = malloc(sizeof(char *) * (word_count + 1));
-	if (!split)
+	size_arr_word = ft_count_word(str, c);
+	if ((int)size_arr_word == -1)
 		return (NULL);
-	if (!ft_process_split(split, str, c))
+	arr_str = malloc((sizeof(char *) * (size_arr_word + 1)));
+	if (!arr_str)
 		return (NULL);
-	return (split);
+	if (!ft_process_data(arr_str, str, c))
+	{
+		free(arr_str);
+		arr_str = NULL;
+	}
+	return (arr_str);
 }

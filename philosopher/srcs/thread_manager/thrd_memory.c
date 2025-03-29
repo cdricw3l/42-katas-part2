@@ -12,13 +12,26 @@
 
 #include "thrd_manager.h"
 
-void *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_network **network, pthread_mutex_t **forks ,int idx)
+static void ft_destroy_state(t_philosophe ***philosophes)
+{
+    if(*philosophes)
+    {
+        if((*philosophes)[0]->state)
+        {
+            free((*philosophes)[0]->state);
+            (*philosophes)[0]->state = NULL;
+        }
+    }
+}
+
+void *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_network **network, pthread_mutex_t ***forks ,int idx)
 {
     int i;
 
-    ft_destroy_mutext(&forks, N);
-    assert(forks == NULL);
+    ft_destroy_mutext(forks, N);
+    assert(*forks == NULL);
     ft_destroy_network(network);
+    ft_destroy_state(philosophes);
     if(*philosophes)
     {
         i = 0;

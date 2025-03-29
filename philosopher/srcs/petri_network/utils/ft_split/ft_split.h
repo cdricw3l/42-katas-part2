@@ -19,11 +19,10 @@
 #include "../utils/utils.h"
 
 
-int	    ft_clean_split(char ***str, int idx);
 char	**ft_split(char *str, char c);
-int     ft_get_split_len(char **split);
-int     ft_strlen(char *str);
-int     ft_strlcpy(char *dst, char *src, int dstsize);
-void    ft_print_split(char **arr);
+int	    ft_get_split_len(char **split);
+void	ft_split_print(char **split);
+int	    ft_strlcpy(char *dst, char *src, int dstsize);
+void	*ft_split_clean(char ***split);
 
 # endif

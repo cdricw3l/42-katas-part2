@@ -53,7 +53,7 @@ void                ft_plug_philosophe_together(t_petri_network *network);
 int                 ft_destroy_mutext(pthread_mutex_t ***fork, int idx);
 pthread_mutex_t     **ft_create_arr_mutext(int n);
 int                 ft_timer(int ms);
-void                *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_network **network, pthread_mutex_t **forks ,int idx);
+void                *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_network **network, pthread_mutex_t ***forks ,int idx);
 
 //display
 void                ft_display_philophes(t_philosophe **philosophes);

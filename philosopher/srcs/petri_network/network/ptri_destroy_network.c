@@ -48,7 +48,9 @@ void *ft_destroy_network(t_petri_network **network)
         if((*network)->Mt)
             free((*network)->Mt);
         if((*network)->M0)
+        {
             free((*network)->M0);
+        }
         (*network)->Mp = NULL;
         (*network)->Mt = NULL;
         (*network)->M0 = NULL;

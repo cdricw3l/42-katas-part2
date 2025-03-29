@@ -71,7 +71,7 @@ int **ft_extend_matrice(int ***old_matrice,int x, int y, int n)
         i++;
     }
     ft_join_matrice(*old_matrice,new_matrice,x,y,n);
-    free(*old_matrice);
+    ft_clean_matrice_memory(old_matrice, x);
     *old_matrice = NULL;
     return(new_matrice);
 }

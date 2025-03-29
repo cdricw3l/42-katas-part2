@@ -19,6 +19,7 @@
 #include "../utils/utils.h"
 
 int     **ft_str_to_matrice(char *str, int x, int y);
+int     *ft_str_to_arr_int(char *str);
 int    ft_clean_matrice_memory(int ***memory, int idx);
 
 #endif

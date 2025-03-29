@@ -18,7 +18,7 @@ int get_fork_number(t_philosophe *philosophe, int num_fork)
     int fork;
     int p;
     
-    if(!philosophe)
+    if(!philosophe || (num_fork < 1 && num_fork > 2))
         return(-1);
     id = philosophe->id;
     fork = 0;

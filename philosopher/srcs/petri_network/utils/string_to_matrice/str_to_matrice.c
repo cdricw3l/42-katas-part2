@@ -100,7 +100,7 @@ int	**ft_str_to_matrice(char *str, int x, int y)
 		return (NULL);
 	if (ft_get_split_len(split) != (x * y))  //error matrice arg
 	{
-		ft_clean_split(&split, ft_get_split_len(split));
+		ft_split_clean(&split);
 		return (NULL);
 	}	
 	m = malloc(sizeof(int *) * (x + 1));
@@ -108,6 +108,7 @@ int	**ft_str_to_matrice(char *str, int x, int y)
 		return (NULL);
 	if (ft_process_matrice(m, split, x, y))
 		return (NULL);
+	ft_split_clean(&split);
 	return (m);
 }
 

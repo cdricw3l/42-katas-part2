@@ -28,7 +28,7 @@
 
 #define P   4
 #define T   3
-#define N   1
+#define N   5
 
 int	*ft_init_and_check_argument(char **argv, int len);
 

@@ -18,21 +18,20 @@ int tst_ft_create_petri_net(void)
 	t_petri_network	*network_1;
 	
 	int	pt[3];
-	char	*m0 = strdup("1 0 0 1");
-	char	*m_out = strdup("1 0 0 0 1 0 0 0 3 0 1 0");
-	char	*m_int = strdup("1 0 0 0 1 0 0 0 3 0 1 0");
 	
 	pt[0] = P;
 	pt[1] = T;
 	pt[2] = N;
 	
-	network_1 = ft_create_petri_net(pt,m0,m_int,m_out);
+	network_1 = ft_create_petri_net(pt,
+		"1 0 0 1", "0 0 1 1 0 0 0 3 0 0 0 1",
+		"1 0 0 0 1 0 0 0 3 0 1 0");
 	if(!network_1)
-		return(1);
+		return(0);
 	assert(network_1->M0 && network_1->M_in && network_1->M_out && network_1->Mp && network_1->Mt && network_1->p && network_1->t);
 	
-	//ft_print_petri_matrice(network_1->M_in,4,3,1);
-	//ft_print_petri_matrice(network_1->M_out,4,3,1);
+	ft_print_petri_matrice(network_1->M_in,4,3,1);
+	ft_print_petri_matrice(network_1->M_out,4,3,1);
 	ft_print_network(network_1);
 	
 	
@@ -57,8 +56,6 @@ int tst_ft_create_petri_net(void)
 	
 	assert(!ft_network_check(network_1, P));
 	
-	ft_print_network(network_1);
-	
 	TEST_START;
 	return(1);
 	
@@ -71,22 +68,22 @@ int tst_network_extend(void)
 	t_petri_network	*network_1;
 	
 	int	pt[3];
-	char	*m0 = strdup("1 0 0 1");
-
-	char	*m_out = strdup("1 0 0 0 3 0 0 0 3 1 0 0");
-	char	*m_int = strdup("0 0 1 3 0 0 0 3 0 0 0 1");
+	
 	
 	pt[0] = P;
 	pt[1] = T;
 	pt[2] = N;
 
-	network_1 = ft_create_petri_net(pt,m0,m_int,m_out);
+	network_1 = ft_create_petri_net(pt,
+		"1 0 0 1", "0 0 1 1 0 0 0 3 0 0 0 1",
+		"1 0 0 0 1 0 0 0 3 0 1 0");
 	if(!network_1)
-		return(1);
+		return(0);
 	assert(network_1->M0 && network_1->M_in && network_1->M_out && network_1->Mp && network_1->Mt && network_1->p && network_1->t);
 	assert(ft_network_check(network_1,pt[0]));
 	network_1 =  ft_extend_network(network_1, 3);
 	ft_print_network(network_1);
+	assert(network_1->n == 3);
 	ft_destroy_network(&network_1);
 	
 	TEST_SUCCES;
@@ -99,26 +96,30 @@ int tst_petri_math(void)
 	t_petri_network	*network_1;
 	
 	int	pt[3];
-	char	*m0 = strdup("1 0 0 1");
-
-	char	*m_out = strdup("1 0 0 0 3 0 0 0 3 1 0 0");
-	char	*m_int = strdup("0 0 1 3 0 0 0 3 0 0 0 1");
+	
 	
 	pt[0] = P;
 	pt[1] = T;
 	pt[2] = N;
 
-	network_1 = ft_create_petri_net(pt,m0,m_int,m_out);
+	network_1 = ft_create_petri_net(pt,
+		"1 0 0 1", "0 0 1 1 0 0 0 3 0 0 0 1",
+		"1 0 0 0 1 0 0 0 3 0 1 0");
 	if(!network_1)
-		return(1);
+		return(0);
 	assert(network_1->M0 && network_1->M_in && network_1->M_out && network_1->Mp && network_1->Mt && network_1->p && network_1->t);
 	assert(ft_network_check(network_1,pt[0]));
 
+	ft_print_network(network_1);
 
-	// test de franchisabilité
-	// t1, M0 = non franchissable
-	assert(ft_is_activable_transition(network_1, 0,0) == 0);
-	//t2, M0 = non franchissable
+	// test de franchisabilité avec un seul philosophe crée.
+	printf("voici le retour %d\n", ft_is_activable_transition(network_1, 0,0));
+	assert(network_1->n == 1);
+	// t0, M0 = Franchissable, passage a l'etat thinking;
+	assert(ft_is_activable_transition(network_1, 0,0) == 1);
+	// t1, M0 = NON Franchissable, le philophe: somme des token de W- < somme des token de W+;
+	assert(ft_is_activable_transition(network_1, 1,0) == 0);
+	//t2, M0 = non franchissable car t1 non franchis.
 	assert(ft_is_activable_transition(network_1, 2,0) == 0);
 	
 

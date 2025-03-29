@@ -58,6 +58,8 @@ int tst_ft_init_arr_arg(void)
     free(time_to_eat);
     free(cycle);
     free(time_to_spleep);
-
+    
+    free(argv[0]);
+    free(argv);
     return(1);
 }

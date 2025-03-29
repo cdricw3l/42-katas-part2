@@ -20,19 +20,16 @@ int tst_philosophes(void)
     pthread_mutex_t **fork;
     t_philosophe **philosophes;
     
-	char	*m0 = strdup("1 0 0 1"); 
-	char	*m_out = strdup("1 0 0 0 1 0 0 0 3 0 1 0");
-	char	*m_in = strdup("0 0 1 1 0 0 0 3 0 0 0 1");
-	
 	pt[0] = P;
 	pt[1] = T;
 	pt[2] = N;
     
     i = 0;
-	network = ft_create_petri_net(pt,m0,m_in,m_out);
+	network = ft_extend_network(ft_create_petri_net(pt,
+		"1 0 0 1", "0 0 1 1 0 0 0 3 0 0 0 1",
+		"1 0 0 0 1 0 0 0 3 0 1 0"), pt[2]);
 	if(!network)
-		return(0);
-    network = ft_extend_network(network, N);              // verifier l'extension pour 1.
+		return(0);             // verifier l'extension pour 1.
     ft_plug_philosophe_together(network);
     fork = ft_create_arr_mutext(N);
     while (i < N)
@@ -69,12 +66,12 @@ int tst_philosophes(void)
     */
     
     // clean fork memory.
-    ft_destroy_mutext(&fork,network->p / 4);
+    //ft_destroy_mutext(&fork,network->p / 4);
     // destroy the petri network.
     ft_destroy_network(&network);
     
     // kill the philosophe and network. The network that is already cleaned.
-    ft_kill_philosophes_and_network(&philosophes,&network,fork,N);
+    ft_kill_philosophes_and_network(&philosophes,&network,&fork,N);
     
     // try for test to redestroy petri net.
     ft_destroy_network(&network);

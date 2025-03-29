@@ -44,5 +44,8 @@ int tst_network_extend(void);
 int tst_petri_network(void);
 int tst_philosophes(void);
 int tst_tempo(void);
+int tst_mutex(void);
+int     tst_split(void);
+
 
 #endif

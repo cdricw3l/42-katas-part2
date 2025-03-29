@@ -56,7 +56,7 @@ int tst_tempo(void)
     
 	pt[0] = P;
 	pt[1] = T;
-	pt[2] = N;
+	pt[2] = 5;
 
 	network = ft_extend_network(ft_create_petri_net(pt,
 		"1 0 0 1", "0 0 1 1 0 0 0 3 0 0 0 1",
@@ -101,11 +101,11 @@ int tst_tempo(void)
         Google sheet or excel are very usefull for build formula.
     */
     
-    assert(get_fork_number(philosophes[0], 1) == 3);
-    assert(get_fork_number(philosophes[1], 1) == 7);
-    assert(get_fork_number(philosophes[2], 1) == 11);
-    assert(get_fork_number(philosophes[3], 1) == 15);
-    assert(get_fork_number(philosophes[4], 1) == 19);
+    assert(get_fork_number(philosophes[0], 1) == 0);
+    assert(get_fork_number(philosophes[1], 1) == 1);
+    assert(get_fork_number(philosophes[2], 1) == 2);
+    assert(get_fork_number(philosophes[3], 1) == 3);
+    assert(get_fork_number(philosophes[4], 1) == 4);
     
     assert(get_fork_number(philosophes[0], 2) == get_fork_number(philosophes[4], 1));
     assert(get_fork_number(philosophes[1], 2) == get_fork_number(philosophes[0], 1));

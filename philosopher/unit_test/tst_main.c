@@ -18,9 +18,11 @@ int	main(void)
     assert(tst_ft_create_petri_net() == 1);
     assert(tst_petri_network() == 1);
     assert(tst_philosophes() == 1);
-    //assert(tst_thread_managment() == 1);
     assert(tst_mutex() == 1);
     assert(tst_tempo() == 1);
     
+
+    
+    assert(tst_thread_managment() == 1);
 	return(0);
 }

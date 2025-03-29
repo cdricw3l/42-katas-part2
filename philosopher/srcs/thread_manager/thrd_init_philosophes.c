@@ -113,7 +113,7 @@ t_philosophe **ft_create_philosophe(int n, pthread_mutex_t **fork, t_petri_netwo
     {
         philosophes[i] = malloc(sizeof(t_philosophe));
         if(!philosophes[i])
-            return(ft_kill_philosophes_and_network(&philosophes, &network, fork,i));
+            return(ft_kill_philosophes_and_network(&philosophes, &network, &fork,i));
         philosophes[i]->id = i;
         philosophes[i]->fork = fork;
         philosophes[i]->network = network;

@@ -1,111 +1,14 @@
-==35472== Memcheck, a memory error detector
-==35472== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==35472== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
-==35472== Command: ./test_unit 5 150 2000 200
-==35472== Parent PID: 35462
-==35472== 
-==35472== 
-==35472== Process terminating with default action of signal 2 (SIGINT)
-==35472==    at 0x4905D71: __futex_abstimed_wait_common64 (futex-internal.c:57)
-==35472==    by 0x4905D71: __futex_abstimed_wait_common (futex-internal.c:87)
-==35472==    by 0x4905D71: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
-==35472==    by 0x490B7A2: __pthread_clockjoin_ex (pthread_join_common.c:102)
-==35472==    by 0x10BB8F: tst_thread_managment (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x1097C3: main (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472== 
-==35472== HEAP SUMMARY:
-==35472==     in use at exit: 325,680 bytes in 5,000 blocks
-==35472==   total heap usage: 17,978 allocs, 12,978 frees, 1,145,341 bytes allocated
-==35472== 
-==35472== 272 bytes in 1 blocks are possibly lost in loss record 11 of 27
-==35472==    at 0x484E0DC: calloc (vg_replace_malloc.c:1675)
-==35472==    by 0x40145AB: calloc (rtld-malloc.h:44)
-==35472==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
-==35472==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
-==35472==    by 0x490A616: allocate_stack (allocatestack.c:429)
-==35472==    by 0x490A616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
-==35472==    by 0x10BABE: tst_thread_managment (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x1097C3: main (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472== 
-==35472== 272 bytes in 1 blocks are possibly lost in loss record 12 of 27
-==35472==    at 0x484E0DC: calloc (vg_replace_malloc.c:1675)
-==35472==    by 0x40145AB: calloc (rtld-malloc.h:44)
-==35472==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
-==35472==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
-==35472==    by 0x490A616: allocate_stack (allocatestack.c:429)
-==35472==    by 0x490A616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
-==35472==    by 0x10BAEE: tst_thread_managment (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x1097C3: main (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472== 
-==35472== 272 bytes in 1 blocks are possibly lost in loss record 13 of 27
-==35472==    at 0x484E0DC: calloc (vg_replace_malloc.c:1675)
-==35472==    by 0x40145AB: calloc (rtld-malloc.h:44)
-==35472==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
-==35472==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
-==35472==    by 0x490A616: allocate_stack (allocatestack.c:429)
-==35472==    by 0x490A616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
-==35472==    by 0x10BB1E: tst_thread_managment (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x1097C3: main (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472== 
-==35472== 272 bytes in 1 blocks are possibly lost in loss record 14 of 27
-==35472==    at 0x484E0DC: calloc (vg_replace_malloc.c:1675)
-==35472==    by 0x40145AB: calloc (rtld-malloc.h:44)
-==35472==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
-==35472==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
-==35472==    by 0x490A616: allocate_stack (allocatestack.c:429)
-==35472==    by 0x490A616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
-==35472==    by 0x10BB4E: tst_thread_managment (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x1097C3: main (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472== 
-==35472== 272 bytes in 1 blocks are possibly lost in loss record 15 of 27
-==35472==    at 0x484E0DC: calloc (vg_replace_malloc.c:1675)
-==35472==    by 0x40145AB: calloc (rtld-malloc.h:44)
-==35472==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
-==35472==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
-==35472==    by 0x490A616: allocate_stack (allocatestack.c:429)
-==35472==    by 0x490A616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
-==35472==    by 0x10BB7E: tst_thread_managment (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x1097C3: main (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472== 
-==35472== 13,600 (1,600 direct, 12,000 indirect) bytes in 10 blocks are definitely lost in loss record 22 of 27
-==35472==    at 0x484680F: malloc (vg_replace_malloc.c:446)
-==35472==    by 0x10D4E8: ft_get_reachability_matrix (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10DF6C: ft_active_transition (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10B418: ft_thread_tst (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x4909AA3: start_thread (pthread_create.c:447)
-==35472==    by 0x4996A33: clone (clone.S:100)
-==35472== 
-==35472== 13,600 (1,600 direct, 12,000 indirect) bytes in 10 blocks are definitely lost in loss record 23 of 27
-==35472==    at 0x484680F: malloc (vg_replace_malloc.c:446)
-==35472==    by 0x10D4E8: ft_get_reachability_matrix (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10DF6C: ft_active_transition (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10B56A: ft_thread_tst (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x4909AA3: start_thread (pthread_create.c:447)
-==35472==    by 0x4996A33: clone (clone.S:100)
-==35472== 
-==35472== 25,840 (3,040 direct, 22,800 indirect) bytes in 19 blocks are definitely lost in loss record 25 of 27
-==35472==    at 0x484680F: malloc (vg_replace_malloc.c:446)
-==35472==    by 0x10D4E8: ft_get_reachability_matrix (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10DF6C: ft_active_transition (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10B4C4: ft_thread_tst (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x4909AA3: start_thread (pthread_create.c:447)
-==35472==    by 0x4996A33: clone (clone.S:100)
-==35472== 
-==35472== 266,560 (31,360 direct, 235,200 indirect) bytes in 196 blocks are definitely lost in loss record 27 of 27
-==35472==    at 0x484680F: malloc (vg_replace_malloc.c:446)
-==35472==    by 0x10D4E8: ft_get_reachability_matrix (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10DF6C: ft_active_transition (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x10B4ED: ft_thread_tst (in /home/cc/Documents/42-katas-p2/philosopher/test_unit)
-==35472==    by 0x4909AA3: start_thread (pthread_create.c:447)
-==35472==    by 0x4996A33: clone (clone.S:100)
-==35472== 
-==35472== LEAK SUMMARY:
-==35472==    definitely lost: 37,600 bytes in 235 blocks
-==35472==    indirectly lost: 282,000 bytes in 4,700 blocks
-==35472==      possibly lost: 1,360 bytes in 5 blocks
-==35472==    still reachable: 4,720 bytes in 60 blocks
-==35472==         suppressed: 0 bytes in 0 blocks
-==35472== Reachable blocks (those to which a pointer was found) are not shown.
-==35472== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==35472== 
-==35472== ERROR SUMMARY: 9 errors from 9 contexts (suppressed: 0 from 0)
+==37900== Memcheck, a memory error detector
+==37900== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==37900== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
+==37900== Command: ./test_unit 5 150 2000 200
+==37900== Parent PID: 37887
+==37900== 
+==37900== 
+==37900== HEAP SUMMARY:
+==37900==     in use at exit: 0 bytes in 0 blocks
+==37900==   total heap usage: 1,913 allocs, 1,913 frees, 104,941 bytes allocated
+==37900== 
+==37900== All heap blocks were freed -- no leaks are possible
+==37900== 
+==37900== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

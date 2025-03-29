@@ -15,18 +15,17 @@
 void    *ft_clean_reachability_matrix(int ***memory, int idx)
 {
     int i;
-	int **M;
 	
-	if(memory == NULL)
+	if(*memory == NULL)
 		return(NULL);
-	M = *memory;
+	
     i = 0;
     while(i < idx)
     {
-		if(M[i])
+		if((*memory)[i])
 		{
-			free(M[i]);
-			M[i] = NULL;
+			free((*memory)[i]);
+			(*memory)[i] = NULL;
 		}
         i++;
     }

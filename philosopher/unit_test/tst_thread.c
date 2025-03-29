@@ -19,7 +19,7 @@ void *ft_thread_tst(void *p)
     t_philosophe *philo;
     philo = (t_philosophe *)(p);
     i = 0;
-    while (1)
+    while (i < 3)
     {
         ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
         while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id))

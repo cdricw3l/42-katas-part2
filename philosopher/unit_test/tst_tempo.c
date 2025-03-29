@@ -95,15 +95,16 @@ int tst_tempo(void)
     ft_print_petri_arr(philosophes[1]->state,philosophes[1]->network->n, 0);
     philosophes[0]->state[philosophes[0]->id] = 0;
 
-    printf("%d\n", get_fork_number(philosophes[0], 1));
-    printf("%d\n", get_fork_number(philosophes[0], 2));
+    printf("\n%d\n", get_fork_number(philosophes[0], 1));
     printf("%d\n", get_fork_number(philosophes[1], 1));
-    printf("%d\n", get_fork_number(philosophes[1], 2));
     printf("%d\n", get_fork_number(philosophes[2], 1));
-    printf("%d\n", get_fork_number(philosophes[2], 2));
     printf("%d\n", get_fork_number(philosophes[3], 1));
-    printf("%d\n", get_fork_number(philosophes[3], 2));
     printf("%d\n", get_fork_number(philosophes[4], 1));
+    
+    printf("\n%d\n", get_fork_number(philosophes[0], 2));
+    printf("%d\n", get_fork_number(philosophes[2], 2));
+    printf("%d\n", get_fork_number(philosophes[1], 2));
+    printf("%d\n", get_fork_number(philosophes[3], 2));
     printf("%d\n", get_fork_number(philosophes[4], 2));
 
     // pthread_t thread1;

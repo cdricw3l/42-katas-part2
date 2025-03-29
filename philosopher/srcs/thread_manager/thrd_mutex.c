@@ -16,17 +16,21 @@ int get_fork_number(t_philosophe *philosophe, int num_fork)
 {
     int id;
     int fork;
+    int p;
     
+    if(!philosophe)
+        return(-1);
     id = philosophe->id;
     fork = 0;
+    p = philosophe->network->p / philosophe->network->n - 1;
     if(num_fork == 1)
-        fork = philosophe->id;
+        fork = id + p + p * id;
     else if(num_fork == 2)
     {
         if(philosophe->id == 0)
-            fork = philosophe->network->n - 1;
+            fork = philosophe->network->p - 1;
         else
-            fork = id - 1;
+            fork = (id - 1) + p + p * (id - 1);
     }
     return (fork);
 }

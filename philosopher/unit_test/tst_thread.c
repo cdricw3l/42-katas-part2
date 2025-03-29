@@ -52,13 +52,14 @@ void *ft_thread_tst(void *p)
 t_petri_network *init_network(void)
 {
     t_petri_network *network;
-    int	pt[2];
+    int	pt[3];
 	char	*m0 = strdup("1 0 0 1");
 	char	*m_out = strdup("1 0 0 0 3 0 0 0 3 1 0 0");
 	char	*m_int = strdup("0 0 1 3 0 0 0 3 0 0 0 1");
 	
 	pt[0] = P;
 	pt[1] = T;
+	pt[1] = N;
 
 	network = ft_create_petri_net(pt,m0,m_int,m_out);
 	if(!network)

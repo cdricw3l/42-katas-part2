@@ -46,6 +46,7 @@ int tst_philosophes(void);
 int tst_tempo(void);
 int tst_mutex(void);
 int     tst_split(void);
+int ft_tst_thead_easy(void);
 
 
 #endif

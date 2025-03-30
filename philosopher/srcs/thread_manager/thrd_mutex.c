@@ -21,12 +21,18 @@ int get_fork_number(t_philosophe *philosophe, int num_fork)
         return(-1);
     id = philosophe->id;
     fork = 0;
-    if(num_fork == 1)
-        fork = id;
-    else if(num_fork == 2)
+    if(num_fork == 2)
     {
+
         if(philosophe->id == 0)
             fork = philosophe->network->n - 1;
+        else
+            fork = id;
+    }
+    else if(num_fork == 1)
+    {
+        if(philosophe->id == 0)
+            fork = id;
         else
             fork = id - 1;
     }

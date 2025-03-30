@@ -30,64 +30,86 @@ int ft_are_all_alive(t_philosophe *philosophe)
 
 void *ft_thread(void *p)
 {
-    int	start;
-    t_philosophe *philo;
-    struct timeval	s;
-    struct timeval	end;
+    TEST_START;
 
-    gettimeofday(&s, NULL);
-    
+    t_philosophe *philo;
+    (void)philo;
     philo = (t_philosophe *)(p);
     
     //pthread_t tid = pthread_self();
-    start = get_current_time();
-
-    while (1 && philo->state[philo->id] != DEAD)
-    {
-        ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
-        while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id) && philo->state != DEAD)
-        {
-            if(get_current_time() - start > philo->tempo.ttd)
-            {
-                philo->state = DEAD;
-                gettimeofday(&end, NULL);
-                printf("\x1b[31m" "Le philosophe est Mort au bout de %f \n" "\x1b[0m",time_diff(&s, &end) );
-                return(NULL);
-            }
-            //ft_print_petri_arr(philo->network->M0, philo->network->p, 0);
-        }
-        
-        printf("Philosophe %d eating\n", philo->id);
-        ft_active_transition(philo->network,philo->transitions_set[1], philo->id);      
-        ft_temporisation(philo->tempo.tte, philo->id,1);
-        
-        printf("Philosophe %d sleeping\n", philo->id);
-        ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
-        ft_temporisation(philo->tempo.tts, philo->id,0);
-    }
     
+    while (1)
+    {
+        printf("hello world from philo %d\n", philo->id);
+        sleep(1);
+    }
+    TEST_SUCCES;
     return(p);
 }
 
-int run_simulation(t_philosophe **philosophes, int n)
+int ft_thread_laucher(t_philosophe **philosophes, int n, pthread_t threads[200])
 {
-    pthread_t threads[n];
+    
+    int i;
+
+    i = 0;
+    assert(n == 5);
+
+    while (i < n)
+    {
+        if(i % 2 == 0 && i != 1)
+        {
+            philosophes[i]->state[i] = ALIVE;
+            if(pthread_create(&threads[i],NULL,ft_thread, philosophes[i]))
+            {
+                printf("Erreur launch thread %d\n", i);
+                return(0);
+            }
+        }
+        printf("launch thread %d\n", i);
+        i++;
+    }
+    i = 0;
+    while (i < n)
+    {
+        if(i % 3 == 0 || i == 1)
+        {
+            philosophes[i]->state[i] = ALIVE;
+            if(pthread_create(&threads[i],NULL,ft_thread, philosophes[i]))
+                return(0);
+        }
+        i++;
+    }
+    return(1);
+}
+
+int ft_thread_joiner(pthread_t threads[200], int n)
+{
     int i;
 
     i = 0;
     while (i < n)
     {
-        philosophes[i]->state[i] = ALIVE;
-        pthread_create(&threads[i],NULL,ft_thread, philosophes[i]);
+        if(pthread_join(threads[i], NULL))
+            return(0);
         i++;
     }
-    i = 0;
-    while (i < n)
+    return (1);
+}
+
+int run_simulation(t_philosophe **philosophes, int n)
+{
+    pthread_t threads[200];
+
+    if(n > 200)
     {
-        pthread_join(threads[i], NULL);
-        i++;
+        printf("To much philosophe. Max value: 200");
+        return(0);
     }
-    
+    if(!ft_thread_laucher(philosophes, n, threads))
+        return(0);
+    if(!ft_thread_joiner(threads, n))
+        return(0);
     return(1);
 }
 

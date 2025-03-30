@@ -20,7 +20,8 @@
 #define PLACE 4
 #define TRANSITION 3
 
-#define MIN_P    1      /*minimum number of philosophe*/
+#define MIN_P    2      /*minimum number of philosophe*/
+#define MAX_P    200      /*minimum number of philosophe*/
 #define MIN_TTD  60   /*minimum time to die*/
 #define MIN_TTE  60   /*minimum time to eat*/
 #define MIN_TTS  60   /*minimum time to spleep*/
@@ -28,7 +29,7 @@
 
 #define P   4
 #define T   3
-#define N   5
+#define N   7
 
 int	*ft_init_and_check_argument(char **argv, int len);
 

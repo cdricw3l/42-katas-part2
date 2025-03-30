@@ -92,7 +92,7 @@ int *ft_get_state_arr(int n)
     i = 0;
     while (i < n)
     {
-        arr[i] = 0;
+        arr[i] = ALIVE;
         i++;
     }
     return(arr);

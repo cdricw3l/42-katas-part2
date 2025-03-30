@@ -17,7 +17,7 @@ static int	ft_check_argument(long value, int i)
 {
 	if(value == LONG_MIN)
 		return(0);
-	else if (i == 0 && value < MIN_P)
+	else if (i == 0 && (value < MIN_P || value > MAX_P))
 		return(0);
 	else if (i == 1 && value < MIN_TTD)
 		return(0);
@@ -49,7 +49,7 @@ int	*ft_init_and_check_argument(char **argv, int len)
 		if(!ft_check_argument(value, i))
 		{
 			
-			printf("Errror\n");
+			printf("Error with arguments\n");
 			free(arr);
 			return(NULL);
 		}
@@ -96,23 +96,29 @@ t_philosophe **ft_create_network(int **args)
 	return(philosophes);
 }
 
-// int	main(int argc, char **argv)
-// {
+int	main(int argc, char **argv)
+{
 	
-// 	int				*arr_args;
-// 	t_philosophe	**philosophes;
+	int				*arr_args;
+	t_philosophe	**philosophes;
 	
-// 	if (argc < 5 || argc > 6)
-// 		return(1);
-// 	arr_args = ft_init_and_check_argument(&argv[1], argc - 1);
-// 	if (!arr_args)
-// 		return (1);
-// 	philosophes = ft_create_network(&arr_args);
-// 	if(!philosophes)
-// 		printf("Erreur creation des philosophes");
-// 	else
-// 		run_simulation(philosophes, philosophes[0]->network->n);
-// 	if(arr_args)
-// 		free(arr_args);
-// 	return(0);
-// }
+	if (argc < 5 || argc > 6)
+		return(1);
+	arr_args = ft_init_and_check_argument(&argv[1], argc - 1);
+	if (!arr_args)
+		return (1);
+	philosophes = ft_create_network(&arr_args);
+	if(!philosophes)
+		printf("Erreur creation des philosophes");
+	else
+	{
+		if(run_simulation(philosophes, philosophes[0]->network->n))
+		{
+			ft_kill_philosophes_and_network(&philosophes,&philosophes[0]->network,&philosophes[0]->fork, philosophes[0]->network->n);
+			return(0);
+		}
+	}
+	if(arr_args)
+		free(arr_args);
+	return(0);
+}

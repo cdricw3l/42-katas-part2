@@ -70,17 +70,17 @@ int tst_mutex(void)
         Google sheet or excel are very usefull for build formula.
     */
     
-    assert(get_fork_number(philosophes[0], 1) == 0);
-    assert(get_fork_number(philosophes[1], 1) == 1);
-    assert(get_fork_number(philosophes[2], 1) == 2);
-    assert(get_fork_number(philosophes[3], 1) == 3);
-    assert(get_fork_number(philosophes[4], 1) == 4);
+    assert(get_fork_number(philosophes[0], 2) == 4);
+    assert(get_fork_number(philosophes[1], 2) == 1);
+    assert(get_fork_number(philosophes[2], 2) == 2);
+    assert(get_fork_number(philosophes[3], 2) == 3);
+    assert(get_fork_number(philosophes[4], 2) == 4);
     
-    assert(get_fork_number(philosophes[0], 2) == get_fork_number(philosophes[4], 1));
-    assert(get_fork_number(philosophes[1], 2) == get_fork_number(philosophes[0], 1));
-    assert(get_fork_number(philosophes[2], 2) == get_fork_number(philosophes[1], 1));
-    assert(get_fork_number(philosophes[3], 2) == get_fork_number(philosophes[2], 1));
-    assert(get_fork_number(philosophes[4], 2) == get_fork_number(philosophes[3], 1));
+    assert(get_fork_number(philosophes[0], 1) == get_fork_number(philosophes[1], 1));
+    assert(get_fork_number(philosophes[1], 1) == get_fork_number(philosophes[0], 1));
+    assert(get_fork_number(philosophes[2], 1) == get_fork_number(philosophes[1], 2));
+    assert(get_fork_number(philosophes[3], 1) == get_fork_number(philosophes[2], 2));
+    assert(get_fork_number(philosophes[4], 1) == get_fork_number(philosophes[3], 2));
 
     // pthread_t thread1;
     // pthread_t thread2;

@@ -22,8 +22,8 @@
 #include "../../include/global.h"
 
 
-#define ALIVE 1
-#define DEAD 0
+#define ALIVE 0
+#define DEAD 1
 
 typedef struct s_tempo_data
 {

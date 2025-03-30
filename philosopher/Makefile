@@ -69,10 +69,10 @@ EMPTY=
 #time_to_sleep 
 #time_to_sleep
 
-NOP= 5
+NOP= 200
 TTD= 150
-TTE= 2000
-TTS= 200
+TTE= 100
+TTS= 100
 CYCLE= 10
 
 ifeq ($(mode), $(TEST))
@@ -133,7 +133,16 @@ ifeq ($(OS), Darwin)
 	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
 	$(CC)  $(OBJS_TEST) $(OBJS) -o test_unit 
-	valgrind --leak-check=full --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+	valgrind  --log-file=filename --leak-check=full -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+endif
+
+v: $(OBJS) $(OBJS_TEST)
+ifeq ($(OS), Darwin)
+	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) $(OBJS) -o test_unit 
+	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+else ifeq ($(OS), Linux)
+	$(CC)  $(OBJS_TEST) $(OBJS) -lpthread -o test_unit 
+	valgrind --tool=helgrind --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 endif
 
 

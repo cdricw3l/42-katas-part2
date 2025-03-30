@@ -16,38 +16,81 @@
 void *ft_thread_tst(void *p)
 {
     int i;
+    int is;
     t_philosophe *philo;
     philo = (t_philosophe *)(p);
     i = 0;
-    while (i < 3)
+    while (i < 10)
     {
-        ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
-        while (!ft_is_activable_transition(philo->network,philo->transitions_set[1],philo->id))
-            usleep(500);        
-        //printf("Philosophe %d eating\n", philo->id);
         
+        if(pthread_mutex_lock(philo->fork[philo->network->n]))
+            printf("Err mutex lock %d\n", philo->network->n);
+        
+        ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
+        
+        if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+            printf("Error mutext unlok\n");
+        
+        if(pthread_mutex_lock(philo->fork[philo->network->n]))
+            printf("Err mutex lock %d\n", philo->network->n);
+
+        is =  ft_active_transition(philo->network,philo->transitions_set[1], philo->id);
+
+        if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+            printf("Error mutext unlok\n");
+
+        while (!is)
+        {
+            if(pthread_mutex_lock(philo->fork[philo->network->n]))
+                printf("Error mutext lok %d\n", philo->network->n);
+            
+            is =  ft_active_transition(philo->network,philo->transitions_set[1], philo->id);
+
+            if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+                printf("Error mutext lok\n");
+
+            sleep(1);
+        }
+
         if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,1)]))
             printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,1));
+        
         if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,2)]))
             printf("philosopher %d prend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
-        printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,1));
-        printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,2));
-        ft_active_transition(philo->network,philo->transitions_set[1], philo->id);      
-        sleep(1);      
-        //ft_temporisation(1000, philo->id,1);
-        if(!pthread_mutex_unlock(philo->fork[get_fork_number(philo,1)]))
+
+        if(pthread_mutex_lock(philo->fork[philo->network->n]))
+            printf("Error mutext lock %d\n", philo->network->n);
+                
+        ft_active_transition(philo->network,philo->transitions_set[1], philo->id);   
+
+        if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+            printf("Error mutext unlock\n");
+
+        printf("Philosophe %d eating\n", philo->id);
+
+        sleep(1);        
+
+        if(pthread_mutex_unlock(philo->fork[get_fork_number(philo,1)]) == 0)
             printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,1));
+
         if(!pthread_mutex_unlock(philo->fork[get_fork_number(philo,2)]))
             printf("philosopher %d rend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
-        ft_active_transition(philo->network,philo->transitions_set[1], philo->id);
-        printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,1));
-        printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,2));
-        
+
+        if(pthread_mutex_lock(philo->fork[philo->network->n]))
+            printf("Error mutext lock %d\n", philo->network->n);
+
         ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
+
+        if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+            printf("Error mutext unlok %d\n", philo->network->n);
+        
         printf("philosopher sleep %d\n",philo->id );
         sleep(1);      
-        //ft_temporisation(1000, philo->id,0);
+        
+        if(pthread_mutex_lock(philo->fork[philo->network->n]))
+            printf("Error mutext lock %d\n", philo->network->n);
         i++;
+     
     }
     
 
@@ -110,20 +153,20 @@ int tst_thread_managment(void)
     ft_plug_philosophe_together(network);
     /* create a mutex arr and assert that the lock and unlock fonctionnality works */
     ft_print_network(network);
+    (void)i;
     
-    
-    fork = ft_create_arr_mutext(pt[2]);
-    while (i < pt[2])
-    {
-        //printf(" voici i :%d\n", i);
-        assert(fork);
-        int m = pthread_mutex_lock(fork[i]);
-        //printf("return lock %d\n" , m);
-        assert(m == 0);
-        usleep(100000);
-        assert(pthread_mutex_unlock(fork[i]) == 0);
-        i++;
-    }
+    fork = ft_create_arr_mutext(pt[2] + 1);
+    // while (i < pt[2])
+    // {
+    //     //printf(" voici i :%d\n", i);
+    //     assert(fork);
+    //     int m = pthread_mutex_lock(fork[i]);
+    //     //printf("return lock %d\n" , m);
+    //     assert(m == 0);
+    //     usleep(100000);
+    //     assert(pthread_mutex_unlock(fork[i]) == 0);
+    //     i++;
+    // }
     printf("\n");
 
     t_tempo_data tempo;
@@ -132,12 +175,12 @@ int tst_thread_managment(void)
     tempo.tte = 200;
     tempo.tts = 200;
 
-    assert(pt[2] == 5);
+    assert(pt[2] == N);
     philosophes = ft_create_philosophe(pt[2],fork,network, tempo);
     assert(philosophes && (*philosophes)->fork && (*philosophes)->network);
 
     printf("voici network %d\n", network->n);
-    assert(philosophes[0]->network->n == 5);
+    assert(philosophes[0]->network->n == N);
     /* display philosophe data: M0 state , transition set, id */
     ft_display_philophes(philosophes);
     
@@ -169,28 +212,7 @@ int tst_thread_managment(void)
     // ft_display_philophes(philosophes);
     
 
-    pthread_t thread;
-    pthread_t thread2;
-    pthread_t thread3;
-    pthread_t thread4;
-    pthread_t thread5;
-  
-    
-    pthread_create(&thread, NULL, ft_thread_tst, philosophes[0]);
-    sleep(1);
-    pthread_create(&thread2, NULL, ft_thread_tst, philosophes[1]);
-    sleep(1);
-    pthread_create(&thread3, NULL, ft_thread_tst, philosophes[2]);
-    sleep(1);
-    pthread_create(&thread4, NULL, ft_thread_tst, philosophes[3]);
-    sleep(1);
-    pthread_create(&thread5, NULL, ft_thread_tst, philosophes[4]);
-    
-    pthread_join(thread,NULL);
-    pthread_join(thread4,NULL);
-    pthread_join(thread3,NULL);
-    pthread_join(thread2,NULL);
-    pthread_join(thread5,NULL);
+    run_simulation(philosophes, N);
     
     
     ft_kill_philosophes_and_network(&philosophes, &network,&fork, network->n);

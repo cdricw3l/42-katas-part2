@@ -85,13 +85,13 @@ int tst_tempo(void)
     
 
     // change the state of the philosopher 0 from alive to death.
-    philosophes[0]->state[philosophes[0]->id] = 1;
-    ft_print_petri_arr(philosophes[1]->state,philosophes[1]->network->n, 0);
+    // philosophes[0]->state[philosophes[0]->id] = 1;
+    // ft_print_petri_arr(philosophes[1]->state,philosophes[1]->network->n, 0);
     
-    //check the state array in philosopher 1. Philosopher 0 is death. The state is shared.
-    philosophes[1]->state[philosophes[1]->id] = 0;
-    ft_print_petri_arr(philosophes[1]->state,philosophes[1]->network->n, 0);
-    philosophes[0]->state[philosophes[0]->id] = 0;
+    // //check the state array in philosopher 1. Philosopher 0 is death. The state is shared.
+    // philosophes[1]->state[philosophes[1]->id] = 0;
+    // ft_print_petri_arr(philosophes[1]->state,philosophes[1]->network->n, 0);
+    // philosophes[0]->state[philosophes[0]->id] = 0;
 
 
     /* 
@@ -113,16 +113,24 @@ int tst_tempo(void)
     assert(get_fork_number(philosophes[3], 2) == get_fork_number(philosophes[2], 1));
     assert(get_fork_number(philosophes[4], 2) == get_fork_number(philosophes[3], 1));
 
-    // pthread_t thread1;
-    // pthread_t thread2;
+    int time;
 
-    // pthread_create(&thread1, NULL, ft_thread_tst_2, philosophes[0]);
-    // pthread_create(&thread2, NULL, ft_thread_tst_2, philosophes[1]);
+    assert(ft_are_all_alive(philosophes[1]));
+
+    time = 0;
+
+    while (1 && ft_are_all_alive(philosophes[0]))
+    {
+        if(time == 10)
+        {
+            philosophes[1]->state[1] = DEAD;
+        }
+        printf("nous somme tous vivant\n");
+        time++;
+        sleep(1);
+    }
+    printf("Un philosoque est mort RIP\n");
     
-
-
-    // pthread_join(thread1, NULL);
-    // pthread_join(thread2, NULL);
     ft_kill_philosophes_and_network(&philosophes, &network,&fork,network->n);
     return(1);
 }

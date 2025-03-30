@@ -12,6 +12,8 @@
 
 
 #include "ptri_network.h"
+#include <pthread.h>
+
 
 int ft_is_activable_transition(t_petri_network *network, int t, int id)
 {
@@ -71,7 +73,7 @@ int ft_active_transition(t_petri_network *network, int t, int id)
     {
         //printf("\x1b[31m" "Transition %d non activable par le philosphe %d\n" "\x1b[0m", t, id);
         ft_clean_reachability_matrix(&reachability,network->p);
-        return(-1);
+        return(0);
     }
     ft_clean_reachability_matrix(&reachability,network->p);
     return(1);

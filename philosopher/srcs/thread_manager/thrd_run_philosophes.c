@@ -12,6 +12,7 @@
 
 #include "thrd_manager.h"
 
+
 int ft_are_all_alive(t_philosophe *philosophe)
 {
     int i;
@@ -26,64 +27,156 @@ int ft_are_all_alive(t_philosophe *philosophe)
     return(i);
 }
 
+/* 
+    // if(pthread_mutex_lock(philo->fork[philo->network->n]))
+        //     printf("Err mutex lock %d\n", philo->network->n);
+        
+        // ft_active_transition(philo->network,philo->transitions_set[0], philo->id);
+        
+        // if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+        //     printf("Error mutext unlok\n");
+        
+        // if(pthread_mutex_lock(philo->fork[philo->network->n]))
+        //     printf("Err mutex lock %d\n", philo->network->n);
+
+        // is =  ft_active_transition(philo->network,philo->transitions_set[1], philo->id);
+
+        // if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+        //     printf("Error mutext unlok\n");
+
+        // while (!is)
+        // {
+        //     if(pthread_mutex_lock(philo->fork[philo->network->n]))
+        //         printf("Error mutext lok %d\n", philo->network->n);
+            
+        //     is =  ft_active_transition(philo->network,philo->transitions_set[1], philo->id);
+
+        //     if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+        //         printf("Error mutext lok\n");
+
+        //     sleep(1);
+        // }
+
+        // if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,1)]))
+        //     printf("philosopher %d prend la fouchette %d\n", philo->id, get_fork_number(philo,1));
+        
+        // if(!pthread_mutex_lock(philo->fork[get_fork_number(philo,2)]))
+        //     printf("philosopher %d prend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
+
+        // if(pthread_mutex_lock(philo->fork[philo->network->n]))
+        //     printf("Error mutext lock %d\n", philo->network->n);
+                
+        // ft_active_transition(philo->network,philo->transitions_set[1], philo->id);   
+
+        // if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+        //     printf("Error mutext unlock\n");
+
+        // printf("Philosophe %d eating\n", philo->id);
+
+        // sleep(1);        
+
+        // if(pthread_mutex_unlock(philo->fork[get_fork_number(philo,1)]) == 0)
+        //     printf("philosopher %d rend la fouchette %d\n", philo->id, get_fork_number(philo,1));
+
+        // if(!pthread_mutex_unlock(philo->fork[get_fork_number(philo,2)]))
+        //     printf("philosopher %d rend la fouchette %d\n",philo->id, get_fork_number(philo,2) );
+
+        // if(pthread_mutex_lock(philo->fork[philo->network->n]))
+        //     printf("Error mutext lock %d\n", philo->network->n);
+
+        // ft_active_transition(philo->network,philo->transitions_set[2], philo->id);
+
+        // if(pthread_mutex_unlock(philo->fork[philo->network->n]))
+        //     printf("Error mutext unlok %d\n", philo->network->n);
+        
+        // printf("philosopher sleep %d\n",philo->id );
+        // sleep(1);      
+        
+        // if(pthread_mutex_lock(philo->fork[philo->network->n]))
+        //     printf("Error mutext lock %d\n", philo->network->n);
+
+*/
 
 
-void *ft_thread(void *p)
+
+long long get_elapsed_time(long long start_time)
 {
-    TEST_START;
+    return (get_current_time() - start_time);
+}
 
+void *ft_thread_tst(void *p)
+{
+    int i;
     t_philosophe *philo;
-    (void)philo;
+
     philo = (t_philosophe *)(p);
-    
-    //pthread_t tid = pthread_self();
-    
-    while (1)
+    i = 0;
+    int alive = ft_check_state_philosophes(philo);
+    long long start= get_current_time();
+    while (alive != 0)
     {
-        printf("hello world from philo %d\n", philo->id);
-        sleep(1);
+        
+        long long start2= get_current_time();
+        alive = ft_check_state_philosophes(philo);
+
+        
+        ft_philo_take_fork_1(philo);
+        ft_philo_take_fork_2(philo);
+        
+        if(get_elapsed_time(start2) > philo->tempo.ttd)
+        {
+            printf("Le temps ecoule est trop long\n");
+            ft_change_state_philosophes(philo);
+        }    
+        printf("%lld ms ecoule pour le philo %d avant de manger\n", get_elapsed_time(start), philo->id);
+        
+        ft_philo_eat(philo);
+        
+        ft_philo_release_fork_1(philo);
+        ft_philo_release_fork_2(philo);
+        
+        printf("Philosopher %d sleep for %d\n",philo->id ,philo->tempo.tts);
+        ft_temporisation(philo->tempo.tts, get_current_time());
+        printf("Philosopher %d thinking\n",philo->id);
+        i++;
     }
-    TEST_SUCCES;
+    
+    printf("un philo est mort\n");
     return(p);
 }
 
 int ft_thread_laucher(t_philosophe **philosophes, int n, pthread_t threads[200])
 {
-    
     int i;
 
     i = 0;
-    assert(n == 5);
-
     while (i < n)
     {
         if(i % 2 == 0 && i != 1)
         {
-            philosophes[i]->state[i] = ALIVE;
-            if(pthread_create(&threads[i],NULL,ft_thread, philosophes[i]))
-            {
-                printf("Erreur launch thread %d\n", i);
+            if(pthread_create(&threads[i],NULL, ft_thread_tst, philosophes[i]))
                 return(0);
-            }
+            else 
+                printf("lauch %d\n", philosophes[i]->id);
         }
-        printf("launch thread %d\n", i);
         i++;
     }
     i = 0;
     while (i < n)
     {
-        if(i % 3 == 0 || i == 1)
+        if((i % 3 == 0 && i != 0) || i == 1)
         {
-            philosophes[i]->state[i] = ALIVE;
-            if(pthread_create(&threads[i],NULL,ft_thread, philosophes[i]))
+            if(pthread_create(&threads[i],NULL,ft_thread_tst, philosophes[i]))
                 return(0);
+            else 
+                printf("lauch %d\n", philosophes[i]->id);
         }
         i++;
     }
     return(1);
 }
 
-int ft_thread_joiner(pthread_t threads[200], int n)
+int ft_thread_joiner(pthread_t *threads, int n)
 {
     int i;
 
@@ -101,15 +194,18 @@ int run_simulation(t_philosophe **philosophes, int n)
 {
     pthread_t threads[200];
 
-    if(n > 200)
+    
+    
+    if(!ft_thread_laucher(philosophes, n, threads))
     {
-        printf("To much philosophe. Max value: 200");
+        printf("Error thread launcher\n");
         return(0);
     }
-    if(!ft_thread_laucher(philosophes, n, threads))
-        return(0);
     if(!ft_thread_joiner(threads, n))
+    {
+        printf("Erreur thread joiner\n");
         return(0);
+    }
     return(1);
 }
 

@@ -19,8 +19,8 @@ int	main(void)
     //assert(tst_petri_network() == 1);
     //assert(tst_philosophes() == 1);
     //assert(tst_mutex() == 1);
-    //assert(tst_thread_managment() == 1);
-    assert(ft_tst_thead_easy() == 1);
+    assert(tst_thread_managment() == 1);
+    //assert(ft_tst_thead_easy() == 1);
     //assert(tst_tempo() == 1);
     
 

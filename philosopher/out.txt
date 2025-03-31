@@ -1,0 +1,1685 @@
+gcc -Werror -Wall -Wextra -c srcs/main.c -o srcs/main.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/ft_split/ft_split.c -o srcs/petri_network/utils/ft_split/ft_split.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/ft_split/ft_split_clean.c -o srcs/petri_network/utils/ft_split/ft_split_clean.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/ft_split/ft_split_len.c -o srcs/petri_network/utils/ft_split/ft_split_len.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/ft_split/ft_split_print.c -o srcs/petri_network/utils/ft_split/ft_split_print.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/ft_split/ft_split_utils.c -o srcs/petri_network/utils/ft_split/ft_split_utils.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/math/math.c -o srcs/petri_network/utils/math/math.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/string_to_matrice/str_to_arr.c -o srcs/petri_network/utils/string_to_matrice/str_to_arr.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/string_to_matrice/str_to_matrice.c -o srcs/petri_network/utils/string_to_matrice/str_to_matrice.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/utils/utils/utils_1.c -o srcs/petri_network/utils/utils/utils_1.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/network/ptri_active_transition.c -o srcs/petri_network/network/ptri_active_transition.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/network/ptri_destroy_network.c -o srcs/petri_network/network/ptri_destroy_network.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/network/ptri_extend_network.c -o srcs/petri_network/network/ptri_extend_network.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/network/ptri_nets_display.c -o srcs/petri_network/network/ptri_nets_display.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/network/ptri_network.c -o srcs/petri_network/network/ptri_network.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/network/ptri_network_utils.c -o srcs/petri_network/network/ptri_network_utils.o
+gcc -Werror -Wall -Wextra -c srcs/petri_network/network/ptri_tempo.c -o srcs/petri_network/network/ptri_tempo.o
+gcc -Werror -Wall -Wextra -c srcs/thread_manager/thrd_display.c -o srcs/thread_manager/thrd_display.o
+gcc -Werror -Wall -Wextra -c srcs/thread_manager/thrd_fork_managment.c -o srcs/thread_manager/thrd_fork_managment.o
+gcc -Werror -Wall -Wextra -c srcs/thread_manager/thrd_init_philosophes.c -o srcs/thread_manager/thrd_init_philosophes.o
+gcc -Werror -Wall -Wextra -c srcs/thread_manager/thrd_memory.c -o srcs/thread_manager/thrd_memory.o
+gcc -Werror -Wall -Wextra -c srcs/thread_manager/thrd_mutex.c -o srcs/thread_manager/thrd_mutex.o
+gcc -Werror -Wall -Wextra -c srcs/thread_manager/thrd_run_philosophes.c -o srcs/thread_manager/thrd_run_philosophes.o
+gcc -Werror -Wall -Wextra -c srcs/thread_manager/thrd_state_managment.c -o srcs/thread_manager/thrd_state_managment.o
+gcc -Werror -Wall -Wextra  srcs/main.o srcs/petri_network/utils/ft_split/ft_split.o srcs/petri_network/utils/ft_split/ft_split_clean.o srcs/petri_network/utils/ft_split/ft_split_len.o srcs/petri_network/utils/ft_split/ft_split_print.o srcs/petri_network/utils/ft_split/ft_split_utils.o srcs/petri_network/utils/math/math.o srcs/petri_network/utils/string_to_matrice/str_to_arr.o srcs/petri_network/utils/string_to_matrice/str_to_matrice.o srcs/petri_network/utils/utils/utils_1.o srcs/petri_network/network/ptri_active_transition.o srcs/petri_network/network/ptri_destroy_network.o srcs/petri_network/network/ptri_extend_network.o srcs/petri_network/network/ptri_nets_display.o srcs/petri_network/network/ptri_network.o srcs/petri_network/network/ptri_network_utils.o srcs/petri_network/network/ptri_tempo.o   srcs/thread_manager/thrd_display.o srcs/thread_manager/thrd_fork_managment.o srcs/thread_manager/thrd_init_philosophes.o srcs/thread_manager/thrd_memory.o srcs/thread_manager/thrd_mutex.o srcs/thread_manager/thrd_run_philosophes.o srcs/thread_manager/thrd_state_managment.o  -o philo
+valgrind --leak-check=full --log-file=filename  -s ./philo 5 350 200 200 10
+lauch 0
+Philosopher 2 take fork 1
+Philosopher 2 take fork 2
+3 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+lauch 2
+Philosopher 4 take fork 3
+Philosopher 4 take fork 4
+0 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+lauch 4
+Philosopher 1 take fork 0
+lauch 1
+lauch 3
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+162 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+158 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+341 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+424 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+583 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+579 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+741 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+758 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+1007 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+1000 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+1162 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+1158 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+1341 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+1424 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+1583 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+1579 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+1747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+1758 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+2013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+2000 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+2168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+2158 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+2347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+2424 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+2589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+2579 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 3 take fork 3
+2747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+2758 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+3013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+3000 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 1 take fork 1
+3168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+3158 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+3347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+3426 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+3589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 3 take fork 2
+Philosopher 1 take fork 1
+3584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+3747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+3763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+4013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+4005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+4168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+4163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+4347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+4429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+4589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+4584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+4747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+4763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+5013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+5005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+5168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+5163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+5347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+5429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+5589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+5584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+5747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+5763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+6013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+6005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+6168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+6163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+6347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+6429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+6589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+6584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+6747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+6763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 2 take fork 2
+7013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+7005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+7168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 0 thinking
+Philosopher 3 take fork 3
+7163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+7347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+7429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+7589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+7584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+7747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+7763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 2 take fork 2
+8013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+8005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+8168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+8163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+8347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+8429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+8589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+8584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+8747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+8763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+9013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+9005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 3 take fork 2
+Philosopher 1 take fork 1
+9168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+9163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+9347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+9429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+9589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+9584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+9747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+9763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+10013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+10005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+10168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+10163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+10347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 4 take fork 3
+Philosopher 2 take fork 2
+10429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+10589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+10584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+10747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+10763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+11013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+11005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 1 take fork 1
+11168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+11163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+11347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+11429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+11589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+11584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+11747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+11763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+12013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+12005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+12168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+12163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+12347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 2 take fork 2
+12429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+12589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+12584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+12747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+12763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+13013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+13005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 1 take fork 1
+13168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 0 thinking
+Philosopher 3 take fork 3
+13163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+13347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+13429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+13589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+13584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+13747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+13763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+14013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+14005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+14168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+14163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+14347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+14429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+14589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+14584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+14747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+14763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+15013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+15005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 1 take fork 1
+15168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 0 thinking
+Philosopher 3 take fork 3
+15163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+15347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 4 take fork 3
+Philosopher 2 take fork 2
+15429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+15589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+15584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+15747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+15763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+16013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+16005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 take fork 0
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+16168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 0 thinking
+Philosopher 3 take fork 3
+16163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+16347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+16429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+16589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+16584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+16747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+16763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+17013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+17005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+17168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+17163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+17347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+17429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+17589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+17584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+17747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+17763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+18013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+18005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+18168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+18163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+18347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+18429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+18589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 1 thinking
+Philosopher 1 take fork 0
+Philosopher 3 thinking
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+18584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+18747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+18763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+19013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+19005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+19168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+19163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+19347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 2 take fork 1
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+19429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 thinking
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+19589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 1 take fork 1
+19584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+19747 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 0 thinking
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+19763 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+20013 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 1 take fork 0
+Philosopher 4 take fork 4
+20005 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+20168 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosopher 3 thinking
+Philosopher 3 take fork 2
+Philosopher 0 thinking
+Philosopher 4 release fork 3
+Philosopher 4 release fork 4
+Philosopher 4 sleep for 200
+Philosopher 3 take fork 3
+20163 ms ecoule pour le philo 3 avant de manger
+Philosopher 3 eat for 200 ms
+Philosopher 2 thinking
+Philosopher 1 release fork 0
+Philosopher 0 take fork 0
+Philosopher 0 take fork 4
+20347 ms ecoule pour le philo 0 avant de manger
+Philosopher 0 eat for 200 ms
+Philosopher 1 release fork 1
+Philosopher 1 sleep for 200
+Philosopher 2 take fork 1
+Philosopher 4 thinking
+Philosopher 3 release fork 2
+Philosopher 3 release fork 3
+Philosopher 3 sleep for 200
+Philosopher 2 take fork 2
+20429 ms ecoule pour le philo 2 avant de manger
+Philosopher 2 eat for 200 ms
+Philosopher 4 take fork 3
+Philosopher 1 thinking
+Philosopher 0 release fork 0
+Philosopher 1 take fork 0
+Philosopher 0 release fork 4
+Philosopher 0 sleep for 200
+Philosopher 4 take fork 4
+20589 ms ecoule pour le philo 4 avant de manger
+Philosopher 4 eat for 200 ms
+Philosopher 2 release fork 1
+Philosopher 2 release fork 2
+Philosopher 2 sleep for 200
+Philosopher 1 take fork 1
+20584 ms ecoule pour le philo 1 avant de manger
+Philosopher 1 eat for 200 ms
+Philosoph

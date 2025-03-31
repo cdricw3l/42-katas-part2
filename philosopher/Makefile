@@ -5,7 +5,7 @@ NAME= philo
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=clang
-GFLAGS= -Werror -Wall -Wextra -g -Iinclude
+GFLAGS= -Werror -Wall -Wextra -Wno-unused-variable -g -Iinclude
 else ifeq ($(OS), Linux)
 CC=gcc
 GFLAGS= -Werror -Wall -Wextra
@@ -69,10 +69,10 @@ EMPTY=
 #time_to_sleep 
 #time_to_sleep
 
-NOP= 200
-TTD= 150
-TTE= 100
-TTS= 100
+NOP= 5
+TTD= 350
+TTE= 200
+TTS= 200
 CYCLE= 10
 
 ifeq ($(mode), $(TEST))
@@ -88,10 +88,10 @@ endif
 
 $(NAME): $(OBJS)
 ifeq ($(mode), $(PROD))
-	$(CC) $(GFLAGS) $(OBJS)  -o $(NAME)
+	$(CC) $(GFLAGS)  $(OBJS)  -o $(NAME)
 else ifeq ($(mode), $(NOFLAGS))
 recall:  $(OBJS)
-	$(CC) $(OBJS) -o $(NAME)
+	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
 endif
 
 # Call the main rule and start the program with args and valgrind if the od is linux.
@@ -100,7 +100,7 @@ run: $(NAME)
 ifeq ($(OS), Darwin)
 	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
-	valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+	valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) 10
 endif
 
 # cleaning rules
@@ -136,13 +136,13 @@ else ifeq ($(OS), Linux)
 	valgrind  --log-file=filename --leak-check=full -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 endif
 
-v: $(OBJS) $(OBJS_TEST)
+v: $(NAME)
 ifeq ($(OS), Darwin)
-	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) $(OBJS) -o test_unit 
+	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS) -o test_unit 
 	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
-	$(CC)  $(OBJS_TEST) $(OBJS) -lpthread -o test_unit 
-	valgrind --tool=helgrind --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+	$(CC)   $(OBJS) -lpthread -o test_unit 
+	 ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 endif
 
 

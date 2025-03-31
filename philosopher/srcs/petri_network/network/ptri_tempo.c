@@ -13,48 +13,20 @@
 #include "ptri_network.h"
 
 
-float time_diff(struct timeval *start, struct timeval *end) 
+long long get_current_time(void)
 {
-    return (end->tv_sec - start->tv_sec) + 1e-5 * (end->tv_usec - start->tv_usec);
+    struct timeval time;
+
+    if (gettimeofday(&time, NULL) == -1)
+        write(2, "gettimeofday() error\n", 22);
+    return ((long long)time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int get_current_time(void)
+void ft_temporisation(int ms, long long start)
 {
-    struct timeval	time;
-
-	if (gettimeofday(&time, NULL) == -1)
-		write(2, "gettimeofday() error\n", 22);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
-int ft_temporisation(int ms, int id, int mode)
-{
-    
-	int	start;
-    struct timeval	s;
-    struct timeval	end;
-
-    gettimeofday(&s, NULL);
-	start = get_current_time();
-    //printf("start %d\n",start);
     
 	while ((get_current_time() - start) < ms)
         usleep(500);
-    
-    gettimeofday(&end, NULL);
-    
-    if(mode == 0)
-    {
-       // printf("elapsed time a dormir par le philosophe : %d :  %f\n", id,time_diff(&s, &end));
-
-    } 
-    else if(mode == 1)
-    {
-
-        //printf("elapsed time a manger pour le philosophe : %d :  %f\n", id,time_diff(&s, &end));
-    }
-     (void)id;   
-	return (0);
 
 }
 

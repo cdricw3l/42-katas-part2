@@ -44,13 +44,6 @@ void ft_plug_philosophe_together(t_petri_network *network)
         i += network->p / network->n;
         j += network->t / network->n;
     }
-    DEBUGG;
-    printf("matrice pre: \n\n");
-    ft_print_petri_matrice(network->M_out,network->p,network->t,1); 
-    printf("matrice post: \n\n");
-    ft_print_petri_matrice(network->M_in,network->p,network->t,1);
-    ft_print_petri_arr(network->M0,network->p, 0);
-
 }
 
 void    ft_get_transition_set(int id, int trs[3])

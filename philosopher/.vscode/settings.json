@@ -3,6 +3,9 @@
         "tst_unit.h": "c",
         "ft_split.h": "c",
         "ptri_network.h": "c",
-        "locale": "c"
+        "locale": "c",
+        "global.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }

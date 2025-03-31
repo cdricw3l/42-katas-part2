@@ -88,8 +88,8 @@ int                 ft_is_activable_transition(t_petri_network *network, int t, 
 int                 ft_active_transition(t_petri_network *network, int t, int id);
 
 // tempo
-int ft_temporisation(int ms, int id, int mode);
-int get_current_time(void);
+void ft_temporisation(int ms, long long  start);
+long long get_current_time(void);
 float time_diff(struct timeval *start, struct timeval *end) ;
 
 #endif

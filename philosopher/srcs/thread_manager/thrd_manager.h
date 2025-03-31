@@ -63,4 +63,16 @@ void                ft_print_transitions_set(t_philosophe *philosophe);
 int                 get_fork_number(t_philosophe *philosophe, int num_fork);
 int                 run_simulation(t_philosophe **philosophes, int n);
 int                 ft_are_all_alive(t_philosophe *philosophe);
+
+// fork managment
+
+void                ft_philo_eat(t_philosophe *philosophe);
+void                ft_philo_take_fork_2(t_philosophe *philosophe);
+void                ft_philo_take_fork_1(t_philosophe *philosophe);
+void                ft_philo_release_fork_1(t_philosophe *philosophe);
+void                ft_philo_release_fork_2(t_philosophe *philosophe);
+
+int                ft_check_state_philosophes(t_philosophe *philosophe);
+void               ft_change_state_philosophes(t_philosophe *philosophe);
+
 #endif

@@ -25,8 +25,8 @@ static int	ft_check_argument(long value, int i)
 		return(0);
 	else if (i == 3 && value < MIN_TTS)
 		return(0);
-	else if (i == 4 && value != CYCLE)
-		return(0);
+	// else if (i == 4 && value != CYCLE)
+	// 	return(0);
 	else
 		return(1);
 }
@@ -59,20 +59,20 @@ int	*ft_init_and_check_argument(char **argv, int len)
 	return (arr);
 }
 
-t_tempo_data ft_get_tempo_data(int **args)
+t_tempo_data ft_get_tempo_data(int **args, int argc)
 {
 	t_tempo_data tempo;
 	tempo.ttd = (*args)[1];
 	tempo.tte = (*args)[2];
 	tempo.tts = (*args)[3];
-	tempo.cycle = (*args)[4];
-
+	if(argc == 5)
+		tempo.cycle = (*args)[4];
 	free(*args);
 	*args = NULL;
 	return(tempo);
 }
 
-t_philosophe **ft_create_network(int **args)
+t_philosophe **ft_create_network(int **args, int argc)
 {
 	int	ptn[3];
 	t_petri_network *network;
@@ -87,12 +87,11 @@ t_philosophe **ft_create_network(int **args)
 		"1 0 0 1", "0 0 1 1 0 0 0 3 0 0 0 1",
 		"1 0 0 0 1 0 0 0 3 0 1 0"), ptn[2]);
 	ft_plug_philosophe_together(network);
-	ft_print_network(network);
-	fork = ft_create_arr_mutext(network->n);
-	tempo = ft_get_tempo_data(args);
+	fork = ft_create_arr_mutext(network->n + 1);
+	tempo = ft_get_tempo_data(args, argc);
 	//assert(*args == NULL &&tempo.ttd == 800 && tempo.tte == 200 && tempo.tts == 200);	
 	philosophes = ft_create_philosophe(network->n,fork, network, tempo);
-	ft_display_philophes(philosophes);
+	//ft_display_philophes(philosophes);
 	return(philosophes);
 }
 
@@ -107,18 +106,21 @@ int	main(int argc, char **argv)
 	arr_args = ft_init_and_check_argument(&argv[1], argc - 1);
 	if (!arr_args)
 		return (1);
-	philosophes = ft_create_network(&arr_args);
+	philosophes = ft_create_network(&arr_args, argc - 1);
 	if(!philosophes)
 		printf("Erreur creation des philosophes");
+	if(arr_args)
+		free(arr_args);
 	else
 	{
-		if(run_simulation(philosophes, philosophes[0]->network->n))
+		if(!run_simulation(philosophes, philosophes[0]->network->n))
 		{
 			ft_kill_philosophes_and_network(&philosophes,&philosophes[0]->network,&philosophes[0]->fork, philosophes[0]->network->n);
 			return(0);
 		}
+		ft_kill_philosophes_and_network(&philosophes,&philosophes[0]->network,&philosophes[0]->fork, philosophes[0]->network->n);
 	}
-	if(arr_args)
-		free(arr_args);
 	return(0);
 }
+
+

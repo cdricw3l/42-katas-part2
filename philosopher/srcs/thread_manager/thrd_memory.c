@@ -27,9 +27,8 @@ static void ft_destroy_state(t_philosophe ***philosophes)
 void *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_network **network, pthread_mutex_t ***forks ,int idx)
 {
     int i;
-
-    ft_destroy_mutext(forks, N);
-    assert(*forks == NULL);
+    TEST_START;
+    ft_destroy_mutext(forks, (*network)->n);
     ft_destroy_network(network);
     ft_destroy_state(philosophes);
     if(*philosophes)
@@ -45,5 +44,6 @@ void *ft_kill_philosophes_and_network(t_philosophe ***philosophes, t_petri_netwo
         free(*philosophes);
         *philosophes = NULL;
     }
+    TEST_SUCCES;
     return(NULL);
 }

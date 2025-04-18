@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/18 21:30:12 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 21:48:09 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -133,6 +133,7 @@ int tst_init_philos(void)
         ft_destroy_mutexs(&forks, params[P]);
         ft_destroy_mutexs(&pens, params[P]);
         free(params);
+        return(0);
     }
     i = 0;
     assert(params[P] == 5);
@@ -162,6 +163,47 @@ int tst_init_philos(void)
     ft_destroy_mutexs(&forks,params[P]);
     ft_destroy_mutexs(&pens,params[P]);
     free(params);
+    TEST_SUCCES;
+    return (1);
+}
+
+int tst_init_network(void)
+{
+    TEST_START;
+
+
+    t_network *network;
+  
+    int *params;
+    int n = 5;
+    int i;
+    
+    params = malloc(sizeof(int) * n);
+    if(!params)
+        return(0);
+        
+    params[P] = n;
+    params[TTD] = 500;
+    params[TTE] = 200;
+    params[TTS] = 200;
+    params[CYCLE] = -1;
+    network = create_network(params);
+    if(!network)
+    {
+        free(params);
+        return(0);
+    }
+    i = 0;
+    while (i < params[P])
+    {
+        assert(network->last_meals[i] == 0);
+        assert(network->philos[i]);
+        assert(network->forks[i]);
+        assert(network->pens[i]);
+        i++;
+    }
+    free(params);
+    destroy_network(&network);
     TEST_SUCCES;
     return (1);
 }

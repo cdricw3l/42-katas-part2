@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/18 13:01:04 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 19:57:26 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -61,5 +61,27 @@ int tst_ft_init_arr_arg(void)
     
     free(argv[0]);
     free(argv);
+    return(1);
+}
+
+int tst_init_fork_and_pen(void)
+{
+    mutex_t **forks;
+    int     n;
+    int     i;
+    
+    n = 10;
+    i = 0;
+    forks = init_mutex(0);
+    assert(!forks);
+    forks = init_mutex(n);
+    assert(forks);
+
+    while (i < n)
+    {
+        assert(pthread_mutex_lock(forks[i]));
+        assert(pthread_mutex_unlock(forks[i]));
+        i++;
+    }
     return(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:44:27 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 13:56:50 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 20:08:09 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,6 +18,7 @@ void *ft_destroy_mutexs(mutex_t ***mutexs, int len)
     mutex_t **f;
     
     i = 0;
+    f = *mutexs;
     while (i < len)
     {
         if(f[i])
@@ -40,13 +41,13 @@ mutex_t **init_mutex(int n)
     int i;
 
     i = 0;
-    if(n != 1)
+    if(n < 1)
         return(NULL);
-    mutexs = ft_c(sizeof(mutex_t *) * (n));
+    mutexs = malloc(sizeof(mutex_t *) * (n));
     while (i < n)
     {
         if(pthread_mutex_init(mutexs[i],NULL) != 0)
-            return(ft_destroy_fork(&mutexs, i));
+            return(ft_destroy_mutexs(&mutexs, i));
         i++;
     }
     return(mutexs);

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 14:38:42 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 19:45:52 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,9 +14,35 @@
 
 void *destroy_network(t_network **network)
 {
-    
+    ft_destroy_mutexs(&(*network)->forks, (*network)->n);
+    ft_destroy_mutexs(&(*network)->pens, (*network)->n);
+    ft_destroy_philos(&(*network)->philos, (*network)->n);
+    free((*network)->last_meals);
+    (*network)->last_meals = NULL;
+    free(*network);
+    *network = NULL;
+    return(NULL);
+} 
+
+static int *get_meal_board(int n)
+{
+    int *meal_board;
+    int i;
+
+    if(n < 0)
+        return(NULL);
+    i = 0;
+    meal_board = malloc(sizeof(int) * n);
+    if(!meal_board)
+        return (NULL);
+    while (i < n)
+    {
+        meal_board[i] = 0;
+        i++;
+    }
+    return(meal_board);
 }
-t_network   *build_network(mutex_t **forks, mutex_t **pens, t_philo **philos, int n)
+static t_network   *build_network(mutex_t **forks, mutex_t **pens, t_philo **philos, int n)
 {
     t_network *network;
 

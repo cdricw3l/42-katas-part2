@@ -6,16 +6,12 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/18 05:57:56 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 20:11:53 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #ifndef TST_UNIT_H
 #define TST_UNIT_H
-
-
-
-
 
 #include "../include/global.h"
 
@@ -31,20 +27,8 @@
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
 
 
-
-
-int test_unit_ft_create_petri_net(void);
 int tst_ft_init_arr_arg(void);
-int tst_utils(void);
-int tst_ft_create_petri_net(void);
-int tst_thread_managment(void);
-int tst_network_extend(void);
-int tst_petri_network(void);
-int tst_philosophes(void);
-int tst_tempo(void);
-int tst_mutex(void);
-int     tst_split(void);
-int ft_tst_thead_easy(void);
+int tst_init_fork_and_pen(void);
 
 
 #endif

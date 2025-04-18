@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/18 06:41:29 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 20:11:34 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,13 +19,8 @@
 #include <limits.h>
 #include <assert.h>
 #include "../srcs/thread/thread.h"
+#include "../srcs/initialisation/init_network.h"
 
-#define MIN_P    2      /*minimum number of philosophe*/
-#define MAX_P    200      /*minimum number of philosophe*/
-#define MIN_TTD  60   /*minimum time to die*/
-#define MIN_TTE  60   /*minimum time to eat*/
-#define MIN_TTS  60   /*minimum time to spleep*/
-#define CYCLE_NB    100    /* number of cycle */
 
 
 int	*ft_init_and_check_argument(char **argv, int len);

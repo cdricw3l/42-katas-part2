@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 14:10:17 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 20:08:48 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -29,7 +29,7 @@ void *ft_destroy_philos(t_philo ***philos, int len)
     return(NULL);
 }
 
-t_philo *create_philo(mutex_t **forks, mutex_t **pens, int id, int n_philo)
+static t_philo *create_philo(mutex_t **forks, mutex_t **pens, int id, int n_philo)
 {
     t_philo *philo;
 
@@ -45,6 +45,7 @@ t_philo *create_philo(mutex_t **forks, mutex_t **pens, int id, int n_philo)
     else
         philo->fork_2 = forks[id - 1]; 
     philo->pen = pens[id];
+    return(philo);
 }
 
 t_philo **init_philos(int *params, mutex_t **forks, mutex_t **pens)

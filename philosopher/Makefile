@@ -1,4 +1,5 @@
 NAME= philo
+TEST_NAME= philo_utest
 
 ##########################  OS check
 
@@ -21,34 +22,22 @@ NOFLAGS=2
 
 # production path.
 SRCS_MAIN= srcs/main.c
-SRCS_PETRI= $(wildcard srcs/petri_network/utils/**/*.c) $(wildcard srcs/petri_network/network/*.c)
-SRCS_UTILS= $(wildcard srcs/utils/**/*.c) $(wildcard srcs/utils/*.c)
-SRCS_THREAD= $(wildcard srcs/thread_manager/*.c)
-SRCS_PHILO= $(wildcard srcs/philosopher/*.c)
-
-# test path.
-
 SRCS_TEST= $(wildcard unit_test/*.c)
+SRCS_INIT= $(wildcard srcs/initialisation/*.c)
+
+
 
 # Mode precompilation rules: no flags (unused variable etc...) for mode noflags.
 
-ifeq ($(mode), $(PROD))
 %.o:%.c
 	$(CC) $(GFLAGS) -c $< -o $@
-else ifeq ($(mode), $(NOFLAGS))
-%.o:%.c
-	$(CC) -c $< -o $@
-endif
 
 # Precompilation object.
 
 # Production env:
 
 OBJS_MAIN=$(SRCS_MAIN:%.c=%.o)
-OBJS_UTILS=$(SRCS_UTILS:%.c=%.o)
-OBJS_PETRI=$(SRCS_PETRI:%.c=%.o)
-OBJS_PHILO=$(SRCS_PHILO:%.c=%.o)
-OBJS_THREAD=$(SRCS_THREAD:%.c=%.o)
+OBJS_INIT=$(SRCS_INIT:%.c=%.o)
 
 # Test env:
 
@@ -75,24 +64,19 @@ TTE= 200
 TTS= 200
 CYCLE= 10
 
-ifeq ($(mode), $(TEST))
-OBJS= $(OBJS_TEST)
-else
-OBJS= $(OBJS_MAIN) $(OBJS_PETRI) $(OBJS_PHILO) $(OBJS_UTILS) $(OBJS_THREAD)
-endif
-
+TENV_OBJS= $(OBJS_TEST) $(OBJS_INIT)
+PROD_OBJS= $(OBJS_MAIN) $(OBJS_INIT)
 
 .PHONY: clean fclean run git testenv
 
 #main linkin rule
 
-$(NAME): $(OBJS)
-ifeq ($(mode), $(PROD))
-	$(CC) $(GFLAGS)  $(OBJS)  -o $(NAME)
-else ifeq ($(mode), $(NOFLAGS))
-recall:  $(OBJS)
-	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
-endif
+$(NAME): $(PROD_OBJS)
+	$(CC) $(GFLAGS) $(PROD_OBJS) -o $(NAME)
+
+$(TEST_NAME): $(TENV_OBJS)
+	$(CC) $(GFLAGS) $(TENV_OBJS_OBJS) -o $(TEST_NAME)
+
 
 # Call the main rule and start the program with args and valgrind if the od is linux.
 
@@ -103,14 +87,33 @@ else ifeq ($(OS), Linux)
 	valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) 10
 endif
 
+# dev environnement
+
+t: $(TENV_OBJS)
+ifeq ($(OS), Darwin)
+	$(CC) $(GFLAGS) -fsanitize=address $(TENV_OBJS) -o test_unit 
+	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+else ifeq ($(OS), Linux)
+	$(CC)  $(TENV_OBJS) -o test_unit 
+	valgrind  --log-file=filename --leak-check=full -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+endif
+
+v: $(NAME)
+ifeq ($(OS), Darwin)
+	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS) -o test_unit 
+	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+else ifeq ($(OS), Linux)
+	$(CC)   $(OBJS) -lpthread -o test_unit 
+	 ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+endif
+
 # cleaning rules
 
 clean:
-	rm -f $(OBJS) $(OBJS_TEST)
+	rm -f $(PROD_OBJS) $(TENV_OBJS)
 
 fclean: clean
-	rm -f $(NAME) test_unit 
-
+	rm -f $(NAME) $(TEST_NAME)
 
 # Git hub rules. To be improuv. (remote ...)
 
@@ -125,25 +128,9 @@ endif
 	git push origin $(BRANCH)
 
 
-# dev environnement
 
-t: $(OBJS) $(OBJS_TEST)
-ifeq ($(OS), Darwin)
-	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) $(OBJS) -o test_unit 
-	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
-else ifeq ($(OS), Linux)
-	$(CC)  $(OBJS_TEST) $(OBJS) -o test_unit 
-	valgrind  --log-file=filename --leak-check=full -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
-endif
 
-v: $(NAME)
-ifeq ($(OS), Darwin)
-	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS) -o test_unit 
-	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
-else ifeq ($(OS), Linux)
-	$(CC)   $(OBJS) -lpthread -o test_unit 
-	 ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
-endif
+
 
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/04/18 06:08:59 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 12:41:22 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -37,9 +37,7 @@ int	*ft_init_and_check_argument(char **argv, int len)
 	int *arr;
 	int i;
 
-	if(!argv)
-		return(NULL);
-	arr = malloc(sizeof(int) * len);
+	arr = malloc(sizeof(int) * 5);
 	if(!arr)
 		return(NULL);
 	i = 0;
@@ -56,6 +54,8 @@ int	*ft_init_and_check_argument(char **argv, int len)
 		arr[i] = (int)value;
 		i++;
 	}
+	if(len == 4)
+		arr[5] == -1;
 	return (arr);
 }
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 	int *arr_args;
 	t_network *network;
 	
-	if (argc < 5 || argc > 6)
+	if (argc < 5 || argc > 6 || !argv || !*argv)
 		return(1);
 	arr_args = ft_init_and_check_argument(&argv[1], argc - 1);
 	if (!arr_args)

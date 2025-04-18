@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 06:50:47 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 12:46:08 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,21 +27,21 @@ typedef pthread_mutex_t mutex_t;
 #define TTS 3
 #define CYCLE 3
 
+#define ON 1
+#define OFF 0
+
 typedef  struct  s_philo
 {
-    int id;
-    int state;  // on - off
-    int cycle;
+    int     id;
+    int     tte;
+    int     tts;
+    int     state;  // on - off
+    int     cycle;
+    int     *meal_time_data;
     
     mutex_t  *pen;
     mutex_t  *fork_1;
     mutex_t  *fork_2;
-
-    long long   tte;
-    long long   tts;
-
-    
-    long long   *meal_time_data;
 
 } t_philo;
 

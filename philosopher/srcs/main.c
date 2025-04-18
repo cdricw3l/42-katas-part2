@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/04/18 12:41:22 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 14:24:12 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -64,8 +64,9 @@ int	*ft_init_and_check_argument(char **argv, int len)
 int	main(int argc, char **argv)
 {
 	
-	int *arr_args;
-	t_network *network;
+	int				*arr_args;
+	t_network		*network;
+	t_monitoring	*monitoring;
 	
 	if (argc < 5 || argc > 6 || !argv || !*argv)
 		return(1);

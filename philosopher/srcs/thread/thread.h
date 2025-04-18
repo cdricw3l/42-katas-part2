@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 12:46:08 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 14:36:37 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,20 +45,14 @@ typedef  struct  s_philo
 
 } t_philo;
 
-typedef  struct  s_monitoring
-{
-    int n;
-    
-    t_philo     **philosophes;
-    long long   *last_meals;
-
-} t_monitoring;
 
 typedef  struct  s_network
 {
-    mutex_t         **forks;
-    mutex_t         **pens;
-    t_philo    **philosophes;
+    int     n;
+    mutex_t **pens;
+    mutex_t **forks;
+    int     *last_meals;
+    t_philo **philos;
 
 } t_network;
 

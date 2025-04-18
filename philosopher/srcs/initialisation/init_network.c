@@ -6,96 +6,34 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 13:01:13 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 14:38:42 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "init_network.h"
 
-void *ft_destroy_mutexs(mutex_t ***mutexs, int len)
+void *destroy_network(t_network **network)
 {
-    int i;
-    mutex_t **f;
     
-    i = 0;
-    while (i < len)
-    {
-        if(f[i])
-        {
-            free(f[i]);
-            f[i] == NULL;
-        }
-        i++;
-    }
-    free(*mutexs);
-    *mutexs = NULL;
-    return(NULL);
 }
-
-void *ft_destroy_philos(t_philo ***philos, int len)
+t_network   *build_network(mutex_t **forks, mutex_t **pens, t_philo **philos, int n)
 {
-    int i;
-    t_philo **p;
+    t_network *network;
 
-    i = 0;
-    p = *philos;
-    while (i < len)
-    {
-        free(p[i]);
-        p[i] = NULL;
-        i++;
-    }
-    free(*philos);
-    return(NULL);
-}
-
-t_philo **init_philos(int *params, mutex_t **forks, mutex_t **pens)
-{
-    int     n;
-    int     i;
-    t_philo **philos;
-
-    n = params[P];
-    i = 0;
-    philos = malloc(sizeof(t_philo *) * n);
-    if(!philos)
+    network = malloc(sizeof(t_network) * 1);
+    if(!network)
         return(NULL);
-    while (i < n)
+    network->last_meals = get_meal_board(n);
+    if(!network->last_meals)
     {
-        philos[i] = malloc(sizeof(t_philo) * 1);
-        if(!philos[i])
-            return(ft_destroy_philos(&philos, i));
-        philos[i]->id = i;
-        philos[i]->tte = params[TTE];
-        philos[i]->tts = params[TTS];
-        philos[i]->state = OFF;
-        philos[i]->cycle = params[CYCLE];
-        philos[i]->meal_time_data = NULL;
-        philos[i]->fork_1 = forks[i];
-        philos[i]->fork_2 = ;
-        philos[i]->pen = pens[i];
-
-    }
-        
-}
-
-
-mutex_t **init_mutex(int n)
-{
-    mutex_t **mutexs;
-    int i;
-
-    i = 0;
-    if(n != 1)
+        free(network);
         return(NULL);
-    mutexs = ft_c(sizeof(mutex_t *) * (n));
-    while (i < n)
-    {
-        if(pthread_mutex_init(mutexs[i],NULL) != 0)
-            return(ft_destroy_fork(&mutexs, i));
-        i++;
     }
-    return(mutexs);
+    network->forks = forks;
+    network->pens = pens;
+    network->philos = philos;
+    network->n = n;
+    return(network);
 }
 
 t_network *create_network(int *params)
@@ -110,12 +48,19 @@ t_network *create_network(int *params)
         return(NULL);
     pens = init_mutex(params[P]);
     if(!pens)
-        return(ft_destroy_mutexs(forks, params[P]));
+        return(ft_destroy_mutexs(&forks, params[P]));
     philos = init_philos(params, forks, pens);
     if(!philos)
     {
-        ft_destroy_mutexs(forks, params[P]);
-        return(ft_destroy_mutexs(pens, args[P]));
+        ft_destroy_mutexs(&forks, params[P]);
+        return(ft_destroy_mutexs(&pens, params[P]));
     }
-    
+    network = build_network(forks, pens, philos, params[P]);
+    if(!network)
+    {
+        ft_destroy_mutexs(&forks, params[P]);
+        ft_destroy_mutexs(&pens, params[P]);
+        return(ft_destroy_philos(&philos, params[P]));
+    }
+    return(network);
 }

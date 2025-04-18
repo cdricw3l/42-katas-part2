@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:22:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/04/18 20:16:45 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 21:28:21 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,8 +16,7 @@ int	main(void)
 {   
     assert(tst_ft_init_arr_arg() == 1);
     assert(tst_init_fork_and_pen() == 1);
-    
-
+    assert(tst_init_philos() == 1);
     
 	return(0);
 }

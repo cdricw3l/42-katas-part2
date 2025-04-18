@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/18 19:57:26 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 21:30:12 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 
 int tst_ft_init_arr_arg(void)
 {
-    
+    TEST_START;
     int  *arr_args;
     
     char *philosopher = strdup("+3");
@@ -61,16 +61,20 @@ int tst_ft_init_arr_arg(void)
     
     free(argv[0]);
     free(argv);
+    TEST_SUCCES;
+
     return(1);
 }
 
 int tst_init_fork_and_pen(void)
 {
-    mutex_t **forks;
+    TEST_START;
+    
+    t_mutex **forks;
     int     n;
     int     i;
     
-    n = 10;
+    n = 5;
     i = 0;
     forks = init_mutex(0);
     assert(!forks);
@@ -79,9 +83,85 @@ int tst_init_fork_and_pen(void)
 
     while (i < n)
     {
-        assert(pthread_mutex_lock(forks[i]));
-        assert(pthread_mutex_unlock(forks[i]));
+        assert(!pthread_mutex_lock(forks[i]));
+        assert(!pthread_mutex_unlock(forks[i]));
         i++;
     }
+
+    ft_destroy_mutexs(&forks, n);
+    TEST_SUCCES;
     return(1);
+}
+
+int tst_init_philos(void)
+{
+    TEST_START;
+
+    t_philo **philos;
+    t_mutex **forks;
+    t_mutex **pens;
+    int *params;
+    int n = 5;
+    int i;
+    
+    params = malloc(sizeof(int) * n);
+    if(!params)
+        return(0);
+        
+    params[P] = n;
+    params[TTD] = 500;
+    params[TTE] = 200;
+    params[TTS] = 200;
+    params[CYCLE] = -1;
+    
+    pens = init_mutex(params[P]);
+    if(!pens)
+    {
+        free(params);
+        return(0);
+    }
+    forks = init_mutex(params[P]);
+    if(!forks)
+    {
+        ft_destroy_mutexs(&pens, params[P]);
+        free(params);
+        return(0);
+    }
+    philos = init_philos(params, forks, pens);
+    if(!philos)
+    {
+        ft_destroy_mutexs(&forks, params[P]);
+        ft_destroy_mutexs(&pens, params[P]);
+        free(params);
+    }
+    i = 0;
+    assert(params[P] == 5);
+    while (i < params[P])
+    {
+        assert(!philos[i]->meal_time_data);
+        assert(philos[i]->tte == params[TTE]);
+        assert(philos[i]->tts == params[TTS]);
+        assert(philos[i]->cycle == -1);
+        assert(philos[i]->id  == i);
+        assert(philos[i]->fork_1);
+        assert(philos[i]->fork_2);
+        assert(philos[i]->pen);
+        if(i == 0)
+        {
+            assert(philos[i]->fork_id_1 == i);
+            assert(philos[i]->fork_id_2 == params[P] - 1);
+        }
+        else
+        {
+            assert(philos[i]->fork_id_1 == i - 1);
+            assert(philos[i]->fork_id_2 == i);
+        }
+        i++;
+    }
+    ft_destroy_philos(&philos,params[P]);
+    ft_destroy_mutexs(&forks,params[P]);
+    ft_destroy_mutexs(&pens,params[P]);
+    free(params);
+    TEST_SUCCES;
+    return (1);
 }

@@ -59,7 +59,7 @@ EMPTY=
 #time_to_sleep
 
 NOP= 5
-TTD= 350
+TTD= 500
 TTE= 200
 TTS= 200
 CYCLE= 10
@@ -91,11 +91,11 @@ endif
 
 t: $(TENV_OBJS)
 ifeq ($(OS), Darwin)
-	$(CC) $(GFLAGS) -fsanitize=address $(TENV_OBJS) -o test_unit 
-	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+	@$(CC) $(GFLAGS) -fsanitize=address $(TENV_OBJS) -o $(TEST_NAME)
+	@./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
-	$(CC)  $(TENV_OBJS) -o test_unit 
-	valgrind  --log-file=filename --leak-check=full -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+	@$(CC)  $(TENV_OBJS) -o $(TEST_NAME)
+	@valgrind  --log-file=filename --leak-check=full -s ./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 endif
 
 v: $(NAME)
@@ -110,7 +110,7 @@ endif
 # cleaning rules
 
 clean:
-	rm -f $(PROD_OBJS) $(TENV_OBJS)
+	rm -f $(PROD_OBJS) $(TENV_OBJS) filename
 
 fclean: clean
 	rm -f $(NAME) $(TEST_NAME)

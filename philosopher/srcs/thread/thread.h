@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 19:39:30 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 21:27:20 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,13 +19,13 @@
 #include <limits.h>
 #include <assert.h>
 
-typedef pthread_mutex_t mutex_t;
+typedef pthread_mutex_t t_mutex;
 
 #define P 0
 #define TTD 1
 #define TTE 2
 #define TTS 3
-#define CYCLE 3
+#define CYCLE 4
 
 #define ON 1
 #define OFF 0
@@ -38,10 +38,12 @@ typedef  struct  s_philo
     int     state;  // on - off
     int     cycle;
     int     *meal_time_data;
+    int     fork_id_1;
+    int     fork_id_2;
     
-    mutex_t  *pen;
-    mutex_t  *fork_1;
-    mutex_t  *fork_2;
+    t_mutex  *pen;
+    t_mutex  *fork_1;
+    t_mutex  *fork_2;
 
 } t_philo;
 
@@ -49,8 +51,8 @@ typedef  struct  s_philo
 typedef  struct  s_network
 {
     int     n;
-    mutex_t **pens;
-    mutex_t **forks;
+    t_mutex **pens;
+    t_mutex **forks;
     t_philo **philos;
     int     *last_meals;
 

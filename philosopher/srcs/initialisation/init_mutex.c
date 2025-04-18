@@ -6,16 +6,16 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:44:27 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 20:08:09 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 21:05:14 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "init_network.h"
 
-void *ft_destroy_mutexs(mutex_t ***mutexs, int len)
+void *ft_destroy_mutexs(t_mutex ***mutexs, int len)
 {
     int i;
-    mutex_t **f;
+    t_mutex **f;
     
     i = 0;
     f = *mutexs;
@@ -35,20 +35,26 @@ void *ft_destroy_mutexs(mutex_t ***mutexs, int len)
     return(NULL);
 }
 
-mutex_t **init_mutex(int n)
+t_mutex **init_mutex(int n)
 {
-    mutex_t **mutexs;
+    t_mutex **mutexs;
     int i;
 
     i = 0;
+
     if(n < 1)
         return(NULL);
-    mutexs = malloc(sizeof(mutex_t *) * (n));
+    mutexs = malloc(sizeof(t_mutex *) * (n));
     while (i < n)
     {
-        if(pthread_mutex_init(mutexs[i],NULL) != 0)
+        mutexs[i] = malloc(sizeof(t_mutex)  * 1);
+        if(!mutexs[i] || pthread_mutex_init(mutexs[i], NULL) != 0)
+        {
+            printf("error\n");
             return(ft_destroy_mutexs(&mutexs, i));
+        }
         i++;
+
     }
     return(mutexs);
 }

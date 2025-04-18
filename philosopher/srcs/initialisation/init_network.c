@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 19:45:52 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 21:05:35 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -42,7 +42,7 @@ static int *get_meal_board(int n)
     }
     return(meal_board);
 }
-static t_network   *build_network(mutex_t **forks, mutex_t **pens, t_philo **philos, int n)
+static t_network   *build_network(t_mutex **forks, t_mutex **pens, t_philo **philos, int n)
 {
     t_network *network;
 
@@ -64,8 +64,8 @@ static t_network   *build_network(mutex_t **forks, mutex_t **pens, t_philo **phi
 
 t_network *create_network(int *params)
 {
-	mutex_t     **forks;
-	mutex_t     **pens;
+	t_mutex     **forks;
+	t_mutex     **pens;
     t_philo     **philos;
     t_network   *network;
 

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:10:47 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 20:11:52 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/18 20:48:50 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -42,11 +42,11 @@ int	*ft_init_and_check_argument(char **argv, int len)
 	i = 0;
 	while (i < len)
 	{
-		value = ft_atoi(argv[i]);
+		value = init_atoi(argv[i]);
 		if(!ft_check_argument(value, i))
 		{
 			
-			printf("Error with arguments\n");
+			printf("\x1b[31m" "Error with params\n" "\x1b[0m");
 			free(arr);
 			return(NULL);
 		}
@@ -54,6 +54,6 @@ int	*ft_init_and_check_argument(char **argv, int len)
 		i++;
 	}
 	if(len == 4)
-		arr[5] == -1;
+		arr[5] = -1;
 	return (arr);
 }

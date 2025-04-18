@@ -1,3 +1,0 @@
-mettre en place les perror
-
-Faire des log de test plus propre

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 20:26:20 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 21:51:34 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -74,14 +74,14 @@ typedef  struct  s_network
 
 //tempo
 
-long long get_current_time(void);
-int run_simulation(t_network **network);
+long long   get_current_time(void);
+int         run_simulation(t_network **network);
 
 
-void    *thread_monitor(void *p);
+void        *thread_monitor(void *p);
 
-int     start_philo(t_network **net);
-int     kill_philos(t_network **net);
+int         start_philo(t_network **net);
+int         kill_philos(t_network **net);
 
 int     monitor_launcher(t_network **network, pthread_t *monitiror);
 int     monitor_joiner(pthread_t *monitiror);

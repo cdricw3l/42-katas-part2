@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 21:27:20 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 09:31:57 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,6 +18,16 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <assert.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#define DEBUGG printf("DEBUGG\n");
+#define PRINT_INT(msg) printf("\x1b[31m" "DEBBUG  INT " "%d\n", msg);
+#define PSTR(msg) printf("\x1b[31m" "DEBBUG  str >>> " "%s\n", msg);
+#define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
+#define DEBUGG printf("DEBUGG\n");
+#define TEST_START printf("\033[0;33m" "\nInitiating function test: %s\n" "\x1b[0m", __func__);
+#define TEST_SUCCES printf("\033[0;32m" "\nFunction: %s executed successfully.\n" "\x1b[0m", __func__);
 
 typedef pthread_mutex_t t_mutex;
 
@@ -61,5 +71,13 @@ typedef  struct  s_network
 //tempo
 
 long long get_current_time(void);
+int run_simulation(t_network **network);
 
+
+int     monitor_launcher(t_network **network);
+void    *thread_monitor(void *p);
+
+int     philos_laucher(t_network **network);
+void    *thread_philo(void *p);
+int     joint_philos(pthread_t *threads, int n);
 #endif

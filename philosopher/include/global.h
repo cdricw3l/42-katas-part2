@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/18 20:48:09 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 08:24:18 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <assert.h>
+#include <stdio.h>
 #include "../srcs/thread/thread.h"
 #include "../srcs/initialisation/init_network.h"
 

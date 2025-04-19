@@ -6,16 +6,15 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:49:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 09:38:42 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 14:20:17 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "tst_unit.h"
 
-int tst_run_thread_philo(void)
+int tst_run_thread_simulation(void)
 {
     TEST_START;
-
 
     t_network *network;
   
@@ -30,19 +29,55 @@ int tst_run_thread_philo(void)
     params[TTD] = 500;
     params[TTE] = 200;
     params[TTS] = 200;
-    params[CYCLE] = -1;
+    params[CYCLE] = 10;
     network = create_network(params);
     if(!network)
     {
         free(params);
         return(0);
     }
-    if(!philos_laucher(&network))
+    if(!run_simulation(&network))
+    {
+        printf("Error simulation\n");
+    }
+    destroy_network(&network);
+    free(params);
+    return(1);
+}
+
+int tst_run_thread_philo(void)
+{
+    TEST_START;
+
+    t_network *network;
+    pthread_t threads[200];
+  
+    int *params;
+    int n = 5;
+    
+    params = malloc(sizeof(int) * n);
+    if(!params)
+        return(0);
+        
+    params[P] = n;
+    params[TTD] = 500;
+    params[TTE] = 200;
+    params[TTS] = 200;
+    params[CYCLE] = 10;
+    network = create_network(params);
+    if(!network)
+    {
+        free(params);
+        return(0);
+    }
+    if(!philos_laucher(&network,threads))
     {
         destroy_network(&network);
         free(params);
         return(0);
     }
+    destroy_network(&network);
+    free(params);
     return(1);
 }
 
@@ -52,7 +87,7 @@ int tst_run_thread_monitor(void)
 
 
     t_network *network;
-  
+    pthread_t monitor;
     int *params;
     int n = 5;
     
@@ -71,11 +106,13 @@ int tst_run_thread_monitor(void)
         free(params);
         return(0);
     }
-    if(monitor_launcher(&network))
+    if(monitor_launcher(&network, &monitor))
     {
         destroy_network(&network);
         free(params);
         return(0);
     }
+    destroy_network(&network);
+    free(params);
     return(1);
 }

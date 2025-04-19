@@ -6,34 +6,62 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 09:17:08 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 14:36:45 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "thread.h"
+
+void kill_philos(t_network **net)
+{
+    int i;
+    t_network *network;
+
+    i = 0;
+    network = *net;
+    while (i < network->n)
+    {
+        network->philos[i]->state = 0;
+        i++;
+    }
+}
+
+void  start_philo(t_network **net)
+{
+    int i;
+    t_network *network;
+
+    i = 0;
+    network = *net;
+    while (i < network->n)
+    {
+        network->philos[i]->state = 1;
+        i++;
+    }
+}
 
 void    *thread_monitor(void *p)
 {
     TEST_START;
     
     t_network *network;
-    int n;
     int i;
-    long long last;
 
+    i = 0;
     network = (t_network *)p;
-    n = network->n;
-    while (1)
+    (void)network;
+    while (i < 20)
     {
-        i = 0;
-        while (i < n)
+        printf("cycle %d\n\n", i);
+        if(i == 10)
         {
-            last = get_current_time();
-            printf("last meal for philo do %d: %lld. State :%d\n",network->philos[i]->id, last, network->philos[i]->state);
-            i++;
+            printf("start philo\n");
+            start_philo((t_network **)p);
         }
         sleep(1);
+        i++;
     }
+    kill_philos((t_network **)p);
     TEST_SUCCES;
     return(p);
 }

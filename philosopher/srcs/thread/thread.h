@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 09:31:57 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 14:17:28 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -74,10 +74,13 @@ long long get_current_time(void);
 int run_simulation(t_network **network);
 
 
-int     monitor_launcher(t_network **network);
 void    *thread_monitor(void *p);
+int     monitor_launcher(t_network **network, pthread_t *monitiror);
+int     monitor_joiner(pthread_t *monitiror);
 
-int     philos_laucher(t_network **network);
 void    *thread_philo(void *p);
-int     joint_philos(pthread_t *threads, int n);
+int     philos_laucher(t_network **net, pthread_t threads[200]);
+int     philos_joiner(t_network **net, pthread_t threads[200]);
+
+int     run_philo(pthread_t threads[200], t_network **net);
 #endif

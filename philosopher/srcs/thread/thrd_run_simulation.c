@@ -6,13 +6,13 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 09:42:17 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 14:32:22 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "thread.h"
 
-static int run_philo(pthread_t threads[200], t_network **net)
+int run_philo(pthread_t threads[200], t_network **net)
 {
     int i;
     t_network  *network;
@@ -25,8 +25,11 @@ static int run_philo(pthread_t threads[200], t_network **net)
         {
             if(pthread_create(&threads[i],NULL, thread_philo, network->philos[i]))
                 return(0);
-            else 
+            else
+            {
                 printf("lauch %d\n", network->philos[i]->id);
+            }
+            sleep(1);
         }
         i++;
     }
@@ -37,9 +40,12 @@ static int run_philo(pthread_t threads[200], t_network **net)
         {
             if(pthread_create(&threads[i],NULL,thread_philo, network->philos[i]))
                 return(0);
-            else 
+            else
+            {
                 printf("lauch %d\n", network->philos[i]->id);
+            }
         }
+        sleep(1);
         i++;
     }
     return(1);
@@ -59,47 +65,78 @@ int join_philos(pthread_t *threads, int n)
     return (1);
 }
 
-int philos_laucher(t_network **net)
+int philos_laucher(t_network **net, pthread_t threads[200])
 {
-    pthread_t threads[200];
     
     if(!run_philo(threads, net))
         return(0);
+   
+    return(1);
+}
+
+int philos_joiner(t_network **net, pthread_t threads[200])
+{
+    
     if(!join_philos(threads, (*net)->n))
         return(0);
+   
     return(1);
 }
 
-int monitor_launcher(t_network **network)
+
+int monitor_launcher(t_network **network, pthread_t *monitiror)
 {
-    pthread_t monitiror;
 
-    if(pthread_create(&monitiror, NULL, thread_monitor, *network))
-    {
-        printf("error\n");
-        return(0);
-    }
-    if(pthread_join(monitiror, NULL))
+    if(pthread_create(monitiror, NULL, thread_monitor, network))
     {
         printf("error\n");
         return(0);
     }
     return(1);
 }
+
+int monitor_joiner(pthread_t *monitiror)
+{
+
+    if(pthread_join(*monitiror, NULL))
+    {
+        printf("error\n");
+        return(0);
+    }
+    return(1);
+}
+
+
 
 int run_simulation(t_network **network)
 {
-    // if(!monitor_launcher(network))
-    // {
-    //     printf("Error thread launcher\n");
-    //     return(0);
-    //     printf("end threa   d\n");
-    // }
-    if(!philos_laucher(network))
-    {
-        printf("Error thread launcher\n");
-        return(0);
-    }
+
+    pthread_t monitiror;
+    pthread_t threads[200];
     
+    if(!monitor_launcher(network, &monitiror))
+    {
+        printf("Error thread monitor launcher\n");
+        return(0);
+        printf("end threa   d\n");
+    }
+    if(!philos_laucher(network, threads))
+    {
+        printf("Error thread philo launcher\n");
+        return(0);
+        printf("end threa   d\n");
+    }
+    if(!monitor_joiner(&monitiror))
+    {
+        printf("Error thread monitor joiner\n");
+        return(0);
+        printf("end threa   d\n");
+    }
+    if(!philos_joiner(network, threads))
+    {
+        printf("Error thread philo joiner\n");
+        return(0);
+        printf("end threa   d\n");
+    }
     return(1);
 }

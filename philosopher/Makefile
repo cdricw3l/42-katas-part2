@@ -96,9 +96,19 @@ ifeq ($(OS), Darwin)
 	@$(CC) $(GFLAGS) -fsanitize=address $(TENV_OBJS) -o $(TEST_NAME)
 	@./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
-	@$(CC)  $(TENV_OBJS) -o $(TEST_NAME)
+	@$(CC)  $(TENV_OBJS) -lpthread -o $(TEST_NAME)
 	@valgrind  --log-file=filename --leak-check=full -s ./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 endif
+
+tv: $(TENV_OBJS)
+ifeq ($(OS), Darwin)
+	@$(CC) $(GFLAGS) -fsanitize=address $(TENV_OBJS) -o $(TEST_NAME)
+	@./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+else ifeq ($(OS), Linux)
+	@$(CC)  $(TENV_OBJS) -lpthread -o $(TEST_NAME)
+	@valgrind --tool=helgrind --log-file=filename -s ./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+endif
+
 
 v: $(NAME)
 ifeq ($(OS), Darwin)

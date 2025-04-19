@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 21:20:26 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 17:35:23 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -57,7 +57,7 @@ static t_philo *create_philo(t_mutex **forks, t_mutex **pens, int id, int n_phil
     return(philo);
 }
 
-t_philo **init_philos(int *params, t_mutex **forks, t_mutex **pens)
+t_philo **init_philos(int *params, t_mutex **forks, t_mutex **pens, t_mutex **m_states)
 {
     int     i;
     t_philo **philos;
@@ -71,6 +71,7 @@ t_philo **init_philos(int *params, t_mutex **forks, t_mutex **pens)
         philos[i] = create_philo(forks,pens,i, params[P]);
         if(!philos[i])
             return(ft_destroy_philos(&philos, i));
+        philos[i]->m_states = m_states[i];
         philos[i]->tte = params[TTE];
         philos[i]->tts = params[TTS];
         philos[i]->cycle = params[CYCLE];

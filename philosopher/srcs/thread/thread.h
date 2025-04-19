@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 14:17:28 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 17:34:25 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -54,6 +54,7 @@ typedef  struct  s_philo
     t_mutex  *pen;
     t_mutex  *fork_1;
     t_mutex  *fork_2;
+    t_mutex  *m_states;
 
 } t_philo;
 

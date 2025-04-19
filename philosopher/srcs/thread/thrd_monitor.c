@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 14:36:45 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 17:44:52 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,7 +21,11 @@ void kill_philos(t_network **net)
     network = *net;
     while (i < network->n)
     {
-        network->philos[i]->state = 0;
+        if(pthread_mutex_lock(network->philos[i]->m_states))
+            printf("Erreur mutex state lock\n");
+        network->philos[i]->state = OFF;
+        if(pthread_mutex_unlock(network->philos[i]->m_states))
+            printf("Erreur mutex state unlock\n");
         i++;
     }
 }
@@ -35,7 +39,11 @@ void  start_philo(t_network **net)
     network = *net;
     while (i < network->n)
     {
-        network->philos[i]->state = 1;
+        if(pthread_mutex_lock(network->philos[i]->m_states))
+            printf("Erreur mutex state lock\n");
+        network->philos[i]->state = ON;
+        if(pthread_mutex_unlock(network->philos[i]->m_states))
+            printf("Erreur mutex state unlock\n");
         i++;
     }
 }
@@ -62,6 +70,7 @@ void    *thread_monitor(void *p)
         i++;
     }
     kill_philos((t_network **)p);
+    
     TEST_SUCCES;
     return(p);
 }

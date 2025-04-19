@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 21:05:50 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 17:35:57 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -42,7 +42,7 @@
 t_network   *create_network(int *params);
 void        *destroy_network(t_network **network);
 
-t_philo     **init_philos(int *params, t_mutex **forks, t_mutex **pens);
+t_philo     **init_philos(int *params, t_mutex **forks, t_mutex **pens, t_mutex **m_states);
 void        *ft_destroy_philos(t_philo ***philos, int len);
 
 t_mutex     **init_mutex(int n);

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 14:32:22 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 18:28:25 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -106,8 +106,6 @@ int monitor_joiner(pthread_t *monitiror)
     return(1);
 }
 
-
-
 int run_simulation(t_network **network)
 {
 
@@ -118,25 +116,21 @@ int run_simulation(t_network **network)
     {
         printf("Error thread monitor launcher\n");
         return(0);
-        printf("end threa   d\n");
     }
     if(!philos_laucher(network, threads))
     {
         printf("Error thread philo launcher\n");
         return(0);
-        printf("end threa   d\n");
     }
     if(!monitor_joiner(&monitiror))
     {
         printf("Error thread monitor joiner\n");
         return(0);
-        printf("end threa   d\n");
     }
     if(!philos_joiner(network, threads))
     {
         printf("Error thread philo joiner\n");
         return(0);
-        printf("end threa   d\n");
     }
     return(1);
 }

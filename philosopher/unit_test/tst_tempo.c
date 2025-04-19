@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:51 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 23:02:29 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 23:24:15 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,12 +31,12 @@ int tst_tempo(void)
     params[CYCLE] = 10;
     
     network = create_network(params);
-    printf("voici l'adresse du meal board general %p\n", network->last_meals);
     assert(network->last_meals);
     assert(network->n == 5);
     i = 0;
     while (i < network->n)
     {
+        printf("voici l'adresse du meal board general %p\n", network->last_meals);
         //network->philos[i]->meal_time_data[i] = get_current_time();
         put_timestamp(network->philos[i]);
         i++;
@@ -47,9 +47,11 @@ int tst_tempo(void)
     i = 0;
     while (i < network->n)
     {
-        printf(" temps ecoulé : %lld\n", curent - network->last_meals[i]);
+        printf(" philo : %lld\n",  curent - network->philos[i]->meal_time_data[i]);
         i++;
     }
+    if(check_timestamp(network->philos,network->n))
+        printf("Tout c'est derouler comme prevu\n");
     destroy_network(&network);
     free(params);
     return(1);

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 22:57:34 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 23:25:54 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,21 +14,54 @@
 
 int put_timestamp(t_philo *philo)
 {
-    long long current_time;
+    //long long current_time;
 
-    current_time = get_current_time();
+    //current_time = get_current_time();
     if(pthread_mutex_lock(philo->pen))
     {
         printf("Erreur mutex state lock\n");
         return(0);
     }
-    philo->meal_time_data[philo->id] = current_time;
+    philo->meal_time_data[philo->id] = get_current_time();
     if(pthread_mutex_unlock(philo->pen))
     {
         printf("Erreur mutex state lock\n");
         return(0);
     }
-    (void)current_time;
+    return(1);
+}
+
+int check_timestamp(t_philo **philo, int n)
+{
+    long long current_time;
+    long long last_philo_eat;
+    int i;
+
+    i= 0;
+    current_time = get_current_time();
+    while (i < n)
+    {
+        if(pthread_mutex_lock(philo[i]->pen))
+        {
+            printf("Erreur mutex state lock\n");
+            return(0);
+        }
+        last_philo_eat = philo[i]->meal_time_data[philo[i]->id];
+        printf("voici le resqulta du check en ms : % lld\n", current_time - last_philo_eat);
+        if(current_time - last_philo_eat > TTD)
+        {
+            printf("TIME SIMULATION ERREUR\n");
+            if(pthread_mutex_unlock(philo[i]->pen))
+                printf("Erreur mutex state lock\n");
+            return(0);
+        }
+        if(pthread_mutex_unlock(philo[i]->pen))
+        {
+            printf("Erreur mutex state lock\n");
+            return(0);
+        }
+        i++;
+    }
     return(1);
 }
 long long get_timestamp(t_philo *philo)

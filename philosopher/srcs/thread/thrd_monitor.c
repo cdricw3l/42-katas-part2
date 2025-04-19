@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 20:57:28 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 23:17:40 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -79,7 +79,8 @@ void    *thread_monitor(void *p)
     }
     while (are_alive(network))
     {
-        printf("\033[0;32m" "everybody are alive\n" "\x1b[0m");
+        if(check_timestamp(network->philos, network->n))
+            printf("\033[0;32m" "everybody are alive\n" "\x1b[0m");
         sleep(1);
 
     }

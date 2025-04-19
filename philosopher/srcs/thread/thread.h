@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 22:38:42 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 23:15:58 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -102,4 +102,5 @@ int     run_philo(pthread_t threads[200], t_network **net);
 void        ft_temporisation(int ms, long long start);
 int         put_timestamp(t_philo *philo);
 long long   get_timestamp(t_philo *philo);
+int         check_timestamp(t_philo **philo, int n);
 #endif

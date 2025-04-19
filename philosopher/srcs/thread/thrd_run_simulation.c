@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 09:37:18 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 09:42:17 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -63,9 +63,9 @@ int philos_laucher(t_network **net)
 {
     pthread_t threads[200];
     
-    if(run_philo(threads, net))
+    if(!run_philo(threads, net))
         return(0);
-    if(join_philos(threads, (*net)->n))
+    if(!join_philos(threads, (*net)->n))
         return(0);
     return(1);
 }

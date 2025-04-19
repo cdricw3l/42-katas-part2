@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 18:25:16 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 20:26:20 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,7 +45,8 @@ typedef  struct  s_philo
     int     id;
     int     tte;
     int     tts;
-    int     state;  // on - off
+    int     state_1;  // on - off
+    int     death_state;  // on - off
     int     cycle;
     int     *meal_time_data;
     int     fork_id_1;
@@ -62,6 +63,7 @@ typedef  struct  s_philo
 typedef  struct  s_network
 {
     int     n;
+    int     cycle;
     t_mutex **pens;
     t_mutex **m_states;
     t_mutex **forks;
@@ -77,10 +79,19 @@ int run_simulation(t_network **network);
 
 
 void    *thread_monitor(void *p);
+
+int     start_philo(t_network **net);
+int     kill_philos(t_network **net);
+
 int     monitor_launcher(t_network **network, pthread_t *monitiror);
 int     monitor_joiner(pthread_t *monitiror);
 
 void    *thread_philo(void *p);
+void    *thread_philo_cycle(void *p);
+void    *thread_philo_infinit(void *p);
+
+int     get_state(t_philo *philo, int state_type);
+int     change_state(t_philo *philo, int state_type, int state);
 int     philos_laucher(t_network **net, pthread_t threads[200]);
 int     philos_joiner(t_network **net, pthread_t threads[200]);
 

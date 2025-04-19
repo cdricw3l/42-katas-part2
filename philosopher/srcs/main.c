@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/04/18 21:32:33 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 20:58:05 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		arr_args = NULL;
 		return(1);
 	}
-	run_simulation(network);
+	network->cycle = arr_args[CYCLE];
+	run_simulation(&network);
 	return(0);
 }

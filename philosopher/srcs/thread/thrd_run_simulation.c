@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 18:28:25 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 21:05:08 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,14 +16,25 @@ int run_philo(pthread_t threads[200], t_network **net)
 {
     int i;
     t_network  *network;
-
+    
+    void *(*f_cycle)(void *p);
     network = *net;
     i = 0;
+    if((*net)->cycle == -1)
+    {
+        f_cycle = thread_philo_infinit;
+        printf("Le thread sera cyclique\n");
+    }
+    else
+    {
+        f_cycle = thread_philo_cycle;
+        printf("Le thread sera infini\n");
+    }
     while (i < network->n)
     {
         if(i % 2 == 0 && i != 1)
         {
-            if(pthread_create(&threads[i],NULL, thread_philo, network->philos[i]))
+            if(pthread_create(&threads[i],NULL, f_cycle, network->philos[i]))
                 return(0);
             else
             {
@@ -38,7 +49,7 @@ int run_philo(pthread_t threads[200], t_network **net)
     {
         if((i % 3 == 0 && i != 0) || i == 1)
         {
-            if(pthread_create(&threads[i],NULL,thread_philo, network->philos[i]))
+            if(pthread_create(&threads[i],NULL,f_cycle, network->philos[i]))
                 return(0);
             else
             {
@@ -87,6 +98,7 @@ int philos_joiner(t_network **net, pthread_t threads[200])
 int monitor_launcher(t_network **network, pthread_t *monitiror)
 {
 
+
     if(pthread_create(monitiror, NULL, thread_monitor, network))
     {
         printf("error\n");
@@ -112,6 +124,7 @@ int run_simulation(t_network **network)
     pthread_t monitiror;
     pthread_t threads[200];
     
+
     if(!monitor_launcher(network, &monitiror))
     {
         printf("Error thread monitor launcher\n");

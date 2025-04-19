@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 18:17:08 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 20:59:43 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -37,7 +37,8 @@ static t_philo *create_philo(t_mutex **forks, t_mutex **pens, t_mutex **m_states
     if(!philo)
         return(NULL);
     philo->id = id;
-    philo->state = OFF;
+    philo->state_1 = 1;
+    philo->death_state = 0;
     philo->meal_time_data = NULL;
     if(id == 0)
     {

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 21:05:08 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 21:14:15 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -28,7 +28,7 @@ int run_philo(pthread_t threads[200], t_network **net)
     else
     {
         f_cycle = thread_philo_cycle;
-        printf("Le thread sera infini\n");
+        printf("Le thread sera cyclique\n");
     }
     while (i < network->n)
     {
@@ -37,9 +37,7 @@ int run_philo(pthread_t threads[200], t_network **net)
             if(pthread_create(&threads[i],NULL, f_cycle, network->philos[i]))
                 return(0);
             else
-            {
                 printf("lauch %d\n", network->philos[i]->id);
-            }
             sleep(1);
         }
         i++;

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 18:26:36 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 21:23:03 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -44,14 +44,14 @@ static int *get_meal_board(int n)
     }
     return(meal_board);
 }
-static t_network   *build_network(t_mutex **forks, t_mutex **pens, t_mutex **m_states, t_philo **philos, int n)
+static t_network   *build_network(t_mutex **forks, t_mutex **pens, t_mutex **m_states, t_philo **philos, int *params)
 {
     t_network *network;
 
     network = malloc(sizeof(t_network) * 1);
     if(!network)
         return(NULL);
-    network->last_meals = get_meal_board(n);
+    network->last_meals = get_meal_board(params[P]);
     if(!network->last_meals)
     {
         free(network);
@@ -61,7 +61,8 @@ static t_network   *build_network(t_mutex **forks, t_mutex **pens, t_mutex **m_s
     network->pens = pens;
     network->m_states = m_states;
     network->philos = philos;
-    network->n = n;
+    network->n = params[P];
+    network->cycle = params[CYCLE];
     return(network);
 }
 
@@ -82,7 +83,6 @@ t_network *create_network(int *params)
     m_states = init_mutex(params[P]);
     if(!m_states)
     {
-        printf("erreur\n");
         ft_destroy_mutexs(&forks, params[P]);
         return(ft_destroy_mutexs(&pens, params[P]));
     }
@@ -90,13 +90,15 @@ t_network *create_network(int *params)
     if(!philos)
     {
         ft_destroy_mutexs(&forks, params[P]);
-        return(ft_destroy_mutexs(&pens, params[P]));
+        ft_destroy_mutexs(&pens, params[P]);
+        return(ft_destroy_mutexs(&m_states, params[P]));
     }
-    network = build_network(forks, pens,m_states, philos,params[P]);
+    network = build_network(forks, pens, m_states, philos, params);
     if(!network)
     {
         ft_destroy_mutexs(&forks, params[P]);
         ft_destroy_mutexs(&pens, params[P]);
+        ft_destroy_mutexs(&m_states, params[P]);
         return(ft_destroy_philos(&philos, params[P]));
     }
     return(network);

@@ -97,7 +97,7 @@ ifeq ($(OS), Darwin)
 	@./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
 	@$(CC)  $(TENV_OBJS) -lpthread -o $(TEST_NAME)
-	@valgrind  --log-file=filename --leak-check=full -s ./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+	@valgrind  --log-file=filename --track-origins=yes --leak-check=full -s ./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 endif
 
 tv: $(TENV_OBJS)

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 21:02:29 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 21:11:53 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,7 +27,7 @@ void    *thread_philo_cycle(void *p)
     }
     while (get_state(philo, 0) == ON && philo->cycle > i)
     {
-        printf("I am The philosopher number %d \n", philo->id);
+        printf("I am The philosopher number %d ", philo->id);
         printf("executed cycle : %d, apptented %d\n", i + 1, philo->cycle);
         sleep(1);
         i++;

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 21:23:03 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 22:53:30 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,23 +26,36 @@ void *destroy_network(t_network **network)
     return(NULL);
 } 
 
-static int *get_meal_board(int n)
+static long long *get_meal_board(int n)
 {
-    int *meal_board;
+    long long *meal_board;
     int i;
 
     if(n < 0)
         return(NULL);
     i = 0;
-    meal_board = malloc(sizeof(int) * n);
+    meal_board = malloc(sizeof(long long) * n);
     if(!meal_board)
         return (NULL);
     while (i < n)
     {
-        meal_board[i] = 0;
+        meal_board[i] = 1;
         i++;
     }
     return(meal_board);
+}
+
+static int put_meal_board(t_philo **philos, long long *meal_board ,int n)
+{
+    int i;
+
+    i = 0;
+    while (i < n)
+    {
+        philos[i]->meal_time_data = meal_board;
+        i++;
+    }
+    return(i);
 }
 static t_network   *build_network(t_mutex **forks, t_mutex **pens, t_mutex **m_states, t_philo **philos, int *params)
 {
@@ -101,5 +114,6 @@ t_network *create_network(int *params)
         ft_destroy_mutexs(&m_states, params[P]);
         return(ft_destroy_philos(&philos, params[P]));
     }
+    put_meal_board(network->philos,network->last_meals,params[P]);
     return(network);
 }

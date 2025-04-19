@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 21:51:34 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 22:38:42 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -48,7 +48,7 @@ typedef  struct  s_philo
     int     state_1;  // on - off
     int     death_state;  // on - off
     int     cycle;
-    int     *meal_time_data;
+    long long       *meal_time_data;
     int     fork_id_1;
     int     fork_id_2;
     
@@ -68,7 +68,7 @@ typedef  struct  s_network
     t_mutex **m_states;
     t_mutex **forks;
     t_philo **philos;
-    int     *last_meals;
+    long long     *last_meals;
 
 } t_network;
 
@@ -96,4 +96,10 @@ int     philos_laucher(t_network **net, pthread_t threads[200]);
 int     philos_joiner(t_network **net, pthread_t threads[200]);
 
 int     run_philo(pthread_t threads[200], t_network **net);
+
+// tempo
+
+void        ft_temporisation(int ms, long long start);
+int         put_timestamp(t_philo *philo);
+long long   get_timestamp(t_philo *philo);
 #endif

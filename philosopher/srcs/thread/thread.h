@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 17:34:25 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 18:25:16 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -63,6 +63,7 @@ typedef  struct  s_network
 {
     int     n;
     t_mutex **pens;
+    t_mutex **m_states;
     t_mutex **forks;
     t_philo **philos;
     int     *last_meals;

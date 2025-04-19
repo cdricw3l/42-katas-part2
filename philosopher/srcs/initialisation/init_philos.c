@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 17:35:23 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 18:17:08 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -29,7 +29,7 @@ void *ft_destroy_philos(t_philo ***philos, int len)
     return(NULL);
 }
 
-static t_philo *create_philo(t_mutex **forks, t_mutex **pens, int id, int n_philo)
+static t_philo *create_philo(t_mutex **forks, t_mutex **pens, t_mutex **m_states, int id, int n_philo)
 {
     t_philo *philo;
 
@@ -54,6 +54,7 @@ static t_philo *create_philo(t_mutex **forks, t_mutex **pens, int id, int n_phil
         philo->fork_2 = forks[id]; 
     }
     philo->pen = pens[id];
+    philo->m_states = m_states[id];
     return(philo);
 }
 
@@ -68,10 +69,10 @@ t_philo **init_philos(int *params, t_mutex **forks, t_mutex **pens, t_mutex **m_
         return(NULL);
     while (i < params[P])
     {
-        philos[i] = create_philo(forks,pens,i, params[P]);
+        philos[i] = create_philo(forks,pens,m_states ,i, params[P]);
         if(!philos[i])
             return(ft_destroy_philos(&philos, i));
-        philos[i]->m_states = m_states[i];
+        assert(philos[i]->m_states);
         philos[i]->tte = params[TTE];
         philos[i]->tts = params[TTS];
         philos[i]->cycle = params[CYCLE];

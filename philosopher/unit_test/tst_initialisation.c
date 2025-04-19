@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/18 21:48:09 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/19 18:25:29 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -100,6 +100,7 @@ int tst_init_philos(void)
     t_philo **philos;
     t_mutex **forks;
     t_mutex **pens;
+    t_mutex **m_states;
     int *params;
     int n = 5;
     int i;
@@ -127,7 +128,15 @@ int tst_init_philos(void)
         free(params);
         return(0);
     }
-    philos = init_philos(params, forks, pens);
+    m_states = init_mutex(params[P]);
+    if(!m_states)
+    {
+        ft_destroy_mutexs(&pens, params[P]);
+        ft_destroy_mutexs(&forks, params[P]);
+        free(params);
+        return(0);
+    }
+    philos = init_philos(params, forks, pens,m_states);
     if(!philos)
     {
         ft_destroy_mutexs(&forks, params[P]);
@@ -146,6 +155,7 @@ int tst_init_philos(void)
         assert(philos[i]->id  == i);
         assert(philos[i]->fork_1);
         assert(philos[i]->fork_2);
+        assert(philos[i]->m_states);
         assert(philos[i]->pen);
         if(i == 0)
         {
@@ -157,11 +167,13 @@ int tst_init_philos(void)
             assert(philos[i]->fork_id_1 == i - 1);
             assert(philos[i]->fork_id_2 == i);
         }
+        printf("voici %d\n",i);
         i++;
     }
     ft_destroy_philos(&philos,params[P]);
     ft_destroy_mutexs(&forks,params[P]);
     ft_destroy_mutexs(&pens,params[P]);
+    ft_destroy_mutexs(&m_states,params[P]);
     free(params);
     TEST_SUCCES;
     return (1);
@@ -196,14 +208,17 @@ int tst_init_network(void)
     i = 0;
     while (i < params[P])
     {
+        printf("voici i %d\n", i);
         assert(network->last_meals[i] == 0);
         assert(network->philos[i]);
         assert(network->forks[i]);
         assert(network->pens[i]);
+        assert(network->m_states[i]);
         i++;
     }
     free(params);
     destroy_network(&network);
     TEST_SUCCES;
+
     return (1);
 }

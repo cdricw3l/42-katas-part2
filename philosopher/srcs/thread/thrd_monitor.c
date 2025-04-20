@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 23:09:02 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 23:26:23 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -115,7 +115,8 @@ void    *thread_monitor(void *p)
     {
         if(check_timestamp(network->philos, network->pametres[P]))
             printf("\033[0;32m" "everybody are alive\n" "\x1b[0m");
-
+        else
+            break;
     }
     kill_philos((t_network **)p);
     return(p);

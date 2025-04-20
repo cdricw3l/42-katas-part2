@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 23:09:29 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 23:27:56 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -32,9 +32,11 @@ void    *thread_philo_cycle(void *p)
             printf("%lld Philo is thinking\n", get_current_time() - start);
         }
         printf("%lld Philo %d is eating\n", get_current_time() - start,philo->pametres[ID] );
+        printf("voici %d\n", philo->pametres[TTE]);
         ft_temporisation(philo->pametres[TTE], get_current_time());
         release_forks(philo, start);
         put_timestamp(philo);
+        printf("%lld Philo %d is spleeping\n", get_current_time() - start,philo->pametres[ID] );
         ft_temporisation(philo->pametres[TTS], get_current_time());
         i++;
     }

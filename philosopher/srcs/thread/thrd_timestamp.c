@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 12:46:41 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 23:26:05 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -48,7 +48,7 @@ int check_timestamp(t_philo **philo, int n)
         }
         last_philo_eat = philo[i]->meal_time_data[philo[i]->pametres[ID]];
         printf("voici le resqulta du check en ms : % lld, %d\n", current_time - last_philo_eat, philo[i]->pametres[TTD]+5);
-        if(current_time - last_philo_eat > philo[i]->pametres[TTD] + 5)
+        if(current_time - last_philo_eat > philo[i]->pametres[TTD])
         {
             printf("TIME SIMULATION ERREUR\n");
             if(pthread_mutex_unlock(philo[i]->pen))

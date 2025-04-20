@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:18:44 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 12:40:03 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -23,7 +23,7 @@ int run_philo(pthread_t threads[200], t_network **net)
     if((*net)->pametres[CYCLE] == -1)
     {
         f_cycle = thread_philo_infinit;
-        printf("Le thread sera cyclique\n");
+        printf("Le thread sera permanant\n");
     }
     else
     {
@@ -119,25 +119,25 @@ int monitor_joiner(pthread_t *monitiror)
 int run_simulation(t_network **network)
 {
 
-    pthread_t monitiror;
+    //pthread_t monitiror;
     pthread_t threads[200];
     
 
-    if(!monitor_launcher(network, &monitiror))
-    {
-        printf("Error thread monitor launcher\n");
-        return(0);
-    }
+    // if(!monitor_launcher(network, &monitiror))
+    // {
+    //     printf("Error thread monitor launcher\n");
+    //     return(0);
+    // }
     if(!philos_laucher(network, threads))
     {
         printf("Error thread philo launcher\n");
         return(0);
     }
-    if(!monitor_joiner(&monitiror))
-    {
-        printf("Error thread monitor joiner\n");
-        return(0);
-    }
+    // if(!monitor_joiner(&monitiror))
+    // {
+    //     printf("Error thread monitor joiner\n");
+    //     return(0);
+    // }
     if(!philos_joiner(network, threads))
     {
         printf("Error thread philo joiner\n");

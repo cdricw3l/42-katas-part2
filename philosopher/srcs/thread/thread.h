@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 11:25:22 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 12:23:08 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -107,4 +107,11 @@ void        ft_temporisation(int ms, long long start);
 int         put_timestamp(t_philo *philo);
 long long   get_timestamp(t_philo *philo);
 int         check_timestamp(t_philo **philo, int n);
+
+
+// fork
+
+int         get_forks(t_philo *philo, long long timestamps);
+int         release_forks(t_philo *philo, long long timestamps);
+
 #endif

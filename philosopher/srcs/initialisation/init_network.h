@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:35:56 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 11:27:03 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -39,10 +39,7 @@
 #define TEST_SUCCES printf("\033[0;32m" "\nFunction: %s executed successfully.\n" "\x1b[0m", __func__);
 
 
-void            *destroy_network(t_network **network);
 t_network       *create_network(int *params);
-
-void            *ft_destroy_philos(t_philo ***philos, int len);
 t_philo         **init_philos(int *params, t_mutex_data *mutex_data, long long **meal_board);
 
 void            *ft_destroy_mutexs(t_mutex ***mutexs, int len);

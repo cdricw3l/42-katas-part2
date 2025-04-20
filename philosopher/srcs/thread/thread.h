@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:24:00 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 11:25:22 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -87,19 +87,19 @@ void        *thread_monitor(void *p);
 int         start_philo(t_network **net);
 int         kill_philos(t_network **net);
 
-int     monitor_launcher(t_network **network, pthread_t *monitiror);
-int     monitor_joiner(pthread_t *monitiror);
+int         monitor_launcher(t_network **network, pthread_t *monitiror);
+int         monitor_joiner(pthread_t *monitiror);
 
-void    *thread_philo(void *p);
-void    *thread_philo_cycle(void *p);
-void    *thread_philo_infinit(void *p);
+void        *thread_philo(void *p);
+void        *thread_philo_cycle(void *p);
+void        *thread_philo_infinit(void *p);
 
-int     get_state(t_philo *philo, int state_type);
-int     change_state(t_philo *philo, int state_type, int state);
-int     philos_laucher(t_network **net, pthread_t threads[200]);
-int     philos_joiner(t_network **net, pthread_t threads[200]);
+int         get_state(t_philo *philo, int state_type);
+int         change_state(t_philo *philo, int state_type, int state);
+int         philos_laucher(t_network **net, pthread_t threads[200]);
+int         philos_joiner(t_network **net, pthread_t threads[200]);
 
-int     run_philo(pthread_t threads[200], t_network **net);
+int         run_philo(pthread_t threads[200], t_network **net);
 
 // tempo
 

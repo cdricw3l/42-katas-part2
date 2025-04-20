@@ -6,13 +6,13 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:31:13 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:33:24 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 11:27:31 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "init_network.h"
 
-void *destroy_full_network(t_network **network)
+void *destroy_network(t_network **network)
 {
     TEST_START;
     ft_destroy_mutex_struct(&(*network)->mutex_data, (*network)->pametres[P]);

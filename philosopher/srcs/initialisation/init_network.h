@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 17:35:57 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:09:29 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -39,14 +39,25 @@
 #define TEST_SUCCES printf("\033[0;32m" "\nFunction: %s executed successfully.\n" "\x1b[0m", __func__);
 
 
-t_network   *create_network(int *params);
-void        *destroy_network(t_network **network);
+void            *destroy_network(t_network **network);
+t_network       *create_network(int *params);
 
-t_philo     **init_philos(int *params, t_mutex **forks, t_mutex **pens, t_mutex **m_states);
-void        *ft_destroy_philos(t_philo ***philos, int len);
+void            *ft_destroy_philos(t_philo ***philos, int len);
+t_philo **init_philos(int *params, t_mutex_data *mutex_data, int **meal_board);
 
-t_mutex     **init_mutex(int n);
-void        *ft_destroy_mutexs(t_mutex ***mutexs, int len);
+void            *ft_destroy_mutexs(t_mutex ***mutexs, int len);
+t_mutex         **init_mutex(int n);
+t_mutex_data    *init_mutex_struct(int n);
 
-int	        init_atoi(const char *str);
+//utils
+int	            init_atoi(const char *str);
+long long       *get_meal_board(int n);
+int             get_fork_number(t_philo *philo, int fork_number);
+// Memory clean
+
+void            *destroy_network(t_network **network);
+void            *ft_destroy_philos(t_philo ***philos, int len);
+void            *ft_destroy_mutexs(t_mutex ***mutexs, int len);
+void            *ft_destroy_mutex_struct(t_mutex_data **mutex_data, int len);
+
 #endif

@@ -6,114 +6,63 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 22:53:30 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:16:05 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "init_network.h"
 
-void *destroy_network(t_network **network)
+void init_params_monitor(int *monitor_param, int *params)
 {
-    TEST_START;
-    ft_destroy_mutexs(&(*network)->forks, (*network)->n);
-    ft_destroy_mutexs(&(*network)->pens, (*network)->n);
-    ft_destroy_mutexs(&(*network)->m_states, (*network)->n);
-    ft_destroy_philos(&(*network)->philos, (*network)->n);
-    free((*network)->last_meals);
-    (*network)->last_meals = NULL;
-    free(*network);
-    *network = NULL;
-    return(NULL);
-} 
-
-static long long *get_meal_board(int n)
-{
-    long long *meal_board;
-    int i;
-
-    if(n < 0)
-        return(NULL);
-    i = 0;
-    meal_board = malloc(sizeof(long long) * n);
-    if(!meal_board)
-        return (NULL);
-    while (i < n)
-    {
-        meal_board[i] = 1;
-        i++;
-    }
-    return(meal_board);
+    monitor_param[P] = params[P];
+    monitor_param[TTD] = params[TTD];
+    monitor_param[TTE] = params[TTE];
+    monitor_param[TTS] = params[TTS];
+    monitor_param[CYCLE] = params[CYCLE];
 }
 
-static int put_meal_board(t_philo **philos, long long *meal_board ,int n)
-{
-    int i;
-
-    i = 0;
-    while (i < n)
-    {
-        philos[i]->meal_time_data = meal_board;
-        i++;
-    }
-    return(i);
-}
-static t_network   *build_network(t_mutex **forks, t_mutex **pens, t_mutex **m_states, t_philo **philos, int *params)
+static t_network   *build_network(t_mutex_data *mutex_data, t_philo **philos, int *params, long long **meal_board)
 {
     t_network *network;
 
     network = malloc(sizeof(t_network) * 1);
     if(!network)
         return(NULL);
-    network->last_meals = get_meal_board(params[P]);
+    network->last_meals = *meal_board;
     if(!network->last_meals)
     {
         free(network);
         return(NULL);
     }
-    network->forks = forks;
-    network->pens = pens;
-    network->m_states = m_states;
+    init_params_monitor(network->pametres,params);
+    network->mutex_data = mutex_data;
     network->philos = philos;
-    network->n = params[P];
-    network->cycle = params[CYCLE];
     return(network);
 }
 
+
+
 t_network *create_network(int *params)
 {
-	t_mutex     **forks;
-	t_mutex     **pens;
-	t_mutex     **m_states;
-    t_philo     **philos;
-    t_network   *network;
+    t_philo         **philos;
+    t_network       *network;
+	t_mutex_data    *mutex_data;
+	long long       *meal_board;
 
-    forks = init_mutex(params[P]);
-    if(!forks)
+    meal_board = get_meal_board(params[P]);
+    if(!meal_board)
         return(NULL);
-    pens = init_mutex(params[P]);
-    if(!pens)
-        return(ft_destroy_mutexs(&forks, params[P]));
-    m_states = init_mutex(params[P]);
-    if(!m_states)
-    {
-        ft_destroy_mutexs(&forks, params[P]);
-        return(ft_destroy_mutexs(&pens, params[P]));
-    }
-    philos = init_philos(params, forks, pens, m_states);
+    mutex_data = init_mutex_struct(params[P]);
+    if(!mutex_data)
+        return(NULL);
+    philos = init_philos(params, mutex_data, &meal_board);
     if(!philos)
-    {
-        ft_destroy_mutexs(&forks, params[P]);
-        ft_destroy_mutexs(&pens, params[P]);
-        return(ft_destroy_mutexs(&m_states, params[P]));
-    }
-    network = build_network(forks, pens, m_states, philos, params);
+        return(ft_destroy_mutex_struct(&mutex_data, params[P]));
+    network = build_network(mutex_data, philos, params, &meal_board);
     if(!network)
     {
-        ft_destroy_mutexs(&forks, params[P]);
-        ft_destroy_mutexs(&pens, params[P]);
-        ft_destroy_mutexs(&m_states, params[P]);
+        ft_destroy_mutex_struct(&mutex_data, params[P]);
         return(ft_destroy_philos(&philos, params[P]));
     }
-    put_meal_board(network->philos,network->last_meals,params[P]);
     return(network);
 }

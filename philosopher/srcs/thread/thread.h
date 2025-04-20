@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 23:15:58 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:15:59 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,39 +36,41 @@ typedef pthread_mutex_t t_mutex;
 #define TTE 2
 #define TTS 3
 #define CYCLE 4
+#define ID 5
+#define STATE_1 6
+#define STATE_2 7
 
 #define ON 1
 #define OFF 0
 
+typedef  struct  s_mutex_data
+{
+    t_mutex **pens;
+    t_mutex **m_states;
+    t_mutex **forks;
+    
+} t_mutex_data;
+
+
 typedef  struct  s_philo
 {
-    int     id;
-    int     tte;
-    int     tts;
-    int     state_1;  // on - off
-    int     death_state;  // on - off
-    int     cycle;
+
+    int             pametres[7];
+    t_mutex         *fork_1;
+    t_mutex         *fork_2;
+    t_mutex         *pen;
+    t_mutex         *m_state;
     long long       *meal_time_data;
-    int     fork_id_1;
-    int     fork_id_2;
-    
-    t_mutex  *pen;
-    t_mutex  *fork_1;
-    t_mutex  *fork_2;
-    t_mutex  *m_states;
 
 } t_philo;
 
 
 typedef  struct  s_network
 {
-    int     n;
-    int     cycle;
-    t_mutex **pens;
-    t_mutex **m_states;
-    t_mutex **forks;
-    t_philo **philos;
-    long long     *last_meals;
+    int             pametres[6];
+    long long       *last_meals;
+    t_mutex_data    *mutex_data;
+    t_philo         **philos;
 
 } t_network;
 

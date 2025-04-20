@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:10:47 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 20:48:50 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 07:19:02 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,8 +24,6 @@ static int	ft_check_argument(long value, int i)
 		return(0);
 	else if (i == 3 && value < MIN_TTS)
 		return(0);
-	// else if (i == 4 && value != CYCLE)
-	// 	return(0);
 	else
 		return(1);
 }

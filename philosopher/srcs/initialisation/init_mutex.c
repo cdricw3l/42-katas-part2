@@ -6,34 +6,11 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:44:27 by ast               #+#    #+#             */
-/*   Updated: 2025/04/18 21:05:14 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 07:57:53 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "init_network.h"
-
-void *ft_destroy_mutexs(t_mutex ***mutexs, int len)
-{
-    int i;
-    t_mutex **f;
-    
-    i = 0;
-    f = *mutexs;
-    while (i < len)
-    {
-        if(f[i])
-        {
-            if(pthread_mutex_destroy(f[i]) != 0)
-                printf("Mutex destroy err");
-            free(f[i]);
-            f[i] = NULL;
-        }
-        i++;
-    }
-    free(*mutexs);
-    *mutexs = NULL;
-    return(NULL);
-}
 
 t_mutex **init_mutex(int n)
 {
@@ -57,4 +34,32 @@ t_mutex **init_mutex(int n)
 
     }
     return(mutexs);
+}
+t_mutex_data *init_mutex_struct(int n)
+{
+    t_mutex_data *mutex_data;
+
+    mutex_data = malloc(sizeof(t_mutex_data) * 1);
+    if(!mutex_data)
+        return(NULL);
+    mutex_data->forks = init_mutex(n);
+    if(!mutex_data->forks)
+    {
+        free(mutex_data);
+        return(NULL);
+    }
+    mutex_data->pens = init_mutex(n);
+    if(!mutex_data->pens)
+    {
+        free(mutex_data);
+        return(ft_destroy_mutexs(&fork, n));
+    }
+    mutex_data->m_states = init_mutex(n);
+    if (!mutex_data->m_states)
+    {
+        free(mutex_data);
+        ft_destroy_mutexs(&fork, n);
+        return(ft_destroy_mutexs(&mutex_data->pens, n));
+    }
+    return(mutex_data);
 }

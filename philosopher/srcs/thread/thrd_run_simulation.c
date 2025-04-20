@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 21:14:15 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:18:44 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,7 +20,7 @@ int run_philo(pthread_t threads[200], t_network **net)
     void *(*f_cycle)(void *p);
     network = *net;
     i = 0;
-    if((*net)->cycle == -1)
+    if((*net)->pametres[CYCLE] == -1)
     {
         f_cycle = thread_philo_infinit;
         printf("Le thread sera cyclique\n");
@@ -30,20 +30,20 @@ int run_philo(pthread_t threads[200], t_network **net)
         f_cycle = thread_philo_cycle;
         printf("Le thread sera cyclique\n");
     }
-    while (i < network->n)
+    while (i < network->pametres[P])
     {
         if(i % 2 == 0 && i != 1)
         {
             if(pthread_create(&threads[i],NULL, f_cycle, network->philos[i]))
                 return(0);
             else
-                printf("lauch %d\n", network->philos[i]->id);
+                printf("lauch %d\n", network->philos[i]->pametres[ID]);
             sleep(1);
         }
         i++;
     }
     i = 0;
-    while (i < network->n)
+    while (i < network->pametres[P])
     {
         if((i % 3 == 0 && i != 0) || i == 1)
         {
@@ -51,7 +51,7 @@ int run_philo(pthread_t threads[200], t_network **net)
                 return(0);
             else
             {
-                printf("lauch %d\n", network->philos[i]->id);
+                printf("lauch %d\n", network->philos[i]->pametres[ID]);
             }
         }
         sleep(1);
@@ -86,7 +86,7 @@ int philos_laucher(t_network **net, pthread_t threads[200])
 int philos_joiner(t_network **net, pthread_t threads[200])
 {
     
-    if(!join_philos(threads, (*net)->n))
+    if(!join_philos(threads, (*net)->pametres[P]))
         return(0);
    
     return(1);

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:51 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:28:34 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 11:52:29 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,24 +34,25 @@ int tst_tempo(void)
     assert(network->last_meals);
     assert(network->pametres[P] == 5);
     i = 0;
-    while (i < network->pametres[P])
+    while (i < 5)
     {
-        printf("voici l'adresse du meal board general %p\n", network->last_meals);
-        //network->philos[i]->meal_time_data[i] = get_current_time();
-        put_timestamp(network->philos[i]);
-        i++;
-    }
+        printf("Passage %d\n", i);
+        int j;
 
-    ft_temporisation(800, get_current_time());
-    long long curent = get_current_time();
-    i = 0;
-    while (i < network->pametres[P])
-    {
+        j = 0;
+        while (j < network->pametres[P])
+        {
+            put_timestamp(network->philos[j]);
+            j++;
+        }
+        j = 0;
+        ft_temporisation(network->pametres[TTD], get_current_time());
+        long long curent = get_current_time();
         printf(" philo : %lld\n",  curent - network->philos[i]->meal_time_data[i]);
+        if(check_timestamp(network->philos,network->pametres[P]))
+            printf("Tout c'est derouler comme prevu\n");
         i++;
     }
-    if(check_timestamp(network->philos,network->pametres[P]))
-        printf("Tout c'est derouler comme prevu\n");
     destroy_network(&network);
     free(params);
     return(1);

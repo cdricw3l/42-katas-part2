@@ -6,10 +6,10 @@ TEST_NAME= philo_utest
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=clang
-GFLAGS= -Werror -Wall -Wextra -Wno-unused-variable -g -Iinclude
+GFLAGS= -Werror -Wall -Wextra -Wno-unused-variable -g
 else ifeq ($(OS), Linux)
 CC=gcc
-GFLAGS= -Werror -Wall -Wextra
+GFLAGS= -Werror -Wall -Wextra -I./include
 endif
 
 # compilation flags and envoronement developpent.
@@ -66,7 +66,7 @@ TTE= 200
 TTS= 200
 CYCLE= 10
 
-TENV_OBJS= $(OBJS_TEST) $(OBJS_INIT) $(OBJS_THREAD)
+TENV_OBJS=   $(OBJS_THREAD) $(OBJS_INIT) $(OBJS_TEST)
 PROD_OBJS= $(OBJS_MAIN) $(OBJS_INIT) $(OBJS_THREAD)
 
 .PHONY: clean fclean run git testenv

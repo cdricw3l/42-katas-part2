@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 12:23:08 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 22:38:27 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,15 +21,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define DEBUGG printf("DEBUGG\n");
-#define PRINT_INT(msg) printf("\x1b[31m" "DEBBUG  INT " "%d\n", msg);
-#define PSTR(msg) printf("\x1b[31m" "DEBBUG  str >>> " "%s\n", msg);
-#define PPTR(msg) printf("\x1b[31m" "DEBBUG  de pointeur: >>> "  "%p\n" "\x1b[0m", msg);
-#define DEBUGG printf("DEBUGG\n");
-#define TEST_START printf("\033[0;33m" "\nInitiating function test: %s\n" "\x1b[0m", __func__);
-#define TEST_SUCCES printf("\033[0;32m" "\nFunction: %s executed successfully.\n" "\x1b[0m", __func__);
+#include "../../include/global.h"
 
-typedef pthread_mutex_t t_mutex;
 
 #define P 0
 #define TTD 1
@@ -43,44 +36,8 @@ typedef pthread_mutex_t t_mutex;
 #define ON 1
 #define OFF 0
 
-typedef  struct  s_mutex_data
-{
-    t_mutex **pens;
-    t_mutex **m_states;
-    t_mutex **forks;
-    
-} t_mutex_data;
-
-
-typedef  struct  s_philo
-{
-
-    int             pametres[7];
-    
-    t_mutex         *fork_1;
-    t_mutex         *fork_2;
-    t_mutex         *pen;
-    t_mutex         *m_state;
-    
-    long long       *meal_time_data;
-
-} t_philo;
-
-
-typedef  struct  s_network
-{
-    int             pametres[6];
-    long long       *last_meals;
-    t_mutex_data    *mutex_data;
-    t_philo         **philos;
-
-} t_network;
-
-//tempo
-
 long long   get_current_time(void);
 int         run_simulation(t_network **network);
-
 
 void        *thread_monitor(void *p);
 
@@ -112,6 +69,8 @@ int         check_timestamp(t_philo **philo, int n);
 // fork
 
 int         get_forks(t_philo *philo, long long timestamps);
+//int         get_fork_number(t_philo *philo, int fork_number);
+
 int         release_forks(t_philo *philo, long long timestamps);
 
 #endif

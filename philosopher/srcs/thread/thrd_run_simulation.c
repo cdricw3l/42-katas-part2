@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 12:40:03 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 22:59:48 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,40 +21,17 @@ int run_philo(pthread_t threads[200], t_network **net)
     network = *net;
     i = 0;
     if((*net)->pametres[CYCLE] == -1)
-    {
         f_cycle = thread_philo_infinit;
-        printf("Le thread sera permanant\n");
-    }
     else
-    {
         f_cycle = thread_philo_cycle;
-        printf("Le thread sera cyclique\n");
-    }
     while (i < network->pametres[P])
     {
-        if(i % 2 == 0 && i != 1)
+        printf("Launch Thread %d\n", network->philos[i]->pametres[ID]);
+        if(pthread_create(&threads[i],NULL, f_cycle, network->philos[i]))
         {
-            if(pthread_create(&threads[i],NULL, f_cycle, network->philos[i]))
-                return(0);
-            else
-                printf("lauch %d\n", network->philos[i]->pametres[ID]);
-            sleep(1);
+            printf("Launch Error Philosophe %d\n", network->philos[i]->pametres[ID]);
+            return(0);
         }
-        i++;
-    }
-    i = 0;
-    while (i < network->pametres[P])
-    {
-        if((i % 3 == 0 && i != 0) || i == 1)
-        {
-            if(pthread_create(&threads[i],NULL,f_cycle, network->philos[i]))
-                return(0);
-            else
-            {
-                printf("lauch %d\n", network->philos[i]->pametres[ID]);
-            }
-        }
-        sleep(1);
         i++;
     }
     return(1);
@@ -119,28 +96,28 @@ int monitor_joiner(pthread_t *monitiror)
 int run_simulation(t_network **network)
 {
 
-    //pthread_t monitiror;
+    pthread_t monitiror;
     pthread_t threads[200];
     
 
-    // if(!monitor_launcher(network, &monitiror))
-    // {
-    //     printf("Error thread monitor launcher\n");
-    //     return(0);
-    // }
     if(!philos_laucher(network, threads))
     {
         printf("Error thread philo launcher\n");
         return(0);
     }
-    // if(!monitor_joiner(&monitiror))
-    // {
-    //     printf("Error thread monitor joiner\n");
-    //     return(0);
-    // }
+    if(!monitor_launcher(network, &monitiror))
+    {
+        printf("Error thread monitor launcher\n");
+        return(0);
+    }
     if(!philos_joiner(network, threads))
     {
         printf("Error thread philo joiner\n");
+        return(0);
+    }
+    if(!monitor_joiner(&monitiror))
+    {
+        printf("Error thread monitor joiner\n");
         return(0);
     }
     return(1);

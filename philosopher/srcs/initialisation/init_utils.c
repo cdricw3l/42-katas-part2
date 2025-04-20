@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:27:39 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:38:50 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 21:59:56 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -33,28 +33,3 @@ long long *get_meal_board(int n)
 
 
 
-int get_fork_number(t_philo *philo, int fork_number)
-{
-    int id;
-    int n_philo;
-
-    id = philo->pametres[ID];
-    n_philo = philo->pametres[P];
-    if(id == 0)
-    {
-        if(fork_number == 1)
-            return(id);
-        if(fork_number == 2)
-            return(n_philo - 1);
-        
-    }
-    else if(id > 0)
-    {
-        if(fork_number == 1)
-            return(id - 1); 
-        if(fork_number == 2)
-            return(id);  
-    }
-    
-    return(-1);
-}

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:31:13 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:16:38 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:33:24 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -15,7 +15,7 @@
 void *destroy_full_network(t_network **network)
 {
     TEST_START;
-    ft_destroy_mutex_struct((*network)->mutex_data, (*network)->pametres[P]);
+    ft_destroy_mutex_struct(&(*network)->mutex_data, (*network)->pametres[P]);
     ft_destroy_philos(&(*network)->philos, (*network)->pametres[P]);
     free((*network)->last_meals);
     (*network)->last_meals = NULL;
@@ -66,12 +66,10 @@ void *ft_destroy_mutexs(t_mutex ***mutexs, int len)
 
 void *ft_destroy_mutex_struct(t_mutex_data **mutex_data, int len)
 {
-    t_mutex_data *data;
 
-    data = *mutex_data;
-    ft_destroy_mutexs(data->forks, len);
-    ft_destroy_mutexs(data->pens, len);
-    ft_destroy_mutexs(data->m_states, len);
+    ft_destroy_mutexs(&(*mutex_data)->forks, len);
+    ft_destroy_mutexs(&(*mutex_data)->pens, len);
+    ft_destroy_mutexs(&(*mutex_data)->m_states, len);
     free(*mutex_data);
     return(NULL);
 }

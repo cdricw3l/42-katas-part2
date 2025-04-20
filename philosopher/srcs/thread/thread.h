@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:15:59 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:24:00 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -56,10 +56,12 @@ typedef  struct  s_philo
 {
 
     int             pametres[7];
+    
     t_mutex         *fork_1;
     t_mutex         *fork_2;
     t_mutex         *pen;
     t_mutex         *m_state;
+    
     long long       *meal_time_data;
 
 } t_philo;

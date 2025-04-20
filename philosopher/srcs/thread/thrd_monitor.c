@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 23:17:40 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:25:00 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,9 +19,9 @@ int kill_philos(t_network **net)
 
     i = 0;
     network = *net;
-    while (i < network->n)
+    while (i < network->pametres[P])
     {
-        change_state(network->philos[i], network->philos[i]->state_1 ,OFF);
+        change_state(network->philos[i], network->philos[i]->pametres[STATE_1] ,OFF);
         i++;
     }
     return(i);
@@ -34,16 +34,16 @@ int  start_philo(t_network **net)
 
     i = 0;
     network = *net;
-    while (i < network->n)
+    while (i < network->pametres[P])
     {
-        if(pthread_mutex_lock(network->philos[i]->m_states))
+        if(pthread_mutex_lock(network->philos[i]->m_state))
         {
             printf("Erreur mutex state lock\n");
             return(0);    
         }
-        network->philos[i]->state_1 = ON;
-        printf("start philo %d, state %d\n", network->philos[i]->id, network->philos[i]->state_1);
-        if(pthread_mutex_unlock(network->philos[i]->m_states))
+        network->philos[i]->pametres[STATE_1] = ON;
+        printf("start philo %d, state %d\n", network->philos[i]->pametres[ID], network->philos[i]->pametres[STATE_1]);
+        if(pthread_mutex_unlock(network->philos[i]->m_state))
         {
             printf("Erreur mutex state unlock\n");
             return(0);
@@ -58,9 +58,9 @@ int are_alive(t_network *network)
     int i;
 
     i = 0;
-    while (i < network->n)
+    while (i < network->pametres[P])
     {
-        if(get_state(network->philos[i], network->philos[i]->state_1) == OFF && get_state(network->philos[i], network->philos[i]->death_state) == 1)
+        if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF && get_state(network->philos[i], network->philos[i]->pametres[STATE_2]) == 1)
             return(0);
         i++;
     }
@@ -79,7 +79,7 @@ void    *thread_monitor(void *p)
     }
     while (are_alive(network))
     {
-        if(check_timestamp(network->philos, network->n))
+        if(check_timestamp(network->philos, network->pametres[P]))
             printf("\033[0;32m" "everybody are alive\n" "\x1b[0m");
         sleep(1);
 

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 23:25:54 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:27:54 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -22,7 +22,7 @@ int put_timestamp(t_philo *philo)
         printf("Erreur mutex state lock\n");
         return(0);
     }
-    philo->meal_time_data[philo->id] = get_current_time();
+    philo->meal_time_data[philo->pametres[ID]] = get_current_time();
     if(pthread_mutex_unlock(philo->pen))
     {
         printf("Erreur mutex state lock\n");
@@ -46,7 +46,7 @@ int check_timestamp(t_philo **philo, int n)
             printf("Erreur mutex state lock\n");
             return(0);
         }
-        last_philo_eat = philo[i]->meal_time_data[philo[i]->id];
+        last_philo_eat = philo[i]->meal_time_data[philo[i]->pametres[ID]];
         printf("voici le resqulta du check en ms : % lld\n", current_time - last_philo_eat);
         if(current_time - last_philo_eat > TTD)
         {
@@ -70,7 +70,7 @@ long long get_timestamp(t_philo *philo)
     long long timestamp;
     int id;
 
-    id = philo->id;
+    id = philo->pametres[ID];
     if(pthread_mutex_lock(philo->pen))
     {
         printf("Erreur mutex state lock\n");

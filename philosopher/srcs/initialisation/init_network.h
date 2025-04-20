@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:09:29 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:35:56 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -43,7 +43,7 @@ void            *destroy_network(t_network **network);
 t_network       *create_network(int *params);
 
 void            *ft_destroy_philos(t_philo ***philos, int len);
-t_philo **init_philos(int *params, t_mutex_data *mutex_data, int **meal_board);
+t_philo         **init_philos(int *params, t_mutex_data *mutex_data, long long **meal_board);
 
 void            *ft_destroy_mutexs(t_mutex ***mutexs, int len);
 t_mutex         **init_mutex(int n);
@@ -57,7 +57,6 @@ int             get_fork_number(t_philo *philo, int fork_number);
 
 void            *destroy_network(t_network **network);
 void            *ft_destroy_philos(t_philo ***philos, int len);
-void            *ft_destroy_mutexs(t_mutex ***mutexs, int len);
 void            *ft_destroy_mutex_struct(t_mutex_data **mutex_data, int len);
 
 #endif

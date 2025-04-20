@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 20:53:28 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:26:45 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,18 +21,18 @@ void    *thread_philo_infinit(void *p)
     //long long last;
 
     philo = (t_philo *)p;    
-    while (get_state(philo, philo->state_1) == OFF)
+    while (get_state(philo, philo->pametres[STATE_1]) == OFF)
     {
-        printf("philo %d is spleeping\n", philo->id);
+        printf("philo %d is spleeping\n", philo->pametres[ID]);
         sleep(1);
     }
-    while (get_state(philo, philo->state_1) == ON)
+    while (get_state(philo, philo->pametres[STATE_1]) == ON)
     {
-        printf("I am The philosopher number %d \n", philo->id);
+        printf("I am The philosopher number %d \n", philo->pametres[ID]);
         sleep(1);
         i++;
     }
-    printf("PHILO %d WAS KILLED\n", philo->id);
+    printf("PHILO %d WAS KILLED\n", philo->pametres[ID]);
     TEST_SUCCES;
     return(p);
 }

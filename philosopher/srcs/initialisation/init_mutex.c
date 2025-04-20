@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:44:27 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 07:57:53 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:34:59 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -51,15 +51,17 @@ t_mutex_data *init_mutex_struct(int n)
     mutex_data->pens = init_mutex(n);
     if(!mutex_data->pens)
     {
+        ft_destroy_mutexs(&mutex_data->forks, n);
         free(mutex_data);
-        return(ft_destroy_mutexs(&fork, n));
+        return(NULL);
     }
     mutex_data->m_states = init_mutex(n);
     if (!mutex_data->m_states)
     {
+        ft_destroy_mutexs(&mutex_data->forks, n);
+        ft_destroy_mutexs(&mutex_data->pens, n);
         free(mutex_data);
-        ft_destroy_mutexs(&fork, n);
-        return(ft_destroy_mutexs(&mutex_data->pens, n));
+        return(NULL);
     }
     return(mutex_data);
 }

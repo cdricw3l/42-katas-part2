@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:12:38 by ast               #+#    #+#             */
-/*   Updated: 2025/04/19 20:25:42 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:27:24 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,18 +18,18 @@ int get_state(t_philo *philo, int state_type)
     
     if(state_type == 0)
     {
-        if(pthread_mutex_lock(philo->m_states))
+        if(pthread_mutex_lock(philo->m_state))
             printf("Erreur mutex state lock\n");
-        state = philo->state_1;
-        if(pthread_mutex_unlock(philo->m_states))
+        state = philo->pametres[STATE_1];
+        if(pthread_mutex_unlock(philo->m_state))
             printf("Erreur mutex state unlock\n"); 
     }
     else if(state_type == 1)
     {
-        if(pthread_mutex_lock(philo->m_states))
+        if(pthread_mutex_lock(philo->m_state))
             printf("Erreur mutex state lock\n");
-        state = philo->death_state;
-        if(pthread_mutex_unlock(philo->m_states))
+        state = philo->pametres[STATE_2];
+        if(pthread_mutex_unlock(philo->m_state))
             printf("Erreur mutex state unlock\n"); 
     }
     return(state);
@@ -40,18 +40,18 @@ int change_state(t_philo *philo, int state_type, int state)
 
     if(state_type == 0)
     {
-        if(pthread_mutex_lock(philo->m_states))
+        if(pthread_mutex_lock(philo->m_state))
             printf("Erreur mutex state lock\n");
-        philo->state_1 = state;
-        if(pthread_mutex_unlock(philo->m_states))
+        philo->pametres[STATE_1] = state;
+        if(pthread_mutex_unlock(philo->m_state))
             printf("Erreur mutex state unlock\n"); 
     }
     else if(state_type == 1)
     {
-        if(pthread_mutex_lock(philo->m_states))
+        if(pthread_mutex_lock(philo->m_state))
             printf("Erreur mutex state lock\n");
-        philo->death_state = state;
-        if(pthread_mutex_unlock(philo->m_states))
+        philo->pametres[STATE_2] = state;
+        if(pthread_mutex_unlock(philo->m_state))
             printf("Erreur mutex state unlock\n"); 
     }
     return(state);

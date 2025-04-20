@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:27:39 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:05:17 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/20 09:38:50 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -55,6 +55,6 @@ int get_fork_number(t_philo *philo, int fork_number)
         if(fork_number == 2)
             return(id);  
     }
-    else
-        return(-1);
+    
+    return(-1);
 }

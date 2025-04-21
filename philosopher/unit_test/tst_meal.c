@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/21 19:07:55 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 19:15:22 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -108,9 +108,9 @@ void display_report(t_report *report, int header)
     while (i < R_SIZE + 1)
     {
         if(i == 0)
-            printf("Cycle %d    \t\t",report->cycle);
+            printf("Cycle%d ",report->cycle);
         else
-            printf("%lld    \t\t\t", report->report[i - 1]);
+            printf("%lld", report->report[i - 1]);
         i++;
     }
     printf("\n");

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/21 19:15:22 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 19:20:47 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -65,21 +65,21 @@ int    archive_report(t_report **archive, t_report *report)
 char *get_header(int i)
 {
     if(i == 0)
-        return("            \t");
+        return("\t");
     if(i == 1)
-        return("Last meal   \t");
+        return("LM \t");
     if(i == 2)
-        return("Start       \t");
+        return("ST \t");
     if(i == 3)
-        return("End think   \t");
+        return("ET \t");
     if(i == 4)
-        return("Get fork    \t");
+        return("GF \t");
     if(i == 5)
-        return("End eat     \t");
+        return("Ee \t");
     if(i == 6)
-        return("Release f   \t");
+        return("RL \t");
     if(i == 7)
-        return("End sleep   \t");
+        return("ES \t");
     return(NULL);
 }
 
@@ -90,7 +90,7 @@ void display_report_header(void)
     i = 0;
     while (i < R_SIZE + 1)
     {
-        printf("%s\t",get_header(i));
+        printf("%s ",get_header(i));
         i++;
     }
     printf("\n");
@@ -108,9 +108,9 @@ void display_report(t_report *report, int header)
     while (i < R_SIZE + 1)
     {
         if(i == 0)
-            printf("Cycle%d ",report->cycle);
+            printf("Cycle %d \t",report->cycle);
         else
-            printf("%lld", report->report[i - 1]);
+            printf("%lld \t", report->report[i - 1]);
         i++;
     }
     printf("\n");
@@ -160,7 +160,7 @@ int tst_meal(void)
     if(!archive)
         return(0);
     start = get_current_time();
-    while (i < 2)
+    while (i < 10)
     {
         report = create_new_report(i,1);
         simulation_cycle(report->report, start);

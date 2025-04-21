@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/21 10:22:23 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 18:16:58 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,5 +26,6 @@ int tst_run_thread_philo(void);
 int tst_run_thread_simulation(void);
 int tst_tempo(void);
 int tst_timestamp(void);
+int tst_meal(void);
 
 #endif

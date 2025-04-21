@@ -31,7 +31,7 @@ SRCS_THREAD= $(wildcard srcs/thread/*.c)
 # Mode precompilation rules: no flags (unused variable etc...) for mode noflags.
 
 %.o:%.c
-	$(CC) $(GFLAGS) -c $< -o $@
+	@$(CC) $(GFLAGS) -c $< -o $@
 
 # Precompilation object.
 

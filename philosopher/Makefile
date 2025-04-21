@@ -25,6 +25,7 @@ SRCS_MAIN= srcs/main.c
 SRCS_TEST= $(wildcard unit_test/*.c)
 SRCS_INIT= $(wildcard srcs/initialisation/*.c)
 SRCS_THREAD= $(wildcard srcs/thread/*.c)
+SRCS_CYCLE_DATA= $(wildcard srcs/cycle_data/*.c)
 
 
 
@@ -40,6 +41,7 @@ SRCS_THREAD= $(wildcard srcs/thread/*.c)
 OBJS_MAIN=$(SRCS_MAIN:%.c=%.o)
 OBJS_INIT=$(SRCS_INIT:%.c=%.o)
 OBJS_THREAD=$(SRCS_THREAD:%.c=%.o)
+OBJS_CYCLE_DATA=$(SRCS_CYCLE_DATA:%.c=%.o)
 
 # Test env:
 
@@ -66,7 +68,7 @@ TTE= 200
 TTS= 200
 CYCLE= 10
 
-TENV_OBJS=   $(OBJS_THREAD) $(OBJS_INIT) $(OBJS_TEST)
+TENV_OBJS=  $(OBJS_INIT) $(OBJS_CYCLE_DATA) $(OBJS_THREAD) $(OBJS_TEST)
 PROD_OBJS= $(OBJS_MAIN) $(OBJS_INIT) $(OBJS_THREAD)
 
 .PHONY: clean fclean run git testenv

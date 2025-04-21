@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 12:45:17 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 22:03:57 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,15 +19,16 @@ int put_timestamp(t_philo *philo, int type)
     if(type < TS_CYCLE || type > TS_THINK)
         return(-1);
     id = philo->pametres[ID];
+    (void)id;
     if(pthread_mutex_lock(philo->pen))
     {
         printf("Erreur mutex state lock\n");
         return(0);
     }
-    if(type == TS_CYCLE)
-        philo->time_data[TS_CYCLE][id]++;
-    else
-        philo->time_data[type][id] = get_current_time();
+    // if(type == TS_CYCLE)
+    //     philo->time_data[TS_CYCLE][id]++;
+    // else
+    //     philo->time_data[type][id] = get_current_time();
     if(pthread_mutex_unlock(philo->pen))
     {
         printf("Erreur mutex state lock\n");

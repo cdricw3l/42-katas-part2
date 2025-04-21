@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/21 12:15:30 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 22:20:33 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -54,42 +54,10 @@
 #define ON 1
 #define OFF 0
 
-typedef pthread_mutex_t t_mutex;
-
-typedef  struct  s_mutex_data
-{
-    t_mutex **pens;
-    t_mutex **m_states;
-    t_mutex **forks;
-    
-} t_mutex_data;
-
-
-typedef  struct  s_philo
-{
-
-    int             pametres[7];
-    
-    t_mutex         *fork_1;
-    t_mutex         *fork_2;
-    t_mutex         *pen;
-    t_mutex         *m_state;
-    long long       **time_data;
-
-} t_philo;
-
-
-typedef  struct  s_network
-{
-    int             pametres[6];
-    long long       **time_board;
-    t_mutex_data    *mutex_data;
-    t_philo         **philos;
-
-} t_network;
-
 
 
 int	*ft_init_and_check_argument(char **argv, int len);
+
+
 
 #endif

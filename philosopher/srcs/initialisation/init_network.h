@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 12:15:45 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 22:19:17 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,10 +21,43 @@
 #include <stdio.h>
 
 #include "../../include/global.h"
+#include "../cycle_data/cycle_data.h"
 #include "../thread/thread.h"
 
+typedef pthread_mutex_t t_mutex;
+
+typedef  struct  s_mutex_data
+{
+    t_mutex **pens;
+    t_mutex **m_states;
+    t_mutex **forks;
+    
+} t_mutex_data;
+
+typedef  struct  s_philo
+{
+    int             pametres[7];
+    
+    t_mutex         *fork_1;
+    t_mutex         *fork_2;
+    t_mutex         *pen;
+    t_mutex         *m_state;
+    t_report        **archive;
+
+} t_philo;
+
+
+typedef  struct  s_network
+{
+    int             pametres[6];
+    t_philo         **philos;
+    t_report        ***archive;
+    t_mutex_data    *mutex_data;
+
+} t_network;
+
 t_network       *create_network(int *params);
-t_philo **init_philos(int *params, t_mutex_data *mutex_data, long long ***meal_board);
+t_philo         **init_philos(int *params, t_mutex_data *mutex_data, long long ***meal_board);
 
 void            *ft_destroy_mutexs(t_mutex ***mutexs, int len);
 t_mutex         **init_mutex(int n);

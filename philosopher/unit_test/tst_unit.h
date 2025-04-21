@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:23:04 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/21 18:16:58 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 22:01:15 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,6 +16,7 @@
 #include "../include/global.h"
 #include "../srcs/initialisation/init_network.h"
 #include "../srcs/thread/thread.h"
+#include "../srcs/cycle_data/cycle_data.h"
 
 int tst_ft_init_arr_arg(void);
 int tst_init_fork_and_pen(void);

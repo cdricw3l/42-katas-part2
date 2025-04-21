@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 12:33:22 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 22:20:04 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -22,6 +22,8 @@
 #include <unistd.h>
 
 #include "../../include/global.h"
+#include "../cycle_data/cycle_data.h"
+#include "../initialisation/init_network.h"
 
 #define TS_CYCLE    0
 #define TS_THINK    1

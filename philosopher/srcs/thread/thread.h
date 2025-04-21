@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 22:38:27 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 12:33:22 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -23,18 +23,12 @@
 
 #include "../../include/global.h"
 
+#define TS_CYCLE    0
+#define TS_THINK    1
+#define TS_START    2
+#define TS_EAT      3
+#define TS_SPLEEP   4
 
-#define P 0
-#define TTD 1
-#define TTE 2
-#define TTS 3
-#define CYCLE 4
-#define ID 5
-#define STATE_1 6
-#define STATE_2 7
-
-#define ON 1
-#define OFF 0
 
 long long   get_current_time(void);
 int         run_simulation(t_network **network);
@@ -61,7 +55,7 @@ int         run_philo(pthread_t threads[200], t_network **net);
 // tempo
 
 void        ft_temporisation(int ms, long long start);
-int         put_timestamp(t_philo *philo);
+int         put_timestamp(t_philo *philo, int type);
 long long   get_timestamp(t_philo *philo);
 int         check_timestamp(t_philo **philo, int n);
 
@@ -72,5 +66,8 @@ int         get_forks(t_philo *philo, long long timestamps);
 //int         get_fork_number(t_philo *philo, int fork_number);
 
 int         release_forks(t_philo *philo, long long timestamps);
+
+
+void        display_time_board(long long **time_board, int len);
 
 #endif

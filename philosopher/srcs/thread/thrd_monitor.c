@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 23:26:23 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 09:50:59 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,7 +45,6 @@ int  start_first_batch(t_network **net)
             }
             printf("Launch Philosophe %d\n", network->philos[i]->pametres[ID]);
             network->philos[i]->pametres[STATE_1] = ON;
-            printf("start philo %d, state %d\n", network->philos[i]->pametres[ID], network->philos[i]->pametres[STATE_1]);
             if(pthread_mutex_unlock(network->philos[i]->m_state))
             {
                 printf("Erreur mutex state unlock\n");
@@ -75,7 +74,6 @@ int  start_second_batch(t_network **net)
             }
             printf("Launch Philosophe %d\n", network->philos[i]->pametres[ID]);
             network->philos[i]->pametres[STATE_1] = ON;
-            printf("start philo %d, state %d\n", network->philos[i]->pametres[ID], network->philos[i]->pametres[STATE_1]);
             if(pthread_mutex_unlock(network->philos[i]->m_state))
             {
                 printf("Erreur mutex state unlock\n");

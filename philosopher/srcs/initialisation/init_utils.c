@@ -6,29 +6,57 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:27:39 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 21:59:56 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 12:19:35 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "init_network.h"
 
-long long *get_meal_board(int n)
+void *ft_destroy_timeboard(long long ***time_board, int len)
 {
-    long long *meal_board;
     int i;
+    long long **time_b;
+    
+    i = 0;
+    time_b = *time_board;
+    while (i < len)
+    {
+        free(time_b[i]);
+        time_b[i] = NULL;
+        i++;
+    }   
+    free(*time_board);
+    *time_board = NULL;
+    return (NULL);
+}
+
+long long **get_time_board(int n)
+{
+    long long **time_board;
+    int i;
+    int j;
 
     if(n < 0)
         return(NULL);
     i = 0;
-    meal_board = malloc(sizeof(long long) * n);
-    if(!meal_board)
+    time_board = malloc(sizeof(long long *) * n);
+    assert(n == 5);
+    if(!time_board)
         return (NULL);
     while (i < n)
     {
-        meal_board[i] = 1;
+        time_board[i] = malloc(sizeof(long long) * n);
+        if(!time_board)
+            return(ft_destroy_timeboard(&time_board, i));
+        j = 0;
+        while (j < n)
+        {
+            time_board[i][j] = 0;
+            j++;
+        }
         i++;
     }
-    return(meal_board);
+    return(time_board);
 }
 
 

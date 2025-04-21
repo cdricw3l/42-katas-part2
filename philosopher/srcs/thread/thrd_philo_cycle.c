@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 23:27:56 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 12:33:59 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,7 +16,6 @@ void    *thread_philo_cycle(void *p)
 {
     t_philo *philo;
     int i;
-    //long long last;
 
     philo = (t_philo *)p;
     i = 0;
@@ -26,18 +25,17 @@ void    *thread_philo_cycle(void *p)
     }
     while (get_state(philo, 0) == ON && philo->pametres[CYCLE] > i)
     {
-        long long start = get_current_time();
+        put_timestamp(philo, TS_THINK);
         while (!get_forks(philo, get_current_time()))
         {
-            printf("%lld Philo is thinking\n", get_current_time() - start);
+            printf("Philo is thinking\n");
         }
-        printf("%lld Philo %d is eating\n", get_current_time() - start,philo->pametres[ID] );
-        printf("voici %d\n", philo->pametres[TTE]);
+        put_timestamp(philo, TS_START);
+        put_timestamp(philo, TS_CYCLE);
         ft_temporisation(philo->pametres[TTE], get_current_time());
-        release_forks(philo, start);
-        put_timestamp(philo);
-        printf("%lld Philo %d is spleeping\n", get_current_time() - start,philo->pametres[ID] );
+        put_timestamp(philo, TS_EAT);
         ft_temporisation(philo->pametres[TTS], get_current_time());
+        put_timestamp(philo, TS_SPLEEP);
         i++;
     }
     change_state(philo, philo->pametres[STATE_1], OFF);

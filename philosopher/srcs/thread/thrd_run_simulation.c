@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 22:59:48 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 09:51:55 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -29,7 +29,7 @@ int run_philo(pthread_t threads[200], t_network **net)
         printf("Launch Thread %d\n", network->philos[i]->pametres[ID]);
         if(pthread_create(&threads[i],NULL, f_cycle, network->philos[i]))
         {
-            printf("Launch Error Philosophe %d\n", network->philos[i]->pametres[ID]);
+            printf("Launch Error THREAD %d\n", network->philos[i]->pametres[ID]);
             return(0);
         }
         i++;

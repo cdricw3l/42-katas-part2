@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:22:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/04/20 12:27:03 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 10:22:45 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,7 +20,8 @@ int	main(void)
     //assert(tst_init_network() == 1);
     //assert(tst_run_thread_monitor() == 1);
     //assert(tst_run_thread_philo() == 1);
-    assert(tst_run_thread_simulation() == 1);
+    //assert(tst_run_thread_simulation() == 1);
+    assert(tst_timestamp() == 1);
     //assert(tst_tempo() == 1);
     TEST_SUCCES;
 	return(0);

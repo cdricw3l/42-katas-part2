@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 09:38:25 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 10:27:56 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,7 +27,7 @@ void init_params_philo(t_philo **phil, int *params, int id)
     philo->pametres[STATE_2] = -1;
 }
 
-static t_philo *create_philo(t_mutex_data *mutex_data, long long **meal_board, int id, int *params)
+static t_philo *create_philo(t_mutex_data *mutex_data, long long ***time_board, int id, int *params)
 {
     t_philo *philo;
 
@@ -35,7 +35,7 @@ static t_philo *create_philo(t_mutex_data *mutex_data, long long **meal_board, i
     if(!philo)
         return(NULL);
     init_params_philo(&philo, params, id);
-    philo->meal_time_data = *meal_board;
+    philo->time_data = *time_board;
     philo->fork_1 = mutex_data->forks[get_fork_number(philo, 1)];
     philo->fork_2 = mutex_data->forks[get_fork_number(philo, 2)];
     philo->pen = mutex_data->pens[id];
@@ -43,7 +43,7 @@ static t_philo *create_philo(t_mutex_data *mutex_data, long long **meal_board, i
     return(philo);
 }
 
-t_philo **init_philos(int *params, t_mutex_data *mutex_data, long long **meal_board)
+t_philo **init_philos(int *params, t_mutex_data *mutex_data, long long ***meal_board)
 {
     int         i;
     t_philo     **philos;

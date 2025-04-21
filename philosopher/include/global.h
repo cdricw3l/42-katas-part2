@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/20 22:40:05 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 12:15:30 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,6 +20,8 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
+
+
 
 #define DEBUGG printf("DEBUGG\n");
 #define PRINT_INT(msg) printf("\x1b[31m" "DEBBUG  INT " "%d\n", msg);
@@ -72,7 +74,7 @@ typedef  struct  s_philo
     t_mutex         *fork_2;
     t_mutex         *pen;
     t_mutex         *m_state;
-    long long       *meal_time_data;
+    long long       **time_data;
 
 } t_philo;
 
@@ -80,7 +82,7 @@ typedef  struct  s_philo
 typedef  struct  s_network
 {
     int             pametres[6];
-    long long       *last_meals;
+    long long       **time_board;
     t_mutex_data    *mutex_data;
     t_philo         **philos;
 

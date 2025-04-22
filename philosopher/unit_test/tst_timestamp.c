@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tst_timestamp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:21:23 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 12:34:55 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 14:53:36 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "tst_unit.h"
 
@@ -33,13 +33,14 @@ int tst_timestamp(void)
     philo->pen = pen;
     assert(time_board);
     put_timestamp(philo, TS_CYCLE);
-    put_timestamp(philo, TS_THINK);
     put_timestamp(philo, TS_START);
+    ft_temporisation(philo->pametres[TTE], get_current_time());
+    put_timestamp(philo, TS_THINK);
     ft_temporisation(philo->pametres[TTE], get_current_time());
     put_timestamp(philo, TS_EAT);
     ft_temporisation(philo->pametres[TTS], get_current_time());
     put_timestamp(philo, TS_SPLEEP);
-    display_time_board(time_board, 5);
+    display_philo_time_board(philo, 0);
 
     ft_destroy_timeboard(&time_board, 5);
     return(1);

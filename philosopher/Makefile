@@ -6,7 +6,7 @@ TEST_NAME= philo_utest
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=clang
-GFLAGS= -Werror -Wall -Wextra -Wno-unused-variable -g
+GFLAGS= -Werror -Wall -Wextra -I./include
 else ifeq ($(OS), Linux)
 CC=gcc
 GFLAGS= -Werror -Wall -Wextra -I./include

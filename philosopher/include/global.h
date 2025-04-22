@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   global.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/21 12:15:30 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 13:45:00 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef GLOBAL_H
 #define GLOBAL_H
@@ -68,7 +68,7 @@ typedef  struct  s_mutex_data
 typedef  struct  s_philo
 {
 
-    int             pametres[7];
+    int             pametres[8];
     
     t_mutex         *fork_1;
     t_mutex         *fork_2;
@@ -81,7 +81,7 @@ typedef  struct  s_philo
 
 typedef  struct  s_network
 {
-    int             pametres[6];
+    int             pametres[8];
     long long       **time_board;
     t_mutex_data    *mutex_data;
     t_philo         **philos;

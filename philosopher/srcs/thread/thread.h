@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thread.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 12:33:22 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/21 14:49:20 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef THREAD_H
 #define THREAD_H
@@ -24,8 +24,8 @@
 #include "../../include/global.h"
 
 #define TS_CYCLE    0
-#define TS_THINK    1
-#define TS_START    2
+#define TS_START    1
+#define TS_THINK    2
 #define TS_EAT      3
 #define TS_SPLEEP   4
 
@@ -68,6 +68,7 @@ int         get_forks(t_philo *philo, long long timestamps);
 int         release_forks(t_philo *philo, long long timestamps);
 
 
-void        display_time_board(long long **time_board, int len);
+void        display_philo_time_board(t_philo *philo, int mode);
+void        display_all_philo_time_board(t_philo **philo, int mode);
 
 #endif

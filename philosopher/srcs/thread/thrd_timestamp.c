@@ -6,17 +6,17 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 14:35:31 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/22 23:32:40 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thread.h"
 
-int put_timestamp(t_philo *philo, int type)
+int put_timestamp(t_philo *philo, int type, long long start)
 {
     int id;
     
-    if(type < TS_CYCLE || type > TS_SPLEEP)
+    if(type < TS_CYCLE || type > TS_END_SPLEEP)
         return(-1);
     id = philo->pametres[ID];
     assert(id == 0);
@@ -28,7 +28,7 @@ int put_timestamp(t_philo *philo, int type)
     if(type == TS_CYCLE)
         philo->time_data[TS_CYCLE][id]++;
     else
-        philo->time_data[type][id] = get_current_time();
+        philo->time_data[type][id] = get_current_time() - start;
     if(pthread_mutex_unlock(philo->pen))
     {
         printf("Erreur mutex state lock\n");
@@ -36,9 +36,6 @@ int put_timestamp(t_philo *philo, int type)
     }
     return(1);
 }
-
-
-
 
 int check_timestamp(t_philo **philo, int n)
 {

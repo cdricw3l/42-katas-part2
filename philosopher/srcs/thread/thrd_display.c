@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 15:00:44 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/22 23:37:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 char *get_column_name(int i)
 {
     if(i == TS_CYCLE)
-        return("Cycle: ");
-    if (i == TS_THINK)
-        return("End Think: ");
+        return("Cycle:");
     if (i == TS_START)
-        return("Start: ");
-    if (i == TS_EAT)
-        return("End Eat: ");
-    if (i == TS_SPLEEP)
-        return("End sleep: ");
+        return("Start:");
+    if (i == TS_LAST_EAT)
+        return("Last eat");
+    if (i == TS_END_THINK)
+        return("End Think:");
+    if (i == TS_END_EAT)
+        return("End Eat:");
+    if (i == TS_END_SPLEEP)
+        return("End sleep:");
     return("");
 }
 
@@ -40,21 +42,21 @@ void display_philo_time_board(t_philo *philo, int mode)
     time_board = philo->time_data;
     if(!time_board)
         return ;
-    printf("Philosopher\t %d\n\n", philo->pametres[ID]);
-    while (i < philo->pametres[P])
+    printf("Philosopher %d\t", philo->pametres[ID]);
+    while (i < TS_SIZE_ARR)
     {
         if(i == 0)
-            printf("%s\t\t %lld\n", get_column_name(i) ,time_board[i][philo->pametres[ID]]);
+            printf("%s %lld ", get_column_name(i) ,time_board[i][philo->pametres[ID]]);
         else
         {
             if(mode == MODE_INTERVAL)
-                printf("%s\t\t %lld\n", get_column_name(i) ,time_board[i][philo->pametres[ID]] - time_board[TS_START][philo->pametres[ID]]);
+                printf("%s %lld ", get_column_name(i) ,time_board[i][philo->pametres[ID]] - time_board[TS_START][philo->pametres[ID]]);
             else
-                printf("%s\t\t %lld\n", get_column_name(i) ,time_board[i][philo->pametres[ID]]);
+                printf("%s %lld\n", get_column_name(i) ,time_board[i][philo->pametres[ID]]);
         }
-        printf("\n");
         i++;
     }
+    printf("\n");
     TEST_SUCCES;
 }
 

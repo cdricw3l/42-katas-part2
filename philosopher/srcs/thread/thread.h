@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 14:49:20 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/22 23:32:57 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@
 
 #include "../../include/global.h"
 
-#define TS_CYCLE    0
-#define TS_START    1
-#define TS_THINK    2
-#define TS_EAT      3
-#define TS_SPLEEP   4
+#define TS_SIZE_ARR 6
+
+#define TS_CYCLE        0
+#define TS_START        1
+#define TS_LAST_EAT     2
+#define TS_END_THINK    3
+#define TS_END_EAT      4
+#define TS_END_SPLEEP   5
 
 
 long long   get_current_time(void);
@@ -55,7 +58,7 @@ int         run_philo(pthread_t threads[200], t_network **net);
 // tempo
 
 void        ft_temporisation(int ms, long long start);
-int         put_timestamp(t_philo *philo, int type);
+int         put_timestamp(t_philo *philo, int type, long long start);
 long long   get_timestamp(t_philo *philo);
 int         check_timestamp(t_philo **philo, int n);
 
@@ -66,7 +69,6 @@ int         get_forks(t_philo *philo, long long timestamps);
 //int         get_fork_number(t_philo *philo, int fork_number);
 
 int         release_forks(t_philo *philo, long long timestamps);
-
 
 void        display_philo_time_board(t_philo *philo, int mode);
 void        display_all_philo_time_board(t_philo **philo, int mode);

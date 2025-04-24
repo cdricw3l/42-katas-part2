@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_network.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 12:15:45 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/24 08:51:40 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef INIT_NETWORK_H
 #define INIT_NETWORK_H
@@ -32,7 +32,8 @@ t_mutex_data    *init_mutex_struct(int n);
 
 //utils
 int	            init_atoi(const char *str);
-long long       **get_time_board(int n);
+long long       *get_time_board(int n);
+long long       **get_time_multi_board(int n);
 int             get_fork_number(t_philo *philo, int fork_number);
 // Memory clean
 

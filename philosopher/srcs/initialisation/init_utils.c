@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:27:39 by ast               #+#    #+#             */
-/*   Updated: 2025/04/22 23:22:29 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/24 08:52:15 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,29 @@ void *ft_destroy_timeboard(long long ***time_board, int len)
     return (NULL);
 }
 
-long long **get_time_board(int n)
+
+long long *get_time_board(int n)
+{
+    long long *time_board;
+    int i;
+
+    i = 0;
+    time_board = malloc(sizeof(long long *) * n);
+    if(!time_board)
+        return(NULL);
+    i = 0;
+    while (i < n)
+    {
+        time_board[i] = 0;
+        i++;
+    }
+    return(time_board);
+}
+
+long long **get_time_multi_board(int n)
 {
     long long **time_board;
     int i;
-    int j;
 
     if(n < 0)
         return(NULL);
@@ -44,15 +62,9 @@ long long **get_time_board(int n)
         return (NULL);
     while (i < n)
     {
-        time_board[i] = malloc(sizeof(long long) * n);
+        time_board[i] = get_time_board(n);
         if(!time_board)
             return(ft_destroy_timeboard(&time_board, i));
-        j = 0;
-        while (j < n)
-        {
-            time_board[i][j] = 0;
-            j++;
-        }
         i++;
     }
     return(time_board);

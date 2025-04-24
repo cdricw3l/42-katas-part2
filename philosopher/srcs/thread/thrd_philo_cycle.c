@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_philo_cycle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 12:33:59 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/24 08:39:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "thread.h"
 
@@ -25,17 +25,17 @@ void    *thread_philo_cycle(void *p)
     }
     while (get_state(philo, 0) == ON && philo->pametres[CYCLE] > i)
     {
-        put_timestamp(philo, TS_THINK);
+        put_timestamp(philo, TS_END_THINK, get_current_time());
         while (!get_forks(philo, get_current_time()))
         {
             printf("Philo is thinking\n");
         }
-        put_timestamp(philo, TS_START);
-        put_timestamp(philo, TS_CYCLE);
+        put_timestamp(philo, TS_START,get_current_time());
+        put_timestamp(philo, TS_CYCLE,get_current_time());
         ft_temporisation(philo->pametres[TTE], get_current_time());
-        put_timestamp(philo, TS_EAT);
+        put_timestamp(philo, TS_END_EAT, get_current_time());
         ft_temporisation(philo->pametres[TTS], get_current_time());
-        put_timestamp(philo, TS_SPLEEP);
+        put_timestamp(philo, TS_END_SPLEEP, get_current_time());
         i++;
     }
     change_state(philo, philo->pametres[STATE_1], OFF);

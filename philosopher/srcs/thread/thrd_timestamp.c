@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/22 23:32:40 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/24 08:46:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int put_timestamp(t_philo *philo, int type, long long start)
         return(0);
     }
     if(type == TS_CYCLE)
-        philo->time_data[TS_CYCLE][id]++;
+        philo->time_data[TS_CYCLE]++;
     else
-        philo->time_data[type][id] = get_current_time() - start;
+        philo->time_data[type] = get_current_time() - start;
     if(pthread_mutex_unlock(philo->pen))
     {
         printf("Erreur mutex state lock\n");

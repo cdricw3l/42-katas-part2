@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/22 23:37:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/24 08:54:28 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void display_philo_time_board(t_philo *philo, int mode)
 {
     TEST_START;
     int i;
-    long long **time_board;
+    long long *time_board;
 
     i = 0;
     time_board = philo->time_data;
@@ -46,13 +46,13 @@ void display_philo_time_board(t_philo *philo, int mode)
     while (i < TS_SIZE_ARR)
     {
         if(i == 0)
-            printf("%s %lld ", get_column_name(i) ,time_board[i][philo->pametres[ID]]);
+            printf("%s %lld ", get_column_name(i) ,time_board[i]);
         else
         {
             if(mode == MODE_INTERVAL)
-                printf("%s %lld ", get_column_name(i) ,time_board[i][philo->pametres[ID]] - time_board[TS_START][philo->pametres[ID]]);
+                printf("%s %lld ", get_column_name(i) ,time_board[i] - time_board[TS_START]);
             else
-                printf("%s %lld\n", get_column_name(i) ,time_board[i][philo->pametres[ID]]);
+                printf("%s %lld ", get_column_name(i) ,time_board[i]);
         }
         i++;
     }

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/21 13:45:00 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/24 08:45:49 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef  struct  s_philo
     t_mutex         *fork_2;
     t_mutex         *pen;
     t_mutex         *m_state;
-    long long       **time_data;
+    long long       *time_data;
 
 } t_philo;
 

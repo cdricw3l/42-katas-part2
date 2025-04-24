@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:21:23 by ast               #+#    #+#             */
-/*   Updated: 2025/04/22 23:41:55 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/24 08:53:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int tst_timestamp(void)
 {
 
-    long long **time_board;
+    long long *time_board;
     t_philo *philo;
     t_mutex *pen;
     int i;
@@ -43,20 +43,18 @@ int tst_timestamp(void)
     {
         put_timestamp(philo, TS_CYCLE,start);
         put_timestamp(philo, TS_START, start);
-        philo->time_data[TS_LAST_EAT][ID] = last_eat;
+        philo->time_data[TS_LAST_EAT] = last_eat;
         ft_temporisation(philo->pametres[TTE], get_current_time());
         put_timestamp(philo, TS_END_THINK, start);
         ft_temporisation(philo->pametres[TTE], get_current_time());
         put_timestamp(philo, TS_END_EAT, start);
-        last_eat = philo->time_data[TS_END_EAT][ID];
+        last_eat = philo->time_data[TS_END_EAT];
         ft_temporisation(philo->pametres[TTS], get_current_time());
         put_timestamp(philo, TS_END_SPLEEP, start);
         display_philo_time_board(philo, 1);
         i++;
     }
     
-    
-
-    ft_destroy_timeboard(&time_board, 5);
+    free(time_board);
     return(1);
 }

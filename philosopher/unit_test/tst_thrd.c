@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:49:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 22:56:33 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 23:24:50 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,10 +26,10 @@ int tst_run_thread_simulation(void)
         return(0);
         
     params[P] = n;
-    params[TTD] = 1000;
-    params[TTE] = 400;
-    params[TTS] = 500;
-    params[CYCLE] = 10;
+    params[TTD] = 500;
+    params[TTE] = 200;
+    params[TTS] = 200;
+    params[CYCLE] = 3;
     network = create_network(params);
     if(!network)
     {
@@ -63,7 +63,7 @@ int tst_run_thread_philo(void)
     params[TTD] = 500;
     params[TTE] = 200;
     params[TTS] = 200;
-    params[CYCLE] = 10;
+    params[CYCLE] = 3;
     network = create_network(params);
     if(!network)
     {

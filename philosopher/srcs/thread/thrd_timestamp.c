@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 22:52:58 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 23:34:48 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,37 +36,19 @@ int put_timestamp(t_philo *philo, int type, long long start)
 
 int check_timestamp(t_philo **philo, int n)
 {
-    (void)n;
-    (void)philo;
-    // long long current_time;
-    // long long last_philo_eat;
-    // int i;
+    int i;
 
-    // i= 0;
-    // current_time = get_current_time();
-    // while (i < n)
-    // {
-    //     if(pthread_mutex_lock(philo[i]->pen))
-    //     {
-    //         printf("Erreur mutex state lock\n");
-    //         return(0);
-    //     }
-    //     last_philo_eat = philo[i]->meal_time_data[philo[i]->pametres[ID]];
-    //     printf("voici le resqulta du check en ms : % lld, %d\n", current_time - last_philo_eat, philo[i]->pametres[TTD]+5);
-    //     if(current_time - last_philo_eat > philo[i]->pametres[TTD])
-    //     {
-    //         printf("TIME SIMULATION ERREUR\n");
-    //         if(pthread_mutex_unlock(philo[i]->pen))
-    //             printf("Erreur mutex state lock\n");
-    //         return(0);
-    //     }
-    //     if(pthread_mutex_unlock(philo[i]->pen))
-    //     {
-    //         printf("Erreur mutex state lock\n");
-    //         return(0);
-    //     }
-    //     i++;
-    // }
+    i = 0;
+    while (i < n)
+    {
+        if(philo[i]->time_data[TS_END_THINK] - philo[i]->time_data[TS_LAST_EAT] > philo[i]->pametres[TTD] && i != 1)
+        {
+            printf("fonction will ending %lld and %d\n", philo[i]->time_data[TS_END_THINK] - philo[i]->time_data[TS_LAST_EAT], philo[i]->pametres[TTD]);
+            philo[i]->pametres[STATE_1] = 0;
+            display_philo_time_board(philo[i], 1);
+            return(0);
+        }
+    }
     return(1);
 }
 // long long get_timestamp(t_philo *philo)

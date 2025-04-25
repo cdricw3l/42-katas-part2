@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:21:23 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 18:21:11 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/25 18:55:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int tst_timestamp(void)
 {
-
+    TEST_START;
     long long *time_board;
     t_philo *philo;
     t_mutex *pen;
@@ -35,6 +35,7 @@ int tst_timestamp(void)
     philo->pametres[TTE] = 300;
     philo->pametres[TTS] = 300;
     philo->pametres[TTD] = 800;
+    philo->pametres[STATE_1] = 1;
     philo->pen = pen;
     assert(time_board);
     
@@ -67,5 +68,6 @@ int tst_timestamp(void)
     }
     
     free(time_board);
+    TEST_SUCCES;
     return(1);
 }

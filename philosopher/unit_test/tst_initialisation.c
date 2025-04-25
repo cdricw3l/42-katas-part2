@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tst_initialisation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/20 09:28:51 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 19:07:57 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "tst_unit.h"
 
@@ -93,91 +93,35 @@ int tst_init_fork_and_pen(void)
     return(1);
 }
 
-// int tst_init_philos(void)
-// {
-//     TEST_START;
+int tst_init_philos(void)
+{
+    TEST_START;
+    int				arr_args[6];
+    t_philo         **philo;
+    t_mutex_data    *mutex_data;
 
-//     t_philo **philos;
-//     t_mutex **forks;
-//     t_mutex **pens;
-//     t_mutex **m_states;
-//     int *params;
-//     int n = 5;
-//     int i;
-    
-//     params = malloc(sizeof(int) * n);
-//     if(!params)
-//         return(0);
-        
-//     params[P] = n;
-//     params[TTD] = 500;
-//     params[TTE] = 200;
-//     params[TTS] = 200;
-//     params[CYCLE] = -1;
-    
-//     pens = init_mutex(params[P]);
-//     if(!pens)
-//     {
-//         free(params);
-//         return(0);
-//     }
-//     forks = init_mutex(params[P]);
-//     if(!forks)
-//     {
-//         ft_destroy_mutexs(&pens, params[P]);
-//         free(params);
-//         return(0);
-//     }
-//     m_states = init_mutex(params[P]);
-//     if(!m_states)
-//     {
-//         ft_destroy_mutexs(&pens, params[P]);
-//         ft_destroy_mutexs(&forks, params[P]);
-//         free(params);
-//         return(0);
-//     }
-//     philos = init_philos(params, forks, pens, m_states);
-//     if(!philos)
-//     {
-//         ft_destroy_mutexs(&forks, params[P]);
-//         ft_destroy_mutexs(&pens, params[P]);
-//         free(params);
-//         return(0);
-//     }
-//     i = 0;
-//     assert(params[P] == 5);
-//     while (i < params[P])
-//     {
-//         assert(!philos[i]->meal_time_data);
-//         assert(philos[i]->tte == params[TTE]);
-//         assert(philos[i]->tts == params[TTS]);
-//         assert(philos[i]->cycle == -1);
-//         assert(philos[i]->id  == i);
-//         assert(philos[i]->fork_1);
-//         assert(philos[i]->fork_2);
-//         assert(philos[i]->m_states);
-//         assert(philos[i]->pen);
-//         if(i == 0)
-//         {
-//             assert(philos[i]->fork_id_1 == i);
-//             assert(philos[i]->fork_id_2 == params[P] - 1);
-//         }
-//         else
-//         {
-//             assert(philos[i]->fork_id_1 == i - 1);
-//             assert(philos[i]->fork_id_2 == i);
-//         }
-//         printf("voici %d\n",i);
-//         i++;
-//     }
-//     ft_destroy_philos(&philos,params[P]);
-//     ft_destroy_mutexs(&forks,params[P]);
-//     ft_destroy_mutexs(&pens,params[P]);
-//     ft_destroy_mutexs(&m_states,params[P]);
-//     free(params);
-//     TEST_SUCCES;
-//     return (1);
-// }
+    arr_args[P] = 5;
+    arr_args[TTD] = 800;
+    arr_args[TTE] = 300;
+    arr_args[TTS] = 300;
+    arr_args[CYCLE] = 300;
+
+    mutex_data = malloc(sizeof(t_mutex_data *));
+    if(!mutex_data)
+        return(0);
+    mutex_data->forks = init_mutex(arr_args[P]);
+    mutex_data->pens = init_mutex(arr_args[P]);
+    mutex_data->m_states = init_mutex(arr_args[P]);
+    if(!mutex_data->forks || !mutex_data->m_states || !mutex_data->pens)
+    {
+        free(mutex_data);
+        return(1);
+    }
+    philo = init_philos(arr_args,mutex_data,)
+
+    TEST_SUCCES;
+    return (1);
+}
 
 // int tst_init_network(void)
 // {

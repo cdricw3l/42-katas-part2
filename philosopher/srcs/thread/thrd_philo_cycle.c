@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 22:27:46 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 22:57:37 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -46,6 +46,7 @@ void    *thread_philo_cycle(void *p)
         }
         ft_temporisation(philo->pametres[TTE], get_current_time());
         put_timestamp(philo, TS_END_EAT, start);
+        release_forks(philo,get_current_time());
         last_eat = philo->time_data[TS_END_EAT];
         ft_temporisation(philo->pametres[TTS], get_current_time());
         put_timestamp(philo, TS_END_SPLEEP, start);

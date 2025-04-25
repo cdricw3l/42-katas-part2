@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:49:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/20 23:34:15 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 22:52:09 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -70,12 +70,28 @@ int tst_run_thread_philo(void)
         free(params);
         return(0);
     }
+
+    int i;
+
+    i = 0;
+    while (i < params[P])
+    {
+        change_state(network->philos[i], 0, 1);
+        i++;
+    }
+    
     if(!philos_laucher(&network,threads))
     {
         destroy_network(&network);
         free(params);
         return(0);
     }
+    
+    // if(!philos_joiner(&network, threads))
+    // {
+    //     printf("Error thread philo joiner\n");
+    //     return(0);
+    // }
     destroy_network(&network);
     free(params);
     return(1);

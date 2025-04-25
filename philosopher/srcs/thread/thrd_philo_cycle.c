@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_philo_cycle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/24 08:39:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/25 22:27:46 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "thread.h"
 
@@ -16,26 +16,40 @@ void    *thread_philo_cycle(void *p)
 {
     t_philo *philo;
     int i;
+    long long start;
+    long long last_eat;
 
     philo = (t_philo *)p;
     i = 0;
+    start = get_current_time();
+    last_eat = 0;
     while (get_state(philo, 0) == OFF)
     {
         printf("philo %d is OFF\n", philo->pametres[ID]);
     }
     while (get_state(philo, 0) == ON && philo->pametres[CYCLE] > i)
     {
-        put_timestamp(philo, TS_END_THINK, get_current_time());
+        put_timestamp(philo, TS_CYCLE,start);
+        put_timestamp(philo, TS_START, start);
+        philo->time_data[TS_LAST_EAT] = last_eat;
         while (!get_forks(philo, get_current_time()))
         {
             printf("Philo is thinking\n");
         }
-        put_timestamp(philo, TS_START,get_current_time());
-        put_timestamp(philo, TS_CYCLE,get_current_time());
+        put_timestamp(philo, TS_END_THINK, start);
+        if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD] && i != 1)
+        {
+            printf("fonction will ending %lld and %d\n", philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT], philo->pametres[TTD]);
+            philo->pametres[STATE_1] = 0;
+            display_philo_time_board(philo, 1);
+            return(NULL);
+        }
         ft_temporisation(philo->pametres[TTE], get_current_time());
-        put_timestamp(philo, TS_END_EAT, get_current_time());
+        put_timestamp(philo, TS_END_EAT, start);
+        last_eat = philo->time_data[TS_END_EAT];
         ft_temporisation(philo->pametres[TTS], get_current_time());
-        put_timestamp(philo, TS_END_SPLEEP, get_current_time());
+        put_timestamp(philo, TS_END_SPLEEP, start);
+        display_philo_time_board(philo, 1);
         i++;
     }
     change_state(philo, philo->pametres[STATE_1], OFF);

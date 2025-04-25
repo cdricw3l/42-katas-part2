@@ -1,25 +1,22 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_timestamp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/24 08:46:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/25 22:52:58 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "thread.h"
 
 int put_timestamp(t_philo *philo, int type, long long start)
 {
-    int id;
     
     if(type < TS_CYCLE || type > TS_END_SPLEEP)
         return(-1);
-    id = philo->pametres[ID];
-    assert(id == 0);
     if(pthread_mutex_lock(philo->pen))
     {
         printf("Erreur mutex state lock\n");

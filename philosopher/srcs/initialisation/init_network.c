@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 22:17:03 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 23:04:02 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -49,7 +49,7 @@ t_network *create_network(int *params)
 	t_mutex_data    *mutex_data;
 	long long       **time_board;
 
-    time_board = get_time_multi_board(params[P]);
+    time_board = get_time_multi_board(TS_SIZE_ARR);
     if(!time_board)
         return(NULL);
     mutex_data = init_mutex_struct(params[P]);

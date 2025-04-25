@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 14:26:30 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/24 08:56:53 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_philo *create_philo(t_mutex_data *mutex_data, long long ***time_board, 
     if(!philo)
         return(NULL);
     init_params_philo(&philo, params, id);
-    philo->time_data = *time_board;
+    philo->time_data = *time_board[id];
     philo->fork_1 = mutex_data->forks[get_fork_number(philo, 1)];
     philo->fork_2 = mutex_data->forks[get_fork_number(philo, 2)];
     philo->pen = mutex_data->pens[id];

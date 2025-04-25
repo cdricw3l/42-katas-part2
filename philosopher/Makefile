@@ -6,7 +6,7 @@ TEST_NAME= philo_utest
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=cc
-GFLAGS= -Werror -Wall -Wextra -I./include
+GFLAGS= -Werror -Wall -Wextra -I./include -fsanitize=thread -g -O1
 else ifeq ($(OS), Linux)
 CC=gcc
 GFLAGS= -Werror -Wall -Wextra -I./include
@@ -93,7 +93,7 @@ endif
 
 t: $(TENV_OBJS)
 ifeq ($(OS), Darwin)
-	@$(CC) $(GFLAGS) -fsanitize=address $(TENV_OBJS) -o $(TEST_NAME)
+	@$(CC) $(GFLAGS)  $(TENV_OBJS) -o $(TEST_NAME)
 	@./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
 	@$(CC)  $(TENV_OBJS) -lpthread -o $(TEST_NAME)
@@ -102,7 +102,7 @@ endif
 
 tv: $(TENV_OBJS)
 ifeq ($(OS), Darwin)
-	@$(CC) $(GFLAGS) -fsanitize=address $(TENV_OBJS) -o $(TEST_NAME)
+	@$(CC) $(GFLAGS) $(TENV_OBJS) -o $(TEST_NAME)
 	@./$(TEST_NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
 	@$(CC)  $(TENV_OBJS) -lpthread -o $(TEST_NAME)
@@ -110,9 +110,9 @@ else ifeq ($(OS), Linux)
 endif
 
 
-v: $(NAME)
+v: $(TENV_OBJS)
 ifeq ($(OS), Darwin)
-	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS) -o test_unit 
+	$(CC) $(GFLAGS) $(TENV_OBJS)-o test_unit 
 	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
 	$(CC)   $(OBJS) -lpthread -o test_unit 

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/25 22:10:03 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 22:12:15 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -132,9 +132,9 @@ int tst_init_network(void)
     TEST_START;
 
 
-    t_network *network;
-    int		arr_args[6];
-
+    t_network   *network;
+    int		    arr_args[6];
+    int         i;
 
     arr_args[P] = 5;
     arr_args[TTD] = 800;
@@ -144,26 +144,21 @@ int tst_init_network(void)
     
 
     
-    network = create_network(params);
+    network = create_network(arr_args);
     if(!network)
-    {
-        free(params);
         return(0);
-    }
     i = 0;
-    while (i < params[P])
+    while (i < arr_args[P])
     {
         printf("voici i %d\n", i);
-        assert(network->last_meals[i] == 0);
+        assert(network->time_board[i] == 0);
         assert(network->philos[i]);
-        assert(network->forks[i]);
-        assert(network->pens[i]);
-        assert(network->m_states[i]);
+        assert(network->mutex_data->forks[i]);
+        assert(network->mutex_data->pens[i]);
+        assert(network->mutex_data->m_states[i]);
         i++;
     }
-    free(params);
     destroy_network(&network);
     TEST_SUCCES;
-
     return (1);
 }

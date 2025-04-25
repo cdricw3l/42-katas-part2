@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_network.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:02 by ast               #+#    #+#             */
-/*   Updated: 2025/04/24 08:57:05 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/25 22:17:03 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "init_network.h"
 
@@ -49,7 +49,7 @@ t_network *create_network(int *params)
 	t_mutex_data    *mutex_data;
 	long long       **time_board;
 
-    time_board = get_time_multi_board(TS_SIZE_ARR);
+    time_board = get_time_multi_board(params[P]);
     if(!time_board)
         return(NULL);
     mutex_data = init_mutex_struct(params[P]);

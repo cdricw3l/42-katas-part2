@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/25 22:13:28 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 22:13:52 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -151,7 +151,7 @@ int tst_init_network(void)
     while (i < arr_args[P])
     {
         printf("voici i %d\n", i);
-        assert(network->time_board[i] == 0);
+        assert(network->time_board[i]);
         assert(network->philos[i]);
         assert(network->mutex_data->forks[i]);
         assert(network->mutex_data->pens[i]);

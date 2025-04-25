@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tst_initialisation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/25 19:07:57 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/25 22:07:57 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "tst_unit.h"
 
@@ -95,10 +95,10 @@ int tst_init_fork_and_pen(void)
 
 int tst_init_philos(void)
 {
-    TEST_START;
     int				arr_args[6];
     t_philo         **philo;
     t_mutex_data    *mutex_data;
+    long long       **meal;
 
     arr_args[P] = 5;
     arr_args[TTD] = 800;
@@ -106,20 +106,24 @@ int tst_init_philos(void)
     arr_args[TTS] = 300;
     arr_args[CYCLE] = 300;
 
-    mutex_data = malloc(sizeof(t_mutex_data *));
+    mutex_data = malloc(sizeof(t_mutex_data));
     if(!mutex_data)
         return(0);
     mutex_data->forks = init_mutex(arr_args[P]);
     mutex_data->pens = init_mutex(arr_args[P]);
     mutex_data->m_states = init_mutex(arr_args[P]);
+    meal = get_time_multi_board(arr_args[P]);
     if(!mutex_data->forks || !mutex_data->m_states || !mutex_data->pens)
     {
         free(mutex_data);
         return(1);
     }
-    philo = init_philos(arr_args,mutex_data,)
-
-    TEST_SUCCES;
+    philo = init_philos(arr_args,mutex_data,&meal);
+    if(!philo)
+        return(1);
+    ft_destroy_mutex_struct(&mutex_data, arr_args[P]);
+    ft_destroy_philos(&philo, arr_args[P]);
+    ft_destroy_timeboard(&meal,arr_args[P]);
     return (1);
 }
 

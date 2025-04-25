@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_network.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/24 08:51:40 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/25 21:46:10 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef INIT_NETWORK_H
 #define INIT_NETWORK_H
@@ -24,7 +24,7 @@
 #include "../thread/thread.h"
 
 t_network       *create_network(int *params);
-t_philo **init_philos(int *params, t_mutex_data *mutex_data, long long ***meal_board);
+t_philo         **init_philos(int *params, t_mutex_data *mutex_data, long long ***meal_board);
 
 void            *ft_destroy_mutexs(t_mutex ***mutexs, int len);
 t_mutex         **init_mutex(int n);

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 22:57:37 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/26 08:38:33 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -50,7 +50,6 @@ void    *thread_philo_cycle(void *p)
         last_eat = philo->time_data[TS_END_EAT];
         ft_temporisation(philo->pametres[TTS], get_current_time());
         put_timestamp(philo, TS_END_SPLEEP, start);
-        display_philo_time_board(philo, 1);
         i++;
     }
     change_state(philo, philo->pametres[STATE_1], OFF);

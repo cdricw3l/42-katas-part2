@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:49:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 23:24:50 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/26 08:36:38 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,10 +26,10 @@ int tst_run_thread_simulation(void)
         return(0);
         
     params[P] = n;
-    params[TTD] = 500;
+    params[TTD] = 800;
     params[TTE] = 200;
     params[TTS] = 200;
-    params[CYCLE] = 3;
+    params[CYCLE] = 5;
     network = create_network(params);
     if(!network)
     {

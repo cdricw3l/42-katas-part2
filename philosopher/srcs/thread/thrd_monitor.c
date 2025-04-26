@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 09:50:59 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/26 08:39:40 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -94,6 +94,8 @@ int are_alive(t_network *network)
     {
         if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF && get_state(network->philos[i], network->philos[i]->pametres[STATE_2]) == 1)
             return(0);
+        display_philo_time_board(network->philos[i], 1);
+        
         i++;
     }
     return(1);

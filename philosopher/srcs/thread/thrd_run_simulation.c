@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 23:31:46 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/26 08:43:56 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -106,16 +106,26 @@ int run_simulation(t_network **network)
         printf("Error thread philo launcher\n");
         return(0);
     }
-    if(!monitor_launcher(network, &monitiror))
+
+    int i = 0;
+
+    while (i < (*network)->pametres[P])
     {
-        printf("Error thread monitor launcher\n");
-        return(0);
+        change_state((*network)->philos[i], ON, STATE_1);
+        i++;
+        
     }
-    if(!monitor_joiner(&monitiror))
-    {
-        printf("Error thread monitor joiner\n");
-        return(0);
-    }
+    
+    // if(!monitor_launcher(network, &monitiror))
+    // {
+    //     printf("Error thread monitor launcher\n");
+    //     return(0);
+    // }
+    // if(!monitor_joiner(&monitiror))
+    // {
+    //     printf("Error thread monitor joiner\n");
+    //     return(0);
+    // }
     if(!philos_joiner(network, threads))
     {
         printf("Error thread philo joiner\n");

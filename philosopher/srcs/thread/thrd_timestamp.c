@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 23:34:48 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/27 18:53:43 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -80,11 +80,28 @@ long long get_current_time(void)
         write(2, "gettimeofday() error\n", 22);
     return ((long long)time.tv_sec * 1000 + time.tv_usec / 1000);
 }
+long get_elapsed_time_microseconds(struct timeval start, struct timeval end)
+{
+    return (end.tv_sec - start.tv_sec) * 1000000L + (end.tv_usec - start.tv_usec);
+}
 
-void ft_temporisation(int ms, long long start)
+void ft_temporisation(int ms, long long sta)
 {
     
-	while ((get_current_time() - start) < ms)
-        usleep(500);
+    (void)sta;
+	struct timeval start, current;
+    long elapsed;
+    long rem;
+
+    gettimeofday(&start, NULL);
+    do {
+        gettimeofday(&current, NULL);
+        elapsed = get_elapsed_time_microseconds(start, current);
+        rem = ms - elapsed;
+
+        if (rem > 1000) 
+            usleep(rem / 2);
+        
+    } while (elapsed < ms);
 
 }

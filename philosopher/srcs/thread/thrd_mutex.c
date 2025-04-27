@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 11:55:46 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 23:33:33 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/27 17:27:03 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -74,25 +74,24 @@ int release_forks(t_philo *philo, long long timestamps)
 
 int get_forks(t_philo *philo, long long timestamps)
 {
-
-    int fork_1;
-    int fork_2;
+    // int fork_1;
+    // int fork_2;
     
 
-    fork_1 = get_fork_number(philo,1);
-    fork_2 = get_fork_number(philo,2);
+    // fork_1 = get_fork_number(philo,1);
+    // fork_2 = get_fork_number(philo,2);
     (void)timestamps;
     if(pthread_mutex_lock(philo->fork_1))
         return(0);
-    printf("%lld Philosopher %d has taken fork %d\n",timestamps, philo->pametres[ID], fork_1);
+    //printf("%lld Philosopher %d has taken fork %d\n",timestamps, philo->pametres[ID], fork_1);
     if(pthread_mutex_lock(philo->fork_2))
     {
-        if(pthread_mutex_unlock(philo->fork_1))
-            printf("%lld Philosopher %d error unlock fork %d\n",timestamps, philo->pametres[ID], fork_1);
-        else
-            printf("%lld Philosopher %d has release fork %d\n",timestamps ,philo->pametres[ID], fork_1);
+        // if(pthread_mutex_unlock(philo->fork_1))
+        //     printf("%lld Philosopher %d error unlock fork %d\n",timestamps, philo->pametres[ID], fork_1);
+        // else
+        //     printf("%lld Philosopher %d has release fork %d\n",timestamps ,philo->pametres[ID], fork_1);
         return(0);
     }
-    printf("%lld Philosopher %d has taken fork %d\n",timestamps ,philo->pametres[ID], fork_2);
+    //printf("%lld Philosopher %d has taken fork %d\n",timestamps ,philo->pametres[ID], fork_2);
     return (1);
 }

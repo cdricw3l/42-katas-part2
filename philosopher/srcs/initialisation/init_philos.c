@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 21:40:51 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/27 17:09:47 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -53,7 +53,6 @@ t_philo **init_philos(int *params, t_mutex_data *mutex_data, long long ***meal_b
     philos = malloc(sizeof(t_philo *) * params[P]);
     if(!philos || !meal_board)
         return(NULL);
-    assert(params[P] == 5);
     while (i < params[P])
     {
         philos[i] = create_philo(mutex_data, meal_board ,i, params);

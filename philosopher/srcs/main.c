@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/04/20 09:11:16 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/27 17:09:57 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -17,6 +17,8 @@ int	main(int argc, char **argv)
 	
 	int				*arr_args;
 	t_network		*network;
+	pthread_t monitiror;
+    pthread_t threads[200];
 	
 	if (argc < 5 || argc > 6 || !argv || !*argv)
 		return(1);
@@ -30,6 +32,6 @@ int	main(int argc, char **argv)
 		arr_args = NULL;
 		return(1);
 	}
-	run_simulation(&network);
+	
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:31:13 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 10:26:08 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/25 23:05:36 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,13 +16,14 @@ void *destroy_network(t_network **network)
 {
     TEST_START;
     int p;
-
+    
     p = (*network)->pametres[P];
     ft_destroy_mutex_struct(&(*network)->mutex_data, p);
     ft_destroy_philos(&(*network)->philos, (*network)->pametres[P]);
-    ft_destroy_timeboard(&(*network)->time_board, p);
+    ft_destroy_timeboard(&((*network)->time_board), TS_SIZE_ARR);
     free(*network);
     *network = NULL;
+    TEST_SUCCES;
     return(NULL);
 }
 

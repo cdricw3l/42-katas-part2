@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_philos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 19:08:29 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/27 17:09:47 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "init_network.h"
 
@@ -35,11 +35,12 @@ static t_philo *create_philo(t_mutex_data *mutex_data, long long ***time_board, 
     if(!philo)
         return(NULL);
     init_params_philo(&philo, params, id);
-    philo->time_data = *time_board[id];
+    philo->time_data = (*time_board)[id];
     philo->fork_1 = mutex_data->forks[get_fork_number(philo, 1)];
     philo->fork_2 = mutex_data->forks[get_fork_number(philo, 2)];
     philo->pen = mutex_data->pens[id];
     philo->m_state = mutex_data->m_states[id];
+
     return(philo);
 }
 
@@ -57,6 +58,7 @@ t_philo **init_philos(int *params, t_mutex_data *mutex_data, long long ***meal_b
         philos[i] = create_philo(mutex_data, meal_board ,i, params);
         if(!philos[i])
             return(ft_destroy_philos(&philos, i));
+        TEST_SUCCES;
         i++;
     }       
     return(philos); 

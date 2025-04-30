@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/27 21:37:21 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/30 06:29:07 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -93,76 +93,72 @@ int tst_init_fork_and_pen(void)
     return(1);
 }
 
-// int tst_init_philos(void)
-// {
-//     TEST_START;
-//     int				arr_args[6];
-//     t_philo         **philo;
-//     t_mutex_data    *mutex_data;
+int tst_init_philos(void)
+{
+    int				arr_args[6];
+    t_philo         **philo;
+    t_mutex_data    *mutex_data;
+    long long       **meal;
 
-//     arr_args[P] = 5;
-//     arr_args[TTD] = 800;
-//     arr_args[TTE] = 300;
-//     arr_args[TTS] = 300;
-//     arr_args[CYCLE] = 300;
+    arr_args[P] = 5;
+    arr_args[TTD] = 800;
+    arr_args[TTE] = 300;
+    arr_args[TTS] = 300;
+    arr_args[CYCLE] = 300;
 
-//     mutex_data = malloc(sizeof(t_mutex_data *));
-//     if(!mutex_data)
-//         return(0);
-//     mutex_data->forks = init_mutex(arr_args[P]);
-//     mutex_data->pens = init_mutex(arr_args[P]);
-//     mutex_data->m_states = init_mutex(arr_args[P]);
-//     if(!mutex_data->forks || !mutex_data->m_states || !mutex_data->pens)
-//     {
-//         free(mutex_data);
-//         return(1);
-//     }
-//     philo = init_philos(arr_args,mutex_data,m)
+    mutex_data = malloc(sizeof(t_mutex_data));
+    if(!mutex_data)
+        return(0);
+    mutex_data->forks = init_mutex(arr_args[P]);
+    mutex_data->pens = init_mutex(arr_args[P]);
+    mutex_data->m_states = init_mutex(arr_args[P]);
+    meal = get_time_multi_board(arr_args[P]);
+    if(!mutex_data->forks || !mutex_data->m_states || !mutex_data->pens)
+    {
+        free(mutex_data);
+        return(1);
+    }
+    philo = init_philos(arr_args,mutex_data,&meal);
+    if(!philo)
+        return(1);
+    ft_destroy_mutex_struct(&mutex_data, arr_args[P]);
+    ft_destroy_philos(&philo, arr_args[P]);
+    ft_destroy_timeboard(&meal,arr_args[P]);
+    return (1);
+}
 
-//     TEST_SUCCES;
-//     return (1);
-// }
-
-// int tst_init_network(void)
-// {
-//     TEST_START;
+int tst_init_network(void)
+{
+    TEST_START;
 
 
-//     t_network *network;
-  
-//     int *params;
-//     int n = 5;
-//     int i;
+    t_network   *network;
+    int		    arr_args[6];
+    int         i;
+
+    arr_args[P] = 5;
+    arr_args[TTD] = 800;
+    arr_args[TTE] = 300;
+    arr_args[TTS] = 300;
+    arr_args[CYCLE] = 300;
     
-//     params = malloc(sizeof(int) * n);
-//     if(!params)
-//         return(0);
-        
-//     params[P] = n;
-//     params[TTD] = 500;
-//     params[TTE] = 200;
-//     params[TTS] = 200;
-//     params[CYCLE] = -1;
-//     network = create_network(params);
-//     if(!network)
-//     {
-//         free(params);
-//         return(0);
-//     }
-//     i = 0;
-//     while (i < params[P])
-//     {
-//         printf("voici i %d\n", i);
-//         assert(network->last_meals[i] == 0);
-//         assert(network->philos[i]);
-//         assert(network->forks[i]);
-//         assert(network->pens[i]);
-//         assert(network->m_states[i]);
-//         i++;
-//     }
-//     free(params);
-//     destroy_network(&network);
-//     TEST_SUCCES;
 
-//     return (1);
-// }
+    
+    network = create_network(arr_args);
+    if(!network)
+        return(0);
+    i = 0;
+    while (i < arr_args[P])
+    {
+        printf("voici i %d\n", i);
+        assert(network->time_board[i]);
+        assert(network->philos[i]);
+        assert(network->mutex_data->forks[i]);
+        assert(network->mutex_data->pens[i]);
+        assert(network->mutex_data->m_states[i]);
+        i++;
+    }
+    destroy_network(&network);
+    TEST_SUCCES;
+    return (1);
+}

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tst_initialisation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:40:45 by cw3l              #+#    #+#             */
-/*   Updated: 2025/04/25 19:07:57 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/04/27 21:37:21 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "tst_unit.h"
 
@@ -93,35 +93,35 @@ int tst_init_fork_and_pen(void)
     return(1);
 }
 
-int tst_init_philos(void)
-{
-    TEST_START;
-    int				arr_args[6];
-    t_philo         **philo;
-    t_mutex_data    *mutex_data;
+// int tst_init_philos(void)
+// {
+//     TEST_START;
+//     int				arr_args[6];
+//     t_philo         **philo;
+//     t_mutex_data    *mutex_data;
 
-    arr_args[P] = 5;
-    arr_args[TTD] = 800;
-    arr_args[TTE] = 300;
-    arr_args[TTS] = 300;
-    arr_args[CYCLE] = 300;
+//     arr_args[P] = 5;
+//     arr_args[TTD] = 800;
+//     arr_args[TTE] = 300;
+//     arr_args[TTS] = 300;
+//     arr_args[CYCLE] = 300;
 
-    mutex_data = malloc(sizeof(t_mutex_data *));
-    if(!mutex_data)
-        return(0);
-    mutex_data->forks = init_mutex(arr_args[P]);
-    mutex_data->pens = init_mutex(arr_args[P]);
-    mutex_data->m_states = init_mutex(arr_args[P]);
-    if(!mutex_data->forks || !mutex_data->m_states || !mutex_data->pens)
-    {
-        free(mutex_data);
-        return(1);
-    }
-    philo = init_philos(arr_args,mutex_data,)
+//     mutex_data = malloc(sizeof(t_mutex_data *));
+//     if(!mutex_data)
+//         return(0);
+//     mutex_data->forks = init_mutex(arr_args[P]);
+//     mutex_data->pens = init_mutex(arr_args[P]);
+//     mutex_data->m_states = init_mutex(arr_args[P]);
+//     if(!mutex_data->forks || !mutex_data->m_states || !mutex_data->pens)
+//     {
+//         free(mutex_data);
+//         return(1);
+//     }
+//     philo = init_philos(arr_args,mutex_data,m)
 
-    TEST_SUCCES;
-    return (1);
-}
+//     TEST_SUCCES;
+//     return (1);
+// }
 
 // int tst_init_network(void)
 // {

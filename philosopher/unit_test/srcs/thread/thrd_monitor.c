@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/06 07:42:39 by ast              ###   ########.fr       */
+/*   Updated: 2025/04/30 12:47:33 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -93,8 +93,7 @@ int are_alive(t_network *network)
     i = 0;
     while (i < network->pametres[P])
     {
-        if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF 
-            && network->philos[i]->pametres[CYCLE] < network->pametres[CYCLE] - 1)
+        if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF)
             return(0);
         i++;
     }

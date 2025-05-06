@@ -6,6 +6,7 @@
         "locale": "c",
         "global.h": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "init_network.h": "c"
     }
 }

@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:49:07 by ast               #+#    #+#             */
-/*   Updated: 2025/04/27 18:56:44 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/05 22:15:16 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,7 +27,7 @@ int tst_run_thread_simulation(void)
         return(0);
         
     params[P] = n;
-    params[TTD] = 510;
+    params[TTD] = 410;
     params[TTE] = 200;
     params[TTS] = 200;
     params[CYCLE] = 10;
@@ -57,6 +57,7 @@ int tst_run_thread_simulation(void)
         printf("Error thread philo joiner\n");
         return(0);
     }
+    TEST_SUCCES;
     destroy_network(&network);
     free(params);
     return(1);

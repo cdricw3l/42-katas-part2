@@ -1,32 +1,35 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:27:39 by ast               #+#    #+#             */
-/*   Updated: 2025/04/30 12:59:00 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/08 18:58:55 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "init_network.h"
 
 void *ft_destroy_timeboard(long long ***time_board, int len)
 {
+    TEST_START;
     int i;
     long long **time_b;
     
     i = 0;
     time_b = *time_board;
-    while (i < len)
+    while (i < len - 1)
     {
+
         free(time_b[i]);
         time_b[i] = NULL;
         i++;
     }   
     free(*time_board);
     *time_board = NULL;
+    TEST_SUCCES;
     return (NULL);
 }
 

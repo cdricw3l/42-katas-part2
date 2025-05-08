@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_memory_clean.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 07:31:13 by ast               #+#    #+#             */
-/*   Updated: 2025/04/25 23:05:36 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/08 18:57:09 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "init_network.h"
 
@@ -21,9 +21,9 @@ void *destroy_network(t_network **network)
     ft_destroy_mutex_struct(&(*network)->mutex_data, p);
     ft_destroy_philos(&(*network)->philos, (*network)->pametres[P]);
     ft_destroy_timeboard(&((*network)->time_board), TS_SIZE_ARR);
+    TEST_SUCCES;
     free(*network);
     *network = NULL;
-    TEST_SUCCES;
     return(NULL);
 }
 

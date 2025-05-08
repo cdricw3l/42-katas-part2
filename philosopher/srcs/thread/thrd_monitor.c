@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_monitor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/06 07:42:39 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/08 19:17:05 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "thread.h"
 
@@ -43,7 +43,6 @@ int  start_first_batch(t_network **net)
                 printf("Erreur mutex state lock\n");
                 return(0);    
             }
-            printf("Launch Philosophe %d\n", network->philos[i]->pametres[ID]);
             network->philos[i]->pametres[STATE_1] = ON;
             ft_temporisation(500,0);
             if(pthread_mutex_unlock(network->philos[i]->m_state))
@@ -73,7 +72,6 @@ int  start_second_batch(t_network **net)
                 printf("Erreur mutex state lock\n");
                 return(0);    
             }
-            printf("Launch Philosophe %d\n", network->philos[i]->pametres[ID]);
             network->philos[i]->pametres[STATE_1] = ON;
             if(pthread_mutex_unlock(network->philos[i]->m_state))
             {
@@ -89,12 +87,18 @@ int  start_second_batch(t_network **net)
 int are_alive(t_network *network)
 {
     int i;
+    int k;
 
     i = 0;
+    k = 0;
     while (i < network->pametres[P])
     {
         if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF 
             && network->philos[i]->pametres[CYCLE] < network->pametres[CYCLE] - 1)
+            return(0);
+        if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF )
+            k++;
+        if(k == network->pametres[P])
             return(0);
         i++;
     }

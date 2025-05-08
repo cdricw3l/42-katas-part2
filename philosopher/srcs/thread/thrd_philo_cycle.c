@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_philo_cycle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/30 13:02:26 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/08 18:52:09 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "thread.h"
 
@@ -36,7 +36,6 @@ void    *thread_philo_cycle(void *p)
         while (!get_forks(philo, get_current_time() - start))
         {
             safe_print(get_current_time() - start, philo, THINKING);
-            assert(1==2);
         }
         safe_print(get_current_time() - start, philo, TAKEN_FORK);
         safe_print(get_current_time() - start, philo, EATING);

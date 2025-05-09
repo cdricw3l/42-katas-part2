@@ -6,7 +6,21 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/04/21 13:46:32 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/09 13:50:07 by cw3l             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "thread.h"
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   thrd_philo_cycle.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
+/*   Updated: 2025/05/08 18:52:09 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +28,50 @@
 
 void    *thread_philo_infinit(void *p)
 {
-    TEST_START;
-    
     t_philo *philo;
-    //long long last;
+    long long start;
+    long long last_eat;
+    
+    philo = (t_philo *)p;
+    while (get_state(philo, 0) == OFF)
+    {
+        usleep(500);
+    }
+    start = get_current_time();
+    while (get_state(philo, 0) == ON)
+    {
+        
+        put_timestamp(philo, TS_CYCLE, start);
+        put_timestamp(philo, TS_START, start);
+        philo->time_data[TS_LAST_EAT] = last_eat;
 
-    philo = (t_philo *)p;    
-    while (get_state(philo, philo->pametres[STATE_1]) == OFF)
-    {
-        printf("philo %d is spleeping\n", philo->pametres[ID]);
+        while (!get_forks(philo, get_current_time() - start))
+        {
+            safe_print(get_current_time() - start, philo, THINKING);
+        }
+        safe_print(get_current_time() - start, philo, TAKEN_FORK);
+        safe_print(get_current_time() - start, philo, EATING);
+        put_timestamp(philo, TS_END_THINK, start);
+        
+        if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD])
+        {
+            change_state(philo, 0, OFF);
+            //printf("\x1b[31m" "PHILO %d IS DEAD, elapsed time: %lld, TTD : %d\n" "\x1b[0m", philo->pametres[ID], philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT],philo->pametres[TTD]);
+            return(NULL);
+        }
+            
+        ft_temporisation(philo->pametres[TTE],0);
+        put_timestamp(philo, TS_END_EAT, start);
+        last_eat = philo->time_data[TS_END_EAT];
+        release_forks(philo,get_current_time() - start);
+        safe_print(get_current_time() - start, philo, RELEASE_FORK);
+        safe_print(get_current_time() - start, philo, SLEEPING);
+        ft_temporisation(philo->pametres[TTS],0);
+        put_timestamp(philo, TS_END_SPLEEP, start);
     }
-    while (get_state(philo, philo->pametres[STATE_1]) == ON)
-    {
-        printf("I am The philosopher number %d \n", philo->pametres[ID]);
-    }
-    printf("PHILO %d WAS KILLED\n", philo->pametres[ID]);
-    TEST_SUCCES;
+    display_philo_time_board(philo,1);
+
+    change_state(philo, philo->pametres[STATE_1], OFF);
+    printf("\x1b[31m" "PHILO %d WAS KILLED\n" "\x1b[0m", philo->pametres[ID]);
     return(p);
 }

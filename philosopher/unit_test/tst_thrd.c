@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tst_thrd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:49:07 by ast               #+#    #+#             */
-/*   Updated: 2025/05/08 19:15:55 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:49:25 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int tst_run_thread_simulation(void)
     params[TTD] = 710;
     params[TTE] = 200;
     params[TTS] = 200;
-    params[CYCLE] = 10;
+    params[CYCLE] = -1;
     network = create_network(params);
     if(!network)
     {

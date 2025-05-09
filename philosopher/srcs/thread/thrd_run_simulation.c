@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_run_simulation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/04/27 17:00:10 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/09 14:01:32 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "thread.h"
 
@@ -20,10 +20,10 @@ int run_philo(pthread_t threads[200], t_network **net)
     void *(*f_cycle)(void *p);
     network = *net;
     i = 0;
-    // if((*net)->pametres[CYCLE] == -1)
-    //     f_cycle = thread_philo_infinit;
-    // else
-    f_cycle = thread_philo_cycle;
+    if((*net)->pametres[CYCLE] == -1)
+        f_cycle = thread_philo_infinit;
+    else
+        f_cycle = thread_philo_cycle;
     while (i < network->pametres[P])
     {
         printf("Launch Thread %d\n", network->philos[i]->pametres[ID]);
@@ -121,6 +121,7 @@ int run_simulation(t_network **network)
         printf("Error thread philo joiner\n");
         return(0);
     }
+    //destroy_network(network);
     
     return(1);
 }

@@ -1,16 +1,17 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/05/04 00:54:57 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/09 14:03:19 by cw3l             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
-#include "../include/global.h"
+#include "../srcs/initialisation/init_network.h"
+
 
 int	main(int argc, char **argv)
 {
@@ -24,6 +25,7 @@ int	main(int argc, char **argv)
 	arr_args = ft_init_and_check_argument(&argv[1], argc - 1);
 	if (!arr_args)
 		return (1);
+	assert(arr_args[4] == -1);
 	network = create_network(arr_args);
 	if(!network)
 	{
@@ -31,6 +33,6 @@ int	main(int argc, char **argv)
 		arr_args = NULL;
 		return(1);
 	}
-	
+	run_simulation(&network);
 	return(0);
 }

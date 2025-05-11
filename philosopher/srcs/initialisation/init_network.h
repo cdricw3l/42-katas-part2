@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 06:06:24 by ast               #+#    #+#             */
-/*   Updated: 2025/04/30 12:58:52 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/11 06:42:15 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,6 +36,7 @@ int	            init_atoi(const char *str);
 long long       *get_time_board(int n);
 long long       **get_time_multi_board(int n, int len);
 int             get_fork_number(t_philo *philo, int fork_number);
+int             ft_strlen(char *str);
 // Memory clean
 
 void            *destroy_network(t_network **network);

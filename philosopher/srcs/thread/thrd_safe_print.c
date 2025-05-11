@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 07:07:45 by ast               #+#    #+#             */
-/*   Updated: 2025/04/30 07:45:24 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/11 06:08:12 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -35,7 +35,7 @@ int safe_print(long long timestamp,t_philo *philo, int action)
         printf("Erreur mutex state lock\n");
         return(0);
     }
-    printf("%lld philospher %d %s\n",timestamp, philo->pametres[ID], get_action(action));
+    printf("%lld %d %s\n",timestamp, philo->pametres[ID], get_action(action));
     if(pthread_mutex_unlock(philo->print))
     {
         printf("Erreur mutex state lock\n");

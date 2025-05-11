@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_philo_cycle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/08 18:52:09 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/11 06:10:32 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "thread.h"
 
@@ -52,7 +52,7 @@ void    *thread_philo_cycle(void *p)
         put_timestamp(philo, TS_END_EAT, start);
         last_eat = philo->time_data[TS_END_EAT];
         release_forks(philo,get_current_time() - start);
-        safe_print(get_current_time() - start, philo, RELEASE_FORK);
+        //safe_print(get_current_time() - start, philo, RELEASE_FORK);
         safe_print(get_current_time() - start, philo, SLEEPING);
         ft_temporisation(philo->pametres[TTS],0);
         put_timestamp(philo, TS_END_SPLEEP, start);

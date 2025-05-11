@@ -60,11 +60,11 @@ EMPTY=
 #time_to_sleep 
 #time_to_sleep
 
-NOP= 5
-TTD= 500
-TTE= 200
-TTS= 200
-CYCLE= 10
+NOP= 18446744073709551626
+TTD= 122
+TTE= 60
+TTS= 60
+CYCLE= 
 
 TENV_OBJS=   $(OBJS_THREAD) $(OBJS_INIT) $(OBJS_TEST)
 PROD_OBJS= $(OBJS_MAIN) $(OBJS_INIT) $(OBJS_THREAD)
@@ -86,7 +86,7 @@ run: $(NAME)
 ifeq ($(OS), Darwin)
 	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
-	valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) 10
+	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) 
 endif
 
 # dev environnement

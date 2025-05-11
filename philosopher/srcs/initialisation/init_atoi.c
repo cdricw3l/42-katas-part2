@@ -6,7 +6,7 @@
 /*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:18:47 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/04/20 07:26:10 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/11 07:05:56 by ast              ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,7 +31,7 @@ int	init_atoi(const char *str)
 {
 	size_t	i;
 	size_t	is_neg;
-	int		result;
+	long	result;
 
 	i = 0;
 	is_neg = 0;
@@ -47,8 +47,12 @@ int	init_atoi(const char *str)
 	while (ft_isdigit(str[i]))
 	{
 		result = result * 10 + str[i] - 48;
+		if(result > INT_MAX)
+			return(-1);
 		i++;
 	}
+	if(i == 0 || (!ft_isdigit(str[i]) && str[i] != '\0'))
+		return(-1);
 	if (is_neg)
 		return (-result);
 	return (result);

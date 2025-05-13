@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/05/09 14:01:32 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/13 15:27:09 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 int run_philo(pthread_t threads[200], t_network **net)
 {
     int i;
+    long long start;
     t_network  *network;
     
     void *(*f_cycle)(void *p);
     network = *net;
     i = 0;
+    start = get_current_time();
     if((*net)->pametres[CYCLE] == -1)
         f_cycle = thread_philo_infinit;
     else
@@ -27,6 +29,7 @@ int run_philo(pthread_t threads[200], t_network **net)
     while (i < network->pametres[P])
     {
         printf("Launch Thread %d\n", network->philos[i]->pametres[ID]);
+        network->philos[i]->start = start;
         if(pthread_create(&threads[i],NULL, f_cycle, network->philos[i]))
         {
             printf("Launch Error THREAD %d\n", network->philos[i]->pametres[ID]);

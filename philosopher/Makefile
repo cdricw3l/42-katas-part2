@@ -60,7 +60,7 @@ EMPTY=
 #time_to_sleep 
 #time_to_sleep
 
-NOP= 18446744073709551626
+NOP= 5
 TTD= 122
 TTE= 60
 TTS= 60

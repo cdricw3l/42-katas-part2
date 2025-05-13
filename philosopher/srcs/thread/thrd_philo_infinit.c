@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/09 13:50:07 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/13 15:29:07 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ void    *thread_philo_infinit(void *p)
     long long start;
     long long last_eat;
     
+
     philo = (t_philo *)p;
+    start = philo->start;
     while (get_state(philo, 0) == OFF)
     {
         usleep(500);
     }
-    start = get_current_time();
     while (get_state(philo, 0) == ON)
     {
         

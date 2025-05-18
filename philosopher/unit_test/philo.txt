@@ -1,1 +1,0 @@
-gcc -Werror -Wall -Wextra -I./include -c srcs/thread/thrd_mutex.c -o srcs/thread/thrd_mutex.o

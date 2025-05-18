@@ -1,20 +1,19 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tst_timestamp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:21:23 by ast               #+#    #+#             */
-/*   Updated: 2025/04/30 12:12:16 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/18 20:24:46 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "tst_unit.h"
 
 int _timestamp(void)
 {
-    TEST_START;
     long long *time_board;
     t_philo *philo;
     t_mutex *pen;
@@ -59,12 +58,11 @@ int _timestamp(void)
         usleep(500000);
 
         put_timestamp(philo, TS_END_SPLEEP, start);
-        display_philo_time_board(philo, 1);
+        //display_philo_time_board(philo, 1);
         i++;
     }
     
     free(time_board);
-    TEST_SUCCES;
     return(1);
 }
 

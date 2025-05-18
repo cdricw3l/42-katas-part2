@@ -1,20 +1,19 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   tst_thrd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:49:07 by ast               #+#    #+#             */
-/*   Updated: 2025/05/11 06:11:50 by ast              ###   ########.fr       */
+/*   Updated: 2025/05/18 20:24:27 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "tst_unit.h"
 
 int tst_run_thread_simulation(void)
 {
-    TEST_START;
 
     t_network *network;
     pthread_t monitiror;
@@ -57,7 +56,6 @@ int tst_run_thread_simulation(void)
         printf("Error thread philo joiner\n");
         return(0);
     }
-    TEST_SUCCES;
     destroy_network(&network);
     free(params);
     return(1);
@@ -65,7 +63,6 @@ int tst_run_thread_simulation(void)
 
 int tst_run_thread_philo(void)
 {
-    TEST_START;
 
     t_network *network;
     pthread_t threads[200];
@@ -117,7 +114,6 @@ int tst_run_thread_philo(void)
 
 int tst_run_thread_monitor(void)
 {
-    TEST_START;
 
 
     t_network *network;

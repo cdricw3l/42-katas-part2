@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_monitor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/08 19:17:05 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:36:00 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,25 @@ int are_alive(t_network *network)
     k = 0;
     while (i < network->pametres[P])
     {
+        if(pthread_mutex_lock(network->philos[i]->m_state))
+            printf("Erreur mutex state lock\n");
         if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF 
             && network->philos[i]->pametres[CYCLE] < network->pametres[CYCLE] - 1)
-            return(0);
+            {
+                if(pthread_mutex_unlock(network->philos[i]->m_state))
+                    printf("Erreur mutex state unlock\n"); 
+                return(0);
+            }
         if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF )
             k++;
         if(k == network->pametres[P])
+        {
+            if(pthread_mutex_unlock(network->philos[i]->m_state))
+                printf("Erreur mutex state unlock\n"); 
             return(0);
+        }
+        if(pthread_mutex_unlock(network->philos[i]->m_state))
+            printf("Erreur mutex state unlock\n"); 
         i++;
     }
     return(1);

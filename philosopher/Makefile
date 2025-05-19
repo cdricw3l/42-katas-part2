@@ -64,7 +64,7 @@ NOP= 5
 TTD= 122
 TTE= 60
 TTS= 60
-CYCLE= 
+CYCLE= 5
 
 TENV_OBJS=   $(OBJS_THREAD) $(OBJS_INIT) $(OBJS_TEST)
 PROD_OBJS= $(OBJS_MAIN) $(OBJS_INIT) $(OBJS_THREAD)
@@ -84,7 +84,7 @@ $(TEST_NAME): $(TENV_OBJS)
 
 run: $(NAME)
 ifeq ($(OS), Darwin)
-	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) 10
 else ifeq ($(OS), Linux)
 	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) 
 endif

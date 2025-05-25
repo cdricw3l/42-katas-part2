@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/22 21:16:55 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/25 13:13:21 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,31 @@ void decrease_counter(t_philo *philo)
     if(pthread_mutex_lock(philo->m_counter) == -1)
     {
         printf("mutex counter error\n");
+        return ;
     }
     philo->cycle_counter--;
-    printf("voic le counter du philo %d : %d\n", philo->pametres[ID], philo->cycle_counter);
     if(pthread_mutex_unlock(philo->m_counter) == -1)
     {
         printf("mutex counter error\n");
     }
+}
+
+int get_cycle_counter(t_philo *philo)
+{
+    int c;
+    
+    if(pthread_mutex_lock(philo->m_counter) == -1)
+    {
+        printf("mutex counter error\n");
+        return (-1);
+    }
+    c = philo->cycle_counter;
+    if(pthread_mutex_unlock(philo->m_counter) == -1)
+    {
+        printf("mutex counter error\n");
+        return (c) ;
+    }
+    return (c);
 }
 
 void    *thread_philo_cycle(void *p)
@@ -57,7 +75,7 @@ void    *thread_philo_cycle(void *p)
         
         if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD])
         {
-            printf("\x1b[31m" "PHILO %d IS DEAD, elapsed time: %lld, TTD : %d\n" "\x1b[0m", philo->pametres[ID], philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT],philo->pametres[TTD]);
+            printf("\x1b[31m" "PHILO %d IS DEAD, elapsed time: %lld, TTD : %d, counter %d \n" "\x1b[0m", philo->pametres[ID], philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT],philo->pametres[TTD], get_cycle_counter(philo));
             change_state(philo, philo->pametres[STATE_2], OFF);
             return(NULL);
         }

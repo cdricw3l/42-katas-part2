@@ -6,7 +6,8 @@ TEST_NAME= philo_utest
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=cc
-GFLAGS= -Werror -Wall -Wextra -I./include -fsanitize=thread -g -O1
+GFLAGS= -Werror -Wall -Wextra -I./include 
+#-fsanitize=thread -g -O1
 else ifeq ($(OS), Linux)
 CC=cc
 GFLAGS= -Werror -Wall -Wextra -I./include

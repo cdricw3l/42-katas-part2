@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/05/22 19:51:33 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/25 12:44:12 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_philo	*create_philo(t_mutex_data *mutex_data,
 	philo->m_state = mutex_data->m_states[id];
 	philo->print = mutex_data->print;
 	philo->cycle_counter = params[CYCLE];
-	philo->counter = mutex_data->cycle_counter[id];
+	philo->m_counter = mutex_data->cycle_counter[id];
 	return (philo);
 }
 

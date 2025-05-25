@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/05/22 19:54:07 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/25 12:58:33 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_philo
 }	t_philo;
 
 typedef struct s_network
-{
+{  
 	int				pametres[8];
 	long long		**time_board;
 	t_mutex_data	*mutex_data;

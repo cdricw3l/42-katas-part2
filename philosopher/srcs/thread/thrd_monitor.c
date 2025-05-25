@@ -6,12 +6,11 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/22 21:26:33 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/25 13:08:14 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thread.h"
-
 
 int kill_philos(t_network **net)
 {
@@ -137,7 +136,6 @@ void    *thread_monitor(void *p)
     while (i == 1)
     {
         i = are_alive(network);
-        printf("voici i : %d\n", i);
         if(i == 0)
         {
             assert(1 == 2);
@@ -149,9 +147,7 @@ void    *thread_monitor(void *p)
             }
             return(p);
         }
-
         i++;
-
     }
     return(p);
 }

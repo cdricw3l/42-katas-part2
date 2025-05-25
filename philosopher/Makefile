@@ -85,7 +85,7 @@ $(TEST_NAME): $(TENV_OBJS)
 
 run: $(NAME)
 ifeq ($(OS), Darwin)
-	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) $(CYCLE)
 else ifeq ($(OS), Linux)
 	valgrind  --tool=helgrind  --log-file=filename ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS) $(CYCLE) 
 endif

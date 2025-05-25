@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_philo_cycle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/18 22:58:00 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:37:33 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	*thread_philo_cycle(void *p)
 	display_philo_time_board(philo,1);
 
 	change_state(philo, philo->pametres[STATE_1], OFF);
+	change_state(philo, philo->pametres[STATE_2], OFF);
 	//printf("\x1b[31m" "PHILO %d WAS KILLED\n" "\x1b[0m", philo->pametres[ID]);
 	return(p);
 }

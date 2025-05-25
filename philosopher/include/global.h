@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:38:02 by cw3l              #+#    #+#             */
-/*   Updated: 2025/05/18 19:03:52 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:54:07 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_mutex_data
 {
 	t_mutex	**pens;
 	t_mutex	**m_states;
+	t_mutex	**cycle_counter;
 	t_mutex	**forks;
 	t_mutex	*print;
 }	t_mutex_data;
@@ -63,7 +64,9 @@ typedef struct s_philo
 	t_mutex		*pen;
 	t_mutex		*m_state;
 	t_mutex		*print;
+	t_mutex		*m_counter;
 	long long	*time_data;
+	int 		cycle_counter;
 
 }	t_philo;
 

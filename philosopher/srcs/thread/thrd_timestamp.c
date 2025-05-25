@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   thrd_timestamp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ast <ast@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:52:01 by ast               #+#    #+#             */
-/*   Updated: 2025/05/18 20:58:56 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:32:54 by ast              ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "thread.h"
 
@@ -47,7 +47,7 @@ int check_timestamp(t_philo **philo, int n)
         {
             printf("fonction will ending %lld and %d\n", philo[i]->time_data[TS_END_THINK] - philo[i]->time_data[TS_LAST_EAT], philo[i]->pametres[TTD]);
             philo[i]->pametres[STATE_1] = 0;
-            // display_philo_time_board(philo[i], 1);
+            display_philo_time_board(philo[i], 1);
             return(0);
         }
     }
@@ -85,9 +85,10 @@ long get_elapsed_time_microseconds(struct timeval start, struct timeval end)
     return (end.tv_sec - start.tv_sec) * 1000000L + (end.tv_usec - start.tv_usec);
 }
 
-void ft_temporisation(int ms)
+void ft_temporisation(int ms, long long sta)
 {
     
+    (void)sta;
 	struct timeval start, current;
     long elapsed;
     long rem;

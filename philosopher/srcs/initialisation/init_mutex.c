@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mutex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:44:27 by ast               #+#    #+#             */
-/*   Updated: 2025/05/18 18:08:42 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:46:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ t_mutex_data	*init_mutex_struct(int n)
 		return (NULL);
 	}
 	mutex_data->print = init_mutex();
+	mutex_data->cycle_counter = init_mutex_arr(n);
 	return (mutex_data);
 }

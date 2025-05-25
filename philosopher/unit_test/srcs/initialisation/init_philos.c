@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_philos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:43:07 by ast               #+#    #+#             */
-/*   Updated: 2025/05/18 18:13:33 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:36:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_params_philo(t_philo **phil, int *params, int id)
 	philo->pametres[CYCLE] = params[CYCLE];
 	philo->pametres[ID] = id;
 	philo->pametres[STATE_1] = OFF;
-	philo->pametres[STATE_2] = -1;
+	philo->pametres[STATE_2] = ON;
 }
 
 static t_philo	*create_philo(t_mutex_data *mutex_data,

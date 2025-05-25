@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_philo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 19:12:38 by ast               #+#    #+#             */
-/*   Updated: 2025/05/08 19:16:59 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:38:36 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@ int get_state(t_philo *philo, int state_type)
     if(state_type == 0)
     {
         if(pthread_mutex_lock(philo->m_state))
+        {
             printf("Erreur mutex state lock\n");
+            return(0);    
+        }
         state = philo->pametres[STATE_1];
         if(pthread_mutex_unlock(philo->m_state))
-            printf("Erreur mutex state unlock\n"); 
+        {
+            printf("Erreur mutex state lock\n");
+            return(0);    
+        }
+        
     }
     else if(state_type == 1)
     {

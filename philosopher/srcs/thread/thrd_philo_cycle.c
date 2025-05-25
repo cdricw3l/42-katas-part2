@@ -3,64 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   thrd_philo_cycle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/18 22:58:00 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/22 21:16:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thread.h"
 
-void	*thread_philo_cycle(void *p)
+void decrease_counter(t_philo *philo)
 {
-	int			i;
-	t_philo		*philo;
-	
-	long long	last_eat;
-	
-	philo = (t_philo *)p;
-	i = 0;
-	while (get_state(philo, 0) == OFF)
-	{
-		usleep(500);
-	}
+    if(pthread_mutex_lock(philo->m_counter) == -1)
+    {
+        printf("mutex counter error\n");
+    }
+    philo->cycle_counter--;
+    printf("voic le counter du philo %d : %d\n", philo->pametres[ID], philo->cycle_counter);
+    if(pthread_mutex_unlock(philo->m_counter) == -1)
+    {
+        printf("mutex counter error\n");
+    }
+}
 
-	while (get_state(philo, 0) == ON && philo->pametres[CYCLE] > i)
-	{
-		
-		put_timestamp(philo, TS_CYCLE, philo->start);
-		put_timestamp(philo, TS_START, philo->start);
-		//printf("ici %lld\n", philo->time_data[TS_START]);
-		philo->time_data[TS_LAST_EAT] = last_eat;
+void    *thread_philo_cycle(void *p)
+{
+    t_philo *philo;
+    int i;
+    long long start;
+    long long last_eat;
+    
+    philo = (t_philo *)p;
+    i = 0;
+    start = philo->start;
+    while (get_state(philo, 0) == OFF)
+    {
+        ft_temporisation(10, 0);
+    }
+    while (get_state(philo, 0) == ON && philo->pametres[CYCLE] > i)
+    {
+        
+        put_timestamp(philo, TS_CYCLE, start);
+        put_timestamp(philo, TS_START, start);
+        philo->time_data[TS_LAST_EAT] = last_eat;
 
-		while (!get_forks(philo))
-		{
-			safe_print(get_current_time() - philo->start, philo, THINKING);
-		}
-		safe_print(get_current_time() - philo->start, philo, TAKEN_FORK);
-		safe_print(get_current_time() - philo->start, philo, EATING);
-		put_timestamp(philo, TS_END_THINK, philo->start);
-		
-		if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD])
-		{
-			change_state(philo, 0, OFF);
-			return (NULL);
-		}
-			
-		ft_temporisation(philo->pametres[TTE]);
-		put_timestamp(philo, TS_END_EAT, philo->start);
-		last_eat = philo->time_data[TS_END_EAT];
-		release_forks(philo, get_current_time() - philo->start);
-		//safe_print(get_current_time() - start, philo, RELEASE_FORK);
-		safe_print(get_current_time() - philo->start, philo, SLEEPING);
-		ft_temporisation(philo->pametres[TTS]);
-		put_timestamp(philo, TS_END_SPLEEP, philo->start);
-		i++;
-	}
-	display_philo_time_board(philo,1);
+        while (!get_forks(philo, get_current_time() - start))
+        {
+            safe_print(get_current_time() - start, philo, THINKING);
+        }
+        safe_print(get_current_time() - start, philo, TAKEN_FORK);
+        safe_print(get_current_time() - start, philo, EATING);
+        put_timestamp(philo, TS_END_THINK, start);
+        
+        if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD])
+        {
+            printf("\x1b[31m" "PHILO %d IS DEAD, elapsed time: %lld, TTD : %d\n" "\x1b[0m", philo->pametres[ID], philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT],philo->pametres[TTD]);
+            change_state(philo, philo->pametres[STATE_2], OFF);
+            return(NULL);
+        }
+            
+        ft_temporisation(philo->pametres[TTE],0);
+        put_timestamp(philo, TS_END_EAT, start);
+        last_eat = philo->time_data[TS_END_EAT];
+        release_forks(philo,get_current_time() - start);
+        //safe_print(get_current_time() - start, philo, RELEASE_FORK);
+        if(i < philo->pametres[CYCLE] - 1)
+        {
+            safe_print(get_current_time() - start, philo, SLEEPING);
+            ft_temporisation(philo->pametres[TTS],0);
+            put_timestamp(philo, TS_END_SPLEEP, start);
+        }
+        decrease_counter(philo);
+        i++;
+    }
+    display_philo_time_board(philo,1);
 
-	change_state(philo, philo->pametres[STATE_1], OFF);
-	//printf("\x1b[31m" "PHILO %d WAS KILLED\n" "\x1b[0m", philo->pametres[ID]);
-	return(p);
+    change_state(philo, philo->pametres[STATE_1], OFF);
+    safe_print((get_current_time() - start), philo, DEATH);
+    //printf("\x1b[31m" "PHILO %d WAS KILLED\n" "\x1b[0m", philo->pametres[ID]);
+    return(p);
 }

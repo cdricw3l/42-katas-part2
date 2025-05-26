@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/25 13:08:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:07:40 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int are_alive(t_network *network)
     {
         if(pthread_mutex_lock(network->philos[i]->m_state))
             printf("Erreur mutex state lock\n");
-        if(get_state(network->philos[i], network->philos[i]->pametres[STATE_2]) == OFF)
+        if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF && network->philos[i]->cycle_counter == 0)
         {
             if(pthread_mutex_unlock(network->philos[i]->m_state))
                 printf("Erreur mutex state unlock\n"); 
@@ -135,10 +135,9 @@ void    *thread_monitor(void *p)
     }
     while (i == 1)
     {
-        i = are_alive(network);
         if(i == 0)
         {
-            assert(1 == 2);
+            assert(i == 1);
             int j = 0;
             while (j < network->pametres[P])
             {

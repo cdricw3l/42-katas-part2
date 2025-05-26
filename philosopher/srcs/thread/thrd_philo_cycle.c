@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/25 13:13:21 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:00:12 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,14 @@ void    *thread_philo_cycle(void *p)
         if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD])
         {
             printf("\x1b[31m" "PHILO %d IS DEAD, elapsed time: %lld, TTD : %d, counter %d \n" "\x1b[0m", philo->pametres[ID], philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT],philo->pametres[TTD], get_cycle_counter(philo));
+            safe_print(philo->start, philo,DEATH);
             change_state(philo, philo->pametres[STATE_2], OFF);
             return(NULL);
         }
             
+        assert(philo->pametres[TTE] == 80);
         ft_temporisation(philo->pametres[TTE],0);
+
         put_timestamp(philo, TS_END_EAT, start);
         last_eat = philo->time_data[TS_END_EAT];
         release_forks(philo,get_current_time() - start);
@@ -91,6 +94,7 @@ void    *thread_philo_cycle(void *p)
             ft_temporisation(philo->pametres[TTS],0);
             put_timestamp(philo, TS_END_SPLEEP, start);
         }
+
         decrease_counter(philo);
         i++;
     }
@@ -98,6 +102,6 @@ void    *thread_philo_cycle(void *p)
 
     change_state(philo, philo->pametres[STATE_1], OFF);
     safe_print((get_current_time() - start), philo, DEATH);
-    //printf("\x1b[31m" "PHILO %d WAS KILLED\n" "\x1b[0m", philo->pametres[ID]);
+    //printf("\x1b[31m" "PHILO %d WAS KILLED at cycle %d\n" "\x1b[0m", philo->pametres[ID], philo->cycle_counter);
     return(p);
 }

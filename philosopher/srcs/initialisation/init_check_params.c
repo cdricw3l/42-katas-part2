@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_check_params.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:10:47 by ast               #+#    #+#             */
-/*   Updated: 2025/05/18 20:47:53 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/05/27 20:41:01 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	*ft_init_and_check_argument(char **argv, int len)
 	while (i < len)
 	{
 		value = init_atoi(argv[i]);
-		printf("value  %ld\n", value);
 		if (value < 0 || !ft_check_argument(value, i))
 		{
 			write(STDERR_FILENO, ERROR_MSG, ft_strlen(ERROR_MSG));

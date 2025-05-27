@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/05/26 08:59:16 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/27 20:40:26 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,14 +120,12 @@ int run_simulation(t_network **network)
         printf("Error thread philo joiner\n");
         return(0);
     }
-    else
-        write(STDOUT_FILENO, "all philo are join\n", ft_strlen("all philo are join\n"));
     if(!monitor_joiner(&monitiror))
     {
         printf("Error thread monitor joiner\n");
         return(0);
     }
-    
+    display_all_philo_time_board((*network)->philos, 1);
     
     //destroy_network(network);
     

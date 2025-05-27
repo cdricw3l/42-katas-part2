@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/05/25 13:05:35 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/27 20:32:44 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	int				*arr_args;
 	t_network		*network;
 
-	
 	if (argc < 5 || argc > 6 || !argv || !*argv)
 	{
 		write(STDERR_FILENO, "invalid params\n", ft_strlen("invalid params\n"));

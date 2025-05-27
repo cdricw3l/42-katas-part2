@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/26 09:07:40 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/27 20:33:23 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int  start_first_batch(t_network **net)
         }
         i++;
     }
-    printf("start batch 1 ok\n");
     return(i);
 }
 
@@ -81,7 +80,6 @@ int  start_second_batch(t_network **net)
         }
         i++;
     }
-    printf("start batch 2 ok\n");
     return(i);
 }
 

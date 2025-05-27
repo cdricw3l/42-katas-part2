@@ -6,7 +6,7 @@ TEST_NAME= philo_utest
 OS = $(shell uname)
 ifeq ($(OS), Darwin)
 CC=cc
-GFLAGS= -Werror -Wall -Wextra  -I./include 
+GFLAGS= -Werror -Wall -Wextra -fsanitize=thread  -I./include 
 #-fsanitize=thread -g -O1
 else ifeq ($(OS), Linux)
 CC=cc
@@ -76,7 +76,7 @@ PROD_OBJS= $(OBJS_MAIN) $(OBJS_INIT) $(OBJS_THREAD)
 #main linkin rule
 
 $(NAME): $(PROD_OBJS)
-	$(CC) $(GFLAGS)  $(PROD_OBJS) -o $(NAME)
+	$(CC) $(GFLAGS) -fsanitize=thread  $(PROD_OBJS) -o $(NAME)
 
 $(TEST_NAME): $(TENV_OBJS)
 	$(CC) $(GFLAGS) -fsanitize=thread $(TENV_OBJS_OBJS) -o $(TEST_NAME)

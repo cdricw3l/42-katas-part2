@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/26 09:00:12 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/27 20:40:28 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ void    *thread_philo_cycle(void *p)
         {
             safe_print(get_current_time() - start, philo, THINKING);
         }
-        safe_print(get_current_time() - start, philo, TAKEN_FORK);
-        safe_print(get_current_time() - start, philo, EATING);
-        put_timestamp(philo, TS_END_THINK, start);
-        
         if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD])
         {
             printf("\x1b[31m" "PHILO %d IS DEAD, elapsed time: %lld, TTD : %d, counter %d \n" "\x1b[0m", philo->pametres[ID], philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT],philo->pametres[TTD], get_cycle_counter(philo));
@@ -80,14 +76,16 @@ void    *thread_philo_cycle(void *p)
             change_state(philo, philo->pametres[STATE_2], OFF);
             return(NULL);
         }
-            
+        safe_print(get_current_time() - start, philo, TAKEN_FORK);
+        safe_print(get_current_time() - start, philo, EATING);
+        put_timestamp(philo, TS_END_THINK, start);
+        
         assert(philo->pametres[TTE] == 80);
         ft_temporisation(philo->pametres[TTE],0);
 
         put_timestamp(philo, TS_END_EAT, start);
         last_eat = philo->time_data[TS_END_EAT];
         release_forks(philo,get_current_time() - start);
-        //safe_print(get_current_time() - start, philo, RELEASE_FORK);
         if(i < philo->pametres[CYCLE] - 1)
         {
             safe_print(get_current_time() - start, philo, SLEEPING);
@@ -98,10 +96,7 @@ void    *thread_philo_cycle(void *p)
         decrease_counter(philo);
         i++;
     }
-    display_philo_time_board(philo,1);
-
     change_state(philo, philo->pametres[STATE_1], OFF);
     safe_print((get_current_time() - start), philo, DEATH);
-    //printf("\x1b[31m" "PHILO %d WAS KILLED at cycle %d\n" "\x1b[0m", philo->pametres[ID], philo->cycle_counter);
     return(p);
 }

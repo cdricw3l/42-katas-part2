@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/27 20:33:23 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:44:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,61 +27,7 @@ int kill_philos(t_network **net)
     return(i);
 }
 
-int  start_first_batch(t_network **net)
-{
-    int i;
-    t_network *network;
 
-    i = 0;
-    network = *net;
-    while (i < network->pametres[P])
-    {
-        if(i % 2 == 0 && i != 1)
-        {
-            if(pthread_mutex_lock(network->philos[i]->m_state))
-            {
-                printf("Erreur mutex state lock\n");
-                return(0);    
-            }
-            network->philos[i]->pametres[STATE_1] = ON;
-            if(pthread_mutex_unlock(network->philos[i]->m_state))
-            {
-                printf("Erreur mutex state unlock\n");
-                return(0);
-            }
-        }
-        i++;
-    }
-    return(i);
-}
-
-int  start_second_batch(t_network **net)
-{
-    int i;
-    t_network *network;
-
-    i = 0;
-    network = *net;
-    while (i < network->pametres[P])
-    {
-        if((i % 3 == 0 && i != 0) || i == 1)
-        {
-            if(pthread_mutex_lock(network->philos[i]->m_state))
-            {
-                printf("Erreur mutex state lock\n");
-                return(0);    
-            }
-            network->philos[i]->pametres[STATE_1] = ON;
-            if(pthread_mutex_unlock(network->philos[i]->m_state))
-            {
-                printf("Erreur mutex state unlock\n");
-                return(0);
-            }
-        }
-        i++;
-    }
-    return(i);
-}
 
 int are_alive(t_network *network)
 {
@@ -94,6 +40,11 @@ int are_alive(t_network *network)
     {
         if(pthread_mutex_lock(network->philos[i]->m_state))
             printf("Erreur mutex state lock\n");
+        if(get_state(network->philos[i], network->philos[i]->pametres[STATE_2]))
+        {
+            safe_print(get_current_time() - network ->philos[i]->start, network ->philos[i] ,DEATH_2);
+            return(0);
+        }
         if(get_state(network->philos[i], network->philos[i]->pametres[STATE_1]) == OFF && network->philos[i]->cycle_counter == 0)
         {
             if(pthread_mutex_unlock(network->philos[i]->m_state))
@@ -123,19 +74,24 @@ void    *thread_monitor(void *p)
 {
     t_network *network;
     int i;
+    int k;
     (void)network;
     i = 1;
     network = *(t_network **)p;
-    if(!start_first_batch((t_network **)p) || !start_second_batch((t_network **)p))
-    {
-        printf("Start philo error\n");
-        return(NULL);
-    }
+    
+    k = 0;
     while (i == 1)
     {
+        printf("simulation of satttttt\n");
+        if(k == 3)
+        {
+            i = 0;
+            printf("simulation of deqth\n");
+        }
         if(i == 0)
         {
-            assert(i == 1);
+            printf("error philo is deqth");
+            assert(1 == 1);
             int j = 0;
             while (j < network->pametres[P])
             {
@@ -145,6 +101,7 @@ void    *thread_monitor(void *p)
             return(p);
         }
         i++;
+        k++;
     }
     return(p);
 }

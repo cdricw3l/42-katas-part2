@@ -6,11 +6,67 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/05/27 20:40:26 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:43:29 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thread.h"
+
+int  start_first_batch(t_network **net)
+{
+    int i;
+    t_network *network;
+
+    i = 0;
+    network = *net;
+    while (i < network->pametres[P])
+    {
+        if(i % 2 == 0 && i != 1)
+        {
+            if(pthread_mutex_lock(network->philos[i]->m_state))
+            {
+                printf("Erreur mutex state lock\n");
+                return(0);    
+            }
+            network->philos[i]->pametres[STATE_1] = ON;
+            if(pthread_mutex_unlock(network->philos[i]->m_state))
+            {
+                printf("Erreur mutex state unlock\n");
+                return(0);
+            }
+        }
+        i++;
+    }
+    return(i);
+}
+
+int  start_second_batch(t_network **net)
+{
+    int i;
+    t_network *network;
+
+    i = 0;
+    network = *net;
+    while (i < network->pametres[P])
+    {
+        if((i % 3 == 0 && i != 0) || i == 1)
+        {
+            if(pthread_mutex_lock(network->philos[i]->m_state))
+            {
+                printf("Erreur mutex state lock\n");
+                return(0);    
+            }
+            network->philos[i]->pametres[STATE_1] = ON;
+            if(pthread_mutex_unlock(network->philos[i]->m_state))
+            {
+                printf("Erreur mutex state unlock\n");
+                return(0);
+            }
+        }
+        i++;
+    }
+    return(i);
+}
 
 int run_philo(pthread_t threads[200], t_network **net)
 {
@@ -114,17 +170,22 @@ int run_simulation(t_network **network)
         printf("Error thread monitor launcher\n");
         return(0);
     }
-    
-    if(!philos_joiner(network, threads))
+    if(!start_first_batch(network) || !start_second_batch((network)))
     {
-        printf("Error thread philo joiner\n");
-        return(0);
+        printf("Start philo error\n");
+        return(-1);
     }
     if(!monitor_joiner(&monitiror))
     {
         printf("Error thread monitor joiner\n");
         return(0);
     }
+    if(!philos_joiner(network, threads))
+    {
+        printf("Error thread philo joiner\n");
+        return(0);
+    }
+    
     display_all_philo_time_board((*network)->philos, 1);
     
     //destroy_network(network);

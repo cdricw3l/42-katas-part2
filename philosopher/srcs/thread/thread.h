@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 04:36:08 by ast               #+#    #+#             */
-/*   Updated: 2025/05/22 15:59:02 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:36:28 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 #define SLEEPING        3
 #define THINKING        4
 #define DEATH           5
+#define DEATH_2         6
 
 
 long long   get_current_time(void);

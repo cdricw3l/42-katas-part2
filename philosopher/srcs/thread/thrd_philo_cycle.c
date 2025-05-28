@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:15:58 by ast               #+#    #+#             */
-/*   Updated: 2025/05/27 20:40:28 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:40:39 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void    *thread_philo_cycle(void *p)
         {
             safe_print(get_current_time() - start, philo, THINKING);
         }
+        //(get_cycle_counter(philo) == 5 && philo->pametres[ID] == 0)
         if(philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT] > philo->pametres[TTD])
         {
             printf("\x1b[31m" "PHILO %d IS DEAD, elapsed time: %lld, TTD : %d, counter %d \n" "\x1b[0m", philo->pametres[ID], philo->time_data[TS_END_THINK] - philo->time_data[TS_LAST_EAT],philo->pametres[TTD], get_cycle_counter(philo));

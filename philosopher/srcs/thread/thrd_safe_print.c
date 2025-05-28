@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 07:07:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/27 20:39:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:36:34 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static char *get_action(int action)
     if(action == THINKING)
         return("is thinking");
     if(action == DEATH)
+        return( "is OFF: end of cycle");
+    if(action == DEATH_2)
         return( "is OFF: end of cycle");
     return(NULL);
 }

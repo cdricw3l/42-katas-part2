@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/05/28 06:48:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:51:12 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,16 +160,17 @@ int run_simulation(t_network **network)
     
     (void)monitiror;
     
-    if(!philos_laucher(network, threads))
-    {
-        printf("Error thread philo launcher\n");
-        return(0);
-    }
     if(!monitor_launcher(network, &monitiror))
     {
         printf("Error thread monitor launcher\n");
         return(0);
     }
+    if(!philos_laucher(network, threads))
+    {
+        printf("Error thread philo launcher\n");
+        return(0);
+    }
+    
     if(!start_first_batch(network) || !start_second_batch((network)))
     {
         printf("Start philo error\n");

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/28 06:47:04 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:54:36 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ void    *thread_monitor(void *p)
     while (i == 1)
     {
         printf("simulation of satttttt\n");
+        printf("voici k %d\n", k);
         if(i == 0 || k == 3)
         {
             assert(1 == 2);
-            printf("error philo is deqth");
+            printf("error philo is deqth\n");
             assert(1 == 1);
             int j = 0;
             while (j < network->pametres[P])

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 21:51:04 by ast               #+#    #+#             */
-/*   Updated: 2025/05/28 06:43:29 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:48:14 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,14 +175,15 @@ int run_simulation(t_network **network)
         printf("Start philo error\n");
         return(-1);
     }
-    if(!monitor_joiner(&monitiror))
-    {
-        printf("Error thread monitor joiner\n");
-        return(0);
-    }
     if(!philos_joiner(network, threads))
     {
         printf("Error thread philo joiner\n");
+        return(0);
+    }
+    
+    if(!monitor_joiner(&monitiror))
+    {
+        printf("Error thread monitor joiner\n");
         return(0);
     }
     

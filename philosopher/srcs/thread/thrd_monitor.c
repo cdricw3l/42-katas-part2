@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 09:14:45 by ast               #+#    #+#             */
-/*   Updated: 2025/05/28 06:44:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/05/28 06:47:04 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,9 @@ void    *thread_monitor(void *p)
     while (i == 1)
     {
         printf("simulation of satttttt\n");
-        if(k == 3)
+        if(i == 0 || k == 3)
         {
-            i = 0;
-            printf("simulation of deqth\n");
-        }
-        if(i == 0)
-        {
+            assert(1 == 2);
             printf("error philo is deqth");
             assert(1 == 1);
             int j = 0;
